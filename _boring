@@ -13,6 +13,7 @@
 ^\.config/creeperworld3($|/)
 ^\.config/itch($|/)
 ^\.config/keybase($|/)
+^\.config/mpv($|/)
 ^\.config/syncthing($|/)
 ^\.config/vdirsyncer($|/)
 ^\.darcs/author$

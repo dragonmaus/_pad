@@ -29,6 +29,6 @@ c.url.searchengines = {
     'hoogle': 'https://www.haskell.org/hoogle/?hoogle={}',
     'scry': 'https://scryfall.com/search?q={}',
 }
-config.bind('X', 'hint links spawn umpv {hint-url}')
-config.bind('x', 'spawn umpv {url}')
+config.bind('X', 'hint links spawn mpv {hint-url}')
+config.bind('x', 'spawn mpv {url}')
 config.source('theme.py')
