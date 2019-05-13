@@ -1,0 +1,7 @@
+#!/bin/sh
+[[ -d _darcs ]] || exit 1
+darcs setpref binariesfile _binaries
+darcs setpref boringfile _boring
+rm -f _darcs/prefs/binaries
+rm -f _darcs/prefs/boring
+rm -f _darcs/prefs/motd

@@ -1,0 +1,4 @@
+#!/bin/sh
+home=$(dirname "$0")
+cd $home
+exec tcc -I$HOME/inc -c "$@"

@@ -1,0 +1,2 @@
+initialize posthook ~/lib/exec/darcs/hooks/initialize.post
+initialize run-posthook

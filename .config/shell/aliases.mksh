@@ -1,0 +1,5 @@
+\\builtin alias lc="ls -C"
+\\builtin alias ll="ls -Fl"
+\\builtin alias ls="ls -1A --color=auto"
+\\builtin alias pstree="pstree -achlnp"
+\\builtin alias sudo="sudo "

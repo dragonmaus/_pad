@@ -1,0 +1,21 @@
+[calendars]
+
+[[my_calendars_local]]
+path = ~/.local/share/calendars/*
+type = discover
+
+[[my_contacts_local]]
+color = light magenta
+path = ~/.local/share/contacts/default
+type = birthdays
+
+[default]
+highlight_event_days = true
+
+[locale]
+timeformat = %H:%M
+dateformat = %m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+firstweekday = 6

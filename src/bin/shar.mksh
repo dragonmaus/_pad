@@ -1,0 +1,35 @@
+#!/bin/mksh
+
+\\builtin cat <<END
+# This is a shell archive.  Save it in a file, remove anything before
+# this line, and then unpack it by entering "sh file".  Note, it may
+# create directories; files and directories will be owned by you and
+# have default permissions.
+#
+# This archive contains:
+#
+END
+
+for f do
+	\\builtin print -r "#	$f"
+done
+
+\\builtin print "#"
+
+function mkdirs {
+	\\builtin typeset d=$(\dirname "$1")
+	[[ $d = . || $d = / ]] && \\builtin exit
+	\\builtin print -r mkdir -p "$d"
+}
+
+for f do
+	q=${f//\'/\'\\\'\'} # escape single-quotes
+	\\builtin print -r echo x - "'$q'"
+	\mkdirs "$q"
+	\\builtin print -r "sed 's/^X//' >'$q' << 'END-of-$q'"
+	\sed "s/^/X/" <"$f"
+	\\builtin print -r "END-of-$q"
+done
+
+\\builtin print exit
+\\builtin print

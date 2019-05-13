@@ -1,0 +1,40 @@
+[alias]
+	pwd = rev-parse --show-prefix
+	root = rev-parse --show-toplevel
+	skip = update-index --skip-worktree --
+	unskip = update-index --no-skip-worktree --
+[color]
+	ui = auto
+[commit]
+	gpgsign = true
+[credential]
+	helper = store
+[gpg]
+	program = gpg2
+[push]
+	default = simple
+	followTags = true
+
+# Neovim integration
+[commit]
+	verbose = true
+[diff]
+	guitool = nvim-diff2-gui
+	tool = nvim-diff2
+[difftool "nvim-diff2"]
+	cmd = nvim -d $LOCAL $REMOTE
+[difftool "nvim-diff2-gui"]
+	cmd = nvim-qt --nofork -- -d $LOCAL $REMOTE
+[merge]
+	guitool = nvim-diff4-gui
+	tool = nvim-diff4
+[mergetool "nvim-diff4"]
+	cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+	trustExitCode = true
+[mergetool "nvim-diff4-gui"]
+	cmd = nvim-qt --nofork -- -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+	trustExitCode = true
+
+# Secret stuff
+[include]
+	path = ~/.secret/gitconfig
