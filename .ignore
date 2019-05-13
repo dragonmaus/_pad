@@ -1,3 +1,5 @@
+.git/
+.pijul/
 /.Xauthority
 /.asoundrc
 /.cabal/
@@ -12,14 +14,12 @@
 /.config/vdirsyncer/
 /.darcs/author
 /.dbus/
-/.git/
 /.gitlab-token
 /.gnupg/
 /.local/
 /.minecraft/
 /.mozilla/
 /.password-store/
-/.pijul/
 /.pijulconfig/
 /.pki/
 /.rustup/
@@ -28,7 +28,6 @@
 /.ssh/
 /.wine/
 /[A-Z]*
-/_darcs/
 /backup/
 /bin/
 /dist/
@@ -47,5 +46,7 @@
 /src/rust/
 /storage/
 /tmp/
+__pycache__/
+_darcs/
 !/LICENSE
 !/README.md

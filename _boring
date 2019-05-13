@@ -1,3 +1,7 @@
+(^|/)\.git($|/)
+(^|/)\.pijul($|/)
+(^|/)__pycache__($|/)
+(^|/)_darcs($|/)
 ^[A-KM-QS-Z]
 ^\.Xauthority$
 ^\.asoundrc$
@@ -13,14 +17,12 @@
 ^\.config/vdirsyncer($|/)
 ^\.darcs/author$
 ^\.dbus($|/)
-^\.git($|/)
 ^\.gitlab-token$
 ^\.gnupg($|/)
 ^\.local($|/)
 ^\.minecraft($|/)
 ^\.mozilla($|/)
 ^\.password-store($|/)
-^\.pijul($|/)
 ^\.pijulconfig($|/)
 ^\.pki($|/)
 ^\.rustup($|/)
@@ -28,7 +30,6 @@
 ^\.serverauth\.[0-9]+$
 ^\.ssh($|/)
 ^\.wine($|/)
-^_darcs($|/)
 ^backup($|/)
 ^bin($|/)
 ^dist($|/)
