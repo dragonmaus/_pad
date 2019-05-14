@@ -37,3 +37,4 @@ $HOME/.secret/bin/install-all
 ./install set-wallpaper set-wallpaper.sh
 ./install shar shar.mksh
 ./install sv sv.sh
+./install vicron vicron.sh

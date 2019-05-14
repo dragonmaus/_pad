@@ -1,0 +1,4 @@
+#!/bin/sh
+logdir=/home/dragon/log/sv/scron
+mkdir -p $logdir
+exec svlogd -ttt $logdir
