@@ -21,7 +21,7 @@ for d in `ls $S`; do
 
 	(
 		echo "#!/bin/sh"
-		echo "logdir=$L/$d"
+		echo "logdir=${L/#$HOME\//\$HOME\/}/$d"
 		echo "mkdir -p \$logdir"
 		echo "exec svlogd -ttt \$logdir"
 	) >$S/$d/log/run

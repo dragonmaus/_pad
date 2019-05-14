@@ -1,4 +1,4 @@
 #!/bin/sh
-logdir=/home/dragon/log/sv/barrierc
+logdir=$HOME/log/sv/barrierc
 mkdir -p $logdir
 exec svlogd -ttt $logdir

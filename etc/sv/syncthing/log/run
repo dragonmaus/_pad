@@ -1,4 +1,4 @@
 #!/bin/sh
-logdir=/home/dragon/log/sv/syncthing
+logdir=$HOME/log/sv/syncthing
 mkdir -p $logdir
 exec svlogd -ttt $logdir
