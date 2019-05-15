@@ -1,2 +1,2 @@
-*/6	*	*	*	*	sleep 13 && curl -s http://sync.afraid.org/u/xkaDLoE605ykL4yQpyioRXn0/ >>$HOME/log/freedns.log
+*/6	*	*	*	*	sh $HOME/lib/update-dns.sh
 */30	*	*	*	*	pgrep -x Xorg >/dev/null 2>&1 && env PATH=$HOME/bin:$PATH remote-display randomise-wallpaper -s
