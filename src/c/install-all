@@ -7,4 +7,5 @@ cd $home
 ./install fsync -lcore
 ./install lefix -lcore
 ./install printenv -lcore
+./install realpath -lcore
 ./install un% -lcore
