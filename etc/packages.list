@@ -20,6 +20,7 @@ feh
 file
 firefox-esr
 git
+go
 gparted
 grub
 gv
@@ -42,6 +43,7 @@ man-pages-devel
 mdocml
 minecraft
 mksh
+moreutils
 mpv
 ncurses
 ncurses-devel
