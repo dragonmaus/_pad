@@ -1,6 +1,6 @@
+#include <unistd.h>
 #include "print.h"
 #include "str.h"
-#include "unix.h"
 
   int
 print_err_z(const char *s)

@@ -1,6 +1,6 @@
+#include <unistd.h>
 #include "die.h"
 #include "print.h"
-#include "unix.h"
 
   void
 die(int c, const char *m)

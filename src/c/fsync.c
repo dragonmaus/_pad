@@ -1,6 +1,6 @@
+#include <unistd.h>
 #include "die.h"
 #include "open.h"
-#include "unix.h"
 
   int
 main(int argc, const char **argv)

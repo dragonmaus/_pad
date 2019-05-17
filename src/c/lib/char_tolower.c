@@ -1,8 +1,8 @@
 #include "char.h"
 
   char
-char_tolower(register const char c)
+char_tolower(const char c)
 {
-  if (c >= 'A' && c <= 'Z') return (c + ('a'-'A'));
+  if (char_isupper(c)) return (c - ('A'-'a'));
   return c;
 }

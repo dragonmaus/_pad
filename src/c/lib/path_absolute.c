@@ -2,32 +2,31 @@
 #define WINVER _WIN32_WINNT_WIN7
 #include <windows.h>
 #else
-#include <stdio.h>
-#include "unix.h"
+#include <unistd.h>
 #endif
 #include "path.h"
 #include "str.h"
 
 #ifndef WIN32
   unsigned int
-get_element(char *el, char *path)
+next(char *elem, char *path)
 {
-  char *e = el;
-  char *p = path;
-  char n = 0;
+  int i, j;
 
-  for (;;) {
-    if (!*p) return n; if (*p == '/') { *e = 0; return ++n; }; *e++ = *p++; ++n;
-    if (!*p) return n; if (*p == '/') { *e = 0; return ++n; }; *e++ = *p++; ++n;
-    if (!*p) return n; if (*p == '/') { *e = 0; return ++n; }; *e++ = *p++; ++n;
-    if (!*p) return n; if (*p == '/') { *e = 0; return ++n; }; *e++ = *p++; ++n;
-  }
+  i = str_find(path, '/');
+  path[i] = 0;
+  j = str_copy(elem, path);
+  return j+1;
 }
 #endif
 
   int
-path_absolute(int size, char *path, int bufsize)
+path_absolute(char *path, int bufsize)
 {
+  int size;
+
+  size = str_len(path);
+
 #ifdef WIN32
   if (bufsize > MAX_PATH) bufsize = MAX_PATH;
 
@@ -49,33 +48,33 @@ path_absolute(int size, char *path, int bufsize)
 
   size = path_fix(size, path);
 #else
-  printf("  a.path (%d) = '%s'\n", size, path);
+  char elem[bufsize];
   char full[bufsize];
-  char *f = full;
-  char *p = path;
-  char el[bufsize];
+  register char *f;
+  register char *p;
 
-  if (*path != '/') {
-    if (!getcwd(full, bufsize)) return -1;
-    f += str_len(full);
+  f = full;
+  p = path;
+  if (*p != '/') {
+    if (!getcwd(f, bufsize)) return -1;
+    f += str_len(f);
+    if (*(f-1) == '/') --f;
   }
 
-
-  for (;;) {
-    if (!*p) break;
-    p += get_element(el, p);
-    if (!*el) continue;
-    if (str_equal(".", el)) continue;
-    if (str_equal("..", el)) {
-      while (f > full + 1 && *f != '/') --f;
+  while ((p - path) < size && *p) {
+    p += next(elem, p);
+    if (!*elem || str_equal(".", elem)) continue;
+    if (str_equal("..", elem)) {
+      f = full + str_rfind(full, '/');
       *f = 0;
       continue;
     }
     f += str_copy(f, "/");
-    f += str_copy(f, el);
+    f += str_copy(f, elem);
     *f = 0;
   }
-  *f = 0;
+
+  if (f == full) str_copy(f, "/");
 
   size = str_copy(path, full);
 #endif

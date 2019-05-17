@@ -2,9 +2,9 @@
 #include "print.h"
 
 char *option_arg;
-int option_index = 1;
-char option_error;
-static int point = 0;
+char  option_error;
+register int option_index = 1;
+register static int point = 0;
 
 typedef enum {
   NOT_OPTION,
@@ -15,17 +15,16 @@ typedef enum {
   static scan_result
 scan_optstring(const char *optstring, const char opt)
 {
-  int i;
+  register char *os;
+  register char o;
 
-  for (i = 0; optstring[i]; ++i) {
-    if (optstring[i] == opt) {
-      if (optstring[i+1] == ':') {
-        return ARG_OPTION;
-      }
-      return OPTION;
-    }
+  os = optstring;
+  for (;;) {
+    o = *os; if (!o) return NOT_OPTION; if (o == opt) { if (*(os+1) == ':') return ARG_OPTION; return OPTION; }; ++os;
+    o = *os; if (!o) return NOT_OPTION; if (o == opt) { if (*(os+1) == ':') return ARG_OPTION; return OPTION; }; ++os;
+    o = *os; if (!o) return NOT_OPTION; if (o == opt) { if (*(os+1) == ':') return ARG_OPTION; return OPTION; }; ++os;
+    o = *os; if (!o) return NOT_OPTION; if (o == opt) { if (*(os+1) == ':') return ARG_OPTION; return OPTION; }; ++os;
   }
-  return NOT_OPTION;
 }
 
   char
@@ -61,6 +60,7 @@ option_next(int argc, const char **argv, const char *optstring)
         option_arg = (char *)(argv[option_index] + point);
       } else {
         option_arg = (char *)argv[++option_index];
+        point = 0;
         if (!option_arg) {
           option_error = opt;
           if (optstring[0] == ':') {

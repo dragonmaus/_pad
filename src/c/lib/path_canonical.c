@@ -2,19 +2,26 @@
 #define WINVER _WIN32_WINNT_WIN7
 #include <windows.h>
 #else
-#include <errno.h>
 #include <limits.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include "unix.h"
+#include <unistd.h>
+#include "error.h"
 #endif
 #include "path.h"
 #include "str.h"
 
   int
-path_canonical(int size, char *path, int bufsize)
+path_canonical(char *path, int bufsize)
 {
+  int size;
+
+  size = str_len(path);
+
 #ifdef WIN32
+  size = path_absolute(size, path, bufsize);
+  if (size == -1) return -1;
+  path[size] = 0;
+
   wchar_t wpath[bufsize];
   DWORD wsize;
   HANDLE file;
@@ -94,54 +101,42 @@ path_canonical(int size, char *path, int bufsize)
   /* "S:\ome\Path\" => "S:\ome\Path", "S:\" => "S:\" */
   if (path[size - 1] == '\\' && size > 3) path[--size] = 0;
 #else
+  char full[bufsize];
   char real[bufsize];
   int i, j;
 
   /* make path absolute */
+  size = 0;
   if (*path != '/') {
-    if (!getcwd(real, bufsize)) return -1;
-    size = str_len(real);
-    real[size++] = '/';
-    size += str_copy(real + size, path);
-    size = str_copy(path, real);
-    *real = 0;
+    if (!getcwd(full, bufsize)) return -1;
+    size = str_len(full);
+    if (full[size-1] != '/') full[size++] = '/';
   }
+  size += str_copy(full + size, path);
 
-  printf("  c.path (%d) = '%s'\n", size, path);
+  if (!realpath(full, real)) {
+    if (errno != error_noent) return -1;
+    if (size == 1) return -1; // somehow / does not exist
 
-  if (!realpath(path, real)) {
-    if (errno != ENOENT) return -1;
-    size = str_copy(real, path);
-    if (size == 1) return -1; // reached root with no resolution
+    i = str_rfind(full, '/');
+    full[i] = 0;
 
-    /* search backwards from the end for the last path separator */
-    i = size - 1;
-    for (;;) {
-      if (i < 0) return -1;
-      if (real[i] == '/') break;
-      --i;
+    char tail[size-i];
+    j = str_copy(tail, full+i+1);
+
+    if (!i) {
+      full[i++] = '/';
+      full[i] = 0;
     }
 
-    real[i] = 0;
-    if (!i) i = str_copy(real, "/");
-
-    /* save the last path element for later */
-    char tail[size-i];
-    j = str_copy(tail, real+1+i);
-    printf("  c.tail (%d) = '%s'\n", j, tail);
-
-    /* canonicalize the parent */
-    size = path_canonical(i, real, bufsize);
+    size = path_canonical(full, bufsize);
     if (size == -1) return -1;
 
-    /* re-append the last path element */
-    real[size++] = '/';
-    size += str_copy(real + size, tail);
-
-    printf("  c.real (%d) = '%s'\n", size, real);
+    full[size++] = '/';
+    size += str_copy(full + size, tail);
   }
 
-  size = path_absolute(size, real, bufsize);
+  size = path_absolute(real, bufsize);
   size = str_copy(path, real);
 #endif
 

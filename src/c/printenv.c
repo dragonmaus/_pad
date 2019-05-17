@@ -1,9 +1,9 @@
 #ifdef WIN32
 #include "char.h"
 #endif
+#include <unistd.h>
 #include "option.h"
 #include "print.h"
-#include "unix.h"
 
 static const char *help = "\
 Usage: printenv [-hz] [name …]\n\

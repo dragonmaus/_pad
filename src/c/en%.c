@@ -1,5 +1,5 @@
+#include <unistd.h>
 #include "die.h"
-#include "unix.h"
 
 #define SIZE 4096
 #define SIZEB 12288
