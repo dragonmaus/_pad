@@ -4,7 +4,7 @@
 extern int path_absolute(char *, int);
 extern int path_canonical(char *, int);
 #ifdef WIN32
-extern int path_fix(int, char *);
+extern int path_fix(char *);
 #endif
 
 #endif

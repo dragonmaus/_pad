@@ -2,26 +2,32 @@
 #include "path.h"
 
   int
-path_fix(int size, char *path)
+path_fix(char *path)
 {
+  register char *p;
+  register char *q;
+  int size;
   int i, j;
 
+  p = q = path;
+  size = str_len(path);
   /* "\\?\S:\ome\Local\Path" => "S:\ome\Local\Path" */
-  if (path[0] == '\\' && path[1] == '\\' && path[2] == '?' && path[3] == '\\') {
-    i = 4;
-    j = 0;
+  if (str_start(p, "\\\\?\\")) {
+    p += 4;
     /* "\\?\UNC\Some\Network\Path" => "\\Some\Network\Path" */
-    if (path[4] == 'U' && path[5] == 'N' && path[6] == 'C' && path[7] == '\\') {
-      i = 8;
-      j = 2;
+    if (str_start(p, "UNC\\")) {
+      p += 4;
+      q += 2;
     }
+
     for (;;) {
-      path[j] = path[i];
-      if (i >= size || !path[i]) break;
-      ++i;
-      ++j;
+      if (!(*q = *p)) break; ++p; ++q;
+      if (!(*q = *p)) break; ++p; ++q;
+      if (!(*q = *p)) break; ++p; ++q;
+      if (!(*q = *p)) break; ++p; ++q;
     }
-    size = j;
+
+    size = q - path;
   }
 
   /* "S:\ome\Path\" => "S:\ome\Path", "S:\" => "S:\" */

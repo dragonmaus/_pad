@@ -26,7 +26,6 @@ path_absolute(char *path, int bufsize)
   int size;
 
   size = str_len(path);
-
 #ifdef WIN32
   if (bufsize > MAX_PATH) bufsize = MAX_PATH;
 
@@ -46,7 +45,7 @@ path_absolute(char *path, int bufsize)
   if (!size) return -1;
   path[size] = 0;
 
-  size = path_fix(size, path);
+  return path_fix(path);
 #else
   char elem[bufsize];
   char full[bufsize];
@@ -58,7 +57,7 @@ path_absolute(char *path, int bufsize)
   if (*p != '/') {
     if (!getcwd(f, bufsize)) return -1;
     f += str_len(f);
-    if (*(f-1) == '/') --f;
+    if (*(f - 1) == '/') --f;
   }
 
   while ((p - path) < size && *p) {
@@ -71,13 +70,10 @@ path_absolute(char *path, int bufsize)
     }
     f += str_copy(f, "/");
     f += str_copy(f, elem);
-    *f = 0;
   }
 
   if (f == full) str_copy(f, "/");
 
-  size = str_copy(path, full);
+  return str_copy(path, full);
 #endif
-
-  return size;
 }

@@ -3,8 +3,8 @@
 
 char *option_arg;
 char  option_error;
-register int option_index = 1;
-register static int point = 0;
+int option_index = 1;
+static int point = 0;
 
 typedef enum {
   NOT_OPTION,
@@ -18,7 +18,7 @@ scan_optstring(const char *optstring, const char opt)
   register char *os;
   register char o;
 
-  os = optstring;
+  os = (char *)optstring;
   for (;;) {
     o = *os; if (!o) return NOT_OPTION; if (o == opt) { if (*(os+1) == ':') return ARG_OPTION; return OPTION; }; ++os;
     o = *os; if (!o) return NOT_OPTION; if (o == opt) { if (*(os+1) == ':') return ARG_OPTION; return OPTION; }; ++os;
