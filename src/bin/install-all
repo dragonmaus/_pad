@@ -31,7 +31,7 @@ $HOME/.secret/bin/install-all
 ./install randomise-wallpaper randomise-wallpaper.sh
 ./install ratio ratio.calc
 ./install redshift-hack redshift-hack.sh
-./install redshift-toggle redshift-toggle.sh
+./install rt redshift-toggle.sh
 ./install remote-display remote-display.sh
 ./install screencap screencap.sh
 ./install set-wallpaper set-wallpaper.sh
