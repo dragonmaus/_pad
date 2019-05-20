@@ -17,6 +17,7 @@
 /.dbus/
 /.gitlab-token
 /.gnupg/
+/.java/
 /.local/
 /.minecraft/
 /.mozilla/
