@@ -1,7 +1,8 @@
+#include <unistd.h>
 #ifdef WIN32
 #include "char.h"
 #endif
-#include <unistd.h>
+#include "hack.h"
 #include "option.h"
 #include "print.h"
 
@@ -50,10 +51,7 @@ main(const int argc, const char **argv, const char **envp)
   int zero = 0;
   char opt;
 
-#ifdef WIN32
-  setmode(1, 0x8000);
-  setmode(2, 0x8000);
-#endif
+  hack_fixio();
 
   while ((opt = option_next(argc, argv, "hz")) != -1) {
     switch (opt) {

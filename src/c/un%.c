@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "die.h"
+#include "hack.h"
 
 #define SIZE 4096
 
@@ -18,11 +19,7 @@ main(void)
   char buf[SIZE];
   int c, i, j, k, len, stage;
 
-#ifdef WIN32
-  setmode(0, 0x8000);
-  setmode(1, 0x8000);
-  setmode(2, 0x8000);
-#endif
+  hack_fixio();
 
   // handle %XX sequences that cross buffer boundaries
   stage = 0;

@@ -2,6 +2,7 @@
 (^|/)\.pijul($|/)
 (^|/)__pycache__($|/)
 (^|/)_darcs($|/)
+-($|/)
 ^[A-KM-QS-Z]
 ^\.Xauthority$
 ^\.asoundrc$

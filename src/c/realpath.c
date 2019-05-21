@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include "hack.h"
 #include "path.h"
 #include "print.h"
 #include "str.h"
@@ -11,9 +12,7 @@ main(int argc, const char **argv)
   char path[SIZE];
   int len;
 
-#ifdef WIN32
-  setmode(1, 0x8000);
-#endif
+  hack_fixio();
 
   if (argc > 1) {
     while (*++argv) {

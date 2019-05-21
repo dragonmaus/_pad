@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "die.h"
+#include "hack.h"
 
 #define SIZE 4096
 #define SIZEB 12288
@@ -31,11 +32,7 @@ main(void)
   char obuf[SIZEB];
   int i, j, k, len;
 
-#ifdef WIN32
-  setmode(0, 0x8000);
-  setmode(1, 0x8000);
-  setmode(2, 0x8000);
-#endif
+  hack_fixio();
 
   while ((len = read(0, ibuf, SIZE)) > 0) {
     for (i = j = 0; i < len; ++i, ++j) {

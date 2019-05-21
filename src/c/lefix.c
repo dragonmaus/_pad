@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include "die.h"
+#include "hack.h"
 
 #define SIZE 4096
 
@@ -9,11 +10,7 @@ main(void)
   char buf[SIZE];
   int e, i, j, len;
 
-#ifdef WIN32
-  setmode(0, 0x8000);
-  setmode(1, 0x8000);
-  setmode(2, 0x8000);
-#endif
+  hack_fixio();
 
   // `e` is necessary to handle "\r\n" split across buffer boundaries
   e = 0;
