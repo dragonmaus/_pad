@@ -1,17 +1,21 @@
 #include <unistd.h>
-#include "die.h"
 #include "open.h"
+#include "path.h"
+#include "strerr.h"
+
+#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
 
   int
 main(int argc, const char **argv)
 {
+  const char *program = path_base(*argv);
   register int fd;
 
-  if (!*++argv) die(1, "error");
-  for (;;) {
-    if ((fd = open_read(*argv)) == -1) die(1, "error");
-    if (fsync(fd) == -1) die(1, "error");
-    if (close(fd) == -1) die(1, "error");
-    if (!*++argv) _exit(0);
+  if (argc <= 1) strerr_die3x(1, "Usage: ", program, " file [file...]");
+  while (*++argv) {
+    safely(fd = open_read(*argv));
+    safely(fsync(fd));
+    safely(close(fd));
   }
+  _exit(0);
 }

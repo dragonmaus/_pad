@@ -1,12 +1,21 @@
 #include <unistd.h>
-#include "die.h"
-#include "hack.h"
+#include "buffer.h"
+#include "path.h"
+#include "strerr.h"
 
-#define SIZE 4096
-#define SIZEB 12288
+#define c2s(c) ((char[2]){ (c), 0 })
+#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
 
   static int
-special(char c)
+enhex(const char c)
+{
+  if (c >= 0x0 && c <= 0x9) return c - 0x0 + '0';
+  if (c >= 0xA && c <= 0xF) return c - 0xA + 'A';
+  return -1;
+}
+
+  static unsigned int
+special(const char c)
 {
   if (c == '\n') return 0;
   if (c == '-') return 0;
@@ -17,35 +26,21 @@ special(char c)
   return 1;
 }
 
-  static int
-enhex(char c)
-{
-  if (c >= 0x0 && c <= 0x9) return c - 0x0 + '0';
-  if (c >= 0xA && c <= 0xF) return c - 0xA + 'A';
-  return -1;
-}
-
   int
-main(void)
+main(int argc, const char **argv)
 {
-  char ibuf[SIZE];
-  char obuf[SIZEB];
-  int i, j, k, len;
+  const char *program = path_base(*argv);
+  char c, k;
 
-  hack_fixio();
-
-  while ((len = read(0, ibuf, SIZE)) > 0) {
-    for (i = j = 0; i < len; ++i, ++j) {
-      if (special(ibuf[i])) {
-        obuf[j] = '%';
-        if ((k = enhex((ibuf[i] & 0xF0) / 0x10)) == -1) die(1, "error");
-        obuf[++j] = (char)k;
-        if ((k = enhex(ibuf[i] & 0x0F)) == -1) die(1, "error");
-        obuf[++j] = (char)k;
-      } else obuf[j] = ibuf[i];
-    }
-    if (write(1, obuf, j) == -1) die(1, "error");
+  while (buffer_getc(buffer_0, &c) > 0) {
+    if (special(c)) {
+      safely(buffer_putc(buffer_1, '%'));
+      if ((k = enhex((c & 0xF0) / 0x10)) == -1) strerr_die4x(1, program, ": fatal: could not encode character '", c2s(c), "'");
+      safely(buffer_putc(buffer_1, (char)k));
+      if ((k = enhex(c & 0x0F)) == -1) strerr_die4x(1, program, ": fatal: could not encode character '", c2s(c), "'");
+      safely(buffer_putc(buffer_1, (char)k));
+    } else safely(buffer_putc(buffer_1, c));
   }
-  if (len == -1) die(1, "error");
+  safely(buffer_flush(buffer_1));
   _exit(0);
 }

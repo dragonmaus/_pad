@@ -1,30 +1,32 @@
 #include <unistd.h>
-#include "hack.h"
+#include "buffer.h"
 #include "path.h"
-#include "print.h"
 #include "str.h"
+#include "strerr.h"
 
 #define SIZE 4096
+#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
 
   int
 main(int argc, const char **argv)
 {
+  const char *program = path_base(*argv);
   char path[SIZE];
   int len;
-
-  hack_fixio();
 
   if (argc > 1) {
     while (*++argv) {
       str_copy(path, *argv);
-      if (path_absolute(path, SIZE) == -1) _exit(1);
-      print_ln(path);
+      safely(path_absolute(path, SIZE));
+      safely(buffer_puts(buffer_1, path));
+      safely(buffer_putc(buffer_1, '\n'));
     }
   } else {
     str_copy(path, ".");
-    if (path_absolute(path, SIZE) == -1) _exit(1);
-    print_ln(path);
+    safely(path_absolute(path, SIZE));
+    safely(buffer_puts(buffer_1, path));
+    safely(buffer_putc(buffer_1, '\n'));
   }
-
+  safely(buffer_flush(buffer_1));
   _exit(0);
 }

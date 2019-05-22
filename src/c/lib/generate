@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+home=$(dirname "$0")
+cd $home
+main=$1
+shift
+sh $main.sh >$main.new
+cmp -s $main.new $main || mv -f $main.new $main
+rm -f $main.new

@@ -1,5 +1,4 @@
 #include "option.h"
-#include "print.h"
 
 char *option_arg;
 char  option_error;

@@ -64,7 +64,7 @@ path_absolute(char *path, int bufsize)
     p += next(elem, p);
     if (!*elem || str_equal(".", elem)) continue;
     if (str_equal("..", elem)) {
-      f = full + str_rfind(full, '/');
+      f = full + str_findr(full, '/');
       *f = 0;
       continue;
     }

@@ -2,8 +2,12 @@
 set -e
 home=$(dirname "$0")
 cd $home
+./generate error.h
 mkdir -p $HOME/inc
 cp -f *.h $HOME/inc
+./generate error.c
+./generate error_str.c
+./generate error_temp.c
 ./compile *.c
 ./makelib libcore.a *.o
 mkdir -p $HOME/lib

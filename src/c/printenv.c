@@ -1,95 +1,58 @@
 #include <unistd.h>
-#ifdef WIN32
-#include "char.h"
-#endif
-#include "hack.h"
+#include "buffer.h"
+#include "env.h"
 #include "option.h"
-#include "print.h"
+#include "path.h"
+#include "strerr.h"
 
-static const char *help = "\
-Usage: printenv [-hz] [name …]\n\
+char **environ;
+
+#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": ")
+
+static const char *help = "[-hz] [name …]\n\
+\n\
   -h   display this help\n\
-  -z   terminate lines with null instead of newline\n\
+  -z   terminate lines with null instead of newline\
 ";
 
-  static const char *
-check_env(register const char *e, register const char *k)
-{
-  if (!k || !e) return 0;
-
-  for (;;) {
-    if (!*k) break;
-#ifdef WIN32
-    if (char_tolower(*k++) != char_tolower(*e++)) return 0;
-#else
-    if (*k++ != *e++) return 0;
-#endif
-  }
-
-  if (*e != '=') return 0;
-
-  return ++e;
-}
-
-  static const char *
-scan_env(const char **envp, const char *key)
-{
-  const char *v;
-
-  for (;;) {
-    v = check_env(*envp, key);
-
-    if (v) return v;
-
-    if (!*++envp) return 0;
-  }
-}
-
   int
-main(const int argc, const char **argv, const char **envp)
+main(int argc, const char **argv, const char **envp)
 {
-  int zero = 0;
-  char opt;
+  const char *program = path_base(*argv);
+  char eol, opt;
+  const char *value;
 
-  hack_fixio();
-
+  environ = (char **)envp;
+  eol = '\n';
   while ((opt = option_next(argc, argv, "hz")) != -1) {
     switch (opt) {
       case 'h':
-        print_err(help);
-        _exit(0);
+        strerr_die4x(0, "usage: ", program, " ", help);
       case 'z':
-        zero = 1;
+        eol = 0;
         break;
       case '?':
-        print_err("printenv: Unknown option '");
-        write(2, &option_error, 1);
-        print_err_ln("'");
-        _exit(1);
+        strerr_die4x(1, program, ": fatal: unknown option '", &option_error, "'");
     }
   }
+  argc -= option_index;
+  argv += option_index;
 
-  if (option_index < argc) {
-    int i;
-    const char *value;
-
-    for (i = option_index; i < argc; ++i) {
-      value = scan_env(envp, argv[i]);
-
-      if (value) {
-        if (zero) print_z(value);
-        else print_ln(value);
+  if (argc > 0) {
+    while (*argv) {
+      if ((value = env_get(*argv))) {
+        safely(buffer_puts(buffer_1, value));
+        safely(buffer_putc(buffer_1, eol));
       }
+      ++argv;
     }
-
-    return 0;
+  } else {
+    while (*envp) {
+      safely(buffer_puts(buffer_1, *envp));
+      safely(buffer_putc(buffer_1, eol));
+      ++envp;
+    }
   }
-
-  while (*envp) {
-    if (zero) print_z(*envp);
-    else print_ln(*envp);
-    ++envp;
-  }
-
-  return 0;
+  safely(buffer_flush(buffer_1));
+  _exit(0);
 }

@@ -38,7 +38,7 @@ path_canonical(char *path, int bufsize)
   if (file == INVALID_HANDLE_VALUE) {
     /* path is already absolute; no further mangling needed */
 
-    i = str_rfind(path, '\\');
+    i = str_findr(path, '\\');
     if (i >= size) return -1;
 
     /* save the last path element for later */
@@ -88,7 +88,7 @@ path_canonical(char *path, int bufsize)
     if (errno != error_noent) return -1;
     if (size == 1) return -1; // somehow `/` does not exist
 
-    i = str_rfind(full, '/');
+    i = str_findr(full, '/');
 
     char tail[size - i];
     str_copy(tail, full + i + 1);

@@ -1,33 +1,22 @@
 #include <unistd.h>
-#include "die.h"
-#include "hack.h"
+#include "buffer.h"
+#include "path.h"
+#include "strerr.h"
 
-#define SIZE 4096
+#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
 
   int
-main(void)
+main(int argc, const char **argv)
 {
-  char buf[SIZE];
-  int e, i, j, len;
+  const char *program = path_base(*argv);
+  char c;
 
-  hack_fixio();
-
-  // `e` is necessary to handle "\r\n" split across buffer boundaries
-  e = 0;
-  while ((len = read(0, buf, SIZE)) > 0) {
-    for (i = j = 0; i < len; ++i, ++j) {
-      if (e) {
-        e = 0;
-        if (buf[i] == '\n' && ++i >= len) break;
-      }
-      if (buf[i] == '\r') {
-        e = 1;
-        buf[j] = '\n';
-      } else if (i != j) buf[j] = buf[i];
-    }
-    if (write(1, buf, j) == -1) die(1, "error");
+  while (buffer_getc(buffer_0, &c) > 0) {
+    if (c == '\r') {
+      safely(buffer_putc(buffer_1, '\n'));
+      if (*buffer_peek(buffer_0) == '\n') buffer_seek(buffer_0, 1);
+    } else safely(buffer_putc(buffer_1, c));
   }
-  if (len == -1) die(1, "error");
-
+  safely(buffer_flush(buffer_1));
   _exit(0);
 }

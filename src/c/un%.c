@@ -1,11 +1,12 @@
 #include <unistd.h>
-#include "die.h"
-#include "hack.h"
+#include "buffer.h"
+#include "path.h"
+#include "strerr.h"
 
-#define SIZE 4096
+#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
 
   static int
-dehex(char c)
+dehex(const char c)
 {
   if (c >= '0' && c <= '9') return c - '0' + 0x0;
   if (c >= 'A' && c <= 'F') return c - 'A' + 0xA;
@@ -14,40 +15,20 @@ dehex(char c)
 }
 
   int
-main(void)
+main(int argc, const char **argv)
 {
-  char buf[SIZE];
-  int c, i, j, k, len, stage;
+  const char *program = path_base(*argv);
+  char c, k;
 
-  hack_fixio();
-
-  // handle %XX sequences that cross buffer boundaries
-  stage = 0;
-  while ((len = read(0, buf, SIZE)) > 0) {
-    i = j = 0;
-    while (i < len) switch (stage) {
-      case 0:
-        if (buf[i] == '%') {
-          ++stage;
-          ++i;
-          continue;
-        }
-        if (i != j) buf[j] = buf[i];
-        ++i;
-        ++j;
-        continue;
-      case 1:
-        if ((k = dehex(buf[i++])) == -1) die(1, "error");
-        ++stage;
-        if (i >= len) continue;
-      case 2:
-        if ((c = dehex(buf[i++])) == -1) die(1, "error");
-        buf[j++] = (char)(k * 0x10 + c);
-        stage = 0;
-        continue;
-    }
-    if (write(1, buf, j) == -1) die(1, "error");
+  while (buffer_getc(buffer_0, &c) > 0) {
+    if (c == '%') {
+      if (buffer_getc(buffer_0, &k) <= 0) strerr_die2x(1, program, ": fatal: incomplete percent-encoded sequence");
+      if ((k = dehex(k)) == -1) strerr_die2x(1, program, ": fatal: invalid percent-encoded sequence");
+      if (buffer_getc(buffer_0, &c) <= 0) strerr_die2x(1, program, ": fatal: incomplete percent-encoded sequence");
+      if ((c = dehex(c)) == -1) strerr_die2x(1, program, ": fatal: invalid percent-encoded sequence");
+      safely(buffer_putc(buffer_1, (char)(k * 0x10 + c)));
+    } else safely(buffer_putc(buffer_1, c));
   }
-  if (len == -1) die(1, "error");
+  safely(buffer_flush(buffer_1));
   _exit(0);
 }

@@ -1,15 +1,15 @@
 #include "str.h"
 
   unsigned int
-str_copy(register char *s, register const char *t)
+str_copy(register char *to, register const char *from)
 {
   register int len;
 
   len = 0;
   for (;;) {
-    if (!(*s = *t)) return len; ++s; ++t; ++len;
-    if (!(*s = *t)) return len; ++s; ++t; ++len;
-    if (!(*s = *t)) return len; ++s; ++t; ++len;
-    if (!(*s = *t)) return len; ++s; ++t; ++len;
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
   }
 }
