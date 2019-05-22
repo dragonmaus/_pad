@@ -5,24 +5,20 @@
 #include "path.h"
 #include "strerr.h"
 
-char **environ;
-
 #define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": ")
 
 static const char *help = "[-hz] [name …]\n\
 \n\
   -h   display this help\n\
-  -z   terminate lines with null instead of newline\
-";
+  -z   terminate lines with null instead of newline";
 
   int
-main(int argc, const char **argv, const char **envp)
+main(int argc, const char **argv)
 {
   const char *program = path_base(*argv);
   char eol, opt;
   const char *value;
 
-  environ = (char **)envp;
   eol = '\n';
   while ((opt = option_next(argc, argv, "hz")) != -1) {
     switch (opt) {
@@ -47,10 +43,10 @@ main(int argc, const char **argv, const char **envp)
       ++argv;
     }
   } else {
-    while (*envp) {
-      safely(buffer_puts(buffer_1, *envp));
+    while (*environ) {
+      safely(buffer_puts(buffer_1, *environ));
       safely(buffer_putc(buffer_1, eol));
-      ++envp;
+      ++environ;
     }
   }
   safely(buffer_flush(buffer_1));

@@ -40,7 +40,7 @@ env_add(const char *s)
   if (t) env_unsetlen(s, t - s);
   if (en == ea) {
     ea += 30;
-    if (!alloc_re(&(char *)environ, (en + 1) * sizeof(char *), (ea + 1) * sizeof(char *))) {
+    if (!alloc_re((char **)&environ, (en + 1) * sizeof(char *), (ea + 1) * sizeof(char *))) {
       ea = en;
       return 0;
     }

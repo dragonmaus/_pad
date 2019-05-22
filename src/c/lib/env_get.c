@@ -1,9 +1,12 @@
 #include "env.h"
-#include "str.h"
 
 #ifdef WIN32
+#include "case.h"
+
 #define start(s,t) case_starts((s), (t))
 #else
+#include "str.h"
+
 #define start(s,t) str_start((s), (t))
 #endif
 
