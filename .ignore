@@ -7,11 +7,13 @@
 /.cache/
 /.cargo/
 /.config/barrier/
+/.config/cef_user_data/
 /.config/chromium/
 /.config/creeperworld3/
 /.config/itch/
 /.config/keybase/
 /.config/mpv/
+/.config/pulse/
 /.config/syncthing/
 /.config/vdirsyncer/
 /.darcs/author
@@ -25,10 +27,12 @@
 /.password-store/
 /.pijulconfig/
 /.pki/
+/.pulse-cookie
 /.rustup/
 /.secret/
 /.serverauth.*
 /.ssh/
+/.steam*
 /.wine/
 /[A-Z]*
 /backup/
