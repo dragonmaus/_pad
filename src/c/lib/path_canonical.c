@@ -41,7 +41,9 @@ path_canonical(char *path, int bufsize)
   /* if path does not exist, canonicalize its parent, then manually append the last element */
   /* (recursive) */
   if (file == INVALID_HANDLE_VALUE) {
-    /* path is already absolute; no further mangling needed */
+    errno = error_noent;
+
+    if (size <= 3) return -1; /* reached `X:\` or `\\` (local or network root) without resolution */
 
     i = str_findr(path, '\\');
     if (i >= size) return -1;
