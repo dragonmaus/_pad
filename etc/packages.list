@@ -58,6 +58,7 @@ mksh
 mono
 moreutils
 mpv
+nasm
 ncurses
 ncurses-devel
 neovim
