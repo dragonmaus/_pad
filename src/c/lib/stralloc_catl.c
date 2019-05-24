@@ -1,6 +1,6 @@
 #include "stralloc.h"
 
-  int
+  unsigned int
 stralloc_catulong0(stralloc *sa, unsigned int n, unsigned long u)
 {
   unsigned int len;
@@ -24,7 +24,7 @@ stralloc_catulong0(stralloc *sa, unsigned int n, unsigned long u)
   return 1;
 }
 
-  int
+  unsigned int
 stralloc_catlong0(stralloc *sa, unsigned int n, long l)
 {
   if (l < 0) {

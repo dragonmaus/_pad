@@ -10,9 +10,15 @@
 error_temp(int e)
 {
   X(error_intr);
-  X(error_io);
-  X(error_again);
-  X(error_wouldblock);
+#ifdef EIO
+  X(EIO);
+#endif
+#ifdef EAGAIN
+  X(EAGAIN);
+#endif
+#ifdef EWOULDBLOCK
+  X(EWOULDBLOCK);
+#endif
   X(error_nomem);
 #ifdef EBUSY
   X(EBUSY);
@@ -23,7 +29,9 @@ error_temp(int e)
 #ifdef EMFILE
   X(EMFILE);
 #endif
-  X(error_txtbsy);
+#ifdef ETXTBSY
+  X(ETXTBSY);
+#endif
 #ifdef EFBIG
   X(EFBIG);
 #endif
@@ -63,8 +71,12 @@ error_temp(int e)
 #ifdef ETOOMANYREFS
   X(ETOOMANYREFS);
 #endif
-  X(error_timeout);
-  X(error_connrefused);
+#ifdef ETIMEDOUT
+  X(ETIMEDOUT);
+#endif
+#ifdef ECONNREFUSED
+  X(ECONNREFUSED);
+#endif
 #ifdef EHOSTDOWN
   X(EHOSTDOWN);
 #endif

@@ -2,7 +2,7 @@
 #include "str.h"
 #include "stralloc.h"
 
-  int
+  unsigned int
 stralloc_starts(const stralloc *sa, const char *s)
 {
   int len;

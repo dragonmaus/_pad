@@ -5,14 +5,19 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "error.h"
 #endif
+#include "error.h"
 #include "path.h"
 #include "str.h"
 
   int
 path_canonical(char *path, int bufsize)
 {
+  if (!*path) {
+    errno = error_inval;
+    return -1;
+  }
+
 #ifdef WIN32
   wchar_t wpath[bufsize];
   DWORD wsize;

@@ -1,10 +1,11 @@
 #include <unistd.h>
 #include "buffer.h"
-#include "path.h"
 #include "strerr.h"
 
-#define c2s(c) ((char[2]){ (c), 0 })
-#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
+#define FATAL "en%: fatal: "
+
+#define safe_buffer_flush(b) if (buffer_flush((b)) == -1) strerr_die2sys(1, FATAL, "error flushing buffer: ")
+#define safe_buffer_putc(b,c) if (buffer_putc((b), (c)) == -1) strerr_die2sys(1, FATAL, "error writing to buffer: ")
 
   static int
 enhex(const char c)
@@ -29,18 +30,22 @@ special(const char c)
   int
 main(int argc, const char **argv)
 {
-  const char *program = path_base(*argv);
   char c, k;
 
   while (buffer_getc(buffer_0, &c) > 0) {
-    if (special(c)) {
-      safely(buffer_putc(buffer_1, '%'));
-      if ((k = enhex((c & 0xF0) / 0x10)) == -1) strerr_die4x(1, program, ": fatal: could not encode character '", c2s(c), "'");
-      safely(buffer_putc(buffer_1, (char)k));
-      if ((k = enhex(c & 0x0F)) == -1) strerr_die4x(1, program, ": fatal: could not encode character '", c2s(c), "'");
-      safely(buffer_putc(buffer_1, (char)k));
-    } else safely(buffer_putc(buffer_1, c));
+    if (!special(c)) safe_buffer_putc(buffer_1, c);
+    else {
+      safe_buffer_putc(buffer_1, '%');
+
+      k = enhex((c & 0xF0) / 0x10);
+      if (k == -1) strerr_die4x(1, FATAL, "could not encode character '", &c, "'");
+      safe_buffer_putc(buffer_1, (char)k);
+
+      k = enhex(c & 0x0F);
+      if (k == -1) strerr_die4x(1, FATAL, "could not encode character '", &c, "'");
+      safe_buffer_putc(buffer_1, (char)k);
+    }
   }
-  safely(buffer_flush(buffer_1));
+  safe_buffer_flush(buffer_1);
   _exit(0);
 }

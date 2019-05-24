@@ -4,6 +4,7 @@ home=$(dirname "$0")
 cd $home
 ./lib/install
 ./install abspath -lcore
+./install cargo-foreach -lcore
 ./install en% -lcore
 ./install fsync -lcore
 ./install lefix -lcore

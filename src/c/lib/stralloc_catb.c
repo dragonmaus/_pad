@@ -1,7 +1,7 @@
 #include "byte.h"
 #include "stralloc.h"
 
-  int
+  unsigned int
 stralloc_catb(stralloc *sa, unsigned int n, const char *s)
 {
   if (!sa->s) return stralloc_copyb(sa, n, s);

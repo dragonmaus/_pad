@@ -4,6 +4,7 @@
 #else
 #include <unistd.h>
 #endif
+#include "error.h"
 #include "path.h"
 #include "str.h"
 
@@ -24,6 +25,11 @@ next(char *elem, char *path)
 path_absolute(char *path, int bufsize)
 {
   int size;
+
+  if (!*path) {
+    errno = error_inval;
+    return -1;
+  }
 
   size = str_len(path);
 #ifdef WIN32

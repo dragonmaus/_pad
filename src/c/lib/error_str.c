@@ -16,8 +16,12 @@ error_str(int e)
   X(ESRCH, "no such process");
 #endif
   X(error_intr, "interrupted system call");
-  X(error_io, "input/output error");
-  X(error_nodevice, "device not configured");
+#ifdef EIO
+  X(EIO, "input/output error");
+#endif
+#ifdef ENXIO
+  X(ENXIO, "device not configured");
+#endif
 #ifdef E2BIG
   X(E2BIG, "argument list too long");
 #endif
@@ -30,8 +34,12 @@ error_str(int e)
 #ifdef ECHILD
   X(ECHILD, "no child processes");
 #endif
-  X(error_again, "temporary failure");
-  X(error_wouldblock, "input/output would block");
+#ifdef EAGAIN
+  X(EAGAIN, "temporary failure");
+#endif
+#ifdef EWOULDBLOCK
+  X(EWOULDBLOCK, "input/output would block");
+#endif
   X(error_nomem, "out of memory");
   X(error_acces, "access denied");
 #ifdef EFAULT
@@ -43,18 +51,20 @@ error_str(int e)
 #ifdef EBUSY
   X(EBUSY, "device busy");
 #endif
-  X(error_exist, "file already exists");
+#ifdef EEXIST
+  X(EEXIST, "file already exists");
+#endif
 #ifdef EXDEV
   X(EXDEV, "cross-device link");
 #endif
 #ifdef ENODEV
   X(ENODEV, "no such device");
 #endif
-  X(error_notdir, "not a directory");
-  X(error_isdir, "is a directory");
-#ifdef EINVAL
-  X(EINVAL, "invalid argument");
+#ifdef ENOTDIR
+  X(ENOTDIR, "not a directory");
 #endif
+  X(error_isdir, "is a directory");
+  X(error_inval, "invalid argument");
 #ifdef ENFILE
   X(ENFILE, "system cannot open more files");
 #endif
@@ -64,7 +74,9 @@ error_str(int e)
 #ifdef ENOTTY
   X(ENOTTY, "not a tty");
 #endif
-  X(error_txtbsy, "text file busy");
+#ifdef ETXTBSY
+  X(ETXTBSY, "text file busy");
+#endif
 #ifdef EFBIG
   X(EFBIG, "file too big");
 #endif
@@ -80,7 +92,9 @@ error_str(int e)
 #ifdef EMLINK
   X(EMLINK, "too many links");
 #endif
-  X(error_pipe, "broken pipe");
+#ifdef EPIPE
+  X(EPIPE, "broken pipe");
+#endif
 #ifdef EDOM
   X(EDOM, "input out of range");
 #endif
@@ -192,7 +206,9 @@ error_str(int e)
 #ifdef ECOMM
   X(ECOMM, "communication error");
 #endif
-  X(error_proto, "protocol error");
+#ifdef EPROTO
+  X(EPROTO, "protocol error");
+#endif
 #ifdef EMULTIHOP
   X(EMULTIHOP, "multihop attempted");
 #endif
@@ -310,8 +326,12 @@ error_str(int e)
 #ifdef ETOOMANYREFS
   X(ETOOMANYREFS, "too many references");
 #endif
-  X(error_timeout, "timed out");
-  X(error_connrefused, "connection refused");
+#ifdef ETIMEDOUT
+  X(ETIMEDOUT, "timed out");
+#endif
+#ifdef ECONNREFUSED
+  X(ECONNREFUSED, "connection refused");
+#endif
 #ifdef EHOSTDOWN
   X(EHOSTDOWN, "host down");
 #endif
@@ -321,7 +341,9 @@ error_str(int e)
 #ifdef EALREADY
   X(EALREADY, "operation already in progress");
 #endif
-  X(error_inprogress, "operation in progress");
+#ifdef EINPROGRESS
+  X(EINPROGRESS, "operation in progress");
+#endif
 #ifdef ESTALE
   X(ESTALE, "stale file handle");
 #endif

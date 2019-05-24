@@ -1,21 +1,21 @@
 #include <unistd.h>
 #include "open.h"
-#include "path.h"
 #include "strerr.h"
 
-#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
+#define FATAL "fsync: fatal: "
+#define USAGE "usage: fsync file [file...]"
 
   int
 main(int argc, const char **argv)
 {
-  const char *program = path_base(*argv);
   register int fd;
 
-  if (argc <= 1) strerr_die3x(1, "Usage: ", program, " file [file...]");
+  if (!--argc) strerr_die1x(1, USAGE);
   while (*++argv) {
-    safely(fd = open_read(*argv));
-    safely(fsync(fd));
-    safely(close(fd));
+    fd = open_read(*argv);
+    if (fd == -1) strerr_die4sys(1, FATAL, "unable to open file '", *argv, "': ");
+    if (fsync(fd) == -1) strerr_die1sys(1, FATAL, "unable to sync file '", *argv, "': ");
+    close(fd);
   }
   _exit(0);
 }

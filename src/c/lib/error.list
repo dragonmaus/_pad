@@ -2,35 +2,35 @@ error_perm	EPERM	hard	permission denied
 error_noent	ENOENT	hard	no such file or directory
 -	ESRCH	hard	no such process
 error_intr	EINTR	soft	interrupted system call
-error_io	EIO	soft	input/output error
-error_nodevice	ENXIO	hard	device not configured
+-	EIO	soft	input/output error
+-	ENXIO	hard	device not configured
 -	E2BIG	hard	argument list too long
 -	ENOEXEC	hard	exec format error
 -	EBADF	hard	file descriptor not open
 -	ECHILD	hard	no child processes
-error_again	EAGAIN	soft	temporary failure
-error_wouldblock	EWOULDBLOCK	soft	input/output would block
+-	EAGAIN	soft	temporary failure
+-	EWOULDBLOCK	soft	input/output would block
 error_nomem	ENOMEM	soft	out of memory
 error_acces	EACCES	hard	access denied
 -	EFAULT	hard	bad address
 -	ENOTBLK	hard	not a block device
 -	EBUSY	soft	device busy
-error_exist	EEXIST	hard	file already exists
+-	EEXIST	hard	file already exists
 -	EXDEV	hard	cross-device link
 -	ENODEV	hard	no such device
-error_notdir	ENOTDIR	hard	not a directory
+-	ENOTDIR	hard	not a directory
 error_isdir	EISDIR	hard	is a directory
--	EINVAL	hard	invalid argument
+error_inval	EINVAL	hard	invalid argument
 -	ENFILE	soft	system cannot open more files
 -	EMFILE	soft	process cannot open more files
 -	ENOTTY	hard	not a tty
-error_txtbsy	ETXTBSY	soft	text file busy
+-	ETXTBSY	soft	text file busy
 -	EFBIG	soft	file too big
 -	ENOSPC	soft	no space left on device
 -	ESPIPE	hard	unseekable descriptor
 -	EROFS	hard	read-only file system
 -	EMLINK	hard	too many links
-error_pipe	EPIPE	hard	broken pipe
+-	EPIPE	hard	broken pipe
 -	EDOM	hard	input out of range
 -	ERANGE	hard	output out of range
 -	EDEADLK	soft	operation would cause deadlock
@@ -68,7 +68,7 @@ error_pipe	EPIPE	hard	broken pipe
 -	EADV	hard	advertise error
 -	ESRMNT	hard	srmount error
 -	ECOMM	hard	communication error
-error_proto	EPROTO	hard	protocol error
+-	EPROTO	hard	protocol error
 -	EMULTIHOP	hard	multihop attempted
 -	EDOTDOT	!	RFS specific error
 -	EBADMSG	hard	bad message type
@@ -108,12 +108,12 @@ error_proto	EPROTO	hard	protocol error
 -	ENOTCONN	hard	not connected
 -	ESHUTDOWN	hard	socket shut down
 -	ETOOMANYREFS	soft	too many references
-error_timeout	ETIMEDOUT	soft	timed out
-error_connrefused	ECONNREFUSED	soft	connection refused
+-	ETIMEDOUT	soft	timed out
+-	ECONNREFUSED	soft	connection refused
 -	EHOSTDOWN	soft	host down
 -	EHOSTUNREACH	soft	host unreachable
 -	EALREADY	hard	operation already in progress
-error_inprogress	EINPROGRESS	hard	operation in progress
+-	EINPROGRESS	hard	operation in progress
 -	ESTALE	soft	stale file handle
 -	EUCLEAN	!	structure needs cleaning
 -	ENOTNAM	!	not a XENIX named type file

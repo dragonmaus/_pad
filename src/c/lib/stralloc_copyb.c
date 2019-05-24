@@ -1,7 +1,7 @@
 #include "byte.h"
 #include "stralloc.h"
 
-  int
+  unsigned int
 stralloc_copyb(stralloc *sa, unsigned int n, const char *s)
 {
   if (!stralloc_ready(sa, n + 1)) return 0;

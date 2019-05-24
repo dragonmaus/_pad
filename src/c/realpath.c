@@ -4,29 +4,31 @@
 #include "str.h"
 #include "strerr.h"
 
+#define FATAL "realpath: fatal: "
 #define SIZE 4096
-#define safely(x) if ((x) == -1) strerr_die2sys(1, program, ": fatal: ")
+
+#define safe_buffer_flush(b) if (buffer_flush((b)) == -1) strerr_die2sys(1, FATAL, "error flushing buffer: ")
+#define safe_buffer_putc(b,c) if (buffer_putc((b), (c)) == -1) strerr_die2sys(1, FATAL, "error writing to buffer: ")
+#define safe_buffer_puts(b,s) if (buffer_puts((b), (s)) == -1) strerr_die2sys(1, FATAL, "error writing to buffer: ")
 
   int
 main(int argc, const char **argv)
 {
-  const char *program = path_base(*argv);
   char path[SIZE];
   int len;
 
-  if (argc > 1) {
-    while (*++argv) {
-      str_copy(path, *argv);
-      safely(path_canonical(path, SIZE));
-      safely(buffer_puts(buffer_1, path));
-      safely(buffer_putc(buffer_1, '\n'));
-    }
-  } else {
+  if (!--argc) {
     str_copy(path, ".");
-    safely(path_canonical(path, SIZE));
-    safely(buffer_puts(buffer_1, path));
-    safely(buffer_putc(buffer_1, '\n'));
+    if (path_canonical(path, SIZE) == -1) strerr_die2sys(1, FATAL, "unable to process current path: ");
+    safe_buffer_puts(buffer_1, path);
+    safe_buffer_putc(buffer_1, '\n');
+    safe_buffer_flush(buffer_1);
+  } else while (*++argv) {
+    str_copy(path, *argv);
+    if (path_canonical(path, SIZE) == -1) strerr_die4sys(1, FATAL, "unable to process path '", *argv, "': ");
+    safe_buffer_puts(buffer_1, path);
+    safe_buffer_putc(buffer_1, '\n');
+    safe_buffer_flush(buffer_1);
   }
-  safely(buffer_flush(buffer_1));
   _exit(0);
 }
