@@ -10,10 +10,10 @@ echo '#ifndef errno'
 echo '# ifdef WIN32'
 echo 'extern int *_errno(void);'
 echo '#define errno (*_errno())'
-echo '#else'
+echo '# else'
 echo 'extern int *__errno_location(void);'
 echo '#define errno (*__errno_location())'
-echo '#endif'
+echo '# endif'
 echo '#endif'
 echo
 while read -r name errno temp str
