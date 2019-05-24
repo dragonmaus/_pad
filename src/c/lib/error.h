@@ -3,8 +3,13 @@
 #define ERROR_H
 
 #ifndef errno
+# ifdef WIN32
+extern int *_errno(void);
+#define errno (*_errno())
+#else
 extern int *__errno_location(void);
 #define errno (*__errno_location())
+#endif
 #endif
 
 extern int error_perm;
