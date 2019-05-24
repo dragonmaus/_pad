@@ -1,3 +1,4 @@
+#include <unistd.h>
 #include "env.h"
 #include "error.h"
 #include "pathexec.h"
@@ -14,7 +15,7 @@ pathexec_run(const char *file, const char *const *argv, const char *const *envp)
   int savederrno;
 
   if (file[str_find(file, '/')]) {
-    execve(file, argv, envp);
+    execve(file, (char **)argv, (char **)envp);
     return;
   }
 
@@ -30,7 +31,7 @@ pathexec_run(const char *file, const char *const *argv, const char *const *envp)
     if (!stralloc_cats(&temp, file)) return;
     if (!stralloc_0(&temp)) return;
 
-    execve(temp.s, argv, envp);
+    execve(temp.s, (char **)argv, (char **)envp);
     if (errno != error_noent) {
       savederrno = errno;
       if (errno != error_acces && errno != error_perm && errno != error_isdir) return;

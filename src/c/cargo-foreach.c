@@ -1,5 +1,7 @@
 #ifdef WIN32
 #include <process.h>
+#else
+#include <sys/wait.h>
 #endif
 #include <unistd.h>
 #include "buffer.h"
@@ -15,9 +17,9 @@
 #define FATAL "cargo-foreach: fatal: "
 #define USAGE "usage: cargo-foreach [-hqv]"
 
-#define safe_buffer_flush(b) if (buffer_flush((b)) == -1) strerr_die2sys(1, FATAL, "error flushing buffer: ")
-#define safe_buffer_putc(b,c) if (buffer_putc((b), (c)) == -1) strerr_die2sys(1, FATAL, "error writing to buffer: ")
-#define safe_buffer_puts(b,s) if (buffer_puts((b), (s)) == -1) strerr_die2sys(1, FATAL, "error writing to buffer: ")
+#define safe_buffer_flush(b) ( (buffer_flush((b)) == -1) ? strerr_die2sys(1, FATAL, "error flushing buffer: ") : 0 )
+#define safe_buffer_putc(b,c) ( (buffer_putc((b), (c)) == -1) ? strerr_die2sys(1, FATAL, "error writing to buffer: ") : 0 )
+#define safe_buffer_puts(b,s) ( (buffer_puts((b), (s)) == -1) ? strerr_die2sys(1, FATAL, "error writing to buffer: ") : 0 )
 
   static const char *
 help = USAGE "\n\n\

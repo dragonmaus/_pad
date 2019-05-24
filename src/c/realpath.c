@@ -7,9 +7,9 @@
 #define FATAL "realpath: fatal: "
 #define SIZE 4096
 
-#define safe_buffer_flush(b) if (buffer_flush((b)) == -1) strerr_die2sys(1, FATAL, "error flushing buffer: ")
-#define safe_buffer_putc(b,c) if (buffer_putc((b), (c)) == -1) strerr_die2sys(1, FATAL, "error writing to buffer: ")
-#define safe_buffer_puts(b,s) if (buffer_puts((b), (s)) == -1) strerr_die2sys(1, FATAL, "error writing to buffer: ")
+#define safe_buffer_flush(b) ( (buffer_flush((b)) == -1) ? strerr_die2sys(1, FATAL, "error flushing buffer: ") : 0 )
+#define safe_buffer_putc(b,c) ( (buffer_putc((b), (c)) == -1) ? strerr_die2sys(1, FATAL, "error writing to buffer: ") : 0 )
+#define safe_buffer_puts(b,s) ( (buffer_puts((b), (s)) == -1) ? strerr_die2sys(1, FATAL, "error writing to buffer: ") : 0 )
 
   int
 main(int argc, const char **argv)

@@ -1,7 +1,5 @@
 /* automatically generated */
-#define RC_INVOKED /* we only want the E macros */
 #include <errno.h>
-#undef RC_INVOKED
 #include "error.h"
 
 #define X(n) if (e == n) return 1

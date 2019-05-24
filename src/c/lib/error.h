@@ -2,7 +2,10 @@
 #ifndef ERROR_H
 #define ERROR_H
 
-extern int errno;
+#ifndef errno
+extern int *__errno_location(void);
+#define errno (*__errno_location())
+#endif
 
 extern int error_perm;
 extern int error_noent;

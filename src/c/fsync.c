@@ -14,7 +14,7 @@ main(int argc, const char **argv)
   while (*++argv) {
     fd = open_read(*argv);
     if (fd == -1) strerr_die4sys(1, FATAL, "unable to open file '", *argv, "': ");
-    if (fsync(fd) == -1) strerr_die1sys(1, FATAL, "unable to sync file '", *argv, "': ");
+    if (fsync(fd) == -1) strerr_die4sys(1, FATAL, "unable to sync file '", *argv, "': ");
     close(fd);
   }
   _exit(0);

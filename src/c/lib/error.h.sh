@@ -6,7 +6,10 @@ echo '/* automatically generated */'
 echo '#ifndef ERROR_H'
 echo '#define ERROR_H'
 echo
-echo 'extern int errno;'
+echo '#ifndef errno'
+echo 'extern int *__errno_location(void);'
+echo '#define errno (*__errno_location())'
+echo '#endif'
 echo
 while read -r name errno temp str
 do

@@ -1,10 +1,6 @@
 /* automatically generated */
-#define RC_INVOKED /* we only want the E macros */
 #include <errno.h>
-#undef RC_INVOKED
 #include "error.h"
-
-int errno;
 
 int error_perm =
 #ifdef EPERM
