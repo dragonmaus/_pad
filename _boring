@@ -46,7 +46,7 @@
 ^inc($|/)
 ^lib/[^/]+\.a$
 ^log($|/)
-^src/c/.+\.[ao]$
+^src/.+\.[ao]$
 ^src/clojure($|/)
 ^src/ext($|/)
 ^src/go($|/)

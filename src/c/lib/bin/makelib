@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+home=$(realpath "$0")
+home=${home%/*/*}
+cd $home
+main=$1
+shift
+rm -f $main
+tcc -ar cr $main "$@"

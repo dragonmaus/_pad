@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+home=$(realpath "$0")
+home=${home%/*/*}
+cd $home
+lib/bin/install
+bin/install abspath -lcore
+bin/install cargo-foreach -lcore
+bin/install en% -lcore
+bin/install fsync -lcore
+bin/install lefix -lcore
+bin/install printenv -lcore
+bin/install realpath -lcore
+bin/install un% -lcore

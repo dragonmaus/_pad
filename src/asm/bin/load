@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+home=$(realpath "$0")
+home=${home%/*/*}
+cd $home
+main=$1
+shift
+test -e $main.o -a $main.s -nt $main.o && rm -f $main.o
+test -e $main.o || bin/assemble $main.s
+exec tcc -nostdinc -nostdlib -static -o $main $main.o "$@"

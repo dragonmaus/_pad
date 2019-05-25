@@ -1,0 +1,42 @@
+#!/bin/sh
+set -e
+home=$(realpath "$0")
+home=${home%/*/*}
+cd $home
+$HOME/src/c/bin/install-all
+$HOME/.secret/bin/bin/install-all
+bin/install + +.sh
+bin/install acpi-handler acpi-handler.sh
+bin/install askpass askpass.sh
+bin/install asound asound.sh
+bin/install boring boring.sh
+bin/install c c.sh
+bin/install cdiff cdiff.sed
+bin/install creeper-world-3 creeper-world-3.sh
+bin/install dircp dircp.sh
+bin/install fix-screen fix-screen.sh
+bin/install fmt.mksh fmt.mksh.mksh
+bin/install getpass getpass.sh
+bin/install geturi geturi.sh
+bin/install getuser getuser.sh
+bin/install ignore ignore.sh
+bin/install n n.sh
+bin/install nvim-git-diff nvim-git-diff.sh
+bin/install nvim-git-diff-gui nvim-git-diff-gui.sh
+bin/install p p.sh
+bin/install pass2netrc pass2netrc.mksh
+bin/install passmenu passmenu.sh
+bin/install pathsort pathsort.sh
+bin/install pinentry-smart pinentry-smart.mksh
+bin/install qr qr.sh
+bin/install randomise-wallpaper randomise-wallpaper.sh
+bin/install ratio ratio.calc
+bin/install redshift-hack redshift-hack.sh
+bin/install remote-display remote-display.sh
+bin/install rt rt.sh
+bin/install screencap screencap.sh
+bin/install set-wallpaper set-wallpaper.sh
+bin/install shar shar.mksh
+bin/install sv sv.sh
+bin/install syscall syscall.sh
+bin/install vicron vicron.sh

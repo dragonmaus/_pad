@@ -1,9 +1,10 @@
 #!/bin/sh
 set -e
+home=$(realpath "$0")
+home=${home%/*/*}
 bin=$HOME/bin
-home=$(dirname $0)
-src=$home/$2
 dst=$bin/$1
+src=$home/$2
 mkdir -p $bin
 rm -f $dst{new}
 cp -f $src $dst{new}

@@ -1,9 +1,10 @@
 #!/bin/sh
 set -e
-home=$(dirname "$0")
+home=$(realpath "$0")
+home=${home%/*/*}
 cd $home
 main=$1
 shift
-sh $main.sh >$main.new
+sh gen/$main.sh >$main.new
 cmp -s $main.new $main || mv -f $main.new $main
 rm -f $main.new

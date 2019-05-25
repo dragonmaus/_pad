@@ -1,0 +1,5 @@
+#!/bin/sh
+home=$(realpath "$0")
+home=${home%/*/*}
+cd $home
+exec nasm -f elf64 "$@"
