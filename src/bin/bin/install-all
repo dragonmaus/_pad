@@ -3,6 +3,7 @@ set -e
 home=$(realpath "$0")
 home=${home%/*/*}
 cd $home
+$HOME/src/asm/bin/install-all
 $HOME/src/c/bin/install-all
 $HOME/.secret/bin/bin/install-all
 bin/install + +.sh

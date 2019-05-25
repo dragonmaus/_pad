@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+home=$(realpath "$0")
+home=${home%/*/*}
+cd $home
+lib/bin/install
+bin/install false
+bin/install lefix
+bin/install true
