@@ -1,6 +1,8 @@
-	global	_start
+format	elf64	executable 0
 
-	section	.text
-_start:	mov	rax, 60
-	xor	rdi, rdi
+segment	readable executable
+
+entry	$
+	xor	edi, edi	; exit code 0
+	mov	eax, 60		; syscall exit
 	syscall

@@ -1,57 +1,70 @@
-	global	_start
+; TODO: use a larger buffer
 
-	section	.text
-_start:
-read:	mov	rax, 0
-	mov	rdi, 0
-	mov	rsi, c
-	mov	rdx, 1
+format	elf64	executable 0
+
+segment	readable executable
+
+entry	$
+read:
+	; read the next character
+	mov	edx, 1
+	lea	esi, [c]
+	xor	edi, edi	; stdin
+	xor	eax, eax	; syscall read
 	syscall
-
-	cmp	rax, 0
+	cmp	eax, 0		; how many bytes were read?
 	je	exit
 	jl	fail
 
-	cmp	byte [c], `\r`
+	cmp	byte [c], 0xD	; did we read a carriage return ('\r')?
 	jne	write
 
-	mov	rax, 1
-	mov	rdi, 1
-	mov	rsi, nl
-	mov	rdx, 1
+	; write a line feed ('\n')
+	mov	edx, 1
+	lea	esi, [lf]
+	mov	edi, 1		; stdout
+	mov	eax, 1		; syscall write
 	syscall
+	cmp	eax, 1		; how many bytes were written?
+	jne	fail
 
-	mov	rax, 0
-	mov	rdi, 0
-	mov	rsi, c
-	mov	rdx, 1
+	; read the next character
+	mov	edx, 1
+	lea	esi, [c]
+	xor	edi, edi	; stdin
+	xor	eax, eax	; syscall read
 	syscall
-
-	cmp	rax, 0
+	cmp	eax, 0		; how many bytes were read?
 	je	exit
 	jl	fail
 
-	cmp	byte [c], `\n`
-	je	read
+	cmp	byte [c], 0xA	; did we read a line feed ('\n')?
+	je	read		; yes, skip to next loop iteration
 
-write:	mov	rax, 1
-	mov	rdi, 1
-	mov	rsi, c
-	mov	rdx, 1
+write:
+	; write the current character
+	mov	edx, 1
+	lea	esi, [c]
+	mov	edi, 1		; stdout
+	mov	eax, 1		; syscall write
 	syscall
+	cmp	eax, 1		; how many bytes were written?
+	jne	fail
 
 	jmp	read
 
-exit:	mov	rax, 60
-	xor	rdi, rdi
+exit:
+	xor	edi, edi	; exit code 0
+	mov	eax, 60		; syscall exit
 	syscall
 
-fail:	mov	rax, 60
-	mov	rdi, 1
+fail:
+	mov	edi, 1		; exit code 1
+	mov	eax, 60		; syscall exit
 	syscall
 
-	section	.bss
-c:	resb	1
+segment	readable
+lf	db	0xA
 
-	section	.data
-nl:	db	`\n`
+segment	readable writeable
+c	rb	1

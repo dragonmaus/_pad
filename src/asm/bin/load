@@ -5,6 +5,23 @@ home=${home%/*/*}
 cd $home
 main=$1
 shift
-test -e $main.o -a $main.s -nt $main.o && rm -f $main.o
-test -e $main.o || bin/assemble $main.s
-tcc -nostdinc -nostdlib -L$HOME/lib -static -o $main $main.o "$@"
+file=$(print -r -- $main.[Scs])
+if [[ -e $main.o && $file -nt $main.o ]]
+then
+	rm -f $main.o
+fi
+case $file in
+($main.S)
+	[[ -e $main.o ]] || bin/assemble-nasm $file
+	;;
+($main.c)
+	[[ -e $main.o ]] || bin/compile $file
+	;;
+($main.s)
+	[[ -e $main.o ]] || bin/assemble $file
+	;;
+esac
+if [[ -e $main.o ]]
+then
+	tcc -nostdinc -nostdlib -L$HOME/lib -static -o $main $main.o "$@"
+fi

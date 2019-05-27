@@ -1,6 +1,5 @@
 #!/bin/sh
-set -e
 home=$(realpath "$0")
 home=${home%/*/*}
 cd $home
-rm -f *.[ao]
+tcc -I$HOME/inc -c "$@"
