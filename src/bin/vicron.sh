@@ -26,5 +26,5 @@ then
 	rm -f $crontab.tmp
 else
 	mv -f $crontab.tmp $crontab
-	pkill -x -u $(id -u) -HUP scrond
+	pkill -x -u $uid -HUP scrond
 fi
