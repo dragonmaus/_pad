@@ -5,10 +5,13 @@ section	'.text' executable
 public _start
 _start:
 
-extrn	main
+	extrn	_main
 
-	call	main
+	pop	rdi		; argc
+	mov	rsi, rsp	; argv
 
-	mov	edi, eax	; exit code is what main returned
-	mov	eax, 60		; syscall exit
+	call	_main
+
+	mov	rdi, rax	; exit code is what _main returned
+	mov	rax, 60		; syscall exit
 	syscall

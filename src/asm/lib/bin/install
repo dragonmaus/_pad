@@ -5,9 +5,16 @@ home=${home%/*/*}
 cd $home
 mkdir -p $HOME/inc
 cp -f *.h $HOME/inc
-for f in *.s
+for f in *.[cs]
 do
-	bin/assemble $f
+	case $f in
+	(*.c)
+		bin/compile $f
+		;;
+	(*.s)
+		bin/assemble $f
+		;;
+	esac
 done
 bin/makelib libsys.a *.o
 mkdir -p $HOME/lib

@@ -7,3 +7,4 @@ public	read
 read:
 	mov	eax, 0		; syscall read
 	syscall
+	ret

@@ -23,5 +23,6 @@ case $file in
 esac
 if [[ -e $main.o ]]
 then
-	tcc -nostdinc -nostdlib -L$HOME/lib -static -o $main $main.o "$@"
+	[[ -e lib/crt0.o ]] || lib/bin/assemble crt0.s
+	tcc -nostdinc -nostdlib -L$HOME/lib -static -o $main lib/crt0.o $main.o "$@"
 fi

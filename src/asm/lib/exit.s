@@ -7,3 +7,4 @@ public	exit
 exit:
 	mov	eax, 60		; syscall exit
 	syscall
+	ret

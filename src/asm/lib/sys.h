@@ -3,7 +3,6 @@
 
 extern void exit(int);
 extern int  read(int, char *, unsigned int);
-extern int  str_write(int, const char *);
 extern int  write(int, const char *, unsigned int);
 
 #endif

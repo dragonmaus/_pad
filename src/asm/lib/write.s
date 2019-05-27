@@ -7,3 +7,4 @@ public	write
 write:
 	mov	eax, 1		; syscall write
 	syscall
+	ret
