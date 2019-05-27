@@ -7,7 +7,7 @@ mkdir -p $HOME/inc
 cp -f *.h $HOME/inc
 for f in *.s
 do
-  bin/assemble $f
+	bin/assemble $f
 done
 bin/makelib libsys.a *.o
 mkdir -p $HOME/lib

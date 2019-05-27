@@ -13,7 +13,7 @@ entry	$
 	mov	eax, 60		; syscall exit
 	syscall
 
-segment	readable writeable
+segment	readable
 
 msg	db	'Hello, world!', 0xA
 len	=	$ - msg

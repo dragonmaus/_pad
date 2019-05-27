@@ -1,8 +1,24 @@
-extern int write(int, const char *, unsigned int);
-extern void exit(int);
+#include <sys.h>
 
-_start(void)
+  static unsigned int
+str_len(const char *s)
 {
-  write(1, "Hello, world!\n", 14);
-  exit(0);
+  register const char *t;
+
+  t = s;
+  for (;;) {
+    if (!*t) return t - s; ++t;
+    if (!*t) return t - s; ++t;
+    if (!*t) return t - s; ++t;
+    if (!*t) return t - s; ++t;
+  }
+}
+
+int
+main(int argc, const char **argv, int envc, const char **envp)
+{
+  write(1, "argv[0] = '", 11);
+  write(1, *argv, str_len(*argv));
+  write(1, "'\n", 2);
+  return 0;
 }
