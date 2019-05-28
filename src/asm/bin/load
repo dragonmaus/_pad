@@ -5,7 +5,7 @@ home=${home%/*/*}
 cd $home
 main=$1
 shift
-file=$(print -r -- $main.[cs])
+file=$(ls -f $main.s $main.c 2>/dev/null | head -1)
 if [[ -e $main.o && $file -nt $main.o ]]
 then
 	rm -f $main.o

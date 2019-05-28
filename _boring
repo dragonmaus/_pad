@@ -9,9 +9,11 @@
 ^\.cabal($|/)
 ^\.cache($|/)
 ^\.cargo($|/)
+^\.config/QtProject\.conf$
 ^\.config/barrier($|/)
 ^\.config/cef_user_data($|/)
 ^\.config/chromium($|/)
+^\.config/codef00\.com($|/)
 ^\.config/creeperworld3($|/)
 ^\.config/itch($|/)
 ^\.config/keybase($|/)
