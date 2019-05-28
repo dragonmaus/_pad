@@ -1,0 +1,46 @@
+struct timespec {
+  long int tv_sec;
+  long int tv_nsec;
+};
+
+struct timeval {
+  long int tv_sec;
+  long int tv_usec;
+};
+
+struct rusage {
+  struct timeval ru_utime;
+  struct timeval ru_stime;
+  long int ru_maxrss;
+  long int ru_ixrss;
+  long int ru_idrss;
+  long int ru_isrss;
+  long int ru_minflt;
+  long int ru_majflt;
+  long int ru_nswap;
+  long int ru_inblock;
+  long int ru_oublock;
+  long int ru_msgsnd;
+  long int ru_msgrcv;
+  long int ru_nsignals;
+  long int ru_nvcsw;
+  long int ru_nivcsw;
+};
+
+struct stat {
+  unsigned long int st_dev;
+  unsigned long int st_ino;
+  unsigned long int st_nlink;
+  unsigned int st_mode;
+  unsigned int st_uid;
+  unsigned int st_gid;
+  unsigned int __pad0;
+  unsigned long int st_rdev;
+  long int st_size;
+  long int st_blksize;
+  long int st_blocks;
+  struct timespec st_atim;
+  struct timespec st_mtim;
+  struct timespec st_ctim;
+  long __unused[3];
+};

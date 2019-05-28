@@ -1,0 +1,60 @@
+#define O_RDONLY    000000000
+#define O_WRONLY    000000001
+#define O_CREAT     000000100
+#define O_EXCL      000000200
+#define O_NOCTTY    000000400
+#define O_TRUNC     000001000
+#define O_APPEND    000002000
+#define O_NONBLOCK  000004000
+#define O_DSYNC     000010000
+#define O_ASYNC     000020000
+#define O_DIRECTORY 000200000
+#define O_NOFOLLOW  000400000
+#define O_CLOEXEC   002000000
+#define O_SYNC      004010000
+#define O_PATH      010000000
+
+#define S_IFIFO     000010000
+#define S_IFCHR     000020000
+#define S_IFDIR     000040000
+#define S_IFBLK     000060000
+#define S_IFREG     000100000
+#define S_IFLNK     000120000
+#define S_IFSOCK    000140000
+#define S_IFMT      000170000
+
+#define S_ISFIFO(mode) (((mode) & S_IFMT) == S_IFIFO)
+#define S_ISCHR(mode)  (((mode) & S_IFMT) == S_IFCHR)
+#define S_ISDIR(mode)  (((mode) & S_IFMT) == S_IFDIR)
+#define S_ISBLK(mode)  (((mode) & S_IFMT) == S_IFBLK)
+#define S_ISREG(mode)  (((mode) & S_IFMT) == S_IFREG)
+#define S_ISLNK(mode)  (((mode) & S_IFMT) == S_IFLNK)
+#define S_ISSOCK(mode) (((mode) & S_IFMT) == S_IFSOCK)
+
+#define S_IXOTH     000000001
+#define S_IWOTH     000000002
+#define S_IROTH     000000004
+#define S_IRWXO     000000007
+#define S_IXGRP     000000010
+#define S_IWGRP     000000020
+#define S_IRGRP     000000040
+#define S_IRWXG     000000070
+#define S_IXUSR     000000100
+#define S_IWUSR     000000200
+#define S_IRUSR     000000400
+#define S_IRWXU     000000700
+#define S_ISVTX     000001000
+#define S_ISGID     000002000
+#define S_ISUID     000004000
+
+#define UTIME_OMIT  0x3ffffffe
+#define UTIME_NOW   0x3fffffff
+
+#define WEXITSTATUS(s) (((s) & 0xff00) >> 8)
+#define WTERMSIG(s) ((s) & 0x7f)
+#define WSTOPSIG(s) WEXITSTATUS(s)
+#define WCOREDUMP(s) ((s) & 0x80)
+#define WIFEXITED(s) (!WTERMSIG(s))
+#define WIFSTOPPED(s) ((short)((((s)&0xffff)*0x10001)>>8) > 0x7f00)
+#define WIFSIGNALED(s) (((s)&0xffff)-1U < 0xffu)
+#define WIFCONTINUED(s) ((s) == 0xffff)

@@ -5,15 +5,12 @@ home=${home%/*/*}
 cd $home
 main=$1
 shift
-file=$(print -r -- $main.[Scs])
+file=$(print -r -- $main.[cs])
 if [[ -e $main.o && $file -nt $main.o ]]
 then
 	rm -f $main.o
 fi
 case $file in
-($main.S)
-	[[ -e $main.o ]] || bin/assemble-nasm $file
-	;;
 ($main.c)
 	[[ -e $main.o ]] || bin/compile $file
 	;;
@@ -23,6 +20,7 @@ case $file in
 esac
 if [[ -e $main.o ]]
 then
-	[[ -e lib/crt0.o ]] || lib/bin/assemble crt0.s
-	tcc -nostdinc -nostdlib -L$HOME/lib -static -o $main lib/crt0.o $main.o "$@"
+	crt=
+	grep -q '^main(' $file && crt=$HOME/lib/crt0.o
+	tcc -nostdinc -nostdlib -static -L$HOME/lib -o $main $crt $main.o "$@"
 fi

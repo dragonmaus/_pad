@@ -4,9 +4,11 @@
 #else
 #include <limits.h>
 #include <stdlib.h>
-#include <unistd.h>
 #endif
+#include <sys.h>
 #include "error.h"
+#include "fmt.h"
+#include "open.h"
 #include "path.h"
 #include "str.h"
 
@@ -80,7 +82,8 @@ path_canonical(char *path, int bufsize)
 #else
   char full[bufsize];
   char real[bufsize];
-  int i, size;
+  int fd, i, size;
+  struct stat st1, st2;
 
   /* make path absolute */
   size = 0;
@@ -91,7 +94,8 @@ path_canonical(char *path, int bufsize)
   }
   size += str_copy(full + size, path);
 
-  if (!realpath(full, real)) {
+  fd = open_read(full);
+  if (fd < 0) {
     if (errno != error_noent) return -1;
     if (size == 1) return -1; // somehow `/` does not exist
 
@@ -100,10 +104,8 @@ path_canonical(char *path, int bufsize)
     char tail[size - i];
     str_copy(tail, full + i + 1);
 
-    if (i > 1)
-      full[i] = 0;
-    else
-      full[i + 1] = 0;
+    if (i > 1) full[i] = 0;
+    else full[i + 1] = 0;
 
     size = path_canonical(full, bufsize);
     if (size == -1) return -1;
@@ -115,6 +117,29 @@ path_canonical(char *path, int bufsize)
     return str_copy(path, full);
   }
 
+  i = str_copy(full, "/proc/self/fd/");
+  i += fmt_uint(full + i, fd);
+  full[i] = 0;
+
+  i = readlink(full, real, bufsize);
+  if (i == -1) {
+    close(fd);
+    return -1;
+  }
+  real[i] = 0;
+
+  i = stat(real, &st2);
+  if (i == -1) {
+    close(fd);
+    return -1;
+  }
+  i = fstat(fd, &st1);
+  if (i == -1 || st1.st_dev != st2.st_dev || st1.st_ino != st2.st_ino) {
+    close(fd);
+    return -1;
+  }
+
+  close(fd);
   return str_copy(path, real);
 #endif
 }

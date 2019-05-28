@@ -1,7 +1,7 @@
 #ifdef WIN32
 #include <fcntl.h>
 #endif
-#include <unistd.h>
+#include <sys.h>
 #include "buffer.h"
 
   int

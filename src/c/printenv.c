@@ -1,4 +1,3 @@
-#include <unistd.h>
 #include "buffer.h"
 #include "env.h"
 #include "option.h"
@@ -48,5 +47,5 @@ main(int argc, const char **argv)
     ++argv;
   }
   safe_buffer_flush(buffer_1);
-  _exit(0);
+  return 0;
 }

@@ -1,4 +1,3 @@
-#include <unistd.h>
 #include "buffer.h"
 #include "strerr.h"
 
@@ -36,5 +35,5 @@ main(int argc, const char **argv)
     }
   }
   safe_buffer_flush(buffer_1);
-  _exit(0);
+  return 0;
 }

@@ -5,6 +5,9 @@ echo() { printf '%s\n' "$*"; }
 echo '/* automatically generated */'
 echo '#include <errno.h>'
 echo '#include "error.h"'
+echo
+echo '#undef errno'
+echo 'int errno;'
 let "i = 0"
 while read -r name errno temp str
 do

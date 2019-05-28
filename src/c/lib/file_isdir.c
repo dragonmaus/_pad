@@ -1,4 +1,4 @@
-#include <sys/stat.h>
+#include <sys.h>
 #include "file.h"
 
   unsigned int

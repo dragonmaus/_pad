@@ -22,6 +22,20 @@ fmt_int(register char *s, register int u)
   return len;
 }
 
+  unsigned int
+str_copy(register char *to, register const char *from)
+{
+  register int len;
+
+  len = 0;
+  for (;;) {
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
+    if (!(*to = *from)) return len; ++to; ++from; ++len;
+  }
+}
+
   static unsigned int
 str_len(const char *s)
 {
@@ -39,29 +53,35 @@ str_len(const char *s)
   int
 main(int argc, const char **argv, const char **envp)
 {
-  char s[100];
-  int i;
-  int l;
+  char buf[4096], *p;
+  int i, l;
 
-  l = fmt_int(s, argc);
-  write(1, "argc = ", 7);
-  write(1, s, l);
-  write(1, "\n", 1);
-  for (i = 0; i < argc; ++i) {
-    l = fmt_int(s, i);
-    write(1, "argv[", 5);
-    write(1, s, l);
-    write(1, "] = '", 5);
-    write(1, argv[i], str_len(argv[i]));
-    write(1, "'\n", 2);
+  l = 0;
+  l += str_copy(buf + l, "argc = ");
+  l += fmt_int(buf + l, argc);
+  l += str_copy(buf + l, "\n");
+  for (i = 0; argv[i]; ++i) {
+    l += str_copy(buf + l, "argv[");
+    l += fmt_int(buf + l, i);
+    l += str_copy(buf + l, "] = '");
+    l += str_copy(buf + l, argv[i]);
+    l += str_copy(buf + l, "'\n");
   }
   for (i = 0; envp[i]; ++i) {
-    l = fmt_int(s, i);
-    write(1, "envp[", 5);
-    write(1, s, l);
-    write(1, "] = '", 5);
-    write(1, envp[i], str_len(envp[i]));
-    write(1, "'\n", 2);
+    l += str_copy(buf + l, "envp[");
+    l += fmt_int(buf + l, i);
+    l += str_copy(buf + l, "] = '");
+    l += str_copy(buf + l, envp[i]);
+    l += str_copy(buf + l, "'\n");
   }
+  l += str_copy(buf + l, "\n");
+  i = write(1, buf, l);
+  write(1, "i = ", 4);
+  i = fmt_int(buf, i);
+  write(1, buf, i);
+  write(1, "\nl = ", 5);
+  i = fmt_int(buf, l);
+  write(1, buf, i);
+  write(1, "\n", 1);
   return 0;
 }

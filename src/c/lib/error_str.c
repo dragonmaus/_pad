@@ -2,6 +2,8 @@
 #include <errno.h>
 #include "error.h"
 
+#undef errno
+
 #define X(n,s) if (e == n) return s
 
   const char *
@@ -117,9 +119,7 @@ error_str(int e)
 #ifdef ENOTEMPTY
   X(ENOTEMPTY, "directory not empty");
 #endif
-#ifdef ELOOP
-  X(ELOOP, "symbolic link loop");
-#endif
+  X(error_loop, "symbolic link loop");
 #ifdef ENOMSG
   X(ENOMSG, "no message of desired type");
 #endif

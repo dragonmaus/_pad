@@ -2,6 +2,8 @@
 #include <errno.h>
 #include "error.h"
 
+#undef errno
+
 #define X(n) if (e == n) return 1
 
   unsigned int

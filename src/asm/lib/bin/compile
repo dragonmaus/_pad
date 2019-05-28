@@ -2,4 +2,4 @@
 home=$(realpath "$0")
 home=${home%/*/*}
 cd $home
-tcc -nostdinc -nostdlib -static -c "$@"
+tcc -nostdinc -nostdlib -I. -static -c "$@"

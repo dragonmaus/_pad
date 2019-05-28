@@ -3,6 +3,7 @@ set -e
 home=$(realpath "$0")
 home=${home%/*/*}
 cd $home
+obj/bin/install
 lib/bin/install
 bin/install false
 bin/install lefix

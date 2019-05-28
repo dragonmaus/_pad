@@ -44,7 +44,7 @@
 ^etc/sv/.+/supervise($|/)
 ^git($|/)
 ^inc($|/)
-^lib/[^/]+\.a$
+^lib/[^/]+\.[ao]$
 ^log($|/)
 ^src/.+\.[ao]$
 ^src/clojure($|/)

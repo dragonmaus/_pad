@@ -3,4 +3,4 @@ set -e
 home=$(realpath "$0")
 home=${home%/*/*}
 cd $home
-tcc -I. -c "$@"
+tcc -nostdinc -I. -I$HOME/inc -I$HOME/.local/musl/include -c "$@"

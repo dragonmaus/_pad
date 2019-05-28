@@ -1,9 +1,7 @@
 #ifdef WIN32
 #include <process.h>
-#else
-#include <sys/wait.h>
 #endif
-#include <unistd.h>
+#include <sys.h>
 #include "buffer.h"
 #include "direntry.h"
 #include "error.h"
@@ -156,5 +154,5 @@ main(int argc, const char **argv)
     }
   }
 
-  _exit(0);
+  return 0;
 }

@@ -6,6 +6,8 @@ echo '/* automatically generated */'
 echo '#include <errno.h>'
 echo '#include "error.h"'
 echo
+echo '#undef errno'
+echo
 echo '#define X(n) if (e == n) return 1'
 echo
 echo '  unsigned int'

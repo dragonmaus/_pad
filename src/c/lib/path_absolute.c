@@ -1,9 +1,8 @@
 #ifdef WIN32
 #define WINVER _WIN32_WINNT_WIN7
 #include <windows.h>
-#else
-#include <unistd.h>
 #endif
+#include <sys.h>
 #include "error.h"
 #include "path.h"
 #include "str.h"

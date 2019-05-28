@@ -5,6 +5,10 @@ home=${home%/*/*}
 cd $home
 main=$1
 shift
-test -e $main.o -a $main.c -nt $main.o && rm -f $main.o
-test -e $main.o || bin/compile $main.c
-tcc -L$HOME/lib -o $main $main.o "$@"
+if [[ -e $main.o && $main.c -nt $main.o ]]
+then
+	rm -f $main.o
+fi
+[[ -e $main.o ]] || bin/compile $main.c
+tcc -nostdinc -nostdlib -static -L$HOME/lib -o $main $HOME/lib/crt0.o $main.o "$@"
+#sstrip -z $main

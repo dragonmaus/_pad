@@ -3,11 +3,12 @@ set -e
 home=$(realpath "$0")
 home=${home%/*/*}
 cd $home
+$HOME/src/asm/bin/install-all
 lib/bin/install
-bin/install abspath -lcore
-bin/install cargo-foreach -lcore
-bin/install en% -lcore
-bin/install fsync -lcore
-bin/install printenv -lcore
-bin/install realpath -lcore
-bin/install un% -lcore
+bin/install abspath -lcore -lsys
+#bin/install cargo-foreach -lcore -lsys
+bin/install en% -lcore -lsys
+bin/install fsync -lcore -lsys
+bin/install printenv -lcore -lsys
+bin/install realpath -lcore -lsys
+bin/install un% -lcore -lsys

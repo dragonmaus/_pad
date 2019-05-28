@@ -2,6 +2,9 @@
 #include <errno.h>
 #include "error.h"
 
+#undef errno
+int errno;
+
 int error_perm =
 #ifdef EPERM
 EPERM;
@@ -49,4 +52,11 @@ int error_inval =
 EINVAL;
 #else
 -7;
+#endif
+
+int error_loop =
+#ifdef ELOOP
+ELOOP;
+#else
+-8;
 #endif

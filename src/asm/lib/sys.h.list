@@ -1,0 +1,17 @@
+0	read		extern int   read(int, char *, unsigned int);
+1	write		extern int   write(int, const char *, unsigned int);
+2	open		extern int   open(const char *, int, ...);
+3	close		extern int   close(int);
+4	stat		extern int   stat(const char *, struct stat *);
+5	fstat		extern int   fstat(int, struct stat *);
+6	lstat		extern int   lstat(const char *, struct stat *);
+57	fork		extern int   fork(void);
+59	execve		extern int   execve(const char *, const char **, const char **);
+60	exit		extern void  exit(int);
+-	wait3		extern int   wait3(int *, int, struct rusage *);
+61	wait4		extern int   wait4(int, int *, int, struct rusage *);
+-	waitpid		extern int   waitpid(int, int *, int);
+74	fsync		extern int   fsync(int);
+79	getcwd		extern char *getcwd(char *, unsigned int);
+80	chdir		extern int   chdir(const char *);
+89	readlink	extern int   readlink(const char *, char *, unsigned int);

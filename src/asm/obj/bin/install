@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+home=$(realpath "$0")
+home=${home%/*/*}
+cd $home
+for f in *.[cs]
+do
+	case $f in
+	(*.c)
+		bin/compile $f
+		;;
+	(*.s)
+		bin/assemble $f
+		;;
+	esac
+done
+mkdir -p $HOME/lib
+cp -f *.o $HOME/lib

@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include <sys.h>
 #include "open.h"
 #include "strerr.h"
 
@@ -17,5 +17,5 @@ main(int argc, const char **argv)
     if (fsync(fd) == -1) strerr_die4sys(1, FATAL, "unable to sync file '", *argv, "': ");
     close(fd);
   }
-  _exit(0);
+  return 0;
 }

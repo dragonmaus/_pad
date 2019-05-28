@@ -39,7 +39,7 @@ error_inval	EINVAL	hard	invalid argument
 -	ENOLCK	soft	no locks available
 -	ENOSYS	hard	system call not available
 -	ENOTEMPTY	hard	directory not empty
--	ELOOP	hard	symbolic link loop
+error_loop	ELOOP	hard	symbolic link loop
 -	ENOMSG	hard	no message of desired type
 -	EIDRM	hard	identifier removed
 -	ECHRNG	!	channel number out of range
