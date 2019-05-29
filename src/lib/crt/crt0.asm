@@ -24,7 +24,7 @@ skip:
 
 	call	main
 
-	mov	rdi, rax	; exit code is what _main returned
+	mov	rdi, rax	; exit code is what main returned
 	mov	rax, 60		; syscall exit
 	syscall
 
