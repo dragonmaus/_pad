@@ -3,15 +3,32 @@ format	elf64
 section	'.text' executable
 
 public _start
-_start:
+public environ
+public errno
 
-	extrn	_main
+_start:
+	extrn	main
 
 	pop	rdi		; argc
 	mov	rsi, rsp	; argv
 
-	call	_main
+	mov	rdx, rsp
+skip:
+	add	rdx, 8
+	cmp	qword [rdx], 0
+	jne	skip
+	add	rdx, 8		; envp
+
+	mov	qword [environ], rdx
+	mov	qword [errno], 0
+
+	call	main
 
 	mov	rdi, rax	; exit code is what _main returned
 	mov	rax, 60		; syscall exit
 	syscall
+
+section '.data' writable
+
+environ	dq	1
+errno	dq	1
