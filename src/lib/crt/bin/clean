@@ -5,4 +5,4 @@ set -e
 home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 
-rm -f $home/*.o
+rm -f $home/*.[ao]

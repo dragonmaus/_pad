@@ -6,9 +6,7 @@ home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 cd $home
 
-$home/bin/generate sys.h >sys.h.new
-cmp -s sys.h.new sys.h || mv -f sys.h.new sys.h
-rm -f sys.h.new
+$home/bin/generate sys.h
 
 mkdir -p $HOME/inc
 cp -f *.h $HOME/inc

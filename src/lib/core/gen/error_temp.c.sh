@@ -15,15 +15,15 @@ echo 'error_temp(int e)'
 echo '{'
 while read -r name errno temp str
 do
-  [[ $temp = soft ]] || continue
-  if [[ $name = - ]]
-  then
-    echo "#ifdef $errno"
-    echo "  X($errno);"
-    echo "#endif"
-  else
-    echo "  X($name);"
-  fi
+	[[ $temp = soft ]] || continue
+	if [[ $name = - ]]
+	then
+		echo "#ifdef $errno"
+		echo "  X($errno);"
+		echo "#endif"
+	else
+		echo "  X($name);"
+	fi
 done <error.list
 echo '  return 0;'
 echo '}'

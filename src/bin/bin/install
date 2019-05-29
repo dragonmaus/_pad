@@ -25,3 +25,4 @@ rm -f $dst{new}
 cp -f $src $dst{new}
 chmod 0555 $dst{new}
 mv -f $dst{new} $dst
+rm -f $src
