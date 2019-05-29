@@ -1,12 +1,27 @@
 #!/bin/sh
+
 set -e
-home=$(realpath "$0")
-home=${home%/*/*}
+
+home=$(dirname $0)/..
+home=$(cd $home && env - pwd)
+cd $home
+
 bin=$HOME/bin
-dst=$bin/$1
-src=$home/$2
 mkdir -p $bin
+
+kind=$1
+main=$2
+file=$main.$kind
+shift 2
+
+[[ -e $home/bin/load-$kind ]] || kind=script
+
+$home/bin/load-$kind $main $file "$@"
+
+src=$main
+dst=$bin/$main
+
 rm -f $dst{new}
 cp -f $src $dst{new}
-chmod +x-w $dst{new}
+chmod 0555 $dst{new}
 mv -f $dst{new} $dst

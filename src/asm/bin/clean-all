@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-home=$(realpath "$0")
-home=${home%/*/*}
-cd $home
-obj/bin/clean
-lib/bin/clean
-bin/clean

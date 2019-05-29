@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+home=$(dirname $0)/..
+home=$(cd $home && env - pwd)
+
+main=$1
+shift
+
+sh $home/gen/$main.sh >$main{new}
+cmp -s $main{new} $main || mv -f $main{new} $main
+rm -f $main{new}

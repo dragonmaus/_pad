@@ -1,5 +1,0 @@
-#!/bin/sh
-home=$(realpath "$0")
-home=${home%/*/*}
-cd $home
-fasm "$@" >/dev/null

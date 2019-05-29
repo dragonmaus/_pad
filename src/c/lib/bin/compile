@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-home=$(realpath "$0")
-home=${home%/*/*}
-cd $home
-tcc -nostdinc -I. -I$HOME/inc -I$HOME/.local/musl/include -c "$@"

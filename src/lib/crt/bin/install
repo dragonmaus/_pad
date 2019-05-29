@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+home=$(dirname $0)/..
+home=$(cd $home && env - pwd)
+cd $home
+
+$home/bin/assemble *.asm
+
+mkdir -p $HOME/lib
+cp -f *.o $HOME/lib

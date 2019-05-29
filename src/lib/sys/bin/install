@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+home=$(dirname $0)/..
+home=$(cd $home && env - pwd)
+cd $home
+
+$home/bin/generate sys.h >sys.h.new
+cmp -s sys.h.new sys.h || mv -f sys.h.new sys.h
+rm -f sys.h.new
+
+mkdir -p $HOME/inc
+cp -f *.h $HOME/inc
+
+$home/bin/assemble *.asm
+$home/bin/compile *.c
+
+$home/bin/makelib libsys.a *.o
+
+mkdir -p $HOME/lib
+cp -f libsys.a $HOME/lib

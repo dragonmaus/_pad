@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+
+home=$(dirname $0)/..
+home=$(cd $home && env - pwd)
+cd $home
+
+$home/bin/generate error.h
+
+mkdir -p $HOME/inc
+cp -f *.h $HOME/inc
+
+$home/bin/generate error.c
+$home/bin/generate error_str.c
+$home/bin/generate error_temp.c
+
+$home/bin/compile *.c
+
+$home/bin/makelib libcore.a *.o
+
+mkdir -p $HOME/lib
+cp -f libcore.a $HOME/lib

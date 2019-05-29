@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-home=$(realpath "$0")
-home=${home%/*/*}
-cd $home
-rm -f *.o $(ls -F | sed -n 's/\*$//p')
