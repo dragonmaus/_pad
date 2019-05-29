@@ -38,7 +38,6 @@ libXft-devel
 libXinerama-devel
 libXrandr-32bit
 libXrandr-devel
-libXtst-32bit
 libavformat-32bit
 libavresample-32bit
 libavutil-32bit
