@@ -1,39 +1,97 @@
-#include "buffer.h"
-#include "debug.h"
-#include "fmt.h"
+#ifndef DEBUG_H
+#define DEBUG_H
 
-  unsigned int
-debug(const char *name, const char *s, unsigned int n)
+extern int write(int, const char *, unsigned int);
+
+  static unsigned int
+debug_fmt_uint(register char *s, register unsigned int u)
 {
-  char len;
-  char x[1000];
+  register unsigned int len;
+  register unsigned int q;
 
-  len = 0;
-  len += buffer_puts(buffer_1, "  ");
-  len += buffer_puts(buffer_1, name);
-  len += buffer_puts(buffer_1, " (");
-  x[fmt_uint(x, n)] = 0;
-  len += buffer_puts(buffer_1, x);
-  len += buffer_puts(buffer_1, ") = '");
-  len += buffer_puts(buffer_1, s);
-  len += buffer_puts(buffer_1, "'\n");
-  buffer_flush(buffer_1);
+  len = 1;
+  q = u;
+  while (q > 9) {
+    ++len;
+    q /= 10;
+  }
+  if (s) {
+    s += len;
+    do {
+      *--s = '0' + (u % 10);
+      u /= 10;
+    } while (u); /* handles u == 0 */
+  }
   return len;
 }
 
-  unsigned int
+  static unsigned int
+debug_fmt_int(register char *s, register int i)
+{
+  unsigned int len;
+
+  len = 0;
+  if (i < 0) {
+    s[len] = '-';
+    s[++len] = 0;
+    i = -i;
+  }
+  len += debug_fmt_uint(s + len, i);
+  return len;
+}
+
+  static unsigned int
+debug_str_len(const char *s)
+{
+  register const char *t;
+
+  t = s;
+  for (;;) {
+    if (!*t) return t - s; ++t;
+    if (!*t) return t - s; ++t;
+    if (!*t) return t - s; ++t;
+    if (!*t) return t - s; ++t;
+  }
+}
+
+  static unsigned int
+debug_write(int fd, const char *s)
+{
+  return write(fd, s, debug_str_len(s));
+}
+
+  static unsigned int
+debug(const char *name, const char *s, unsigned int n)
+{
+  unsigned int len;
+  char x[1000];
+
+  len = 0;
+  len += debug_write(1, "  ");
+  len += debug_write(1, name);
+  len += debug_write(1, " (");
+  x[debug_fmt_uint(x, n)] = 0;
+  len += debug_write(1, x);
+  len += debug_write(1, ") = '");
+  len += debug_write(1, s);
+  len += debug_write(1, "'\n");
+  return len;
+}
+
+  static unsigned int
 debugnum(const char *name, long long int n)
 {
   char len;
   char x[1000];
 
   len = 0;
-  len += buffer_puts(buffer_1, "  ");
-  len += buffer_puts(buffer_1, name);
-  len += buffer_puts(buffer_1, " = ");
-  x[fmt_minus(x, n)] = 0;
-  len += buffer_puts(buffer_1, x);
-  len += buffer_putc(buffer_1, '\n');
-  buffer_flush(buffer_1);
+  len += debug_write(1, "  ");
+  len += debug_write(1, name);
+  len += debug_write(1, " = ");
+  x[debug_fmt_int(x, n)] = 0;
+  len += debug_write(1, x);
+  len += debug_write(1, "\n");
   return len;
 }
+
+#endif
