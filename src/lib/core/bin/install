@@ -15,7 +15,7 @@ $home/bin/generate error.c
 $home/bin/generate error_str.c
 $home/bin/generate error_temp.c
 
-#$home/bin/assemble *.asm
+$home/bin/assemble *.asm
 $home/bin/compile *.c
 
 $home/bin/makelib libcore.a *.o
