@@ -4,7 +4,7 @@
 extern int write(int, const char *, unsigned int);
 
   static unsigned int
-debug_fmt_uint(register char *s, register unsigned int u)
+debug_fmt_ulong(register char *s, register unsigned int u)
 {
   register unsigned int len;
   register unsigned int q;
@@ -26,7 +26,7 @@ debug_fmt_uint(register char *s, register unsigned int u)
 }
 
   static unsigned int
-debug_fmt_int(register char *s, register int i)
+debug_fmt_long(register char *s, register int i)
 {
   unsigned int len;
 
@@ -36,7 +36,7 @@ debug_fmt_int(register char *s, register int i)
     s[++len] = 0;
     i = -i;
   }
-  len += debug_fmt_uint(s + len, i);
+  len += debug_fmt_ulong(s + len, i);
   return len;
 }
 
@@ -61,7 +61,7 @@ debug_write(int fd, const char *s)
 }
 
   static unsigned int
-debug(const char *name, const char *s, unsigned int n)
+debug(const char *name, const char *s, unsigned long int n)
 {
   unsigned int len;
   char x[1000];
@@ -70,7 +70,7 @@ debug(const char *name, const char *s, unsigned int n)
   len += debug_write(1, "  ");
   len += debug_write(1, name);
   len += debug_write(1, " (");
-  x[debug_fmt_uint(x, n)] = 0;
+  x[debug_fmt_ulong(x, n)] = 0;
   len += debug_write(1, x);
   len += debug_write(1, ") = '");
   len += debug_write(1, s);
@@ -79,7 +79,7 @@ debug(const char *name, const char *s, unsigned int n)
 }
 
   static unsigned int
-debugnum(const char *name, long long int n)
+debugnum(const char *name, long int n)
 {
   char len;
   char x[1000];
@@ -88,7 +88,7 @@ debugnum(const char *name, long long int n)
   len += debug_write(1, "  ");
   len += debug_write(1, name);
   len += debug_write(1, " = ");
-  x[debug_fmt_int(x, n)] = 0;
+  x[debug_fmt_long(x, n)] = 0;
   len += debug_write(1, x);
   len += debug_write(1, "\n");
   return len;

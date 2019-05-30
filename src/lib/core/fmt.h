@@ -16,13 +16,9 @@ extern unsigned int fmt_ulong(char *, unsigned long int);
 extern unsigned int fmt_ulong0(char *, unsigned long int, unsigned int);
 extern unsigned int fmt_ulongo(char *, unsigned long int);
 extern unsigned int fmt_ulongx(char *, unsigned long int);
-extern unsigned int fmt_ullong(char *, unsigned long long int);
-extern unsigned int fmt_ullong0(char *, unsigned long long int, unsigned int);
-extern unsigned int fmt_ullongo(char *, unsigned long long int);
-extern unsigned int fmt_ullongx(char *, unsigned long long int);
 
-extern unsigned int fmt_plusminus(char *, long long int);
-extern unsigned int fmt_minus(char *, long long int);
+extern unsigned int fmt_plusminus(char *, long int);
+extern unsigned int fmt_minus(char *, long int);
 
 extern unsigned int fmt_str(char *, const char *);
 extern unsigned int fmt_strn(char *, const char *, unsigned int);

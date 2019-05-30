@@ -1,7 +1,7 @@
 #include "fmt.h"
 
   unsigned int
-fmt_plusminus(register char *s, register long long int i)
+fmt_plusminus(register char *s, register long int i)
 {
   unsigned int len;
 
@@ -12,6 +12,6 @@ fmt_plusminus(register char *s, register long long int i)
   } else {
     len += fmt_str(s, "+");
   }
-  len += fmt_ullong(s + len, i);
+  len += fmt_ulong(s + len, i);
   return len;
 }
