@@ -49,7 +49,7 @@ buffer_put(buffer *s, const char *buf, unsigned int len)
     }
   }
   /* now len <= s->n - s->p */
-  byte_copy(s->x + s->p, len, buf);
+  byte_copy(s->x + s->p, buf, len);
   s->p += len;
   return 0;
 }
@@ -60,14 +60,14 @@ buffer_putalign(buffer *s, const char *buf, unsigned int len)
   unsigned int n;
 
   while (len > (n = s->n - s->p)) {
-    byte_copy(s->x + s->p, n, buf);
+    byte_copy(s->x + s->p, buf, n);
     s->p += n;
     buf += n;
     len -= n;
     if (buffer_flush(s) == -1) return -1;
   }
   /* now len <= s->n - s->p */
-  byte_copy(s->x + s->p, len, buf);
+  byte_copy(s->x + s->p, buf, len);
   s->p += len;
   return 0;
 }

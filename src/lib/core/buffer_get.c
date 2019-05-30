@@ -7,7 +7,7 @@ getthis(buffer *s, char *buf, unsigned int len)
 {
   if (len > s->p) len = s->p;
   s->p -= len;
-  byte_copy(buf, len, s->x + s->n);
+  byte_copy(buf, s->x + s->n, len);
   s->n += len;
   return len;
 }
@@ -34,7 +34,7 @@ buffer_feed(buffer *s)
   if (r <= 0) return r;
   s->p = r;
   s->n -= r;
-  if (s->n > 0) byte_copyr(s->x + s->n, r, s->x);
+  if (s->n > 0) byte_copyr(s->x + s->n, s->x, r);
   return r;
 }
 
