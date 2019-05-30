@@ -2,7 +2,7 @@ format	elf64
 
 section	'.text' executable
 
-public	execve
+	public	execve
 
 execve:
 	mov	rax, 59		; syscall execve

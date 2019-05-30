@@ -2,7 +2,7 @@ format	elf64
 
 section	'.text' executable
 
-public	fstat
+	public	fstat
 
 fstat:
 	mov	rax, 5		; syscall fstat

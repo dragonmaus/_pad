@@ -2,7 +2,7 @@ format	elf64
 
 section	'.text' executable
 
-public	fsync
+	public	fsync
 
 fsync:
 	mov	rax, 74		; syscall fsync

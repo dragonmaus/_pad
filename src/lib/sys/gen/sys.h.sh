@@ -23,7 +23,7 @@ do
 		echo
 		echo "section	'.text' executable"
 		echo
-		echo "public	$name"
+		echo "	public	$name"
 		echo
 		echo "$name:"
 		echo "	mov	rax, $number		; syscall $name"

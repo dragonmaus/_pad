@@ -3,7 +3,6 @@
 #include <windows.h>
 #else
 #include <limits.h>
-#include <stdlib.h>
 #endif
 #include <sys.h>
 #include "error.h"

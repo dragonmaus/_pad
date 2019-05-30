@@ -2,7 +2,7 @@ format	elf64
 
 section	'.text' executable
 
-public	read
+	public	read
 
 read:
 	mov	rax, 0		; syscall read

@@ -48,13 +48,15 @@ struct stat {
   long int __unused[3];
 };
 
-extern int   read(int, char *, unsigned int);
-extern int   write(int, const char *, unsigned int);
-extern int   open(const char *, int, ...);
-extern int   close(int);
+extern int   read(unsigned int, char *, unsigned int);
+extern int   write(unsigned int, const char *, unsigned int);
+extern int   open(const char *, int, unsigned short int);
+extern int   close(unsigned int);
 extern int   stat(const char *, struct stat *);
 extern int   fstat(int, struct stat *);
 extern int   lstat(const char *, struct stat *);
+extern int   brk(void *);
+extern void *sbrk(long int);
 extern int   fork(void);
 extern int   execve(const char *, const char **, const char **);
 extern void  exit(int);

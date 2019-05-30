@@ -2,9 +2,9 @@ format	elf64
 
 section	'.text' executable
 
-	public	chdir
+	public	brk
 
-chdir:
-	mov	rax, 80		; syscall chdir
+brk:
+	mov	rax, 12		; syscall brk
 	syscall
 	ret

@@ -2,7 +2,7 @@ format	elf64
 
 section	'.text' executable
 
-public	readlink
+	public	readlink
 
 readlink:
 	mov	rax, 89		; syscall readlink
