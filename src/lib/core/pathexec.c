@@ -33,7 +33,7 @@ pathexec(const char *const *argv)
   j = 0;
   for (i = 0; i < plus.len; ++i) if (!plus.s[i]) {
     split = str_find(plus.s + j, '=');
-    for (t = 0; t < elen; ++t) if (byte_equal(plus.s + j, split, e[t]) && e[t][split] == '=') {
+    for (t = 0; t < elen; ++t) if (byte_equal(plus.s + j, e[t], split) && e[t][split] == '=') {
       --elen;
       e[t] = e[elen];
       break;
