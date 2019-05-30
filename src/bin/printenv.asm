@@ -1,4 +1,4 @@
-format	elf64	executable 0
+format	elf64 executable 0
 
 segment	readable executable
 
