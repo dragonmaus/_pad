@@ -5,6 +5,6 @@ section	'.text' executable
 public	open
 
 open:
-	mov	eax, 2		; syscall open
+	mov	rax, 2		; syscall open
 	syscall
 	ret

@@ -1,3 +1,4 @@
+
 #define O_RDONLY    000000000
 #define O_WRONLY    000000001
 #define O_CREAT     000000100
@@ -55,6 +56,6 @@
 #define WSTOPSIG(s) WEXITSTATUS(s)
 #define WCOREDUMP(s) ((s) & 0x80)
 #define WIFEXITED(s) (!WTERMSIG(s))
-#define WIFSTOPPED(s) ((short)((((s)&0xffff)*0x10001)>>8) > 0x7f00)
-#define WIFSIGNALED(s) (((s)&0xffff)-1U < 0xffu)
+#define WIFSTOPPED(s) ((short)((((s) & 0xffff) * 0x10001) >> 8) > 0x7f00)
+#define WIFSIGNALED(s) (((s) & 0xffff) - 1U < 0xffu)
 #define WIFCONTINUED(s) ((s) == 0xffff)

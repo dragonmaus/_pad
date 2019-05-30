@@ -5,6 +5,6 @@ section	'.text' executable
 public	chdir
 
 chdir:
-	mov	eax, 80		; syscall chdir
+	mov	rax, 80		; syscall chdir
 	syscall
 	ret

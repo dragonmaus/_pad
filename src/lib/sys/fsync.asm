@@ -5,6 +5,6 @@ section	'.text' executable
 public	fsync
 
 fsync:
-	mov	eax, 74		; syscall fsync
+	mov	rax, 74		; syscall fsync
 	syscall
 	ret

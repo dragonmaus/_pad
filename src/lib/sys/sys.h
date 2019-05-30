@@ -45,7 +45,7 @@ struct stat {
   struct timespec st_atim;
   struct timespec st_mtim;
   struct timespec st_ctim;
-  long __unused[3];
+  long int __unused[3];
 };
 
 extern int   read(int, char *, unsigned int);
@@ -123,8 +123,8 @@ extern int   readlink(const char *, char *, unsigned int);
 #define WSTOPSIG(s) WEXITSTATUS(s)
 #define WCOREDUMP(s) ((s) & 0x80)
 #define WIFEXITED(s) (!WTERMSIG(s))
-#define WIFSTOPPED(s) ((short)((((s)&0xffff)*0x10001)>>8) > 0x7f00)
-#define WIFSIGNALED(s) (((s)&0xffff)-1U < 0xffu)
+#define WIFSTOPPED(s) ((short)((((s) & 0xffff) * 0x10001) >> 8) > 0x7f00)
+#define WIFSIGNALED(s) (((s) & 0xffff) - 1U < 0xffu)
 #define WIFCONTINUED(s) ((s) == 0xffff)
 
 #endif

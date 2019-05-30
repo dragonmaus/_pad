@@ -5,6 +5,6 @@ section	'.text' executable
 public	readlink
 
 readlink:
-	mov	eax, 89		; syscall readlink
+	mov	rax, 89		; syscall readlink
 	syscall
 	ret

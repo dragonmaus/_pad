@@ -4,14 +4,13 @@ echo() { printf '%s\n' "$*"; }
 
 echo '#ifndef SYS_H'
 echo '#define SYS_H'
+echo
 
 if [[ -r sys.h.pre ]]
 then
-	echo
 	cat sys.h.pre
 fi
 
-echo
 while read -r number name prototype
 do
 	echo "$prototype"
@@ -27,7 +26,7 @@ do
 		echo "public	$name"
 		echo
 		echo "$name:"
-		echo "	mov	eax, $number		; syscall $name"
+		echo "	mov	rax, $number		; syscall $name"
 		echo '	syscall'
 		echo '	ret'
 	} >$name.asm.new
@@ -37,7 +36,6 @@ done <sys.h.list
 
 if [[ -r sys.h.post ]]
 then
-	echo
 	cat sys.h.post
 fi
 

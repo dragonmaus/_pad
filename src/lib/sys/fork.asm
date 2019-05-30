@@ -5,6 +5,6 @@ section	'.text' executable
 public	fork
 
 fork:
-	mov	eax, 57		; syscall fork
+	mov	rax, 57		; syscall fork
 	syscall
 	ret

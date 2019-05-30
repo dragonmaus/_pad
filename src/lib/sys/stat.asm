@@ -5,6 +5,6 @@ section	'.text' executable
 public	stat
 
 stat:
-	mov	eax, 4		; syscall stat
+	mov	rax, 4		; syscall stat
 	syscall
 	ret

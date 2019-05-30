@@ -5,6 +5,6 @@ section	'.text' executable
 public	read
 
 read:
-	mov	eax, 0		; syscall read
+	mov	rax, 0		; syscall read
 	syscall
 	ret

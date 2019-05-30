@@ -5,6 +5,6 @@ section	'.text' executable
 public	execve
 
 execve:
-	mov	eax, 59		; syscall execve
+	mov	rax, 59		; syscall execve
 	syscall
 	ret
