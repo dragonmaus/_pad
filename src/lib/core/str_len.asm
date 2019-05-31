@@ -12,6 +12,5 @@ str_len:
 repne	scasb			; scan until we see '\0'
 	not	rcx		; -rcx - 2 = ~rcx - 1 = string length
 	dec	rcx
-
 	mov	rax, rcx
 	ret

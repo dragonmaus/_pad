@@ -5,25 +5,11 @@ section	'.text' executable
 	public str_copy
 
 str_copy:
-	push	rdi
-	push	rsi
-	push	rsi
-
-	pop	rdi
-
-	xor	rcx, rcx
-	not	rcx		; rcx = MAX_INT
-	xor	rax, rax	; search for '\0'
+	mov	rcx, rsi	; save starting pointer
 	cld
-repne	scasb			; scan until we see '\0'
-	not	rcx		; -rcx - 2 = ~rcx - 1 = string length
-	dec	rcx
-	mov	rbx, rcx
-
-	pop	rsi
-	pop	rdi
-	cld
-rep	movsb
-
-	mov	rax, rbx
+copy:	movsb			; copy a byte
+	cmp	byte[rdi-1], 0	; check if that byte is '\0'
+	jne	copy		; loop until we see '\0'
+	mov	rax, rsi
+	sub	rax, rcx
 	ret
