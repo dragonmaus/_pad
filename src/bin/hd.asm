@@ -2,48 +2,51 @@ format	elf64 executable 0
 
 segment	readable executable
 
+; write the current index (RSI) to the output (RDI) in %08x format
 addindex:
 	push	rdx
-	mov	rdx, rdi
-	add	rdi, 6
-	std
-ailoop:	call	hexchar
+	mov	rdx, rdi	; save original pointer
+	add	rdi, 6		; move pointer to the 4th word (000000[0]0)
+	std			; iterate right-to-left
+ailoop:	call	hexdump
 	stosw
 	shr	rsi, 8
 	cmp	rdi, rdx
-	jge	ailoop		; loop until rdi == obuf
-	add	rdi, 10
+	jge	ailoop		; loop until we pass the original pointer
+	add	rdi, 10		; move past the 4th word (00000000[.])
 	cld
 	pop	rdx
 	ret
 
+; transform the next byte pointed to by RSI into '.' if it is not printable
 chardump:
 	lodsb
-	cmp	al, 0x20
+	cmp	al, 0x20	; return '.' if AL < ' '
 	jl	cddot
-	cmp	al, 0x7E
+	cmp	al, 0x7E	; return '.' if AL > '~'
 	jg	cddot
-	ret
+	ret			; else return AL unmodified
 cddot:	mov	al, 0x2E
 	ret
 
-hexchar:
+; convert the bottom byte of RSI into ASCII characters in the format %02x
+hexdump:
 	push	rbx
-	mov	rbx, hctable
+	mov	rbx, hdtable	; lookup table
 	mov	rax, rsi
-	mov	ah, al
-	shr	ah, 4
-	and	al, 0xf
-	xlatb
+	mov	ah, al		; duplicate so we can get at both nibbles
+	and	al, 0x0F	; low nibble
+	shr	ah, 4		; high nibble
+	xlatb			; convert low nibble into ASCII
 	xchg	ah, al
-	xlatb
+	xlatb			; convert high nibble into ASCII
 	pop	rbx
 	ret
 
 entry	$
-	xor	r15, r15	; current index
+	xor	r15, r15	; overall index
 
-	; read 16 bytes
+	; read 16 bytes into ibuf
 read:	mov	rdx, 16
 	mov	rsi, ibuf
 	xor	rdi, rdi	; stdin
@@ -55,40 +58,39 @@ read:	mov	rdx, 16
 	or	r14, r14
 	jz	done
 
-	; output current index (format: %08x)
+	; output current overall index
 	mov	rsi, r15
 	mov	rdi, obuf
 	call	addindex
 
-	xor	r13, r13	; current byte in ibuf
-hexds:	xor	r12, r12	; current byte in group
+	xor	r13, r13	; current index in ibuf
+hexdg:	xor	r12, r12	; current index in group
 
 	; output a space
 	mov	rax, 0x20
 	stosb
 
-hexdc:	; output a space
-	mov	rax, 0x20
+	; output a space
+hexdc:	mov	rax, 0x20
 	stosb
 
 	; if there are bytes remaining
 	cmp	r13, r14
 	jge	nobyte
-	; then output current byte (format: %02x)
+	; then output hexdump of current byte
 	mov	rsi, qword[ibuf+r13]
-	call	hexchar
+	call	hexdump
 	stosw
 	jmp	endhdc
-nobyte:	; else output two spaces
-	mov	rax, 0x2020
+	; else output two spaces
+nobyte:	mov	rax, 0x2020
 	stosw
-endhdc:
-	inc	r12
+endhdc:	inc	r12
 	inc	r13
 	cmp	r12, 8
 	jl	hexdc
 	cmp	r13, 16
-	jl	hexds
+	jl	hexdg
 
 	; output two spaces
 	mov	rax, 0x2020
@@ -98,6 +100,7 @@ endhdc:
 	mov	rax, 0x7C
 	stosb
 
+	; output the character dump section
 	mov	r13, r14
 	mov	rsi, ibuf
 chard:	or	r13, r13
@@ -116,12 +119,14 @@ endcd:
 	mov	rax, 0x0A
 	stosb
 
-	sub	rdi, obuf	; get output length
 	; write the output
+	sub	rdi, obuf	; get output length
 	mov	rdx, rdi
 	mov	rsi, obuf
-	mov	rdi, 1		; write to stdout
-	mov	rax, 1		; syscall write
+	xor	rdi, rdi
+	inc	rdi		; stdout
+	xor	rax, rax
+	inc	rax		; syscall write
 	syscall
 
 	; increment current index
@@ -134,7 +139,7 @@ endcd:
 done:	or	r15, r15
 	jz	quit
 
-	; output the final index
+	; output the final index if we have processed any data
 	mov	rsi, r15
 	mov	rdi, obuf
 	call	addindex
@@ -143,12 +148,14 @@ done:	or	r15, r15
 	mov	rax, 0x0A
 	stosb
 
-	sub	rdi, obuf	; get output length
 	; write the output
+	sub	rdi, obuf	; get output length
 	mov	rdx, rdi
 	mov	rsi, obuf
-	mov	rdi, 1		; write to stdout
-	mov	rax, 1		; syscall write
+	xor	rdi, rdi
+	inc	rdi		; stdout
+	xor	rax, rax
+	inc	rax		; syscall write
 	syscall
 
 quit:	xor	rdi, rdi
@@ -157,7 +164,7 @@ quit:	xor	rdi, rdi
 
 segment	readable
 
-hctable	db	'0123456789abcdef'
+hdtable	db	'0123456789abcdef'
 
 segment	readable writeable
 
