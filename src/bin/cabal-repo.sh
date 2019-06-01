@@ -3,7 +3,7 @@
 set -e
 
 echo() {
-  print -nr -- "$*" 1>&2
+  print -r -- "$*" 1>&2
 }
 
 root=$HOME/.hackage
@@ -26,6 +26,7 @@ case $cmd in
     mkdir -pv $root/repo/package
     hackage-repo-tool create-keys --keys $root/keys
     hackage-repo-tool bootstrap --keys $root/keys --repo $root/repo
+    hackage-repo-tool create-mirrors --keys $root/keys -o $root/repo/mirrors.json file:$root/repo/
     exec $0 update
     ;;
   update)

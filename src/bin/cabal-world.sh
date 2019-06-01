@@ -4,7 +4,8 @@ set -e
 
 cd $HOME
 
-world=$HOME/.cabal.world
+world=$HOME/etc/cabal/world
+test -f $world || exit 0
 
 cmd=$1
 shift

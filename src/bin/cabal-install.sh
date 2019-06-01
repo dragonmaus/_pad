@@ -19,17 +19,19 @@ cd $root
 for spec do
   echo "Fetching package $spec..."
   dir=$(cabal get "$spec" | tee /dev/fd/2 | sed -n 's/^Unpacking to //;s/\/$//p')
-  pushd "$dir" >/dev/null 2>&1
 
-  cabal sandbox init
+  (
+    cd "$dir"
 
-  echo "Installing dependencies..."
-  cabal install --only-dependencies
+    cabal sandbox init
 
-  echo "Installing package..."
-  cabal install --prefix=$prefix --bindir=$bindir
+    echo "Installing dependencies..."
+    cabal install --only-dependencies
 
-  echo "Cleaning up..."
-  popd >/dev/null 2>&1
+    echo "Installing package..."
+    cabal install --prefix=$prefix --bindir=$bindir
+
+    echo "Cleaning up..."
+  )
   rm -fr "$dir"
 done
