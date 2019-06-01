@@ -29,6 +29,10 @@ $home/bin/install sh askpass
 $home/bin/install sh asound
 $home/bin/install sh boring
 $home/bin/install sh c
+$home/bin/install sh cabal-install
+$home/bin/install sh cabal-repo
+$home/bin/install sh cabal-reset
+$home/bin/install sh cabal-world
 $home/bin/install sh creeper-world-3
 $home/bin/install sh dircp
 $home/bin/install sh fix-screen

@@ -23,8 +23,10 @@
 ^\.config/vdirsyncer($|/)
 ^\.darcs/author$
 ^\.dbus($|/)
+^\.ghc($|/)
 ^\.gitlab-token$
 ^\.gnupg($|/)
+^\.hackage($|/)
 ^\.java($|/)
 ^\.local($|/)
 ^\.minecraft($|/)
