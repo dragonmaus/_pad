@@ -12,6 +12,7 @@
 /.config/chromium/
 /.config/codef00.com/
 /.config/creeperworld3/
+/.config/gops/
 /.config/itch/
 /.config/keybase/
 /.config/mpv/
@@ -24,6 +25,7 @@
 /.gitlab-token
 /.gnupg/
 /.hackage/
+/.itch/
 /.java/
 /.local/
 /.minecraft/
