@@ -52,11 +52,10 @@ read:	mov	rdx, 16
 	xor	rdi, rdi	; stdin
 	xor	rax, rax	; syscall read
 	syscall
+	cmp	rax, 0
+	jl	error
+	je	done
 	mov	r14, rax	; input size
-
-	; quit it no bytes read
-	or	r14, r14
-	jz	done
 
 	; output current overall index
 	mov	rsi, r15
@@ -162,8 +161,73 @@ quit:	xor	rdi, rdi
 	mov	rax, 60		; syscall exit
 	syscall
 
+error:	neg	rax
+;e004:	cmp	rax, 4
+;	jne	e005
+;	mov	dl, [e004l]
+;	mov	rsi, e004m
+;	jmp	die
+;e005:	cmp	rax, 5
+;	jne	e009
+;	mov	dl, [e005l]
+;	mov	rsi, e005m
+;	jmp	die
+;e009:	cmp	rax, 9
+;	jne	e011
+;	mov	dl, [e009l]
+;	mov	rsi, e009m
+;	jmp	die
+;e011:	cmp	rax, 11
+;	jne	e014
+;	mov	dl, [e011l]
+;	mov	rsi, e011m
+;	jmp	die
+;e014:	cmp	rax, 14
+;	jne	e021
+;	mov	dl, [e014l]
+;	mov	rsi, e014m
+;	jmp	die
+e021:	cmp	rax, 21
+	jne	e022
+	mov	dl, [e021l]
+	mov	rsi, e021m
+	jmp	die
+e022:	cmp	rax, 22
+	jne	euk
+	mov	dl, [e022l]
+	mov	rsi, e022m
+	jmp	die
+euk:	mov	dl, [eukl]
+	mov	rsi, eukm
+die:	mov	rdi, 2		; stderr
+	xor	rax, rax
+	inc	rax		; syscall write
+	syscall
+	xor	rdi, rdi
+	inc	rdi
+	mov	rax, 60		; syscall exit
+	syscall
+
 segment	readable
 
+; the commented errors seem unlikely, if not impossible
+; uncomment if encountered in the wild
+;e004l	db	31
+;e004m	db	'hd: fatal: interrupted syscall', 0x0A
+;e005l	db	20
+;e005m	db	'hd: fatal: IO error', 0x0A
+;e009l	db	31
+;e009m	db	'hd: fatal: bad file descriptor', 0x0A
+;e011l	db	44
+;e011m	db	'hd: fatal: resource temporarily unavailable', 0x0A
+;e014l	db	23
+;e014m	db	'hd: fatal: bad address', 0x0A
+e021l	db	32
+e021m	db	'hd: fatal: input is a directory', 0x0A
+e022l	db	25
+e022m	db	'hd: fatal: invalid input', 0x0A
+eukl	db	25
+eukm	db	'hd: fatal: unknown error', 0x0A
 hdtable	db	'0123456789abcdef'
 
 segment	readable writeable
