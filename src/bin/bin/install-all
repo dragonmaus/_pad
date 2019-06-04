@@ -7,6 +7,7 @@ home=$(cd $home && env - pwd)
 
 $HOME/src/lib/bin/install-all
 
+$home/bin/install asm epoch
 $home/bin/install asm false
 $home/bin/install asm hd
 $home/bin/install asm lefix
