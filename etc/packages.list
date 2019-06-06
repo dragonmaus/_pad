@@ -5,6 +5,7 @@ barrier
 base-devel
 base-minimal
 bsdtar
+btrfs-progs
 cabal-install
 calc
 chromium
@@ -13,12 +14,14 @@ clang
 compton
 curl
 dhcpcd
+dosfstools
 dragon
 dwarffortress
 e2fsprogs
 edb-debugger
 endless-sky
 eudev
+f2fs-tools
 feh
 file
 firefox-esr
@@ -71,6 +74,7 @@ openjdk
 openssh
 outils
 p7zip
+parted
 pass
 pciutils
 pdf.js
