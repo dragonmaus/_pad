@@ -12,6 +12,8 @@ chromium
 chrony
 clang
 compton
+cross-aarch64-linux-musl
+cross-armv7l-linux-musleabihf
 curl
 dhcpcd
 dosfstools
