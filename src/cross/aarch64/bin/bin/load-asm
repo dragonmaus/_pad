@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+home=$(dirname $0)/..
+home=$(cd $home && env - pwd)
+
+main=$1
+file=$2
+shift 2
+
+obj=${file%.s}.o
+[[ -e $obj && $file -nt $obj ]] && rm -f $obj || :
+[[ -e $obj ]] || $home/bin/assemble $file
+
+$home/bin/ld -o $main $obj "$@"
+sstrip -z $main

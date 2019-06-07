@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+home=$(dirname $0)/..
+home=$(cd $home && env - pwd)
+
+main=$1
+file=$2
+shift 2
+
+obj=${file%.c}.o
+[[ -e $obj && $file -nt $obj ]] && rm -f $obj || :
+[[ -e $obj ]] || $home/bin/compile $file
+
+crt=
+grep -q '^main(' $file && crt=$HOME/lib/crt0.o
+
+$home/bin/ld -o $main $crt $obj "$@"
+sstrip -z $main
