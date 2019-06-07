@@ -1,6 +1,6 @@
-.globl	_start
+	.global	_start
 
-.text
+	.text
 _start:
 	mov	r7, #4		// syscall write
 	mov	r0, #1		// stdout
@@ -13,6 +13,6 @@ _start:
 message:
 	.word	_message
 
-.data
+	.data
 _message:
 	.ascii	"Hello, world!\n"
