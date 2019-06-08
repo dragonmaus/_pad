@@ -1,9 +1,6 @@
-format	elf64
+	global	lstat
 
-section	'.text' executable
-
-	public	lstat
-
+	section	.text
 lstat:
 	mov	rax, 6		; syscall lstat
 	syscall

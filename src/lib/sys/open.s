@@ -1,9 +1,6 @@
-format	elf64
+	global	open
 
-section	'.text' executable
-
-	public	open
-
+	section	.text
 open:
 	mov	rax, 2		; syscall open
 	syscall

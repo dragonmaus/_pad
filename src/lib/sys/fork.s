@@ -1,9 +1,6 @@
-format	elf64
+	global	fork
 
-section	'.text' executable
-
-	public	fork
-
+	section	.text
 fork:
 	mov	rax, 57		; syscall fork
 	syscall

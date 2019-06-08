@@ -1,9 +1,6 @@
-format	elf64
+	global	byte_find
 
-section	'.text' executable
-
-	public byte_find
-
+	section	.text
 byte_find:
 	mov	rbx, rdi	; save starting pointer
 	mov	rcx, rdx	; number of bytes to scan

@@ -1,9 +1,6 @@
-format	elf64
+	global	str_len
 
-section	'.text' executable
-
-	public str_len
-
+	section	.text
 str_len:
 	xor	rcx, rcx
 	not	rcx		; rcx = MAX_INT

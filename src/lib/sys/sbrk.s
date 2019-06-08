@@ -5,12 +5,9 @@
 ;   return brk(0);
 ; }
 
-format	elf64
+	global	sbrk
 
-section	'.text' executable
-
-	public	sbrk
-
+	section	.text
 sbrk:
 	or	rdi, rdi
 	jz	query

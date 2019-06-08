@@ -6,7 +6,17 @@ home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 cd $home
 
-$home/bin/assemble *.s
+for file in *.[cs]
+do
+	case ${file##*.} in
+	(c)
+		$home/bin/compile $file
+		;;
+	(s)
+		$home/bin/assemble $file
+		;;
+	esac
+done
 
 mkdir -p $HOME/lib
 cp -f *.o $HOME/lib

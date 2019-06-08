@@ -1,9 +1,6 @@
-format	elf64
+	global	brk
 
-section	'.text' executable
-
-	public	brk
-
+	section	.text
 brk:
 	mov	rax, 12		; syscall brk
 	syscall

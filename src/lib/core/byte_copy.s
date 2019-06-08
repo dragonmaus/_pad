@@ -1,9 +1,6 @@
-format	elf64
+	global	byte_copy
 
-section	'.text' executable
-
-	public byte_copy
-
+	section	.text
 byte_copy:
 	mov	rcx, rdx	; number of bytes to copy
 	cld

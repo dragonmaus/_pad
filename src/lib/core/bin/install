@@ -15,8 +15,17 @@ $home/bin/generate error.c
 $home/bin/generate error_str.c
 $home/bin/generate error_temp.c
 
-$home/bin/assemble *.s
-$home/bin/compile *.c
+for file in *.[cs]
+do
+	case ${file##*.} in
+	(c)
+		$home/bin/compile $file
+		;;
+	(s)
+		$home/bin/assemble $file
+		;;
+	esac
+done
 
 $home/bin/makelib libcore.a *.o
 

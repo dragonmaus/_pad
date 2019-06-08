@@ -4,12 +4,9 @@
 ;   return wait4(pid, status, options, 0);
 ; }
 
-format	elf64
+	global	waitpid
 
-section	'.text' executable
-
-	public	waitpid
-
+	section	.text
 waitpid:
 	xor	rcx, rcx
 	mov	rax, 61		; syscall wait4

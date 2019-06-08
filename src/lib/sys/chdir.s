@@ -1,9 +1,6 @@
-format	elf64
+	global	chdir
 
-section	'.text' executable
-
-	public	chdir
-
+	section	.text
 chdir:
 	mov	rax, 80		; syscall chdir
 	syscall

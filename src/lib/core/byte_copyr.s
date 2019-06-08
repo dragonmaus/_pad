@@ -1,9 +1,6 @@
-format	elf64
+	global	byte_copyr
 
-section	'.text' executable
-
-	public byte_copyr
-
+	section	.text
 byte_copyr:
 	mov	rcx, rdx	; number of bytes to copy
 	dec	rdx

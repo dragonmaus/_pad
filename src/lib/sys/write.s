@@ -1,9 +1,6 @@
-format	elf64
+	global	write
 
-section	'.text' executable
-
-	public	write
-
+	section	.text
 write:
 	mov	rax, 1		; syscall write
 	syscall

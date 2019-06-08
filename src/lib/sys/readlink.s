@@ -1,9 +1,6 @@
-format	elf64
+	global	readlink
 
-section	'.text' executable
-
-	public	readlink
-
+	section	.text
 readlink:
 	mov	rax, 89		; syscall readlink
 	syscall

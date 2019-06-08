@@ -19,12 +19,9 @@ do
 		continue
 	fi
 	{
-		echo 'format	elf64'
+		echo "	global	$name"
 		echo
-		echo "section	'.text' executable"
-		echo
-		echo "	public	$name"
-		echo
+		echo '	section	.text'
 		echo "$name:"
 		echo "	mov	rax, $number		; syscall $name"
 		echo '	syscall'

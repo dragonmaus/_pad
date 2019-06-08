@@ -11,8 +11,17 @@ $home/bin/generate sys.h
 mkdir -p $HOME/inc
 cp -f *.h $HOME/inc
 
-$home/bin/assemble *.s
-#$home/bin/compile *.c
+for file in *.[cs]
+do
+	case ${file##*.} in
+	(c)
+		$home/bin/compile $file
+		;;
+	(s)
+		$home/bin/assemble $file
+		;;
+	esac
+done
 
 $home/bin/makelib libsys.a *.o
 

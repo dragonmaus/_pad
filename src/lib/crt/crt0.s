@@ -1,12 +1,10 @@
-format	elf64
+	global	_start
+	global	environ
+	global	errno
 
-section	'.text' executable
+	extern	main
 
-	public	_start
-	public	environ
-	public	errno
-	extrn	main
-
+	section	.text
 _start:
 	pop	rdi		; argc
 	mov	rsi, rsp	; argv
@@ -18,7 +16,7 @@ skip:	add	rdx, 8
 	add	rdx, 8		; envp
 
 	mov	qword [environ], rdx
-	mov	qword [errno], 0
+	mov	dword [errno], 0
 
 	call	main
 
@@ -26,7 +24,8 @@ skip:	add	rdx, 8
 	mov	rax, 60		; syscall exit
 	syscall
 
-section '.data' writable
-
-environ	dq	1
-errno	dq	1
+	section	.bss
+environ:
+	resq	1
+errno:
+	resd	1

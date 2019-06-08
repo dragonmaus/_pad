@@ -4,12 +4,9 @@
 ;   return wait4(-1, status, options, rusage);
 ; }
 
-format	elf64
+	global	wait3
 
-section	'.text' executable
-
-	public	wait3
-
+	section	.text
 wait3:
 	mov	rcx, rdx
 	mov	rdx, rsi

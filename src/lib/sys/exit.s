@@ -1,9 +1,6 @@
-format	elf64
+	global	exit
 
-section	'.text' executable
-
-	public	exit
-
+	section	.text
 exit:
 	mov	rax, 60		; syscall exit
 	syscall

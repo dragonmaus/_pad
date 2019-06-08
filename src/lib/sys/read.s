@@ -1,9 +1,6 @@
-format	elf64
+	global	read
 
-section	'.text' executable
-
-	public	read
-
+	section	.text
 read:
 	mov	rax, 0		; syscall read
 	syscall

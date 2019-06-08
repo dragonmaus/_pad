@@ -1,9 +1,6 @@
-format	elf64
+	global	fsync
 
-section	'.text' executable
-
-	public	fsync
-
+	section	.text
 fsync:
 	mov	rax, 74		; syscall fsync
 	syscall

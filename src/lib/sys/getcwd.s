@@ -1,9 +1,6 @@
-format	elf64
+	global	getcwd
 
-section	'.text' executable
-
-	public	getcwd
-
+	section	.text
 getcwd:
 	mov	rax, 79		; syscall getcwd
 	syscall

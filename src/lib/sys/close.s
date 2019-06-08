@@ -1,9 +1,6 @@
-format	elf64
+	global	close
 
-section	'.text' executable
-
-	public	close
-
+	section	.text
 close:
 	mov	rax, 3		; syscall close
 	syscall

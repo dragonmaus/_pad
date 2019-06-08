@@ -1,9 +1,6 @@
-format	elf64
+	global	execve
 
-section	'.text' executable
-
-	public	execve
-
+	section	.text
 execve:
 	mov	rax, 59		; syscall execve
 	syscall

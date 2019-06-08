@@ -1,9 +1,6 @@
-format	elf64
+	global	byte_zero
 
-section	'.text' executable
-
-	public byte_zero
-
+	section	.text
 byte_zero:
 	mov	rcx, rsi	; number of bytes to zero
 	xor	rax, rax

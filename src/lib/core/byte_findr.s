@@ -1,11 +1,8 @@
 ; XXX: there has to be a better way to do this
 
-format	elf64
+	global	byte_findr
 
-section	'.text' executable
-
-	public byte_findr
-
+	section	.text
 byte_findr:
 	mov	rbx, rdi	; save starting pointer
 	mov	rcx, rdx	; number of bytes to scan

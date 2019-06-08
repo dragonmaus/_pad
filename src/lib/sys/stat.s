@@ -1,9 +1,6 @@
-format	elf64
+	global	stat
 
-section	'.text' executable
-
-	public	stat
-
+	section	.text
 stat:
 	mov	rax, 4		; syscall stat
 	syscall
