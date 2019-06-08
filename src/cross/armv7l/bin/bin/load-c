@@ -17,4 +17,4 @@ crt=
 grep -q '^main(' $file && crt=$HOME/lib/crt0.o
 
 $home/bin/ld -o $main $crt $obj "$@"
-sstrip -z $main
+$home/bin/strip $main

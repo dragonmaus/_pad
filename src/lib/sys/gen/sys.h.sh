@@ -29,9 +29,9 @@ do
 		echo "	mov	rax, $number		; syscall $name"
 		echo '	syscall'
 		echo '	ret'
-	} >$name.asm.new
-	cmp -s $name.asm.new $name.asm || mv -f $name.asm.new $name.asm
-	rm -f $name.asm.new
+	} >$name.s.new
+	cmp -s $name.s.new $name.s || mv -f $name.s.new $name.s
+	rm -f $name.s.new
 done <sys.h.list
 
 if [[ -r sys.h.post ]]

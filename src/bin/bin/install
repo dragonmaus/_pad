@@ -11,7 +11,7 @@ mkdir -p $bin
 
 kind=$1
 main=$2
-file=$main.$kind
+[[ $kind = asm ]] && file=$main.s || file=$main.$kind
 shift 2
 
 [[ -e $home/bin/load-$kind ]] || kind=script

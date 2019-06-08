@@ -1,10 +1,9 @@
 ; TODO: use a larger buffer
 
-format	elf64 executable 0
+	global	_start
 
-segment	readable executable
-
-entry	$
+	section	.text
+_start:
 read:
 	; read the next character
 	mov	rdx, 1
@@ -63,8 +62,10 @@ fail:
 	mov	rax, 60		; syscall exit
 	syscall
 
-segment	readable
-lf	db	0xA
+	section	.data
+lf:
+	db	0xA
 
-segment	readable writeable
-c	rb	1
+	section	.bss
+c:
+	resb	1

@@ -1,7 +1,6 @@
-format	elf64 executable 0
+	global	_start
 
-segment	readable executable
-
+	section	.text
 fmttime:
 	push	rdi
 	push	rbx
@@ -15,16 +14,16 @@ fmttime:
 	mov	rbx, numtab
 	mov	r15, 10
 	cld
-ftloop:	or	rax, rax
-	jz	ftdone
+.loop:	or	rax, rax
+	jz	.done
 	cdq
 	div	r15
 	xchg	rdx, rax
 	xlatb
 	stosb
 	xchg	rdx, rax
-	jmp	ftloop
-ftdone:	sub	rdi, number	; length of string
+	jmp	.loop
+.done:	sub	rdi, number	; length of string
 	mov	rsi, rdi
 	mov	rdi, number
 	call	revstr
@@ -42,21 +41,21 @@ revstr:
 	add	rsi, rcx
 	dec	rsi		; RSI points to end of string
 	shr	rcx, 1		; loop [length / 2] times (rounded down)
-	jz	rsdone
-rsloop:	mov	ah, byte[rsi]
-	mov	al, byte[rdi]
+	jz	.done
+.loop:	mov	ah, byte [rsi]
+	mov	al, byte [rdi]
 	mov	[rsi], al
 	mov	[rdi], ah
 	inc	rdi
 	dec	rsi
 	dec	rcx
-	jnz	rsloop
-rsdone:	pop	rax
+	jnz	.loop
+.done:	pop	rax
 	ret
 
-entry	$
+_start:
 	call	fmttime
-	mov	[number+rax], 0x0A
+	mov	byte [number+rax], 0x0A
 	inc	rax
 	mov	rdx, rax
 	mov	rsi, number
@@ -69,10 +68,10 @@ entry	$
 	mov	rax, 60		; syscall exit
 	syscall
 
-segment	readable
+	section	.data
+numtab:
+	db	'0123456789'
 
-numtab	db	'0123456789'
-
-segment	writable
-
-number	rb	11		; enough space to hold a 32-bit number + newline
+	section	.bss
+number:
+	resb	11		; enough space to hold a 32-bit number + newline

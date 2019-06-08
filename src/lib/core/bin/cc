@@ -1,2 +1,2 @@
 #!/bin/sh
-exec tcc -nostdinc -nostdlib -static -I$HOME/inc -I$HOME/.local/musl/include "$@"
+exec tcc -nostdinc -I$HOME/inc -I$HOME/.local/musl/include "$@"

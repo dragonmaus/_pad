@@ -24,6 +24,7 @@ set shada='0,<0,f0,h,s100
 set showmatch
 set sidescrolloff=1
 set smartcase
+set tabpagemax=100
 set termguicolors
 set title
 set nowrapscan

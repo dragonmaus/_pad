@@ -1,18 +1,17 @@
-format	elf64 executable 0
+	global	_start
 
-segment	readable executable
-
+	section	.text
 ; write the current index (RSI) to the output (RDI) in %08x format
 addindex:
 	push	rdx
 	mov	rdx, rdi	; save original pointer
 	add	rdi, 6		; move pointer to the 4th word (000000[0]0)
 	std			; iterate right-to-left
-ailoop:	call	hexdump
+.loop:	call	hexdump
 	stosw
 	shr	rsi, 8
 	cmp	rdi, rdx
-	jge	ailoop		; loop until we pass the original pointer
+	jge	.loop		; loop until we pass the original pointer
 	add	rdi, 10		; move past the 4th word (00000000[.])
 	cld
 	pop	rdx
@@ -22,11 +21,11 @@ ailoop:	call	hexdump
 chardump:
 	lodsb
 	cmp	al, 0x20	; return '.' if AL < ' '
-	jl	cddot
+	jl	.dot
 	cmp	al, 0x7E	; return '.' if AL > '~'
-	jg	cddot
+	jg	.dot
 	ret			; else return AL unmodified
-cddot:	mov	al, 0x2E
+.dot:	mov	al, 0x2E
 	ret
 
 ; convert the bottom byte of RSI into ASCII characters in the format %02x
@@ -43,7 +42,7 @@ hexdump:
 	pop	rbx
 	ret
 
-entry	$
+_start:
 	xor	r15, r15	; overall index
 
 	; read 16 bytes into ibuf
@@ -208,29 +207,37 @@ die:	mov	rdi, 2		; stderr
 	mov	rax, 60		; syscall exit
 	syscall
 
-segment	readable
-
+	section	.data
 ; the commented errors seem unlikely, if not impossible
 ; uncomment if encountered in the wild
-;e004l	db	31
-;e004m	db	'hd: fatal: interrupted syscall', 0x0A
-;e005l	db	20
-;e005m	db	'hd: fatal: IO error', 0x0A
-;e009l	db	31
-;e009m	db	'hd: fatal: bad file descriptor', 0x0A
-;e011l	db	44
-;e011m	db	'hd: fatal: resource temporarily unavailable', 0x0A
-;e014l	db	23
-;e014m	db	'hd: fatal: bad address', 0x0A
-e021l	db	32
-e021m	db	'hd: fatal: input is a directory', 0x0A
-e022l	db	25
-e022m	db	'hd: fatal: invalid input', 0x0A
-eukl	db	25
-eukm	db	'hd: fatal: unknown error', 0x0A
+e004m:
+	db	'hd: fatal: interrupted syscall', 0x0A
+e004l	equ	$ - e004m
+e005m:
+	db	'hd: fatal: IO error', 0x0A
+e005l	equ	$ - e005m
+e009m:
+	db	'hd: fatal: bad file descriptor', 0x0A
+e009l	equ	$ - e009m
+e011m:
+	db	'hd: fatal: resource temporarily unavailable', 0x0A
+e011l	equ	$ - e011m
+e014m:
+	db	'hd: fatal: bad address', 0x0A
+e014l	equ	$ - e014m
+e021m:
+	db	'hd: fatal: input is a directory', 0x0A
+e021l	equ	$ - e021m
+e022m:
+	db	'hd: fatal: invalid input', 0x0A
+e022l	equ	$ - e022m
+eukm:
+	db	'hd: fatal: unknown error', 0x0A
+eukl	equ	$ - eukm
 hdtable	db	'0123456789abcdef'
 
-segment	readable writeable
-
-ibuf	rb	16
-obuf	rb	79
+	section	.bss
+ibuf:
+	resb	16
+obuf:
+	resb	79

@@ -5,7 +5,9 @@ set -e
 home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 
-for file
-do
-	$home/bin/as "$file"
-done
+file=$1
+shift 1
+
+obj=${file%.s}.o
+
+$home/bin/as -o $obj $file "$@"

@@ -6,7 +6,12 @@ home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 
 main=$1
-src=$2
+file=$2
 shift 2
 
-$home/bin/assemble $src
+obj=${file%.s}.o
+[[ -e $obj && $file -nt $obj ]] && rm -f $obj || :
+[[ -e $obj ]] || $home/bin/assemble $file
+
+$home/bin/ld -o $main $obj "$@"
+$home/bin/strip $main

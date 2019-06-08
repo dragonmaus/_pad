@@ -1,2 +1,2 @@
 #!/bin/sh
-exec fasm "$@" >/dev/null
+exec nasm -f elf64 "$@"

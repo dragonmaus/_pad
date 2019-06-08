@@ -14,4 +14,4 @@ obj=${file%.s}.o
 [[ -e $obj ]] || $home/bin/assemble $file
 
 $home/bin/ld -o $main $obj "$@"
-sstrip -z $main
+$home/bin/strip $main

@@ -1,8 +1,7 @@
-format	elf64 executable 0
+	global	_start
 
-segment	readable executable
-
-entry	$
+	section	.text
+_start:
 	pop	rax		; argc
 	cmp	rax, 1
 	jg	doargs

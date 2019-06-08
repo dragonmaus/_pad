@@ -6,15 +6,15 @@ home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 
 main=$1
-src=$2
+file=$2
 shift 2
 
-obj=${src%.c}.o
-[[ -e $obj && $src -nt $obj ]] && rm -f $obj || :
-[[ -e $obj ]] || $home/bin/compile $src
+obj=${file%.c}.o
+[[ -e $obj && $file -nt $obj ]] && rm -f $obj || :
+[[ -e $obj ]] || $home/bin/compile $file
 
 crt=
-grep -q '^main(' $src && crt=$HOME/lib/crt0.o
+grep -q '^main(' $file && crt=$HOME/lib/crt0.o
 
-$home/bin/cc -o $main $crt $obj "$@"
-sstrip -z $main
+$home/bin/ld -o $main $crt $obj "$@"
+$home/bin/strip $main

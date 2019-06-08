@@ -11,7 +11,7 @@ $home/bin/generate sys.h
 mkdir -p $HOME/inc
 cp -f *.h $HOME/inc
 
-$home/bin/assemble *.asm
+$home/bin/assemble *.s
 #$home/bin/compile *.c
 
 $home/bin/makelib libsys.a *.o

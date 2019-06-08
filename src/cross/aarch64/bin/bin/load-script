@@ -6,8 +6,8 @@ home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 
 main=$1
-src=$2
+file=$2
 shift 2
 
-[[ -e $main && $src -nt $main ]] && rm -f $main || :
-[[ -e $main ]] || (cp -f $src $main && chmod +x $main)
+[[ -e $main && $file -nt $main ]] && rm -f $main || :
+[[ -e $main ]] || (cp -f $file $main && chmod +x $main)
