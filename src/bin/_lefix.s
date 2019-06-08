@@ -10,16 +10,16 @@
 
 	section	.text
 _start:
-read:	mov	rdi, buffer_0
+.read:	mov	rdi, buffer_0
 	mov	rsi, c
 	call	buffer_getc
 
 	cmp	rax, 0
-	je	exit
-	jl	fail
+	je	.exit
+	jl	.fail
 
 	cmp	byte [c], `\r`
-	jne	write
+	jne	.write
 
 	mov	rdi, buffer_1
 	mov	rsi, `\n`
@@ -29,27 +29,27 @@ read:	mov	rdi, buffer_0
 	call	buffer_peek
 
 	cmp	rax, `\n`
-	jne	read
+	jne	.read
 
 	mov	rdi, buffer_0
 	mov	rsi, 1
 	call	buffer_seek
 
-	jmp	read
+	jmp	.read
 
-write:	mov	rdi, buffer_1
+.write:	mov	rdi, buffer_1
 	mov	rsi, c
 	call	buffer_putc
-	jmp	read
+	jmp	.read
 
-exit:	mov	rdi, buffer_1
+.exit:	mov	rdi, buffer_1
 	call	buffer_flush
 
 	mov	rax, 60
 	xor	rdi, rdi
 	syscall
 
-fail:	mov	rdi, buffer_1
+.fail:	mov	rdi, buffer_1
 	call	buffer_flush
 
 	mov	rax, 60
@@ -57,4 +57,5 @@ fail:	mov	rdi, buffer_1
 	syscall
 
 	section	.bss
-c:	resb	1
+c:
+	resb	1

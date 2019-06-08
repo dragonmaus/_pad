@@ -2,34 +2,30 @@
 
 	section	.text
 _start:
-	pop	rax		; argc
-	cmp	rax, 1
-	jg	doargs
+	pop	rdi		; argc
+	cmp	rdi, 1
+	jg	.arg
 
-	pop	rax
-	pop	rax
-doenv:
-	pop	rcx		; envp
-	cmp	rcx, 0
-	je	exit
+	pop	rdi
+	pop	rdi
+.env:	pop	rsi		; envp
+	or	rsi, rsi
+	je	.exit
+	mov	rdi, rsi
+	xor	rcx, rcx
+	not	rcx		; MAX_INT
+	xor	rax, rax
+	cld
+repne	scasb
+	not	rcx		; ~rcx = string length + 1 (for newline)
+	dec	rdi
+	mov	byte [rdi], 0x0A; replace null terminator with newline
 	mov	rdx, rcx
-find_end:
-	inc	rdx
-	cmp	byte [rdx], 0
-	jne	find_end
-	mov	byte [rdx], 0xA	; replace \0 with \n
-	sub	rdx, rcx	; length of *envp
-	inc	rdx		; include trailing \n
-	mov	rsi, rcx	; *envp
 	mov	rdi, 1		; stdout
 	mov	rax, 1		; syscall write
 	syscall
-	jmp	doenv
-
-doargs:
-	; TODO: implement this
-
-exit:
-	xor	rdi, rdi	; exit code 0
+	jmp	.env
+.arg:	; TODO: implement this
+.exit:	xor	rdi, rdi	; exit code 0
 	mov	rax, 60		; syscall exit
 	syscall
