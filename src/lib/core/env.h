@@ -1,13 +1,7 @@
 #ifndef ENV_H
 #define ENV_H
 
-#ifdef WIN32
-extern char ***__p__environ(void);
-#define environ (*__p__environ())
-#else
 extern char **environ;
-#endif
-
 extern int env_isinit;
 
 extern void        env_clear(void);

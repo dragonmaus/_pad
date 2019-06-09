@@ -1,13 +1,8 @@
-#ifdef WIN32
-#define WINVER _WIN32_WINNT_WIN7
-#include <windows.h>
-#endif
 #include <sys.h>
 #include "error.h"
 #include "path.h"
 #include "str.h"
 
-#ifndef WIN32
   unsigned int
 next(char *elem, char *path)
 {
@@ -18,7 +13,6 @@ next(char *elem, char *path)
   j = str_copy(elem, path);
   return j+1;
 }
-#endif
 
   int
 path_absolute(char *path, int bufsize)
@@ -31,27 +25,6 @@ path_absolute(char *path, int bufsize)
   }
 
   size = str_len(path);
-#ifdef WIN32
-  if (bufsize > MAX_PATH) bufsize = MAX_PATH;
-
-  wchar_t wpath[bufsize];
-  wchar_t wfull[bufsize];
-  DWORD wsize;
-
-  wsize = MultiByteToWideChar(CP_UTF8, 0, path, size, wpath, bufsize);
-  if (!wsize) return -1;
-  wpath[wsize] = 0;
-
-  wsize = GetFullPathNameW(wpath, bufsize, wfull, NULL);
-  if (!wsize) return -1;
-  wfull[wsize] = 0;
-
-  size = WideCharToMultiByte(CP_UTF8, 0, wfull, wsize, path, bufsize, NULL, NULL);
-  if (!size) return -1;
-  path[size] = 0;
-
-  return path_fix(path);
-#else
   char elem[bufsize];
   char full[bufsize];
   register char *f;
@@ -80,5 +53,4 @@ path_absolute(char *path, int bufsize)
   if (f == full) str_copy(f, "/");
 
   return str_copy(path, full);
-#endif
 }

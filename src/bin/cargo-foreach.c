@@ -1,6 +1,3 @@
-#ifdef WIN32
-#include <process.h>
-#endif
 #include <sys.h>
 #include "buffer.h"
 #include "direntry.h"
@@ -29,16 +26,6 @@ help = USAGE "\n\n\
 direxec(const char *dir, const char **argv)
 {
   int status;
-#ifdef WIN32
-#define SIZE 4096
-
-  char olddir[SIZE];
-
-  if (!getcwd(olddir, SIZE)) strerr_die2sys(1, FATAL, "unable to get current directory: ");
-  if (chdir(dir) == -1) strerr_die4sys(1, FATAL, "unable to change directory to '", dir, "': ");
-  status = spawnvp(0, *argv, argv);
-  if (chdir(olddir) == -1) strerr_die4sys(1, FATAL, "unable to change directory to '", olddir, "': ");
-#else
   int pid;
 
   pid = fork();
@@ -50,7 +37,6 @@ direxec(const char *dir, const char **argv)
   if (waitpid(pid, &status, 0) == -1) strerr_die2sys(1, FATAL, "error waiting for child: ");
   if (!WIFEXITED(status)) return -1;
   status = WEXITSTATUS(status);
-#endif
   return status;
 }
 
