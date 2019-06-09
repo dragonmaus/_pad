@@ -39,6 +39,9 @@ set -a
 PATH=$path
 ENV=$XDG_CONFIG_HOME/shell/init.sh
 
+# prepend local man directory to MANPATH
+MANPATH=$XDG_DATA_HOME/man:
+
 HOSTNAME=${HOSTNAME:-$(hostname)}
 test -r $XDG_CONFIG_HOME/locale.conf && . $XDG_CONFIG_HOME/locale.conf
 
