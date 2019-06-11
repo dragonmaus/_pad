@@ -4,19 +4,18 @@
 
 	section	.text
 _start:
-read:
 	; read the next character
-	mov	rdx, 1
+.read:	mov	rdx, 1
 	lea	rsi, [c]
 	xor	rdi, rdi	; stdin
 	xor	rax, rax	; syscall read
 	syscall
 	cmp	rax, 0		; how many bytes were read?
-	je	exit
-	jl	fail
+	je	.exit
+	jl	.fail
 
 	cmp	byte [c], 0xD	; did we read a carriage return ('\r')?
-	jne	write
+	jne	.write
 
 	; write a line feed ('\n')
 	mov	rdx, 1
@@ -25,7 +24,7 @@ read:
 	mov	rax, 1		; syscall write
 	syscall
 	cmp	rax, 1		; how many bytes were written?
-	jne	fail
+	jne	.fail
 
 	; read the next character
 	mov	rdx, 1
@@ -34,38 +33,32 @@ read:
 	xor	rax, rax	; syscall read
 	syscall
 	cmp	rax, 0		; how many bytes were read?
-	je	exit
-	jl	fail
+	je	.exit
+	jl	.fail
 
 	cmp	byte [c], 0xA	; did we read a line feed ('\n')?
-	je	read		; yes, skip to next loop iteration
+	je	.read		; yes, skip to next loop iteration
 
-write:
 	; write the current character
-	mov	rdx, 1
+.write:	mov	rdx, 1
 	lea	rsi, [c]
 	mov	rdi, 1		; stdout
 	mov	rax, 1		; syscall write
 	syscall
 	cmp	rax, 1		; how many bytes were written?
-	jne	fail
+	jne	.fail
+	jmp	.read
 
-	jmp	read
-
-exit:
-	xor	rdi, rdi	; exit code 0
+.exit:	xor	rdi, rdi	; exit code 0
 	mov	rax, 60		; syscall exit
 	syscall
 
-fail:
-	mov	rdi, 1		; exit code 1
+.fail:	mov	rdi, 1		; exit code 1
 	mov	rax, 60		; syscall exit
 	syscall
 
 	section	.data
-lf:
-	db	0xA
+lf	db	0xA
 
 	section	.bss
-c:
-	resb	1
+c	resb	1

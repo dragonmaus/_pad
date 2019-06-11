@@ -3,54 +3,54 @@
 #include "path.h"
 #include "str.h"
 
-  unsigned int
+  static unsigned int
 next(char *elem, char *path)
 {
-  int i, j;
-
-  i = str_find(path, '/');
-  path[i] = 0;
-  j = str_copy(elem, path);
-  return j+1;
+  path[str_find(path, '/')] = 0;
+  return str_copy(elem, path) + 1;
 }
 
   int
 path_absolute(char *path, int bufsize)
 {
-  int size;
+  char full[bufsize];
+  char elem[bufsize];
+  register char *f;
+  register char *p;
+  unsigned int size;
 
   if (!*path) {
     errno = error_inval;
     return -1;
   }
 
-  size = str_len(path);
-  char elem[bufsize];
-  char full[bufsize];
-  register char *f;
-  register char *p;
-
+  /* get absolute, non-normalised version of path */
   f = full;
-  p = path;
-  if (*p != '/') {
+  if (*path != '/') {
     if (!getcwd(f, bufsize)) return -1;
     f += str_len(f);
-    if (*(f - 1) == '/') --f;
+    if (*(f - 1) != '/') *f++ = '/';
   }
+  f += str_copy(f, path);
+  *f = 0;
 
-  while ((p - path) < size && *p) {
-    p += next(elem, p);
+  size = f - full;
+  f = full;
+  p = path;
+  *p = 0;
+  while ((f - full) < size && *f) {
+    f += next(elem, f);
     if (!*elem || str_equal(".", elem)) continue;
     if (str_equal("..", elem)) {
-      f = full + str_findr(full, '/');
-      *f = 0;
+      p = path + str_findr(path, '/');
+      *p = 0;
       continue;
     }
-    f += str_copy(f, "/");
-    f += str_copy(f, elem);
+    p += str_copy(p, "/");
+    p += str_copy(p, elem);
   }
 
-  if (f == full) str_copy(f, "/");
+  if (p == path) str_copy(p, "/");
 
-  return str_copy(path, full);
+  return p - path;
 }

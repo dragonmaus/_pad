@@ -13,8 +13,5 @@ obj=${file%.c}.o
 [[ -e $obj && $file -nt $obj ]] && rm -f $obj || :
 [[ -e $obj ]] || $home/bin/compile $file
 
-crt=
-grep -q '^main(' $file && crt=$HOME/lib/crt0.o
-
-$home/bin/ld -o $main $crt $obj "$@"
+$home/bin/load $main $obj "$@"
 $home/bin/strip $main

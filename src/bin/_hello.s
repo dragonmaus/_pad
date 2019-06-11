@@ -2,8 +2,8 @@
 
 	section	.text
 _start:
-	mov	rdx, length
-	mov	rsi, message
+	mov	rdx, msglen
+	mov	rsi, msg
 	mov	rdi, 1		; stdout
 	mov	rax, 1		; syscall write
 	syscall
@@ -12,6 +12,5 @@ _start:
 	syscall
 
 	section	.data
-message:
-	db	'Hello, world!', 0x0A
-length	equ	$ - message
+msg	db	'Hello, world!', 0x0A
+msglen	equ	$ - msg

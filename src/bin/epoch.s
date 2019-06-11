@@ -69,9 +69,7 @@ _start:
 	syscall
 
 	section	.data
-numtab:
-	db	'0123456789'
+numtab	db	'0123456789'
 
 	section	.bss
-number:
-	resb	11		; enough space to hold a 32-bit number + newline
+number	resb	11		; enough space to hold a 32-bit number + newline

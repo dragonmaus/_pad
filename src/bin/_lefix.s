@@ -57,5 +57,4 @@ _start:
 	syscall
 
 	section	.bss
-c:
-	resb	1
+c	resb	1
