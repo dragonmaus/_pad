@@ -13,5 +13,5 @@ obj=${file%.s}.o
 [[ -e $obj && $file -nt $obj ]] && rm -f $obj || :
 [[ -e $obj ]] || $home/bin/assemble $file
 
-$home/bin/ld -o $main $obj "$@"
+$home/bin/load $main $obj "$@"
 $home/bin/strip $main
