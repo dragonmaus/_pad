@@ -43,6 +43,7 @@ $home/bin/install sh geturi
 $home/bin/install sh getuser
 $home/bin/install sh ignore
 $home/bin/install sh n
+$home/bin/install sh nvim-diff
 $home/bin/install sh nvim-git-diff
 $home/bin/install sh nvim-git-diff-gui
 $home/bin/install sh p
