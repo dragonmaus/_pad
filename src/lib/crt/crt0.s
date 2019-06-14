@@ -10,7 +10,7 @@ proc _start
 	add	rdx, 3
 	shl	rdx, 3
 	add	rdx, rsp	; envp
-	mov	[environ], rax
+	mov	[environ], rdx
 	mov	rsi, 16
 	add	rsi, rsp	; argv
 	cinvoke	main, [rsp+8], rsi, rdx	; main(argc, argv, envp)
