@@ -11,14 +11,14 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
-[{*.asm,*.i,*.inc,*.S,*.s}]
+[*.{asm,inc,mac,[imSs]}]
 indent_style = tab
 indent_size = tab
 
-[{*.bat,*.cmd}]
+[*.{bat,cmd}]
 end_of_line = crlf
 
-[{*.diff,*.patch}]
+[*.{diff,patch}]
 trim_trailing_whitespace = false
 
 [*.go]

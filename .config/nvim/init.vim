@@ -1,7 +1,5 @@
 let g:Illuminate_delay=0
 let g:asmsyntax="nasm"
-let g:filetype_i="nasm"
-let g:filetype_inc="nasm"
 let g:is_ksh=1
 let g:loaded_gzip=1
 let g:loaded_netrwPlugin=1
