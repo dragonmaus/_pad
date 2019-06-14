@@ -25,9 +25,10 @@ do
 		echo "proc $name"
 		echo "	sinvoke	$number	; syscall $name"
 		echo 'endproc'
-	} >$name.s.new
-	cmp -s $name.s.new $name.s || mv -f $name.s.new $name.s
-	rm -f $name.s.new
+	} >$name.s{new}
+	chmod 444 $name.s{new}
+	cmp -s $name.s{new} $name.s || mv -f $name.s{new} $name.s
+	rm -f $name.s{new}
 done <sys.h.list
 
 if [[ -r sys.h.post ]]
