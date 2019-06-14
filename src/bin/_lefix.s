@@ -1,60 +1,34 @@
-	global	_start
+%include 'core.m'
 
-	extern	buffer_0
-	extern	buffer_1
-	extern	buffer_getc
-	extern	buffer_putc
-	extern	buffer_peek
-	extern	buffer_seek
-	extern	buffer_flush
+	cextern	buffer_0
+	cextern	buffer_1
+	cextern	buffer_flush
+	cextern	buffer_getc
+	cextern	buffer_peek
+	cextern	buffer_putc
+	cextern	buffer_seek
 
 	section	.text
-_start:
-.read:	mov	rdi, buffer_0
-	mov	rsi, c
-	call	buffer_getc
-
+proc _start
+.read:	cinvoke	buffer_getc, buffer_0, c
 	cmp	rax, 0
 	je	.exit
 	jl	.fail
-
-	cmp	byte [c], `\r`
+	cmp	byte [c], 0x0D
 	jne	.write
-
-	mov	rdi, buffer_1
-	mov	rsi, `\n`
-	call	buffer_putc
-
-	mov	rdi, buffer_0
-	call	buffer_peek
-
-	cmp	rax, `\n`
+	cinvoke	buffer_putc, buffer_1, 0x0A
+	cinvoke	buffer_peek, buffer_0
+	cmp	rax, 0x0A
 	jne	.read
-
-	mov	rdi, buffer_0
-	mov	rsi, 1
-	call	buffer_seek
-
+	cinvoke	buffer_seek, buffer_0, 1
 	jmp	.read
-
-.write:	mov	rdi, buffer_1
-	mov	rsi, c
-	call	buffer_putc
+.write:	cinvoke	buffer_putc, buffer_1, c
 	jmp	.read
-
-.exit:	mov	rdi, buffer_1
-	call	buffer_flush
-
-	mov	rax, 60
-	xor	rdi, rdi
-	syscall
-
-.fail:	mov	rdi, buffer_1
-	call	buffer_flush
-
-	mov	rax, 60
-	mov	rdi, 1
-	syscall
+.exit:	cinvoke	buffer_flush, buffer_1
+	sinvoke	60, 0
+.fail:	cinvoke	buffer_flush, buffer_1
+	sinvoke	60, 1
+endproc
 
 	section	.bss
 c	resb	1

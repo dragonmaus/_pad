@@ -1,11 +1,10 @@
-	global	_start
+%include 'core.m'
 
 	section	.text
-_start:
+proc _start
 	pop	rdi		; argc
-	cmp	rdi, 1
-	jg	.arg
-
+;	cmp	rdi, 1
+;	jg	.arg		; TODO: implement this
 	pop	rdi
 	pop	rdi
 .env:	pop	rsi		; envp
@@ -20,12 +19,7 @@ repne	scasb
 	not	rcx		; ~rcx = string length + 1 (for newline)
 	dec	rdi
 	mov	byte [rdi], 0x0A; replace null terminator with newline
-	mov	rdx, rcx
-	mov	rdi, 1		; stdout
-	mov	rax, 1		; syscall write
-	syscall
+	sinvoke	1, 1, rcx	; syscall write (RDI already set)
 	jmp	.env
-.arg:	; TODO: implement this
-.exit:	xor	rdi, rdi	; exit code 0
-	mov	rax, 60		; syscall exit
-	syscall
+.exit:	sinvoke	60, 0
+endproc

@@ -1,16 +1,10 @@
-	global	_start
+%include 'core.m'
 
 	section	.text
-_start:
-	mov	rdx, msglen
-	mov	rsi, msg
-	mov	rdi, 1		; stdout
-	mov	rax, 1		; syscall write
-	syscall
-	mov	rdi, rax
-	mov	rax, 60		; syscall exit
-	syscall
+proc _start
+	sinvoke	1, 1, msg, msg_len	; syscall write
+	sinvoke	60, rax			; syscall exit
+endproc
 
 	section	.data
-msg	db	'Hello, world!', 0x0A
-msglen	equ	$ - msg
+msg	string	'Hello, world!', 0x0A

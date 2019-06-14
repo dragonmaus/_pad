@@ -1,64 +1,32 @@
 ; TODO: use a larger buffer
-
-	global	_start
+%include 'core.m'
 
 	section	.text
-_start:
-	; read the next character
-.read:	mov	rdx, 1
-	lea	rsi, [c]
-	xor	rdi, rdi	; stdin
-	xor	rax, rax	; syscall read
-	syscall
-	cmp	rax, 0		; how many bytes were read?
-	je	.exit
+proc _start
+.read:	sinvoke	0, 0, c, 1	; read the next byte
+	cmp	rax, 0
 	jl	.fail
-
-	cmp	byte [c], 0xD	; did we read a carriage return ('\r')?
-	jne	.write
-
-	; write a line feed ('\n')
-	mov	rdx, 1
-	lea	rsi, [lf]
-	mov	rdi, 1		; stdout
-	mov	rax, 1		; syscall write
-	syscall
-	cmp	rax, 1		; how many bytes were written?
+	je	.exit
+	cmp	byte [c], 0x0D	; did we read a carriage return ('\r')?
+	jne	.write		; no, write the current byte
+	sinvoke	1, 1, lf, 1	; write a newline
+	cmp	rax, 1
 	jne	.fail
-
-	; read the next character
-	mov	rdx, 1
-	lea	rsi, [c]
-	xor	rdi, rdi	; stdin
-	xor	rax, rax	; syscall read
-	syscall
-	cmp	rax, 0		; how many bytes were read?
-	je	.exit
+	sinvoke	0, 0, c, 1	; read the next byte
+	cmp	rax, 0
 	jl	.fail
-
-	cmp	byte [c], 0xA	; did we read a line feed ('\n')?
+	je	.exit
+	cmp	byte [c], 0x0A	; did we read a line feed ('\n')?
 	je	.read		; yes, skip to next loop iteration
-
-	; write the current character
-.write:	mov	rdx, 1
-	lea	rsi, [c]
-	mov	rdi, 1		; stdout
-	mov	rax, 1		; syscall write
-	syscall
-	cmp	rax, 1		; how many bytes were written?
-	jne	.fail
-	jmp	.read
-
-.exit:	xor	rdi, rdi	; exit code 0
-	mov	rax, 60		; syscall exit
-	syscall
-
-.fail:	mov	rdi, 1		; exit code 1
-	mov	rax, 60		; syscall exit
-	syscall
+.write:	sinvoke	1, 1, c, 1	; write the current byte
+	cmp	rax, 1
+	je	.read
+.fail:	sinvoke	60, 1
+.exit:	sinvoke	60, 0
+endproc
 
 	section	.data
-lf	db	0xA
+lf	db	0x0A
 
 	section	.bss
 c	resb	1

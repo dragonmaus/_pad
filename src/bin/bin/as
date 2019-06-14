@@ -1,2 +1,2 @@
 #!/bin/sh
-exec nasm -f elf64 "$@"
+exec nasm -w -macro-params -f elf64 "$@"

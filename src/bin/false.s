@@ -1,8 +1,6 @@
-	global	_start
+%include 'core.m'
 
 	section	.text
-_start:
-	xor	rdi, rdi
-	inc	rdi		; exit code 1
-	mov	rax, 60		; syscall exit
-	syscall
+proc _start
+	sinvoke	60, 1	; syscall exit
+endproc

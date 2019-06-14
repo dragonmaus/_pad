@@ -1,15 +1,21 @@
-	global	_start
+%include 'core.m'
 
 	section	.text
+proc _start
+	call	fmttime
+	mov	byte [number+rax], 0x0A
+	inc	rax
+	sinvoke	1, 1, number, rax	; syscall write
+	sinvoke	60, 0			; syscall exit
+endproc
+
 fmttime:
 	push	rdi
 	push	rbx
 	push	r15
 	push	rdx
 	push	rsi
-	xor	rdi, rdi
-	mov	rax, 201
-	syscall			; RAX now contains the current time in seconds since the epoch
+	sinvoke	201, 0		; syscall time; RAX contains UNIX timestamp
 	mov	rdi, number
 	mov	rbx, numtab
 	mov	r15, 10
@@ -52,21 +58,6 @@ revstr:
 	jnz	.loop
 .done:	pop	rax
 	ret
-
-_start:
-	call	fmttime
-	mov	byte [number+rax], 0x0A
-	inc	rax
-	mov	rdx, rax
-	mov	rsi, number
-	xor	rdi, rdi
-	inc	rdi		; stdout
-	xor	rax, rax
-	inc	rax		; syscall write
-	syscall
-	xor	rdi, rdi
-	mov	rax, 60		; syscall exit
-	syscall
 
 	section	.data
 numtab	db	'0123456789'
