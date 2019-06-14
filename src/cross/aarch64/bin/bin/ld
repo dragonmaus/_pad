@@ -1,2 +1,2 @@
 #!/bin/sh
-exec aarch64-linux-musl-ld -nostdlib -static -L$HOME/lib "$@"
+exec aarch64-linux-musl-ld -nostdinc -nostdlib -static -L $HOME/lib "$@"

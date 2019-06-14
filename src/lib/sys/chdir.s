@@ -1,7 +1,6 @@
-	global	chdir
+%include 'core.m'
 
 	section	.text
-chdir:
-	mov	rax, 80		; syscall chdir
-	syscall
-	ret
+proc chdir
+	sinvoke	80	; syscall chdir
+endproc

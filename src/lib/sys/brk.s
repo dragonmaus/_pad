@@ -1,7 +1,6 @@
-	global	brk
+%include 'core.m'
 
 	section	.text
-brk:
-	mov	rax, 12		; syscall brk
-	syscall
-	ret
+proc brk
+	sinvoke	12	; syscall brk
+endproc

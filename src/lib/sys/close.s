@@ -1,7 +1,6 @@
-	global	close
+%include 'core.m'
 
 	section	.text
-close:
-	mov	rax, 3		; syscall close
-	syscall
-	ret
+proc close
+	sinvoke	3	; syscall close
+endproc

@@ -10,4 +10,4 @@ shift 1
 
 obj=${file%.s}.o
 
-$home/bin/as -I $home/macro -o $obj $file "$@"
+$home/bin/as -o $obj $file "$@"

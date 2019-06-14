@@ -91,12 +91,13 @@
 	call	%1
 %endmacro
 
-; `xor reg, reg` is smaller than `mov reg, 0`
 %macro minmov 2
-	%ifidn %2, 0
-		xor	%1, %1
-	%else
-		mov	%1, %2
+	%ifnidn %1, %2		; emit nothing if moving a register onto itself
+		%ifidn %2, 0	; `xor reg, reg` is smaller than `mov reg, 0`
+			xor	%1, %1
+		%else
+			mov	%1, %2
+		%endif
 	%endif
 %endmacro
 

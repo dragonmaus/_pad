@@ -19,13 +19,12 @@ do
 		continue
 	fi
 	{
-		echo "	global	$name"
+		echo "%include 'core.m'"
 		echo
 		echo '	section	.text'
-		echo "$name:"
-		echo "	mov	rax, $number		; syscall $name"
-		echo '	syscall'
-		echo '	ret'
+		echo "proc $name"
+		echo "	sinvoke	$number	; syscall $name"
+		echo 'endproc'
 	} >$name.s.new
 	cmp -s $name.s.new $name.s || mv -f $name.s.new $name.s
 	rm -f $name.s.new

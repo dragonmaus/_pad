@@ -1,7 +1,6 @@
-	global	execve
+%include 'core.m'
 
 	section	.text
-execve:
-	mov	rax, 59		; syscall execve
-	syscall
-	ret
+proc execve
+	sinvoke	59	; syscall execve
+endproc

@@ -1,10 +1,11 @@
 %define program 'hd'
-
 %include 'core.m'
 %include 'error.m'
 
+	global	_start
+
 	section	.text
-proc _start
+_start:
 	xor	r15, r15	; overall index
 
 .read	sinvoke	0, 0, ibuf, 16	; read 16 bytes into ibuf
@@ -94,7 +95,6 @@ proc _start
 ;	errset	0E
 	errset	15
 	errset	16
-endproc
 
 ; write the current index (SI) to the output (DI) in hex dword (%08x) format
 addindex:

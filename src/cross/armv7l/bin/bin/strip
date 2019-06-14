@@ -1,2 +1,2 @@
 #!/bin/sh
-exec sstrip "$@"
+exec armv7l-linux-musleabihf-strip "$@"

@@ -1,17 +1,6 @@
-;   int
-; wait3(int *status, int options, struct rusage *rusage)
-; {
-;   return wait4(-1, status, options, rusage);
-; }
-
-	global	wait3
+%include 'core.m'
 
 	section	.text
-wait3:
-	mov	rcx, rdx
-	mov	rdx, rsi
-	mov	rsi, rdi
-	mov	rdi, -1
-	mov	rax, 61		; syscall wait4
-	syscall
-	ret
+proc wait3
+	sinvoke	61, -1, rdi, rsi, rdx	; wait4(-1, rdi, rsi, rdx)
+endproc

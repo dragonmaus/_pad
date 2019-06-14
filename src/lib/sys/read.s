@@ -1,7 +1,6 @@
-	global	read
+%include 'core.m'
 
 	section	.text
-read:
-	mov	rax, 0		; syscall read
-	syscall
-	ret
+proc read
+	sinvoke	0	; syscall read
+endproc

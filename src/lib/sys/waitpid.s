@@ -1,14 +1,6 @@
-;   int
-; waitpid(int pid, int *status, int options)
-; {
-;   return wait4(pid, status, options, 0);
-; }
-
-	global	waitpid
+%include 'core.m'
 
 	section	.text
-waitpid:
-	xor	rcx, rcx
-	mov	rax, 61		; syscall wait4
-	syscall
-	ret
+proc waitpid
+	sinvoke	61, rdi, rsi, rdx, 0	; wait4(rdi, rsi, rdx, 0)
+endproc

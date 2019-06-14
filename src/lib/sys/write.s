@@ -1,7 +1,6 @@
-	global	write
+%include 'core.m'
 
 	section	.text
-write:
-	mov	rax, 1		; syscall write
-	syscall
-	ret
+proc write
+	sinvoke	1	; syscall write
+endproc

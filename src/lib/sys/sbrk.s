@@ -1,24 +1,14 @@
-;   void *
-; sbrk(long int n)
-; {
-;   if (n) return brk((brk(0) + n));
-;   return brk(0);
-; }
-
-	global	sbrk
+%include 'core.m'
 
 	section	.text
-sbrk:
+proc sbrk
 	or	rdi, rdi
-	jz	query
-resize:	push	rdi
-	call	query
+	jz	.brk	; sbrk(0) => brk(0)
+.sbrk:	push	rdi
+	call	.brk
 	pop	rdi
-	add	rdi, rax
-	mov	rax, 12		; syscall brk
-	syscall
-	ret
-query:	xor	rdi, rdi
-	mov	rax, 12		; syscall brk
-	syscall
-	ret
+	add	rdi, rax	; rdi += brk(0)
+	sinvoke	12, rdi	; brk(rdi);
+endproc
+.brk:	sinvoke	12, 0	; brk(0)
+endproc

@@ -1,2 +1,2 @@
 #!/bin/sh
-exec sstrip "$@"
+exec aarch64-linux-musl-strip "$@"

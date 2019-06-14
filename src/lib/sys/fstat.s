@@ -1,7 +1,6 @@
-	global	fstat
+%include 'core.m'
 
 	section	.text
-fstat:
-	mov	rax, 5		; syscall fstat
-	syscall
-	ret
+proc fstat
+	sinvoke	5	; syscall fstat
+endproc

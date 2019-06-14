@@ -1,7 +1,6 @@
-	global	fsync
+%include 'core.m'
 
 	section	.text
-fsync:
-	mov	rax, 74		; syscall fsync
-	syscall
-	ret
+proc fsync
+	sinvoke	74	; syscall fsync
+endproc

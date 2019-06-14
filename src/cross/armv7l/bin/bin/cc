@@ -1,2 +1,2 @@
 #!/bin/sh
-exec armv7l-linux-musleabihf-cc -nostdinc -I$HOME/inc "$@"
+exec armv7l-linux-musleabihf-cc -nostdinc -nostdlib -I $HOME/inc "$@"

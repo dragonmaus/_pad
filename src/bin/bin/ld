@@ -1,2 +1,2 @@
 #!/bin/sh
-exec tcc -nostdlib -static -L$HOME/lib "$@"
+exec ld -nostdinc -nostdlib -static -L $HOME/lib "$@"

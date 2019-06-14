@@ -3,7 +3,6 @@
 #include "error.h"
 
 #undef errno
-int errno;
 
 int error_perm =
 #ifdef EPERM

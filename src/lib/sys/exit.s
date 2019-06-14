@@ -1,7 +1,6 @@
-	global	exit
+%include 'core.m'
 
 	section	.text
-exit:
-	mov	rax, 60		; syscall exit
-	syscall
-	ret
+proc exit
+	sinvoke	60	; syscall exit
+endproc

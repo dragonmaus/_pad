@@ -1,25 +1,28 @@
 %include 'core.m'
 
+	global	_start
+
 	section	.text
-proc _start
-	pop	rdi		; argc
-;	cmp	rdi, 1
-;	jg	.arg		; TODO: implement this
-	pop	rdi
-	pop	rdi
-.env:	pop	rsi		; envp
-	or	rsi, rsi
-	je	.exit
-	mov	rdi, rsi
+_start:
+;	mov	rax, [rsp]	; argc
+;	cmp	rax, 1
+;	jg	.args
+	mov	rbx, rsp
+	add	rbx, 24		; envp
+.env:	mov	r12, [rbx]
+	or	r12, r12
+	jz	.exit		; loop until end of envp (null pointer)
+	mov	rdi, r12
 	xor	rcx, rcx
-	not	rcx		; MAX_INT
-	xor	rax, rax
+	not	rcx		; max uint64
+	xor	rax, rax	; scan for `\0`
 	cld
 repne	scasb
 	not	rcx		; ~rcx = string length + 1 (for newline)
 	dec	rdi
-	mov	byte [rdi], 0x0A; replace null terminator with newline
-	sinvoke	1, 1, rcx	; syscall write (RDI already set)
+	mov	byte [rdi], 0x0A	; replace null terminator with newline
+	sinvoke	1, 1, r12, rcx	; syscall write
+	add	rbx, 8		; ++envp
 	jmp	.env
+.args:	; TODO: implement this
 .exit:	sinvoke	60, 0
-endproc

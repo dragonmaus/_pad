@@ -1,2 +1,2 @@
 #!/bin/sh
-exec armv7l-linux-musleabihf-ld -nostdlib -static -L$HOME/lib "$@"
+exec armv7l-linux-musleabihf-ld -nostdinc -nostdlib -static -L $HOME/lib "$@"

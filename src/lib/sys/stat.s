@@ -1,7 +1,6 @@
-	global	stat
+%include 'core.m'
 
 	section	.text
-stat:
-	mov	rax, 4		; syscall stat
-	syscall
-	ret
+proc stat
+	sinvoke	4	; syscall stat
+endproc

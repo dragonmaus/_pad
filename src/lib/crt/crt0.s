@@ -1,31 +1,22 @@
-	global	_start
-	global	environ
-	global	errno
+%include 'core.m'
 
-	extern	main
+	cextern	main
+	cglobal	environ
+	cglobal	errno
 
 	section	.text
-_start:
-	pop	rdi		; argc
-	mov	rsi, rsp	; argv
+proc _start
+	mov	rdx, [rsp+8]	; argc
+	add	rdx, 3
+	shl	rdx, 3
+	add	rdx, rsp	; envp
+	mov	[environ], rax
+	mov	rsi, 16
+	add	rsi, rsp	; argv
+	cinvoke	main, [rsp+8], rsi, rdx	; main(argc, argv, envp)
+	sinvoke	60, rax		; exit code is what main returns
+endproc
 
-	mov	rdx, rsp
-skip:	add	rdx, 8
-	cmp	qword [rdx], 0
-	jne	skip
-	add	rdx, 8		; envp
-
-	mov	qword [environ], rdx
-	mov	dword [errno], 0
-
-	call	main
-
-	mov	rdi, rax	; exit code is what main returned
-	mov	rax, 60		; syscall exit
-	syscall
-
-	section	.bss
-environ:
-	resq	1
-errno:
-	resd	1
+	section	.data
+environ	dq	0
+errno	dd	0

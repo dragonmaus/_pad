@@ -1,8 +1,10 @@
 ; TODO: use a larger buffer
 %include 'core.m'
 
+	global	_start
+
 	section	.text
-proc _start
+_start:
 .read:	sinvoke	0, 0, c, 1	; read the next byte
 	cmp	rax, 0
 	jl	.fail
@@ -23,7 +25,6 @@ proc _start
 	je	.read
 .fail:	sinvoke	60, 1
 .exit:	sinvoke	60, 0
-endproc
 
 	section	.data
 lf	db	0x0A

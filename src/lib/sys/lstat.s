@@ -1,7 +1,6 @@
-	global	lstat
+%include 'core.m'
 
 	section	.text
-lstat:
-	mov	rax, 6		; syscall lstat
-	syscall
-	ret
+proc lstat
+	sinvoke	6	; syscall lstat
+endproc

@@ -1,7 +1,6 @@
-	global	open
+%include 'core.m'
 
 	section	.text
-open:
-	mov	rax, 2		; syscall open
-	syscall
-	ret
+proc open
+	sinvoke	2	; syscall open
+endproc

@@ -1,7 +1,6 @@
-	global	fork
+%include 'core.m'
 
 	section	.text
-fork:
-	mov	rax, 57		; syscall fork
-	syscall
-	ret
+proc fork
+	sinvoke	57	; syscall fork
+endproc

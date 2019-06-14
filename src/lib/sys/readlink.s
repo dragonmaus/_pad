@@ -1,7 +1,6 @@
-	global	readlink
+%include 'core.m'
 
 	section	.text
-readlink:
-	mov	rax, 89		; syscall readlink
-	syscall
-	ret
+proc readlink
+	sinvoke	89	; syscall readlink
+endproc

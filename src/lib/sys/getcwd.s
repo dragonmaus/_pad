@@ -1,7 +1,6 @@
-	global	getcwd
+%include 'core.m'
 
 	section	.text
-getcwd:
-	mov	rax, 79		; syscall getcwd
-	syscall
-	ret
+proc getcwd
+	sinvoke	79	; syscall getcwd
+endproc
