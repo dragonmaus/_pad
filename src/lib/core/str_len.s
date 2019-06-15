@@ -1,13 +1,13 @@
-	global	str_len
+%include 'core.m'
 
 	section	.text
-str_len:
+proc str_len
 	xor	rcx, rcx
-	not	rcx		; rcx = MAX_INT
-	xor	rax, rax	; search for '\0'
+	not	rcx		; max uint64
+	xor	al, al		; search for the null terminator
 	cld
-repne	scasb			; scan until we see '\0'
-	not	rcx		; -rcx - 2 = ~rcx - 1 = string length
+repne	scasb
+	not	rcx		; ~rcx - 1 = string length
 	dec	rcx
 	mov	rax, rcx
-	ret
+endproc

@@ -1,8 +1,8 @@
-	global	byte_copy
+%include 'core.m'
 
 	section	.text
-byte_copy:
+proc byte_copy
 	mov	rcx, rdx	; number of bytes to copy
 	cld
 rep	movsb
-	ret
+endproc

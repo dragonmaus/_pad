@@ -1,9 +1,9 @@
-	global	byte_zero
+%include 'core.m'
 
 	section	.text
-byte_zero:
+proc byte_zero
 	mov	rcx, rsi	; number of bytes to zero
 	xor	rax, rax
 	cld
 rep	stosb
-	ret
+endproc

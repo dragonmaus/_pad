@@ -1,12 +1,14 @@
-	global	byte_find
+%include 'core.m'
 
 	section	.text
-byte_find:
-	mov	rbx, rdi	; save starting pointer
+proc byte_find
+	push	rbx
+	mov	rbx, rdi	; save initial pointer
 	mov	rcx, rdx	; number of bytes to scan
-	mov	rax, rsi	; byte to look for
+	mov	al, sil		; byte to scan for
+	cld			; scan forward
 repne	scasb
-	dec	rdi		; go back to matching byte (or string[len] if no match)
 	mov	rax, rdi
-	sub	rax, rbx	; byte index == [current pointer] - [initial pointer]
-	ret
+	sub	rax, rbx	; return (current pointer - initial pointer)
+	pop	rbx
+endproc

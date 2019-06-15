@@ -1,7 +1,7 @@
-	global	str_copy
+%include 'core.m'
 
 	section	.text
-str_copy:
+proc str_copy
 	mov	rcx, rsi	; save starting pointer
 	cld
 .copy:	movsb			; copy a byte
@@ -10,4 +10,4 @@ str_copy:
 	dec	rsi		; move pointer back to the '\0'
 	mov	rax, rsi
 	sub	rax, rcx
-	ret
+endproc

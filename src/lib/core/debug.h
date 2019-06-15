@@ -67,14 +67,32 @@ debug(const char *name, const char *s, unsigned long int n)
   char x[1000];
 
   len = 0;
-  len += debug_write(1, "  ");
+  len += write(1, "  ", 2);
   len += debug_write(1, name);
-  len += debug_write(1, " (");
+  len += write(1, " (", 2);
   x[debug_fmt_ulong(x, n)] = 0;
   len += debug_write(1, x);
-  len += debug_write(1, ") = '");
+  len += write(1, ") = '", 5);
   len += debug_write(1, s);
-  len += debug_write(1, "'\n");
+  len += write(1, "'\n", 2);
+  return len;
+}
+
+  static unsigned int
+debugbytes(const char *name, const char *s, unsigned long int n)
+{
+  unsigned int len;
+  char x[1000];
+
+  len = 0;
+  len += write(1, "  ", 2);
+  len += debug_write(1, name);
+  len += write(1, " (", 2);
+  x[debug_fmt_ulong(x, n)] = 0;
+  len += debug_write(1, x);
+  len += write(1, ") = '", 5);
+  len += write(1, s, n);
+  len += write(1, "'\n", 2);
   return len;
 }
 

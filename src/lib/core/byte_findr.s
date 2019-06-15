@@ -1,23 +1,21 @@
-; XXX: there has to be a better way to do this
-
-	global	byte_findr
+%include 'core.m'
 
 	section	.text
-byte_findr:
-	mov	rbx, rdi	; save starting pointer
+proc byte_findr
+	push	rbx
+	mov	rbx, rdi	; save initial pointer
 	mov	rcx, rdx	; number of bytes to scan
-	mov	rax, rsi	; byte to look for
-	xor	rdx, rdx	; track whether this is set
-.scan:
-repne	scasb
-	jne	.done		; exhausted rcx without finding a match
-	mov	rdx, rdi	; save pointer if it matches
-	jmp	.scan
-.done:	or	rdx, rdx
-	jz	.skip
-	mov	rax, rdx	; if matching pointer was saved, use that
-	dec	rax
-	jmp	.calc
-.skip:	mov	rax, rdi	; else use end pointer
-.calc:	sub	rax, rbx	; byte index == [current pointer] - [starting pointer]
-	ret
+	mov	al, sil		; byte to scan for
+	dec	rdx
+	add	rdi, rdx	; start at end of region
+	std			; and scan backward
+.scan:	scasb
+	je	.match
+	loop	.scan
+	add	rdi, rdx
+	inc	rdi		; no match; go back to end of region
+.match:	inc	rdi		; go back to matching byte (or just past end of region if no match)
+	mov	rax, rdi
+	sub	rax, rbx	; return (current pointer - initial pointer)
+	pop	rbx
+endproc
