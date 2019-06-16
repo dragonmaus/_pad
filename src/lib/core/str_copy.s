@@ -1,13 +1,15 @@
+; unsigned int str_copy(char *RDI, const char *RSI)
+
 %include 'core.m'
 
 	section	.text
 proc str_copy
-	mov	rcx, rsi	; save starting pointer
+	mov	rdx, rdi
 	cld
-.copy:	movsb			; copy a byte
-	cmp	byte [rdi-1], 0	; check if that byte is '\0'
-	jne	.copy		; loop until we see '\0'
-	dec	rsi		; move pointer back to the '\0'
-	mov	rax, rsi
-	sub	rax, rcx
+.loop:	movsb
+	cmp	byte [rsi-1], 0
+	jne	.loop
+	dec	rdi		; move pointer back to null terminator
+	mov	rax, rdi
+	sub	rax, rdx	; return current pointer - initial pointer
 endproc

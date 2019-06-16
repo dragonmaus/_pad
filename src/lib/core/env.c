@@ -28,7 +28,7 @@ env_unsetlen(const char *s, int len)
 {
   int i;
 
-  for (i = en - 1; i >= 0; --i) if (!str_diffn(s, len, environ[i]) && environ[i][len] == '=') env_goodbye(i);
+  for (i = en - 1; i >= 0; --i) if (!str_diffn(s, environ[i], len) && environ[i][len] == '=') env_goodbye(i);
 }
 
   static int

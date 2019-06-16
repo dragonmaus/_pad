@@ -1,16 +1,13 @@
+; int byte_diff(const char *RDI, const char *RSI, unsigned int RDX)
+
 %include 'core.m'
 
 	section	.text
 proc byte_diff
-	mov	rcx, rdx	; number of bytes to compare
+	mov	rcx, rdx
 	cld
 repe	cmpsb
-	jne	.calc		; found a difference
-	xor	rax, rax	; return 0
-endproc
-.calc:	mov	sil, byte [rsi-1]
-	mov	dil, byte [rdi-1]
-	xor	rax, rax
-	mov	al, dil
-	sub	al, sil		; return (*s - *t)
+	mov	al, byte [rdi-1]
+	sub	al, byte [rsi-1]
+	movsx	rax, al		; return *RDI - *RSI
 endproc

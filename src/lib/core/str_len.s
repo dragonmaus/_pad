@@ -1,13 +1,14 @@
+; unsigned int str_len(const char *RDI)
+
 %include 'core.m'
 
 	section	.text
 proc str_len
-	xor	rcx, rcx
-	not	rcx		; max uint64
-	xor	al, al		; search for the null terminator
+	mov	rdx, rdi
+	xor	al, al
 	cld
 repne	scasb
-	not	rcx		; ~rcx - 1 = string length
-	dec	rcx
-	mov	rax, rcx
+	dec	rdi		; move pointer back to null terminator
+	mov	rax, rdi
+	sub	rax, rdx	; return current pointer - initial pointer
 endproc
