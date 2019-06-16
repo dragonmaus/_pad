@@ -33,7 +33,6 @@ feh
 file
 firefox-esr
 fontconfig-32bit
-gdk-pixbuf-32bit
 git
 go
 gparted
@@ -48,13 +47,11 @@ khard
 libGL-32bit
 libXft-devel
 libXinerama-devel
-libXrandr-32bit
 libXrandr-devel
 libavformat-32bit
 libavresample-32bit
 libavutil-32bit
 libcurl-devel
-libglib-devel-32bit
 libpulseaudio-32bit
 libsodium-devel
 libtxc_dxtn-32bit
