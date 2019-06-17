@@ -1,7 +1,7 @@
 #include "buffer.h"
 
   int
-buffer_0small_read(int fd, char *buf, unsigned int len)
+buffer_0small_read(unsigned int fd, char *buf, unsigned int len)
 {
   if (buffer_flush(buffer_1small) == -1) return -1;
   return buffer_read(fd, buf, len);

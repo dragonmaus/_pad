@@ -3,7 +3,7 @@
 2	open		extern int   open(const char *, int, unsigned short int);
 3	close		extern int   close(unsigned int);
 4	stat		extern int   stat(const char *, struct stat *);
-5	fstat		extern int   fstat(int, struct stat *);
+5	fstat		extern int   fstat(unsigned int, struct stat *);
 6	lstat		extern int   lstat(const char *, struct stat *);
 12	brk		extern int   brk(void *);
 -	sbrk		extern void *sbrk(long int);
@@ -13,7 +13,7 @@
 -	wait3		extern int   wait3(int *, int, struct rusage *);
 61	wait4		extern int   wait4(int, int *, int, struct rusage *);
 -	waitpid		extern int   waitpid(int, int *, int);
-74	fsync		extern int   fsync(int);
+74	fsync		extern int   fsync(unsigned int);
 79	getcwd		extern char *getcwd(char *, unsigned int);
 80	chdir		extern int   chdir(const char *);
 89	readlink	extern int   readlink(const char *, char *, unsigned int);

@@ -2,7 +2,7 @@
 #include "buffer.h"
 
   int
-buffer_read(int fd, char *buf, unsigned int len)
+buffer_read(unsigned int fd, char *buf, unsigned int len)
 {
   return read(fd, buf, len);
 }

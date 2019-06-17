@@ -5,7 +5,7 @@ typedef struct buffer {
   char *x;
   unsigned int p;
   unsigned int n;
-  int fd;
+  unsigned int fd;
   int (*op)();
 } buffer;
 
@@ -13,7 +13,7 @@ typedef struct buffer {
 #define BUFFER_INSIZE 8192
 #define BUFFER_OUTSIZE 8192
 
-extern void  buffer_init(buffer *, int (*)(int, char *, unsigned int), int, char *, unsigned int);
+extern void  buffer_init(buffer *, int (*)(unsigned int, char *, unsigned int), unsigned int, char *, unsigned int);
 
 extern int   buffer_flush(buffer *);
 extern int   buffer_put(buffer *, const char *, unsigned int);
@@ -34,8 +34,8 @@ extern int   buffer_copy(buffer *, buffer *);
 extern char *buffer_peek(const buffer *);
 extern void  buffer_seek(buffer *, unsigned int);
 
-extern int   buffer_read(int, char *, unsigned int);
-extern int   buffer_write(int, const char *, unsigned int);
+extern int   buffer_read(unsigned int, char *, unsigned int);
+extern int   buffer_write(unsigned int, const char *, unsigned int);
 
 extern buffer *buffer_0;
 extern buffer *buffer_0small;

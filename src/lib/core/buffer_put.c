@@ -3,7 +3,7 @@
 #include "error.h"
 
   static int
-allwrite(int (*op)(int, const char *, unsigned int), int fd, const char *buf, unsigned int len)
+allwrite(int (*op)(unsigned int, const char *, unsigned int), unsigned int fd, const char *buf, unsigned int len)
 {
   int w;
 

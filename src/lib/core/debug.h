@@ -55,7 +55,7 @@ debug_str_len(const char *s)
 }
 
   static unsigned int
-debug_write(int fd, const char *s)
+debug_write(unsigned int fd, const char *s)
 {
   return write(fd, s, debug_str_len(s));
 }

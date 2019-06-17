@@ -13,7 +13,7 @@ getthis(buffer *s, char *buf, unsigned int len)
 }
 
   static int
-oneread(int (*op)(int, char *, unsigned int), int fd, char *buf, unsigned int len)
+oneread(int (*op)(unsigned int, char *, unsigned int), unsigned int fd, char *buf, unsigned int len)
 {
   int r;
 
