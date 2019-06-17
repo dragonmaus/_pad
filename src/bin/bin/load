@@ -11,7 +11,7 @@ shift
 rt=
 for file
 do
-	[[ -e $file ]] && $home/bin/nm -Pg $file || :
-done | cut -d ' ' -f 1 | grep -Fqx _start || rt=$HOME/lib/crt0.o
+	[[ -e $file ]] && $home/bin/nm -Pg $file 2>/dev/null || :
+done | cut -d ' ' -f 1 | grep -Fqx _start || rt=$HOME/lib/_start.o
 
 $home/bin/ld -o $main $rt "$@"

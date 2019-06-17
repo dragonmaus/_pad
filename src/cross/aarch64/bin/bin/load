@@ -12,6 +12,6 @@ rt=
 for file
 do
 	[[ -e $file ]] && $home/bin/nm -Pg $file || :
-done | cut -d ' ' -f 1 | grep -Fqx _start || rt=$HOME/lib/crt0.o
+done | cut -d ' ' -f 1 | grep -Fqx _start || rt=$HOME/lib/_start.o
 
 $home/bin/ld -o $main $rt "$@"

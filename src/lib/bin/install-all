@@ -5,6 +5,6 @@ set -e
 home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 
-$home/crt/bin/install
+$home/_start/bin/install
 $home/sys/bin/install
 $home/core/bin/install

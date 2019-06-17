@@ -5,6 +5,6 @@ set -e
 home=$(dirname $0)/..
 home=$(cd $home && env - pwd)
 
-$home/crt/bin/clean
+$home/_start/bin/clean
 $home/sys/bin/clean
 $home/core/bin/clean
