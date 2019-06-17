@@ -9,6 +9,7 @@ btrfs-progs
 cabal-install
 calc
 chromium
+chromium-widevine
 chrony
 clang
 compton
