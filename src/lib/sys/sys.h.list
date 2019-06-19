@@ -13,7 +13,10 @@
 -	wait3		extern int   wait3(int *, int, struct rusage *);
 61	wait4		extern int   wait4(int, int *, int, struct rusage *);
 -	waitpid		extern int   waitpid(int, int *, int);
+72	fcntl		extern int   fcntl(unsigned int, , unsigned int, ...);
 74	fsync		extern int   fsync(unsigned int);
+78	getdents	extern int   getdents(unsigned int, struct dirent *, unsigned int);
 79	getcwd		extern char *getcwd(char *, unsigned int);
 80	chdir		extern int   chdir(const char *);
 89	readlink	extern int   readlink(const char *, char *, unsigned int);
+217	getdents64	extern int   getdents64(unsigned int, struct dirent64 *, unsigned int);

@@ -1,6 +1,22 @@
 #ifndef SYS_H
 #define SYS_H
 
+struct dirent {
+  unsigned long int d_ino;
+  unsigned long int d_off;
+  unsigned short int d_reclen;
+  char d_name[256];
+  char d_type;
+};
+
+struct dirent64 {
+  unsigned long int d_ino;
+  unsigned long int d_off;
+  unsigned short int d_reclen;
+  unsigned char d_type;
+  char d_name[256];
+};
+
 struct timespec {
   long int tv_sec;
   long int tv_nsec;
@@ -64,9 +80,21 @@ extern int   wait3(int *, int, struct rusage *);
 extern int   wait4(int, int *, int, struct rusage *);
 extern int   waitpid(int, int *, int);
 extern int   fsync(unsigned int);
+extern int   getdents(unsigned int, struct dirent *, unsigned int);
 extern char *getcwd(char *, unsigned int);
 extern int   chdir(const char *);
 extern int   readlink(const char *, char *, unsigned int);
+extern int   getdents64(unsigned int, struct dirent64 *, unsigned int);
+
+#define DT_UNKNOWN  000000000
+#define DT_FIFO     000000001
+#define DT_CHR      000000002
+#define DT_DIR      000000004
+#define DT_BLK      000000006
+#define DT_REG      000000010
+#define DT_LNK      000000012
+#define DT_SOCK     000000014
+#define DT_WHT      000000016
 
 #define O_RDONLY    000000000
 #define O_WRONLY    000000001
