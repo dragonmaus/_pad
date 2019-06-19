@@ -21,6 +21,7 @@
 /.config/vdirsyncer/
 /.darcs/author
 /.dbus/
+/.gforth-history
 /.ghc/
 /.gitlab-token
 /.gnupg/
@@ -49,6 +50,7 @@
 /git/
 /inc/
 /lib/*.[ao]
+/lib/pforth.dic
 /log/
 /src/**/*.[ao]
 /src/clojure/
