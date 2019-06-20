@@ -16,7 +16,7 @@ fi
 
 XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
-XDG_DATA_HOME=${XDG_DATA_HOME:=$HOME/.local/share}
+XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 
 path=
 ifs=$IFS
@@ -37,15 +37,14 @@ path=${path#:}
 set -a
 
 PATH=$path
-ENV=$XDG_CONFIG_HOME/shell/init.sh
-
-# prepend local man directory to MANPATH
 MANPATH=$XDG_DATA_HOME/man:
 
-HOSTNAME=${HOSTNAME:-$(hostname)}
+ENV=$XDG_CONFIG_HOME/shell/init.sh
+
 test -r $XDG_CONFIG_HOME/locale.conf && . $XDG_CONFIG_HOME/locale.conf
 
-EDITOR=$( which nvim vim vi 2>/dev/null | ( read line ; echo $line ) )
+EDITOR=$(which nvim vim vi 2>/dev/null | ( read line; echo $line ))
+PAGER=less; MANPAGER=$PAGER' -s'
 
 XKB_DEFAULT_LAYOUT=us
 XKB_DEFAULT_MODEL=pc105
@@ -57,6 +56,7 @@ BASE16_SHELL_SET_BACKGROUND=false
 DARCS_ALWAYS_COLOR=1
 DARCS_DO_COLOR_LINES=1
 IDEA_PROPERTIES=$XDG_CONFIG_HOME/idea/idea.properties
+LESS=MRi
 LESSHISTFILE=/dev/null
 PASSWORD_STORE_SIGNING_KEY=$(cat $HOME/.secret/signing.key)
 PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig

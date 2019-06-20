@@ -1,6 +1,6 @@
 _cd() {
-  PWD=$(env - "PATH=$PATH" pwd)
+	PWD=$(env - "PATH=$PATH" pwd)
 }
 cd() {
-  command cd "$@" && _cd
+	command cd "$@" && _cd
 }

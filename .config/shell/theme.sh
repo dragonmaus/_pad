@@ -2,36 +2,36 @@
 
 case $BASE16_SHELL_SET_BACKGROUND in
 (0|[Ff][Aa][Ll][Ss][Ee]|[Nn][Oo])
-  set_background=false
-  ;;
+	set_background=false
+	;;
 (*)
-  set_background=true
-  ;;
+	set_background=true
+	;;
 esac
 
 case $TERM in
 (linux|linux-*)
-  put_template() {
-    test "$1" -lt 16 && printf '\033]P%x%s' $1 $(echo $2 | tr -d /)
-  }
-  put_template_var() {
-    true
-  }
-  put_template_custom() {
-    true
-  }
-  ;;
+	put_template() {
+		test "$1" -lt 16 && printf '\033]P%x%s' $1 $(echo $2 | tr -d / )
+	}
+	put_template_var() {
+		true
+	}
+	put_template_custom() {
+		true
+	}
+	;;
 (*)
-  put_template() {
-    printf '\033]4;%d;rgb:%s\033\\' "$@"
-  }
-  put_template_var() {
-    printf '\033]%d;rgb:%s\033\\' "$@"
-  }
-  put_template_custom() {
-    printf '\033]%s%s\033\\' "$@"
-  }
-  ;;
+	put_template() {
+		printf '\033]4;%d;rgb:%s\033\\' "$@"
+	}
+	put_template_var() {
+		printf '\033]%d;rgb:%s\033\\' "$@"
+	}
+	put_template_custom() {
+		printf '\033]%s%s\033\\' "$@"
+	}
+	;;
 esac
 
 $set_background && put_template 0 $colour_base00
