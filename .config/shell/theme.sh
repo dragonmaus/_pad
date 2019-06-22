@@ -12,7 +12,7 @@ esac
 case $TERM in
 (linux|linux-*)
 	put_template() {
-		test "$1" -lt 16 && printf '\033]P%x%s' $1 $(echo $2 | tr -d / )
+		test "$1" -lt 16 && printf '\033]P%x%s' $1 `echo $2 | tr -d /`
 	}
 	put_template_var() {
 		true
@@ -60,4 +60,4 @@ put_template 21 $colour_base06
 # foreground / background / cursor color
 put_template_var 10 $colour_base05
 $set_background && put_template_var 11 $colour_base00
-put_template_custom 12 ";7"
+put_template_custom 12 ';7'

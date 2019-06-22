@@ -1,5 +1,5 @@
-alias lc="ls -C"
-alias ll="ls -Fl"
-alias ls="ls -1A --color=auto"
-alias pstree="pstree -achlnp"
-alias sudo="sudo "
+alias lc='ls -C'
+alias ll='ls -Fl'
+alias ls='ls -1A --color=auto'
+alias pstree='pstree -achlnp'
+alias sudo='sudo '
