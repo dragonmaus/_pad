@@ -5,7 +5,7 @@ while getopts fr opt
 do
 	case $opt in
 	(f)
-		window=$(xdotool getwindowfocus -f)
+		window=`xdotool getwindowfocus -f`
 		;;
 	(r)
 		window=root
@@ -15,6 +15,6 @@ do
 		;;
 	esac
 done
-shift $(( OPTIND - 1 ))
+shift `expr $OPTIND - 1`
 
-exec import ${window:+-window "$window"} "$@" "$HOME"/Pictures/Screenshots/$(date -u +%FT%TZ).png
+exec import ${window:+-window "$window"} "$@" "$HOME"/Pictures/Screenshots/`date -u +%FT%TZ`.png

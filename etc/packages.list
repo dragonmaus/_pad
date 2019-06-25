@@ -95,6 +95,7 @@ scron
 setxkbmap
 socklog-void
 steam
+subversion
 sudo
 syncthing
 tcc

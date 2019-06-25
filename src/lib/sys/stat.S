@@ -1,3 +1,4 @@
+; int stat(const char *path, struct stat *sb);
 %include 'core.m'
 
 	section	.text

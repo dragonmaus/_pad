@@ -2,15 +2,15 @@
 
 set -e
 
-repo=$(while :; do [[ -d .pijul ]] && pwd -P && exit; [[ . -ef .. ]] && exit; cd ..; done)
-[[ -z $repo ]] && exit 1
+repo=`(while :; do test -d .pijul && pwd -P && exit; test . -ef .. && exit; cd ..; done)`
+test x"$repo" = x && exit 1
 
 file=$repo/.ignore
-[[ -f $file ]] || touch "$file"
+test -f "$file" || touch "$file"
 
 rm -f "$file"{tmp}
 
-print -lr -- "$@" | cat "$file" - | sort -u >"$file"{tmp}
+printf '%s\n' "$@" | cat "$file" - | sort -u >"$file"{tmp}
 
 rm -f "$file"{new}
 {

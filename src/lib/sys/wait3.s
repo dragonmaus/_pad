@@ -1,3 +1,4 @@
+; int wait3(int *status, int options, struct rusage *rusage);
 %include 'core.m'
 
 	section	.text

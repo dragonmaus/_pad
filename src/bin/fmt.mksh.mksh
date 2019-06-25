@@ -1,9 +1,0 @@
-#!/bin/mksh
-
-{
-	\\builtin print function z {
-	\\builtin cat "$@"
-	\\builtin print
-	\\builtin print }
-	\\builtin print -r \\\\builtin typeset -f z
-} | \mksh | \sed '1d;$d;s/^	//;s/ $//'

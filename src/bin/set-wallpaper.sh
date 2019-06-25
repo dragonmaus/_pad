@@ -24,6 +24,6 @@ do
 		;;
 	esac
 done
-shift $(( OPTIND - 1 ))
+shift `expr $OPTIND - 1`
 
-exec feh --no-fehbg --bg-$mode "$@"
+exec feh --no-fehbg --bg-"$mode" "$@"

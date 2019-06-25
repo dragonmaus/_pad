@@ -2,8 +2,8 @@
 
 set -e
 
-home=$(dirname $0)/..
-home=$(cd $home && env - pwd)
+home=`dirname "$0"`/..
+home=`cd "$home" && env - "PATH=$PATH" pwd`
 
 main=$1
 shift
@@ -11,7 +11,7 @@ shift
 rt=
 for file
 do
-	[[ -e $file ]] && $home/bin/nm -Pg $file 2>/dev/null || :
+	test -e "$file" && "$home"/bin/nm -Pg "$file" 2>/dev/null || :
 done | cut -d ' ' -f 1 | grep -Fqx _start || rt=$HOME/lib/_start.o
 
-$home/bin/ld -o $main $rt "$@"
+"$home"/bin/ld -o "$main" $rt "$@"

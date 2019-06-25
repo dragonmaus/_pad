@@ -1,9 +1,13 @@
 #!/bin/sh
 
-prompt=$(print -r -- $1)
+echo() {
+	printf '%s\n' "$*"
+}
+
+prompt=`echo $1`
 shift
 
-temp=$(mktemp -d)
+temp=`mktemp -d`
 chmod 700 "$temp"
 
 rm -fr "$temp"/pipe
@@ -15,7 +19,7 @@ rm -fr "$temp"
 
 exec pinentry-smart <<END
 OPTION lc-ctype=${LC_ALL:-${LC_CTYPE:-${LANG:-C}}}
-OPTION ttyname=$(tty)
+OPTION ttyname=`tty`
 OPTION ttytype=$TERM
 SETDESC $*
 SETPROMPT ${prompt:-Password:}

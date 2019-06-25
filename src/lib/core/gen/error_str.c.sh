@@ -1,6 +1,8 @@
 #!/bin/sh
 
-echo() { printf '%s\n' "$*"; }
+echo() {
+	printf '%s\n' "$*"
+}
 
 echo '/* automatically generated */'
 echo '#include <errno.h>'
@@ -16,11 +18,11 @@ echo '{'
 echo '  X(0, "no error");'
 while read -r name errno temp str
 do
-	if [[ $name = - ]]
+	if test x"$name" = x-
 	then
 		echo "#ifdef $errno"
 		echo "  X($errno, \"$str\");"
-		echo "#endif"
+		echo '#endif'
 	else
 		echo "  X($name, \"$str\");"
 	fi

@@ -2,14 +2,14 @@
 
 cd "$HOME"/Pictures/Wallpapers
 
-current=$(readlink .current)
+current=`readlink .current`
 
 random=$current
-while [[ $random = $current ]]
+while test x"$random" = x"$current"
 do
-	random=$(ls *.png digitalblasphemy/.current/*.jpg 2>/dev/null | shuf | sed 1q)
+	random=`ls *.png digitalblasphemy/.current/*.jpg 2>/dev/null | shuf | sed 1q`
 done
 
 ln -fs "$random" .current
 
-[[ $1 = -s ]] && exec set-wallpaper .current
+test x"$1" = x-s && exec set-wallpaper .current

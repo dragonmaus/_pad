@@ -1,3 +1,4 @@
+; int fork(void);
 %include 'core.m'
 
 	section	.text

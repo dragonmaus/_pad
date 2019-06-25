@@ -1,6 +1,8 @@
 #!/bin/sh
 
-echo() { printf '%s\n' "$*"; }
+echo() {
+	printf '%s\n' "$*"
+}
 
 echo '/* automatically generated */'
 echo '#ifndef ERROR_H'
@@ -10,7 +12,7 @@ echo 'extern int errno;'
 echo
 while read -r name errno temp str
 do
-	[[ $name = - ]] && continue
+	test x"$name" = x- && continue
 	echo "extern int $name;"
 done <error.list
 echo

@@ -3,8 +3,8 @@
 set -e
 
 file=${XDG_DATA_HOME:-$HOME/.local/share}/x.display
-[[ -r $file ]] || exit 1
+test -r "$file" || exit 1
 
-display=$(sed 1q <"$file")
+display=`head -1 <"$file"`
 
 exec env "DISPLAY=$display" "$@"

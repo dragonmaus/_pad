@@ -1,2 +1,2 @@
 #!/bin/sh
-exec tcc -c -nostdinc -nostdlib -static -I $HOME/inc "$@"
+exec tcc -c -nostdinc -nostdlib -static -I "$HOME"/inc "$@"

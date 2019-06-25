@@ -15,7 +15,7 @@ static const char *help = USAGE "\n\n\
   -z   terminate lines with null instead of newline";
 
   int
-main(int argc, const char **argv, const char **envp)
+main(int argc, const char **argv, const char **envv)
 {
   char eol, opt;
   const char *value;
@@ -35,10 +35,10 @@ main(int argc, const char **argv, const char **envp)
   argc -= option_index;
   argv += option_index;
 
-  if (!argc) while (*envp) {
-    safe_buffer_puts(buffer_1, *envp);
+  if (!argc) while (*envv) {
+    safe_buffer_puts(buffer_1, *envv);
     safe_buffer_putc(buffer_1, eol);
-    ++envp;
+    ++envv;
   } else while (*argv) {
     if ((value = env_get(*argv))) {
       safe_buffer_puts(buffer_1, value);

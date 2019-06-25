@@ -43,6 +43,7 @@
 ^\.serverauth\.[0-9]+$
 ^\.ssh($|/)
 ^\.steam
+^\.subversion($|/)
 ^\.wine($|/)
 ^backup($|/)
 ^bin($|/)

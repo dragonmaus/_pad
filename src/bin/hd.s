@@ -2,9 +2,8 @@
 %include 'core.m'
 %include 'error.m'
 
-	global	_start
-
 	section	.text
+	global	_start
 _start:
 	xor	r15, r15	; overall index
 

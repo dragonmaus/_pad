@@ -5,7 +5,7 @@ case $1 in
 	exec ln -fsv .asoundrc.$1 "$HOME"/.asoundrc
 	;;
 (toggle)
-	case $(readlink "$HOME"/.asoundrc) in
+	case `readlink "$HOME"/.asoundrc` in
 	(.asoundrc.headset)
 		exec "$0" speaker
 		;;

@@ -1,3 +1,4 @@
+; int getcwd(char *buf, unsigned int buflen);
 %include 'core.m'
 
 	section	.text

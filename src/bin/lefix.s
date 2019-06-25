@@ -1,9 +1,8 @@
 ; TODO: use a larger buffer
 %include 'core.m'
 
-	global	_start
-
 	section	.text
+	global	_start
 _start:
 .read:	sinvoke	0, 0, c, 1	; read the next byte
 	cmp	rax, 0

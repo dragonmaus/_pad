@@ -1,37 +1,42 @@
 #!/bin/sh
 
-echo() { printf '%s\n' "$*"; }
+echo() {
+	printf '%s\n' "$*"
+}
 
 echo '#ifndef SYS_H'
 echo '#define SYS_H'
 echo
 
-if [[ -r sys.h.pre ]]
+if test -r sys.h.pre
 then
 	cat sys.h.pre
 fi
 
 while read -r number name prototype
 do
-	echo "$prototype"
-	if [[ $number = - ]]
-	then
+	case $number in
+	(\;*)
 		continue
-	fi
+		;;
+	esac
+	echo "extern $prototype"
+	test x"$number" = x- && continue
 	{
+		echo "; $prototype" | tr -s ' ' | sed 's/\* /*/g'
 		echo "%include 'core.m'"
 		echo
 		echo '	section	.text'
 		echo "proc $name"
 		echo "	sinvoke	$number	; syscall $name"
 		echo 'endproc'
-	} >$name.s{new}
-	chmod 444 $name.s{new}
-	cmp -s $name.s{new} $name.s || mv -f $name.s{new} $name.s
-	rm -f $name.s{new}
+	} >"$name".S{new}
+	chmod 444 "$name".S{new}
+	cmp -s "$name".S{new} "$name".S || mv -f "$name".S{new} "$name".S
+	rm -f "$name".S{new}
 done <sys.h.list
 
-if [[ -r sys.h.post ]]
+if test -r sys.h.post
 then
 	cat sys.h.post
 fi

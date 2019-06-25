@@ -1,7 +1,12 @@
 #!/bin/sh
+
+echo() {
+	printf '%s\n' "$*"
+}
+
 (
-  print "#include <sys/syscall.h>"
-  for name do
-    print "__NR_$name \"$name\""
-  done
-) | tcc -E - | grep "^[^#_]" | sort -n
+	echo '#include <sys/syscall.h>'
+	for name do
+		echo "SYS_$name \"$name\""
+	done
+) | tcc -E - | grep '^[^#_]' | sort -n

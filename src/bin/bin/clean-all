@@ -2,10 +2,10 @@
 
 set -e
 
-home=$(dirname $0)/..
-home=$(cd $home && env - pwd)
+home=`dirname "$0"`/..
+home=`cd "$home" && env - "PATH=$PATH" pwd`
 
-$HOME/src/lib/bin/clean-all
-$HOME/.secret/bin/bin/clean-all
+"$HOME"/src/lib/bin/clean-all
+"$HOME"/.secret/bin/bin/clean-all
 
-$home/bin/clean
+"$home"/bin/clean

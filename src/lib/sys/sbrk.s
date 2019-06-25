@@ -1,3 +1,4 @@
+; int sbrk(int incr);
 %include 'core.m'
 
 	section	.text

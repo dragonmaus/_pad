@@ -1,3 +1,4 @@
+; int brk(const char *addr);
 %include 'core.m'
 
 	section	.text
