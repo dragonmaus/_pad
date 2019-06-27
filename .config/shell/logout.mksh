@@ -12,7 +12,7 @@ then
 	\\builtin print -s dummy # flush the last command to the history file
 	\\builtin fc -ln 1 \
 	| \sed 's/^\t//' \
-	| \grep -Eav -e '^[[:blank:]]' -e '^[[:blank:]]*$' \
+	| \grep -Eav -e '^[[:blank:]]' -e '^[[:blank:]]*$' -e '^dummy$' \
 	| \grep -Ea '^[[:blank:][:print:]]+$' \
 	| \sed -E 's/^[[:blank:][:space:]]+//;s/[[:blank:][:space:]]+$//' \
 	| \tac \
