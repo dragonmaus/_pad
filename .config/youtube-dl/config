@@ -1,0 +1,1 @@
+--format bestvideo[width<=1080]+bestaudio/best[width<=1080]/best
