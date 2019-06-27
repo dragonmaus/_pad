@@ -1,10 +1,12 @@
-libxbps_version=$(xbps-uhelper version libxbps)
-xbps_version=$(xbps-uhelper version xbps)
+(
+	libxbps_version=
+	xbps_version=
 
-sudo xbps-install -u
+	while [[ $(xbps-uhelper version libxbps) != $libxbps_version || $(xbps_uhelper version xbps) != $xbps_version ]]
+	do
+		sudo xbps-install -u
 
-if [[ $(xbps-uhelper version libxbps) != $libxbps_version || $(xbps-uhelper version xbps) != $xbps_version ]]
-then
-	# XBPS was updated, restart update script
-	exec "$0" "$@"
-fi
+		libxbps_version=$(xbps-uhelper version libxbps)
+		xbps_version=$(xbps-uhelper version xbps)
+	done
+)
