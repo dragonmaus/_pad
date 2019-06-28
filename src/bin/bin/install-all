@@ -35,6 +35,7 @@ home=`cd "$home" && env - "PATH=$PATH" pwd`
 "$home"/bin/install sh creeper-world-3
 "$home"/bin/install sh dircp
 "$home"/bin/install sh fix-screen
+"$home"/bin/install sh fmt.bash
 "$home"/bin/install sh fmt.mksh
 "$home"/bin/install sh getpass
 "$home"/bin/install sh geturi
