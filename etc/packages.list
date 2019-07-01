@@ -8,6 +8,7 @@ bsdtar
 btrfs-progs
 cabal-install
 calc
+cdparanoia
 chromium
 chromium-widevine
 chrony
@@ -34,6 +35,7 @@ feh
 ffmpeg
 file
 firefox-esr
+flac
 fontconfig-32bit
 gforth
 git
@@ -86,6 +88,7 @@ parted
 pass
 pciutils
 pdf.js
+picard
 pinentry-dmenu
 pinentry-tty
 python3-neovim
