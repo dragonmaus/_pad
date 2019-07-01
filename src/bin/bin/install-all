@@ -61,6 +61,7 @@ home=`cd "$home" && env - "PATH=$PATH" pwd`
 "$home"/bin/install sh shar
 "$home"/bin/install sh sv
 "$home"/bin/install sh syscall
+"$home"/bin/install sh vias
 "$home"/bin/install sh vicron
 
 "$HOME"/.secret/bin/bin/install-all

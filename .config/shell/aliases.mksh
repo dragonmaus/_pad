@@ -1,3 +1,4 @@
+\\builtin alias doas="doas "
 \\builtin alias lc="ls -C"
 \\builtin alias ll="ls -Fl"
 \\builtin alias ls="ls -1A --color=auto"
