@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+d="$0.d"
+
+for f in $(ls "$d")
+do
+	f="$d/$f"
+	[[ -f "$f" && -r "$f" && -s "$f" && -x "$f" ]] && . "$f"
+done
