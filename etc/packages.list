@@ -121,6 +121,7 @@ xf86-video-nouveau
 xinput
 xorg-minimal
 xrdb
+xsel
 xset
 xxd
 youtube-dl
