@@ -16,6 +16,7 @@
 ^\.config/chromium($|/)
 ^\.config/codef00\.com($|/)
 ^\.config/creeperworld3($|/)
+^\.config/glib-
 ^\.config/gops($|/)
 ^\.config/itch($|/)
 ^\.config/keepassxc($|/)
