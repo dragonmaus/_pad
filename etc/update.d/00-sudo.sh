@@ -1,1 +1,1 @@
-( syspass | sudo -Sv ) 2>/dev/null
+sudo true

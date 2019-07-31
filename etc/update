@@ -3,8 +3,10 @@ set -e
 
 d="$0.d"
 
-for f in $(ls "$d")
+[[ "$#" -eq 0 ]] && set -- $(ls -F "$d" | sed -n 's/\.sh\*$//p')
+
+for f
 do
-	f="$d/$f"
-	[[ -f "$f" && -r "$f" && -s "$f" && -x "$f" ]] && . "$f"
+	f="$d/$f.sh"
+	[[ -f "$f" && -s "$f" ]] && . "$f"
 done
