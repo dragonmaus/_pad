@@ -23,6 +23,7 @@ cross-x86_64-linux-musl
 cross-x86_64-w64-mingw32
 curl
 dhcpcd
+dillo
 dosfstools
 dragon
 dwarffortress
@@ -79,9 +80,11 @@ ncurses-devel
 neovim
 neovim-qt
 nerd-fonts
+netsurf
 nettle-devel
 openjdk
 openssh
+otter-browser
 outils
 p7zip
 parted
