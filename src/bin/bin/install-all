@@ -32,6 +32,7 @@ home=`cd "$home" && env - "PATH=$PATH" pwd`
 "$home"/bin/install sh cabal-repo
 "$home"/bin/install sh cabal-reset
 "$home"/bin/install sh cabal-world
+"$home"/bin/install sh cargo-foreach
 "$home"/bin/install sh creeper-world-3
 "$home"/bin/install sh dircp
 "$home"/bin/install sh fix-screen
