@@ -5,6 +5,7 @@
 -($|/)
 ^[A-KM-QS-Z]
 ^\.Xauthority$
+^\.adobe($|/)
 ^\.asoundrc$
 ^\.cabal($|/)
 ^\.cache($|/)
@@ -40,6 +41,7 @@
 ^\.itch($|/)
 ^\.java($|/)
 ^\.local($|/)
+^\.macromedia($|/)
 ^\.minecraft($|/)
 ^\.mozilla($|/)
 ^\.password-store($|/)

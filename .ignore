@@ -2,6 +2,7 @@
 .git/
 .pijul/
 /.Xauthority
+/.adobe/
 /.asoundrc
 /.cabal/
 /.cache/
@@ -37,6 +38,7 @@
 /.itch/
 /.java/
 /.local/
+/.macromedia/
 /.minecraft/
 /.mozilla/
 /.password-store/
