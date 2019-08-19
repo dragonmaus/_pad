@@ -61,6 +61,7 @@ libavresample-32bit
 libavutil-32bit
 libcurl-devel
 libpulseaudio-32bit
+libreoffice
 libsodium-devel
 libtxc_dxtn-32bit
 linux
