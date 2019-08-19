@@ -20,12 +20,14 @@
 /.config/itch/
 /.config/keepassxc/
 /.config/keybase/
+/.config/libreoffice/
 /.config/mpv/
 /.config/netsurf/
 /.config/otter/
 /.config/pulse/
 /.config/syncthing/
 /.config/vdirsyncer/
+/.cups/
 /.darcs/author
 /.dbus/
 /.dillo/
