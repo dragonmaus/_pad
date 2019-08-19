@@ -3,6 +3,7 @@
 (^|/)__pycache__($|/)
 (^|/)_darcs($|/)
 -($|/)
+\.log$
 ^[A-KM-QS-Z]
 ^\.Xauthority$
 ^\.adobe($|/)
