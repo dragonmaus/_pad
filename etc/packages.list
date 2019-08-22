@@ -122,6 +122,7 @@ void-repo-multilib-nonfree
 void-repo-nonfree
 wpa_supplicant
 x86_energy_perf_policy
+xautolock
 xdotool
 xf86-video-intel
 xf86-video-nouveau

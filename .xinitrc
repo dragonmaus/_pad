@@ -14,6 +14,7 @@ randomise-wallpaper -s
 compton &
 redshift-hack &
 unclutter --ignore-scrolling --jitter 5 &
+xautolock -detectsleep -secure -locker slock -time 10 &
 
 xset +dpms
 xset dpms 300 600 900
