@@ -2,7 +2,6 @@ GraphicsMagick
 acpi_call-dkms
 acpid
 alsa-utils
-barrier
 base-devel
 base-minimal
 bsdtar
@@ -15,16 +14,8 @@ chromium-widevine
 chrony
 clang
 compton
-cross-aarch64-linux-musl
-cross-arm-linux-musleabihf
-cross-armv7l-linux-musleabihf
-cross-i686-linux-musl
-cross-i686-w64-mingw32
-cross-x86_64-linux-musl
-cross-x86_64-w64-mingw32
 curl
 dhcpcd
-dillo
 dosfstools
 dragon
 dwarffortress
@@ -83,11 +74,9 @@ ncurses-devel
 neovim
 neovim-qt
 nerd-fonts
-netsurf
 nettle-devel
 openjdk
 openssh
-otter-browser
 outils
 p7zip
 parted
