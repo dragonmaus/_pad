@@ -26,6 +26,7 @@
 /.config/netsurf/
 /.config/otter/
 /.config/pulse/
+/.config/qutebrowser/autoconfig.yml
 /.config/qutebrowser/qsettings/
 /.config/syncthing/
 /.config/vdirsyncer/
