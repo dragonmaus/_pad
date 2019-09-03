@@ -28,6 +28,7 @@
 ^\.config/mpv($|/)
 ^\.config/netsurf($|/)
 ^\.config/otter($|/)
+^\.config/procps($|/)
 ^\.config/pulse($|/)
 ^\.config/qutebrowser/autoconfig\.yml$
 ^\.config/qutebrowser/qsettings($|/)
