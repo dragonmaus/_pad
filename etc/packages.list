@@ -8,6 +8,7 @@ bsdtar
 btrfs-progs
 cabal-install
 calc
+calibre
 cdparanoia
 chromium
 chromium-widevine
