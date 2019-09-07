@@ -14,6 +14,7 @@
 ^\.config/MusicBrainz($|/)
 ^\.config/QtProject\.conf$
 ^\.config/barrier($|/)
+^\.config/calibre($|/)
 ^\.config/cef_user_data($|/)
 ^\.config/chromium($|/)
 ^\.config/codef00\.com($|/)
