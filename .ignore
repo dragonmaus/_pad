@@ -60,6 +60,7 @@
 /.steam*
 /.subversion/
 /.wine/
+/.xsession-errors
 /[A-Z]*
 /backup/
 /bin/
