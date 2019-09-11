@@ -1,7 +1,9 @@
 call plug#begin(stdpath('data').'/plug')
 
+Plug 'pearofducks/ansible-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'udalov/kotlin-vim'
+Plug 'neomake/neomake'
 Plug 'joshdick/onedark.vim'
 Plug 'https://git.zx2c4.com/password-store', { 'rtp': 'contrib/vim' }
 Plug 'tpope/vim-abolish'
