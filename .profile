@@ -43,6 +43,7 @@ ENV=$XDG_CONFIG_HOME/shell/init.sh
 
 test -r $XDG_CONFIG_HOME/locale.conf && . $XDG_CONFIG_HOME/locale.conf
 
+BROWSER=qutebrowser
 EDITOR=`which nvim vim vi 2>/dev/null | ( read line; echo $line )`
 PAGER=less; MANPAGER=$PAGER' -s'
 
