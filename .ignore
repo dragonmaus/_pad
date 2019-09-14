@@ -4,6 +4,7 @@
 .pijul/
 /.Xauthority
 /.adobe/
+/.ansible/
 /.asoundrc
 /.cabal/
 /.cache/
