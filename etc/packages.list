@@ -87,7 +87,9 @@ pdf.js
 picard
 pinentry-dmenu
 pinentry-tty
+python3-discid
 python3-neovim
+python3-pyacoustid
 python3-yamllint
 qrencode
 qutebrowser
@@ -108,6 +110,7 @@ tp_smapi-dkms
 unclutter-xfixes
 usbutils
 vdirsyncer
+vlc
 void-artwork
 void-repo-multilib
 void-repo-multilib-nonfree
