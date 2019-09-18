@@ -1,11 +1,14 @@
+" Settings
 let g:asmsyntax="nasm"
 let g:is_ksh=1
 
+" Disable unwanted plugins
 let g:loaded_gzip=1
 let g:loaded_netrwPlugin=1
 let g:loaded_tarPlugin=1
 let g:loaded_zipPlugin=1
 
+" Options
 set backupcopy=yes
 set colorcolumn=81,+1
 set diffopt+=algorithm:patience
@@ -13,7 +16,7 @@ set diffopt+=indent-heuristic
 set ignorecase
 set nojoinspaces
 set list
-set listchars=eol:⏎,tab:>-,space:·,trail:+,extends:»,precedes:«,nbsp:_
+set listchars=eol:$,tab:>-,space:·,trail:+,extends:»,precedes:«,nbsp:_
 set nomodeline
 set modelines=0
 set number
@@ -28,4 +31,5 @@ set termguicolors
 set title
 set nowrapscan
 
+" Plugins
 runtime! plug.vim
