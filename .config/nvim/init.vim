@@ -1,11 +1,11 @@
-let g:Illuminate_delay=0
 let g:asmsyntax="nasm"
 let g:is_ksh=1
+
 let g:loaded_gzip=1
 let g:loaded_netrwPlugin=1
-let g:loaded_syntastic_kotlin_kotlinc_checker=1
 let g:loaded_tarPlugin=1
 let g:loaded_zipPlugin=1
+
 set backupcopy=yes
 set colorcolumn=81,+1
 set diffopt+=algorithm:patience
@@ -20,6 +20,7 @@ set number
 set numberwidth=1
 set shada='0,<0,f0,h,s100
 set showmatch
+set noshowmode
 set sidescrolloff=1
 set smartcase
 set tabpagemax=100

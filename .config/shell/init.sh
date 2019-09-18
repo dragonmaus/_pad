@@ -32,7 +32,6 @@ load functions
 load history
 load options
 load prompt
-[[ -z "$SSH_CONNECTION" ]] && ( load theme )
 load traps
 
 unset -f load
