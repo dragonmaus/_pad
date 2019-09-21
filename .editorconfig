@@ -43,6 +43,10 @@ end_of_line = crlf
 indent_size = 4
 max_line_length = 99
 
+[*.sh]
+indent_style = tab
+indent_size = tab
+
 [{.gitconfig,gitconfig}]
 indent_style = tab
 indent_size = tab
