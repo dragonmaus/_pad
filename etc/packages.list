@@ -16,6 +16,7 @@ clang
 compton
 cppcheck
 curl
+darcs
 dhcpcd
 dosfstools
 dragon
@@ -85,6 +86,7 @@ pass
 pciutils
 pdf.js
 picard
+pijul
 pinentry-dmenu
 pinentry-tty
 python3-discid
