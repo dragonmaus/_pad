@@ -1,4 +1,4 @@
-call plug#begin(stdpath('data').'/plug')
+call plug#begin(stdpath('data') . '/plug')
 
 Plug 'pearofducks/ansible-vim'
 Plug 'editorconfig/editorconfig-vim'
