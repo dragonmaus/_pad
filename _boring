@@ -6,6 +6,7 @@
 \.log$
 ^[A-KM-QS-Z]
 ^\.Xauthority$
+^\.[^/]*history$
 ^\.adobe($|/)
 ^\.ansible($|/)
 ^\.asoundrc$

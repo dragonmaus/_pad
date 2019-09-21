@@ -2,6 +2,7 @@
 *.log
 .git/
 .pijul/
+/.*history
 /.Xauthority
 /.adobe/
 /.ansible/
