@@ -1,7 +1,7 @@
 startx=false
-if which startx >/dev/null 2>&1
+if which startx > /dev/null 2>&1
 then
-	case `tty` in
+	case $( tty ) in
 	(/dev/tty*)
 		printf "Start X? (y/n): " >&2
 		read reply || echo n >&2
@@ -23,7 +23,7 @@ ifs=$IFS
 IFS=:
 for d in $HOME/bin $HOME/.cabal/bin $HOME/.cargo/bin $HOME/.local/bin $HOME/src/go/bin $HOME/src/go/ext/bin $HOME/bin/ext $PATH $HOME/bin/mksh
 do
-	d=`realpath $d 2>/dev/null || echo $d`
+	d=$( realpath $d 2> /dev/null || echo $d )
 	case :$path: in
 	(*:$d:*)
 		continue
@@ -44,7 +44,7 @@ ENV=$XDG_CONFIG_HOME/shell/init.sh
 test -r $XDG_CONFIG_HOME/locale.conf && . $XDG_CONFIG_HOME/locale.conf
 
 BROWSER=qutebrowser
-EDITOR=`which nvim vim vi 2>/dev/null | ( read line; echo $line )`
+EDITOR=$( which nvim vim vi 2> /dev/null | ( read line; echo $line ) )
 PAGER=less; MANPAGER=$PAGER' -s'
 
 XKB_DEFAULT_LAYOUT=us
@@ -58,16 +58,16 @@ DARCS_DO_COLOR_LINES=1
 IDEA_PROPERTIES=$XDG_CONFIG_HOME/idea/idea.properties
 LESS=MRi
 LESSHISTFILE=/dev/null
-PASSWORD_STORE_SIGNING_KEY=`cat $HOME/.secret/signing.key`
+PASSWORD_STORE_SIGNING_KEY=$( cat $HOME/.secret/signing.key )
 PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig
 RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/rgrc
 SUDO_ASKPASS=$HOME/bin/askpass
 _JAVA_AWT_WM_NONREPARENTING=1
 
-if which go >/dev/null 2>&1
+if which go > /dev/null 2>&1
 then
 	GOPATH=$HOME/src/go/ext:$HOME/src/go
-	GOROOT=`go env GOROOT`
+	GOROOT=$( go env GOROOT )
 fi
 
 set +a

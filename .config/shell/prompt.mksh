@@ -1,15 +1,15 @@
 PS1=${|
-	\\builtin typeset pwd='${|\\builtin typeset e=$? h=$(\\builtin cd ~; \\builtin pwd) p=$PWD/; p=${p/#$h\//\~/}; REPLY=${p%/}; return $e}'
-	\\builtin typeset c=$'\001'$(\colour -f cyan)$'\001'
-	\\builtin typeset g=$'\001'$(\colour -f green)$'\001'
-	\\builtin typeset m=$'\001'$(\colour -f magenta)$'\001'
-	\\builtin typeset y=$'\001'$(\colour -f yellow)$'\001'
-	\\builtin typeset r=$'\001'$(\colour -f reset)$'\001'
+	\\builtin typeset pwd='${|\\builtin typeset e=$? h=$( \\builtin cd ~; \\builtin pwd ) p=$PWD/; p=${p/#$h\//\~/}; REPLY=${p%/}; return $e}'
+	\\builtin typeset c=$'\001'$( \colour -f cyan )$'\001'
+	\\builtin typeset g=$'\001'$( \colour -f green )$'\001'
+	\\builtin typeset m=$'\001'$( \colour -f magenta )$'\001'
+	\\builtin typeset y=$'\001'$( \colour -f yellow )$'\001'
+	\\builtin typeset r=$'\001'$( \colour -f reset )$'\001'
 	REPLY=$'\001\r'
-	[[ $TERM = linux || $TERM = linux-* ]] || REPLY+='$(\title "$HOSTNAME ['$pwd'] - '$shell'")'
+	[[ $TERM = linux || $TERM = linux-* ]] || REPLY+='$( \title "$HOSTNAME ['$pwd'] - '$shell'" )'
 	REPLY+="($c\$USER$r@$m\$HOSTNAME$r)"
 	REPLY+=" "
-	REPLY+=$g'$(\date +%T)'$r
+	REPLY+=$g'$( \date +%T )'$r
 	REPLY+=" "
 	REPLY+="[$y$pwd$r]"
 	REPLY+=$'\n'
