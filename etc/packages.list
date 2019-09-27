@@ -17,6 +17,7 @@ compton
 cppcheck
 curl
 darcs
+dash
 dhcpcd
 dosfstools
 dragon
@@ -90,6 +91,7 @@ picard
 pijul
 pinentry-dmenu
 pinentry-tty
+python-pip
 python3-discid
 python3-neovim
 python3-pyacoustid
