@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo() {
-	printf '%s\n' "$*"
+	print -r -- "$*"
 }
 
 (

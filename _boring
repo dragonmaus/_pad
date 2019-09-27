@@ -1,8 +1,10 @@
 (^|/)\.git($|/)
 (^|/)\.pijul($|/)
+(^|/)\.redo($|/)
 (^|/)__pycache__($|/)
 (^|/)_darcs($|/)
 -($|/)
+\.exe$
 \.log$
 ^[A-KM-QS-Z]
 ^\.Xauthority$
@@ -77,6 +79,7 @@
 ^lib/pforth\.dic$
 ^log($|/)
 ^src/.+\.[ao]$
+^src/bin/(inc|lib)/musl($|/)
 ^src/clojure($|/)
 ^src/ext($|/)
 ^src/go($|/)

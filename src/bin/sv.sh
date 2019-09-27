@@ -1,6 +1,6 @@
 #!/bin/sh
 
-case `id -u` in
+case "$( id -u )" in
 (0)
 	exec /usr/bin/sv "$@"
 	;;

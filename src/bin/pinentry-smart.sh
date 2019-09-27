@@ -3,27 +3,35 @@
 PINENTRY_GUI=/usr/bin/pinentry-dmenu
 PINENTRY_TTY=/usr/bin/pinentry-tty
 
-die() {
-	e=$1
-	shift
-	printf '%s\n' "$*" 1>&2
-	exit $e
+echo() {
+	print -r -- "$*"
 }
 
-name=${0##*/}
+warn() {
+	echo "$*" 1>&2
+}
+
+die() {
+	e="$1"
+	shift
+	warn "$*"
+	exit "$e"
+}
+
+name="$( basename "$0" .sh )"
 usage="Usage: $name [options] (-h for help)"
-help=`pinentry-tty --help 2>/dev/null | sed "s/pinentry-tty/$name/g"`
-args=`getopt -l colors:,debug,display:,help,lc-ctype:,lc-messages:,no-global-grab,parent-wid:,timeout:,ttyalert:,ttyname:,ttytype: -n "$name" -o C:D:M:N:T:W:a:c:dgo: -s sh -- "$@"` || die 1 "$usage"
+help="$( pinentry-tty --help 2> /dev/null | sed "s/pinentry-tty/$name/g" )"
+args="$( getopt -l colors:,debug,display:,help,lc-ctype:,lc-messages:,no-global-grab,parent-wid:,timeout:,ttyalert:,ttyname:,ttytype: -n "$name" -o C:D:M:N:T:W:a:c:dgo: -s sh -- "$@" )" || die 100 "$usage"
 eval set -- "$args"
 
-while test $# -gt 0
+while [[ $# -gt 0 ]]
 do
-	case $1 in
+	case "$1" in
 	(-C|--lc-ctype)
 		shift
 		;;
 	(-D|--display)
-		export DISPLAY=$2
+		export DISPLAY="$2"
 		shift
 		;;
 	(-M|--lc-messages)
@@ -66,6 +74,6 @@ do
 done
 eval set -- "$args"
 
-test x"$DISPLAY" = x || exec "$PINENTRY_GUI" "$@"
+[[ -n "$DISPLAY" ]] && exec "$PINENTRY_GUI" "$@"
 
 exec "$PINENTRY_TTY" "$@"

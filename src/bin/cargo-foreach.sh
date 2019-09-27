@@ -1,24 +1,40 @@
 #!/bin/sh
+
 set -e
 
-name="$(basename "$0" )"
-args=hqv
-usage="Usage: $name [-$args] command [args...]"
+echo() {
+	print -r -- "$*"
+}
+
+warn() {
+	echo "$*" 1>&2
+}
+
+die() {
+	e="$1"
+	shift
+	warn "$*"
+	exit "$e"
+}
+
+name="$( basename "$0" .sh )"
+usage="Usage: $name [-hqv] command [args...]"
 help="$usage
 
   -h   display this help
   -q   suppress command error output
   -v   print directories as they are processed"
+
 # cargo passes its arguments unchanged to subcommands
 [[ "$1" = foreach ]] && shift
+
 quiet=false
 verbose=false
-while getopts ":$args" opt
+while getopts :hqv opt
 do
 	case "$opt" in
 	(h)
-		print -r -- "$help" >&2
-		exit 0
+		die 0 "$help"
 		;;
 	(q)
 		quiet=true
@@ -27,22 +43,25 @@ do
 		verbose=true
 		;;
 	(:)
-		print -r -- "$name: fatal: option '$OPTARG' requires an argument" >&2
-		exit 1
+		warn "$name: Option '$OPTARG' requires an argument"
+		die 100 "$usage"
 		;;
 	(\?)
-		print -r -- "$name: fatal: unknown option '$OPTARG'" >&2
-		exit 1
+		warn "$name: Unknown option '$OPTARG'"
+		die 100 "$usage"
 		;;
 	esac
 done
-shift "$((OPTIND - 1))"
-for dir in $(ls -A )
+shift $(( OPTIND - 1 ))
+
+IFS='
+'
+for dir in $( ls -A )
 do
 	[[ -e "$dir" && -d "$dir" && -e "$dir/Cargo.toml" ]] || continue
-	$verbose && print -r ">> $dir"
+	$verbose && echo ">> $dir"
 	if ! ( cd "$dir"; $quiet && exec 2>/dev/null; exec "$@" ) && ! $quiet
 	then
-		print -r -- "command '$*' failed in directory '$dir'" >&2
+		warn "command '$*' failed in directory '$dir'"
 	fi
 done

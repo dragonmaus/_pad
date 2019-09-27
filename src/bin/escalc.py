@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import sys
 
@@ -51,16 +51,16 @@ for tier1 in range(0, 51):
         for tier3 in range(0, 51):
             for tier4 in range(0, 51):
                 value = (power['tier1']['value'] * tier1) \
-                      + (power['tier2']['value'] * tier2) \
-                      + (power['tier3']['value'] * tier3) \
-                      + (power['tier4']['value'] * tier4) \
-                      + power['start']
+                    + (power['tier2']['value'] * tier2) \
+                    + (power['tier3']['value'] * tier3) \
+                    + (power['tier4']['value'] * tier4) \
+                    + power['start']
                 if value < 0:
                     continue
                 mass = (power['tier1']['mass'] * tier1) \
-                     + (power['tier2']['mass'] * tier2) \
-                     + (power['tier3']['mass'] * tier3) \
-                     + (power['tier4']['mass'] * tier4)
+                    + (power['tier2']['mass'] * tier2) \
+                    + (power['tier3']['mass'] * tier3) \
+                    + (power['tier4']['mass'] * tier4)
                 if power['best'] is None \
                         or mass < power['best']['mass'] \
                         or (mass == power['best']['mass'] and value < power['best']['value']):

@@ -1,7 +1,9 @@
 *-
+*.exe
 *.log
 .git/
 .pijul/
+.redo/
 /.*history
 /.Xauthority
 /.adobe/
@@ -75,6 +77,7 @@
 /lib/pforth.dic
 /log/
 /src/**/*.[ao]
+/src/bin/*/musl/
 /src/clojure/
 /src/ext/
 /src/go/

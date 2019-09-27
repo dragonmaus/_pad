@@ -2,53 +2,62 @@
 
 set -e
 
-die() {
-	e=$1
-	shift
-	echo "$@" 1>&2
-	exit $e
+echo() {
+	print -r -- "$*"
 }
 
-name=`basename "$0" .sh`
-args=hv
-usage="Usage: $name [-$args] from to"
+warn() {
+	echo "$*" 1>&2
+}
+
+die() {
+	e="$1"
+	shift
+	warn "$*"
+	exit "$e"
+}
+
+name="$( basename "$0" .sh )"
+usage="Usage: $name [-hv] from to"
 help="$usage
 
 Recursively copy a directory while preserving permissions.
 
   -h   display this help
-  -v   print files as they are copied
-"
-
-args=`getopt -n "$name" -s sh $args "$@"` || die 100 "$usage"
-eval set -- "$args"
+  -v   print files as they are copied"
 
 v=
-while test $# -gt 0
+while getopts :hv opt
 do
-	case $1 in
-	(-h)
+	case "$opt" in
+	(h)
 		die 0 "$help"
 		;;
-	(-v)
+	(v)
 		v=v
 		;;
-	(--)
-		shift
-		break
+	(:)
+		warn "$name: Option '$OPTARG' requires an argument"
+		die 100 "$usage"
+		;;
+	(\?)
+		warn "$name: Unknown option '$OPTARG'"
+		die 100 "$usage"
 		;;
 	esac
-	shift
 done
+shift $(( OPTIND - 1 ))
 
-test $# -ge 1 || die 100 "missing required 'from' argument
-$usage"
-test $# -ge 2 || die 100 "missing required 'to' argument
-$usage"
+if [[ $# -lt 2 ]]
+then
+	warn "$name: Missing argument(s)"
+	die 100 "$usage"
+fi
 
-mkdir -p$v "$2"
+[[ -e "$1" ]] || die 1 "$name: Could not find '$1': No such file or directory"
+[[ -d "$1" ]] || die 1 "$name: Could not chdir into '$1': Not a directory"
 
-( cd "$1" && exec find . -print0 ) |
-pathsort -z |
-( cd "$1" && exec bsdtar -cn -T - -f - --no-fflags --no-xattrs --null ) |
-( cd "$2" && exec bsdtar -xp$v -f - )
+sort="$( which pathsort sort 2> /dev/null | head -1 )"
+
+mkdir -p "$2"
+( cd "$1" && exec find . -print0 ) | "$sort" -z | ( cd "$1" && exec pax -0dwz ) | ( cd "$2" && exec pax -rz$v -p e )

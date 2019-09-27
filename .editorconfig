@@ -21,6 +21,10 @@ end_of_line = crlf
 [*.{diff,patch}]
 trim_trailing_whitespace = false
 
+[*.do]
+indent_style = tab
+indent_size = tab
+
 [*.go]
 indent_style = tab
 indent_size = tab

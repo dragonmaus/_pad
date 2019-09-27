@@ -2,7 +2,7 @@
 
 set -e
 
-uid="$(id -u)"
+uid="$( id -u )"
 
 case "$uid" in
 (0)
@@ -18,7 +18,7 @@ cp -p "$crontab" "$crontab.tmp"
 
 ${EDITOR:-vi} "$crontab.tmp"
 
-fsync "$crontab.tmp"
+fsync "$crontab.tmp" || :
 
 if cmp -s "$crontab.tmp" "$crontab"
 then
