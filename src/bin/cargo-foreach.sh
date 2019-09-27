@@ -23,7 +23,7 @@ help="$usage
 
   -h   display this help
   -q   suppress command error output
-  -v   print directories as they are processed"
+  -v   print directory names as they are processed"
 
 # cargo passes its arguments unchanged to subcommands
 [[ "$1" = foreach ]] && shift
@@ -60,7 +60,7 @@ for dir in $( ls -A )
 do
 	[[ -e "$dir" && -d "$dir" && -e "$dir/Cargo.toml" ]] || continue
 	$verbose && echo ">> $dir"
-	if ! ( cd "$dir"; $quiet && exec 2>/dev/null; exec "$@" ) && ! $quiet
+	if ! ( cd "$dir"; $quiet && exec 2> /dev/null; exec "$@" ) && ! $quiet
 	then
 		warn "command '$*' failed in directory '$dir'"
 	fi
