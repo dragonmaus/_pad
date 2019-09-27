@@ -16,6 +16,7 @@ done
 
 file="$PWD/.gitignore"
 [[ -f "$file" ]] || : >> "$file"
+file="$( realpath "$file" )"
 
 rm -f "$file.tmp"
 for line
