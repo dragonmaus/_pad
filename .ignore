@@ -77,7 +77,7 @@
 /lib/pforth.dic
 /log/
 /src/**/*.[ao]
-/src/bin/*/musl/
+/src/bin/musl/
 /src/clojure/
 /src/ext/
 /src/go/

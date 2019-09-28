@@ -79,7 +79,7 @@
 ^lib/pforth\.dic$
 ^log($|/)
 ^src/.+\.[ao]$
-^src/bin/(inc|lib)/musl($|/)
+^src/bin/musl($|/)
 ^src/clojure($|/)
 ^src/ext($|/)
 ^src/go($|/)
