@@ -99,6 +99,7 @@ python3-pyacoustid
 python3-yamllint
 qrencode
 qutebrowser
+redo
 redshift
 rustup
 scron
@@ -129,6 +130,7 @@ xdotool
 xf86-video-intel
 xf86-video-nouveau
 xinput
+xmlto
 xorg-minimal
 xprop
 xrdb

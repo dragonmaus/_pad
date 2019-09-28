@@ -6,10 +6,10 @@ exists() {
 }
 
 check() {
-	if exists "$2.c"
+	if exists "$2.s" || exists "$2.c"
 	then
 		file="$2.o"
-		kind=c
+		kind=object
 		return 0
 	fi
 	for ext in sh py sed calc
@@ -28,10 +28,17 @@ check() {
 check "$@"
 
 case "$kind" in
-(c)
-	redo-ifchange "$file" bin/load bin/strip $( [[ -e "$file.args" ]] && echo "$file.args" )
+(object)
+	if exists "$file.args"
+	then
+		redo-ifchange "$file" bin/load bin/strip "$file.args"
+		args="$( cat "$file.args" )"
+	else
+		redo-ifchange "$file" bin/load bin/strip
+		args=
+	fi
 
-	bin/load -o "$3" "$file" $( [[ -e "$file.args" ]] && cat "$file.args" )
+	bin/load -o "$3" "$file" $args
 	bin/strip "$3"
 	;;
 (script)
