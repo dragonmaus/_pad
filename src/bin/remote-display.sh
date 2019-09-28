@@ -2,7 +2,7 @@
 
 set -e
 
-file="${XDG_DATA_HOME:-"$HOME/.local/share"}/x.display"
+file="$HOME/tmp/x.env.display"
 [[ -r "$file" ]] || exit 1
 
 display="$( head -1 < "$file" )"

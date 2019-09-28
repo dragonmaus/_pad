@@ -20,7 +20,7 @@ else
 	done
 fi
 
-print -r -- "$DISPLAY" > "$XDG_DATA_HOME/x.display"
+print -r -- "$DISPLAY" > "$HOME/tmp/x.env.display"
 
 [[ -r "$HOME/.Xresources" ]] && xrdb -I"$XDG_CONFIG_HOME/base16" -load "$HOME/.Xresources"
 
