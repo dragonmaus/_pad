@@ -75,6 +75,6 @@ case "$mode" in
 	pass show "$key" | sed -n "$filter"
 	;;
 (type)
-	pass show "$key" | sed -n "$filter" | ( IFS= read -r pass && echo "$pass" ) | xdotool type --clearmodifiers --file -
+	pass show "$key" | sed -n "$filter" | ( IFS= read -r pass && print -nr -- "$pass" ) | xdotool type --clearmodifiers --file -
 	;;
 esac
