@@ -2,6 +2,7 @@ GraphicsMagick
 acpi_call-dkms
 acpid
 alsa-utils
+android-tools
 ansible
 base-devel
 base-minimal
