@@ -56,6 +56,7 @@ XKB_INTERNAL_OPTIONS="compose:paus ctrl:nocaps"
 DARCS_ALWAYS_COLOR=1
 DARCS_DO_COLOR_LINES=1
 IDEA_PROPERTIES=$XDG_CONFIG_HOME/idea/idea.properties
+LEDGER_FILE="$HOME/Sync/Ledger/ledger.journal"
 LESS=FMRi
 LESSHISTFILE=/dev/null
 PASSWORD_STORE_SIGNING_KEY=$( cat $HOME/.secret/signing.key )

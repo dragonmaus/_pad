@@ -33,6 +33,10 @@ tab_width = 4
 [*.hs]
 indent_size = 4
 
+[*.journal]
+indent_style = tab
+indent_size = tab
+
 [{*.mk,Makefile,Makefile.inc}]
 indent_style = tab
 indent_size = tab
@@ -50,6 +54,11 @@ max_line_length = 99
 [*.sh]
 indent_style = tab
 indent_size = tab
+
+[*.txt]
+indent_style = tab
+indent_size = tab
+trim_trailing_whitespace = false
 
 [{.gitconfig,gitconfig}]
 indent_style = tab

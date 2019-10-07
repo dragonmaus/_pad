@@ -41,6 +41,7 @@ go
 gparted
 grub
 gv
+hledger
 iproute2
 iputils
 kbd
@@ -48,6 +49,7 @@ kbfs
 keepassxc
 khal
 khard
+ledger
 libGL-32bit
 libXft-devel
 libXinerama-devel
