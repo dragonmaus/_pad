@@ -13,3 +13,5 @@ do
 	chmod -w "$dest.new"
 	mv -f "$dest.new" "$dest"
 done < all.list
+
+redo-ifchange "$HOME/.secret/bin/install"
