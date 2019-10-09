@@ -12,6 +12,8 @@ geturi
 getuser
 git-ignore
 hd
+khpass
+khuser
 lefix
 n
 p
@@ -30,7 +32,9 @@ screencap
 set-wallpaper
 shar
 sshmenu
+sshpass
 sv
 syscall
+syspass
 vicron
 yamlfmt
