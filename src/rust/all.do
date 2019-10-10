@@ -1,1 +1,1 @@
-redo-ifchange remote local
+redo-ifchange local remote
