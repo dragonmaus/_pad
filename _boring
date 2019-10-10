@@ -4,6 +4,7 @@
 (^|/)__pycache__($|/)
 (^|/)_darcs($|/)
 -($|/)
+-e
 \.a$
 \.exe$
 \.log$
@@ -72,6 +73,7 @@
 ^\.wine($|/)
 ^\.xsession-errors$
 ^backup($|/)
+^bin/[^./]+$
 ^bin/ext($|/)
 ^bin/mksh($|/)
 ^bin/src/musl($|/)
