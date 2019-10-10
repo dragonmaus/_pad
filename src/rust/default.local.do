@@ -1,6 +1,1 @@
-cd "$2"
-cargo clean
-cargo generate-lockfile
-redo-ifchange Cargo.lock
-cargo install --force --path=.
-cargo clean
+redo-ifchange "$2.local-stamp" "$2.local-build"
