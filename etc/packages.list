@@ -13,6 +13,7 @@ cabal-install
 calc
 calibre
 cdparanoia
+chromium-widevine
 chrony
 clang
 compton
