@@ -1,4 +1,5 @@
 GraphicsMagick
+abduco
 acpi_call-dkms
 acpid
 alsa-utils
@@ -22,6 +23,7 @@ dash
 dhcpcd
 dosfstools
 dragon
+dvtm
 dwarffortress
 e2fsprogs
 edb-debugger
