@@ -73,6 +73,8 @@ fi
 
 set +a
 
+umask 077
+
 test -r $XDG_DATA_HOME/ssh/agent.sh && . $XDG_DATA_HOME/ssh/agent.sh
 
 $startx && exec startx
