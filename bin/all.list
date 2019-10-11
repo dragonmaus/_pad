@@ -16,6 +16,7 @@ khpass
 khuser
 lefix
 n
+nvim-diff
 p
 pass2netrc
 passmenu
@@ -34,6 +35,7 @@ set-wallpaper
 shar
 sshmenu
 sshpass
+stamp
 sv
 syscall
 syspass
