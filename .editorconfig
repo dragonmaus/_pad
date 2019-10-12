@@ -25,6 +25,10 @@ tab_width = 4
 [*.hs]
 indent_size = 4
 
+[*.{ics,vcf}]
+end_of_line = crlf
+max_line_length = 75
+
 [*.journal]
 indent_size = 4
 
