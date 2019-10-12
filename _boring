@@ -12,6 +12,7 @@
 ^[A-KM-QS-Z]
 ^\.Xauthority$
 ^\.[^/]*history$
+^\.abduco($|/)
 ^\.adobe($|/)
 ^\.android($|/)
 ^\.ansible($|/)

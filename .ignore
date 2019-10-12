@@ -8,6 +8,7 @@
 .redo/
 /.*history
 /.Xauthority
+/.abduco/
 /.adobe/
 /.android/
 /.ansible/
