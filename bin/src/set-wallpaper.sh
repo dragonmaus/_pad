@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mode=center
+mode=fill
 while getopts :cfmst opt
 do
 	case "$opt" in
