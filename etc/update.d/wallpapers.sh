@@ -30,7 +30,7 @@ do
 			pid=
 			if [[ -n "$DISPLAY" ]]
 			then
-				gm display "$file" 2> /dev/null &
+				feh -. "$file" 2> /dev/null &
 				pid="$!"
 			fi
 			while :
