@@ -68,6 +68,7 @@
 ^\.rustup($|/)
 ^\.secret($|/)
 ^\.serverauth\.[0-9]+$
+^\.solar2($|/)
 ^\.ssh($|/)
 ^\.steam
 ^\.subversion($|/)
