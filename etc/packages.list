@@ -20,7 +20,6 @@ compton
 cppcheck
 curl
 darcs
-dash
 dhcpcd
 dosfstools
 dragon
@@ -37,7 +36,6 @@ file
 firefox-esr
 flac
 font-fantasque-sans-ttf
-fontconfig-32bit
 gforth
 git
 go
@@ -54,15 +52,12 @@ keepassxc
 khal
 khard
 ledger
-libGL-32bit
 libXft-devel
 libXinerama-devel
 libXrandr-devel
 libavformat-32bit
 libavresample-32bit
-libavutil-32bit
 libcurl-devel
-libpulseaudio-32bit
 libreoffice
 libsodium-devel
 libtxc_dxtn-32bit
@@ -80,7 +75,6 @@ mono
 moreutils
 mpv
 nasm
-ncurses
 ncurses-devel
 neovim
 neovim-qt
