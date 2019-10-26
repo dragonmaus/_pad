@@ -31,4 +31,3 @@ c.url.searchengines = {
 }
 config.bind('X', 'hint links spawn mpv {hint-url}')
 config.bind('x', 'spawn mpv {url}')
-config.source('theme.py')
