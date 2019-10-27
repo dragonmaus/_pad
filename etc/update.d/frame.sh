@@ -13,7 +13,7 @@ function log {
 }
 
 dst=/mnt/frame
-src=$HOME/Pictures/Wallpapers/digitalblasphemy/1600x1200
+src=$HOME/Pictures/Wallpapers/1600x1200/digitalblasphemy
 
 umount $dst 2>/dev/null || :
 mount $dst || die 111 Could not mount $dst

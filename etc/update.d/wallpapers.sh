@@ -2,7 +2,7 @@
 set -e
 
 conf="$HOME/etc/wallpaper"
-dest="$HOME/Pictures/Wallpapers/digitalblasphemy"
+dest="$HOME/Pictures/Wallpapers"
 dist="$HOME/Downloads"
 temp="$HOME/tmp/wallpaper"
 
@@ -12,15 +12,15 @@ while read -pr res suf
 do
 	zip="$dist/$res.zip"
 	[[ -e "$zip" ]] || continue
-	dir="$dest/$res"
+	dir="$dest/$res/digitalblasphemy"
 	mkdir -p "$dir"
-	find "$dir" -type f -print0 | xargs -0r chmod 0755
+	find "$dir" -type f -print0 | xargs -0r chmod =rwx
 	rm -fr "$temp"
 	mkdir -p "$temp"
 	(
 		cd "$temp"
 		7z x "$zip"
-		find . -type f -print0 | xargs -0r chmod 0644
+		find . -type f -print0 | xargs -0r chmod =rw
 		sed "s/\$/$suf.jpg/" <"$conf/black.list" | xargs -r rm -f 2>/dev/null || :
 		sed "s/\$/$suf.jpg/" <"$conf/white.list" | xargs -r mv -f -t "$dir" 2>/dev/null || :
 		for file in *"$suf.jpg"
@@ -54,7 +54,7 @@ do
 		done
 	)
 	rm -fr "$temp"
-	find "$dir" -type f -perm 0755 -print0 | xargs -0r rm -fv
+	find "$dir" -type f -perm /0111 -print0 | xargs -0r rm -fv
 	for i in black white
 	do
 		list="$conf/$i.list"
