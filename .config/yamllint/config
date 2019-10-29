@@ -1,22 +1,20 @@
 ---
-
 ignore: |
   /.cargo/
   /.local/
   /backup/
   /src/**/ext/
-
 rules:
   braces:
     max-spaces-inside: 1
-    max-spaces-inside-empty: 1
+    max-spaces-inside-empty: 0
     min-spaces-inside: 1
-    min-spaces-inside-empty: 1
+    min-spaces-inside-empty: 0
   brackets:
     max-spaces-inside: 1
-    max-spaces-inside-empty: 1
+    max-spaces-inside-empty: 0
     min-spaces-inside: 1
-    min-spaces-inside-empty: 1
+    min-spaces-inside-empty: 0
   colons:
     max-spaces-after: 1
     max-spaces-before: 0
@@ -46,7 +44,7 @@ rules:
   hyphens:
     max-spaces-after: 1
   indentation:
-    check-multi-line-strings: false
+    check-multi-line-strings: true
     indent-sequences: true
     spaces: 2
   key-duplicates: "enable"
@@ -68,11 +66,9 @@ rules:
     quote-type: "any"
   trailing-spaces: "enable"
   truthy: "enable"
-
 yaml-files:
   - '*.yaml'
   - '*.yml'
-  - .yamllint
-  - /.config/yamllint/config
-
+  - '.yamllint'
+  - '/.config/yamllint/config'
 ...
