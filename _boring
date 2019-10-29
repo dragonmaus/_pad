@@ -20,6 +20,7 @@
 ^\.cabal($|/)
 ^\.cache($|/)
 ^\.cargo($|/)
+^\.config/MomodoraRUtM($|/)
 ^\.config/MusicBrainz($|/)
 ^\.config/QtProject\.conf$
 ^\.config/barrier($|/)
