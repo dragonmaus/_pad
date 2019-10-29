@@ -78,6 +78,7 @@
 ^bin/[^./]+$
 ^bin/ext($|/)
 ^bin/mksh($|/)
+^bin/src/bin/[^.]+$
 ^bin/src/musl($|/)
 ^dist($|/)
 ^etc/runit($|/)
@@ -92,6 +93,6 @@
 ^src/haskell($|/)
 ^src/kotlin($|/)
 ^src/rust/.+/
-^src/rust/[^./]+$
+^src/rust/[^.]+$
 ^storage($|/)
 ^tmp($|/)

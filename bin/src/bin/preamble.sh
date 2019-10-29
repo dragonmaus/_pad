@@ -1,6 +1,3 @@
 #!/bin/sh
-
 home="$( dirname "$0" )/.."
 home="$( cd "$home" && env - "PATH=$PATH" pwd )"
-
-exec tcc -c -nostdinc -I"$home/inc" "$@"

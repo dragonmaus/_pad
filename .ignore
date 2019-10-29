@@ -73,6 +73,7 @@
 /[A-Z]*
 /backup/
 /bin/*
+/bin/src/bin/*
 /bin/src/musl/
 /dist/
 /etc/runit/
@@ -86,7 +87,7 @@
 /src/go/
 /src/haskell/
 /src/kotlin/
-/src/rust/*/
+/src/rust/*
 /storage/
 /tmp/
 __pycache__/
@@ -96,3 +97,5 @@ _darcs/
 !/bin/*.do
 !/bin/all.list
 !/bin/src/
+!/bin/src/bin/*.*
+!/src/rust/*.*
