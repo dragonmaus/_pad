@@ -1,1 +1,1 @@
-which ld > "$3"
+which ld > "$3" 2> /dev/null

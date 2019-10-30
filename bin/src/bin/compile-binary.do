@@ -1,1 +1,1 @@
-which tcc cc | head -1 > "$3"
+which tcc cc 2> /dev/null | head -1 > "$3"

@@ -1,1 +1,1 @@
-which nasm > "$3"
+which nasm > "$3" 2> /dev/null

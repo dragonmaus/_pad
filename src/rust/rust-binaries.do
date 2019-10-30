@@ -1,1 +1,1 @@
-which cargo rustc > "$3"
+which cargo rustc > "$3" 2> /dev/null
