@@ -4,6 +4,7 @@ c
 cargo-foreach
 cdiff
 dircp
+epoch
 escalc
 escalc-quarg
 fix-screen
