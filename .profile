@@ -15,6 +15,7 @@ then
 	esac
 fi
 
+# XDG directories
 cache_home="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 config_home="${XDG_CONFIG_HOME:-"$HOME/.config"}"
 data_home="${XDG_DATA_HOME:-"$HOME/.local/share"}"
