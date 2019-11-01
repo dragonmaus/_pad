@@ -1,3 +1,3 @@
 redo-always
-which nasm > "$3" 2> /dev/null
+which nasm as 2> /dev/null | head -1 > "$3"
 redo-stamp < "$3"
