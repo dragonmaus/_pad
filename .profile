@@ -24,7 +24,7 @@ data_home="${XDG_DATA_HOME:-"$HOME/.local/share"}"
 path=
 ifs="$IFS"
 IFS=:
-for d in "$HOME/bin" "$HOME/.cabal/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/src/go/bin" "$HOME/src/go/ext/bin" "$HOME/bin/ext" $PATH "$HOME/bin/mksh"
+for d in "$HOME/bin" "$HOME/.cabal/bin" "$HOME/.cargo/bin" "$HOME/.local/bin" "$HOME/src/go/bin" "$HOME/src/go/ext/bin" "$HOME/bin/ext" $PATH "$HOME/bin/mksh" "$HOME/bin/wine"
 do
 	d="$( realpath "$d" 2> /dev/null || echo "$d" )"
 	case ":$path:" in

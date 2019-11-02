@@ -33,6 +33,7 @@
 /.config/keepassxc/
 /.config/keybase/
 /.config/libreoffice/
+/.config/menus/
 /.config/mpv/
 /.config/netsurf/
 /.config/otter/
@@ -41,6 +42,7 @@
 /.config/qutebrowser/autoconfig.yml
 /.config/qutebrowser/qsettings/
 /.config/syncthing/
+/.config/unity3d/
 /.config/vdirsyncer/
 /.cups/
 /.darcs/author
