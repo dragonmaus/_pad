@@ -20,6 +20,7 @@
 /.config/MomodoraRUtM/
 /.config/MusicBrainz/
 /.config/QtProject.conf
+/.config/StardewValley/
 /.config/barrier/
 /.config/calibre/
 /.config/cef_user_data/
@@ -65,6 +66,7 @@
 /.pijulconfig/
 /.pki/
 /.pulse-cookie
+/.renpy/
 /.rustup/
 /.secret/
 /.serverauth.*
