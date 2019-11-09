@@ -75,6 +75,7 @@ mksh
 mono
 moreutils
 mpv
+musl-bootstrap
 nasm
 ncurses-devel
 neovim
