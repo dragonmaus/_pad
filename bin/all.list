@@ -8,6 +8,7 @@ epoch
 escalc
 escalc-quarg
 fix-screen
+fsync
 getpass
 geturi
 getuser
