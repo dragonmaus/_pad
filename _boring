@@ -101,7 +101,7 @@
 ^src/go($|/)
 ^src/haskell($|/)
 ^src/kotlin($|/)
-^src/rust/.+/
-^src/rust/[^.]+$
+^src/rust/[^./]+$
+^src/rust/[^/]+\.binary$
 ^storage($|/)
 ^tmp($|/)

@@ -105,4 +105,3 @@ _darcs/
 !/bin/src/bin/*.do
 !/bin/src/bin/*.format
 !/bin/src/bin/*.sh
-!/src/rust/*.*
