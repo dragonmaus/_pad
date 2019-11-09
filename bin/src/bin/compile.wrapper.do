@@ -1,4 +1,4 @@
 redo-always
 
-which musl-gcc > "$3"
+which musl-clang > "$3"
 redo-stamp < "$3"

@@ -1,4 +1,4 @@
 redo-always
 
-which gcc > "$3"
+which clang > "$3"
 redo-stamp < "$3"

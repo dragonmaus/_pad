@@ -1,1 +1,1 @@
-exec '%s' -static -L"$home/lib" "$@"\n
+exec '%s' -static -L"$home/lib" -Qunused-arguments "$@"\n

@@ -1,1 +1,1 @@
-exec '%s' -c -I"$home/inc" "$@"\n
+exec '%s' -c -I"$home/inc" -Qunused-arguments "$@"\n
