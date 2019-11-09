@@ -80,7 +80,6 @@
 /backup/
 /bin/*
 /bin/src/bin/*
-/bin/src/musl/
 /dist/
 /etc/runit/
 /etc/sv/**/supervise
@@ -103,5 +102,7 @@ _darcs/
 !/bin/*.do
 !/bin/all.list
 !/bin/src/
-!/bin/src/bin/*.*
+!/bin/src/bin/*.do
+!/bin/src/bin/*.format
+!/bin/src/bin/*.sh
 !/src/rust/*.*

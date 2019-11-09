@@ -82,10 +82,13 @@
 ^\.xsession-errors$
 ^backup($|/)
 ^bin/[^./]+$
-^bin/ext($|/)
-^bin/mksh($|/)
-^bin/src/bin/[^.]+$
-^bin/src/musl($|/)
+^bin/ext/
+^bin/mksh/
+^bin/src/bin/[^./]+$
+^bin/src/bin/[^/]+\.binary$
+^bin/src/bin/[^/]+\.specs$
+^bin/src/bin/[^/]+\.wrapper$
+^bin/wine/
 ^dist($|/)
 ^etc/runit($|/)
 ^etc/sv/.+/supervise($|/)
