@@ -92,8 +92,8 @@
 /src/go/
 /src/haskell/
 /src/kotlin/
-/src/rust/*/
 /src/rust/*.binary
+/src/rust/*/
 /storage/
 /tmp/
 __pycache__/
