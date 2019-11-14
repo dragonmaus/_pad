@@ -61,6 +61,7 @@
 ^\.hackage($|/)
 ^\.itch($|/)
 ^\.java($|/)
+^\.lesshst$
 ^\.local($|/)
 ^\.macromedia($|/)
 ^\.minecraft($|/)
