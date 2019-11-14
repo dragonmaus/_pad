@@ -9,7 +9,7 @@ function die {
 	exit $e
 }
 function log {
-	print -r -- "$@" >&2
+	print -r -- ">> $*" >&2
 }
 
 dst=/mnt/frame
@@ -18,15 +18,15 @@ src=$HOME/Pictures/Wallpapers/1600x1200/digitalblasphemy
 umount $dst 2>/dev/null || :
 mount $dst || die 111 Could not mount $dst
 
+log Updating $src
+redo --no-log "$HOME/etc/wallpaper/1600x1200"
+
 log Cleaning up $dst
 ls -rt $dst | while read -r file
 do
 	name=${file#????-}
 	[[ -e $src/$name ]] || rm -fv $dst/$file
 done
-log Done
-
-log
 
 log Importing from $src
 ls -rt $src | nl -nrz -w4 | while IFS="	" read -r num file
@@ -41,9 +41,6 @@ do
 		}
 	done
 done
-log Done
-
-log
 
 log Shuffling $dst
 el="s/^/$(tput el)/"
@@ -60,6 +57,5 @@ do
 	fsync $file2
 done
 print
-log Done
 
 umount $dst

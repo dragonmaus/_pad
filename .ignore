@@ -3,7 +3,9 @@
 *.a
 *.exe
 *.log
+*.new
 *.o
+*.tmp
 .git/
 .pijul/
 .redo/
@@ -84,6 +86,7 @@
 /dist/
 /etc/runit/
 /etc/sv/**/supervise
+/etc/wallpaper/*.zip
 /git/
 /inc/
 /lib/pforth.dic

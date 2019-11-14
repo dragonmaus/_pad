@@ -9,7 +9,9 @@
 \.a$
 \.exe$
 \.log$
+\.new$
 \.o$
+\.tmp$
 ^[A-KM-QS-Z]
 ^\.Xauthority$
 ^\.[^/]*history$
@@ -93,6 +95,7 @@
 ^dist($|/)
 ^etc/runit($|/)
 ^etc/sv/.+/supervise($|/)
+^etc/wallpaper/[^/]+\.zip$
 ^git($|/)
 ^inc($|/)
 ^lib/pforth\.dic$
