@@ -1,1 +1,2 @@
-exec redo --no-log "$HOME/etc/wallpaper/all"
+print ">> Updating wallpapers"
+redo --no-log "$HOME/etc/wallpaper/all"
