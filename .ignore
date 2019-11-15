@@ -108,5 +108,4 @@ _darcs/
 !/bin/all.list
 !/bin/src/
 !/bin/src/bin/*.do
-!/bin/src/bin/*.format
 !/bin/src/bin/*.sh

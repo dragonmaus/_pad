@@ -1,6 +1,7 @@
 ls -F \
 | sed -n \
 	-e '/\.binary$/p' \
+	-e '/\.format$/p' \
 	-e '/\.specs$/p' \
 	-e '/\.wrapper$/p' \
 	-e 's/\*$//p' \
