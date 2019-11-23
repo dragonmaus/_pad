@@ -1,8 +1,6 @@
 c.auto_save.session = True
 c.content.cookies.accept = 'no-3rdparty'
 c.content.default_encoding = 'utf-8'
-c.content.host_blocking.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts']
-c.content.host_blocking.whitelist = []
 c.downloads.location.suggestion = 'both'
 c.downloads.position = 'bottom'
 c.editor.command = ['nvim-qt', '--nofork', '--', '-f', '{file}', '-c', 'normal {line}G{column0}l']
