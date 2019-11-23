@@ -1,33 +1,36 @@
 #!/bin/sh
 
 force=false
-test x"$1" = x-f && force=true
+case "$1" in
+(-f) force=true ;;
+esac
 
-L=$HOME/log/sv
-R=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/runit
-S=$HOME/etc/sv
+L="$HOME/log/sv"
+R="${XDG_RUNTIME_DIR:-"/run/user/$( id -u )"}/runit"
+S="$HOME/etc/sv"
 
-for d in `ls $S`; do
-	test -d $S/$d || continue
-	test -h $S/$d && continue
+for d in $( ls "$S" )
+do
+	[[ -d "$S/$d" ]] || continue
+	[[ -h "$S/$d" ]] && continue
 
-	grep -Fqx 'exec 2>&1' $S/$d/run || sed -i -e '1 a \' -e 'exec 2>&1' $S/$d/run
+	grep -Fqx 'exec 2>&1' "$S/$d/run" || sed -i -e '1 a \' -e 'exec 2>&1' "$S/$d/run"
 
-	$force && rm -fr $S/$d/log
+	"$force" && rm -fr "$S/$d/log"
 
-	test -x $S/$d/log/run && continue
+	[[ -x "$S/$d/log/run" ]] && continue
 
-	mkdir -p $S/$d/log
+	mkdir -p "$S/$d/log"
 
-	(
-		echo "#!/bin/sh"
-		echo "logdir=${L/#$HOME\//\$HOME\/}/$d"
-		echo "mkdir -p \$logdir"
-		echo "exec svlogd -ttt \$logdir"
-	) >$S/$d/log/run
-	chmod 755 $S/$d/log/run
+	cat > "$S/$d/log/run" <<-END
+	#!/bin/sh
+	logdir="${L/#"$HOME/"/"\$HOME/"}/$d"
+	mkdir -p "\$logdir"
+	exec svlogd -ttt "\$logdir"
+	END
+	chmod +x "$S/$d/log/run"
 
-	ln -s $R/supervise.$d.log $S/$d/log/supervise
+	ln -s "$R/supervise.$d.log" "$S/$d/log/supervise"
 
 	echo "Added logging to $d" 1>&2
 done

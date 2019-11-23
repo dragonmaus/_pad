@@ -1,4 +1,4 @@
 #!/bin/sh
-logdir=$HOME/log/sv/ssh-agent
-mkdir -p $logdir
-exec svlogd -ttt $logdir
+logdir="$HOME/log/sv/ssh-agent"
+mkdir -p "$logdir"
+exec svlogd -ttt "$logdir"
