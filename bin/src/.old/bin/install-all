@@ -63,4 +63,4 @@ home=`cd "$home" && env - "PATH=$PATH" pwd`
 "$home"/bin/install sh vias
 "$home"/bin/install sh vicron
 
-"$HOME"/.secret/bin/bin/install-all
+"$HOME"/etc/secret/bin/bin/install-all

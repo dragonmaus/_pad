@@ -71,7 +71,6 @@
 /.pulse-cookie
 /.renpy/
 /.rustup/
-/.secret/
 /.serverauth.*
 /.solar2/
 /.ssh/
@@ -85,6 +84,7 @@
 /bin/src/bin/*
 /dist/
 /etc/runit/
+/etc/secret/
 /etc/sv/**/supervise
 /etc/wallpaper/*.zip
 /git/

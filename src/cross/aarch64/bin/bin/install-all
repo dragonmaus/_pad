@@ -17,4 +17,4 @@ $home/bin/install sh dircp
 $home/bin/install sh sv
 $home/bin/install sh syscall
 
-#$HOME/.secret/bin/bin/install-all
+#$HOME/etc/secret/bin/bin/install-all

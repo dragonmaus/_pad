@@ -75,7 +75,6 @@
 ^\.pulse-cookie$
 ^\.renpy($|/)
 ^\.rustup($|/)
-^\.secret($|/)
 ^\.serverauth\.[0-9]+$
 ^\.solar2($|/)
 ^\.ssh($|/)
@@ -95,6 +94,7 @@
 ^bin/wine/
 ^dist($|/)
 ^etc/runit($|/)
+^etc/secret($|/)
 ^etc/sv/.+/supervise($|/)
 ^etc/wallpaper/[^/]+\.zip$
 ^git($|/)
