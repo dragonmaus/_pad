@@ -63,6 +63,7 @@
 ^\.itch($|/)
 ^\.java($|/)
 ^\.lesshst$
+^\.lexaloffle($|/)
 ^\.local($|/)
 ^\.macromedia($|/)
 ^\.minecraft($|/)
