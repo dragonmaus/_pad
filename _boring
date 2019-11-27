@@ -7,6 +7,7 @@
 -e
 \+$
 \.a$
+\.deps$
 \.exe$
 \.log$
 \.new$
@@ -91,6 +92,8 @@
 ^bin/src/bin/[^/]+\.format$
 ^bin/src/bin/[^/]+\.specs$
 ^bin/src/bin/[^/]+\.wrapper$
+^bin/src/inc/error\.h$
+^bin/src/lib/error.*\.c$
 ^bin/wine/
 ^dist($|/)
 ^etc/runit($|/)
