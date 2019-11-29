@@ -10,8 +10,12 @@ then
 
 	sed -E < "$2.exe.deps" \
 		-e 's|^lib/lib(.+)\.a$|-l\1|' \
-		-e '1i-Wl,--start-group' \
-		-e '$a-Wl,--end-group' \
+		-e '1i\
+-Wl,--start-group
+' \
+		-e '$a\
+-Wl,--end-group
+' \
 	| xargs bin/load -o "$3" "$2.o" -nostdlib
 	bin/strip "$3"
 elif whichsrc "$2.c" > /dev/null
@@ -21,8 +25,12 @@ then
 
 	sed -E < "$2.exe.deps" \
 		-e 's|^lib/lib(.+)\.a$|-l\1|' \
-		-e '1i-Wl,--start-group' \
-		-e '$a-Wl,--end-group' \
+		-e '1i\
+-Wl,--start-group
+' \
+		-e '$a\
+-Wl,--end-group
+' \
 	| xargs bin/load -o "$3" "$2.o"
 	bin/strip "$3"
 elif src="$( whichsrc "$2.sh" "$2.py" "$2.sed" "$2.calc" )"
