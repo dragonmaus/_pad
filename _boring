@@ -87,12 +87,14 @@
 ^bin/[^./]+$
 ^bin/ext/
 ^bin/mksh/
+^bin/src/[^/]+\.s$
 ^bin/src/bin/[^./]+$
 ^bin/src/bin/[^/]+\.binary$
 ^bin/src/bin/[^/]+\.format$
 ^bin/src/bin/[^/]+\.specs$
 ^bin/src/bin/[^/]+\.wrapper$
 ^bin/src/inc/error\.h$
+^bin/src/lib/[^/]+\.s$
 ^bin/src/lib/error.*\.c$
 ^bin/wine/
 ^dist($|/)
