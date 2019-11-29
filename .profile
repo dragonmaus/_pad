@@ -84,5 +84,12 @@ umask 077
 # SSH agent
 [[ -r "$data_home/ssh/agent.sh" ]] && . "$data_home/ssh/agent.sh"
 
+# Update SSH environment
+f="$HOME/.ssh/environment"
+rm -f "$f.new"
+grep -v '^PATH=' < "$f" > "$f.new"
+print -r -- "PATH=$PATH" >> "$f.new"
+mv -f "$f.new" "$f"
+
 # Hand off to X if requested
 "$startx" && exec startx
