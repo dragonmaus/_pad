@@ -7,7 +7,7 @@ file="$home/$2.zip"
 suff="$( head -1 < "$2.suffix" )"
 temp="$( env TMPDIR="$HOME/tmp" mktemp -d )"
 
-trap -- "rm -fr '$temp'" EXIT
+trap -- "rm -fr '$temp'" EXIT INT KILL
 
 mkdir -p "$dest"
 find "$dest" -type f -exec chmod =rwx {} +
