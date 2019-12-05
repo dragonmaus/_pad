@@ -97,6 +97,7 @@
 ^bin/src/lib/[^/]+\.s$
 ^bin/src/lib/error.*\.c$
 ^bin/wine/
+^databases-incognito($|/)
 ^dist($|/)
 ^etc/runit($|/)
 ^etc/secret($|/)
