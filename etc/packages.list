@@ -59,6 +59,7 @@ libXrandr-devel
 libavformat-32bit
 libavresample-32bit
 libcurl-devel
+libgdiplus
 libreoffice
 libsodium-devel
 libtxc_dxtn-32bit
