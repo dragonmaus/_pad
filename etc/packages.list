@@ -129,6 +129,7 @@ void-repo-multilib-nonfree
 void-repo-nonfree
 wine-32bit
 winetricks
+wol
 wpa_supplicant
 x86_energy_perf_policy
 xautolock
