@@ -1,6 +1,6 @@
 alias doas='doas '
 alias lc='ls -C'
 alias ll='ls -Fl'
-alias ls='ls -1A --color=auto'
+alias ls='ls -1AN --color=auto'
 alias pstree='pstree -achlnp'
 alias sudo='sudo '
