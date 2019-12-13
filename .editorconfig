@@ -26,7 +26,7 @@ indent_style = tab
 indent_size = tab
 tab_width = 4
 
-[*.{hs,journal,py}]
+[*.{hs,journal,lua,py}]
 indent_size = 4
 
 [*.{ics,vcf}]
