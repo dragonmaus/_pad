@@ -98,6 +98,7 @@ pijul
 pinentry-dmenu
 pinentry-tty
 python-pip
+python3-BeautifulSoup4
 python3-discid
 python3-neovim
 python3-pyacoustid
