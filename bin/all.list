@@ -44,4 +44,5 @@ sv
 syscall
 syspass
 vicron
+volume
 yamlfmt
