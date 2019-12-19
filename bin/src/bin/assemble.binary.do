@@ -1,4 +1,4 @@
 redo-always
 
-which nasm > "$3"
+realpath "$( which nasm )" > "$3"
 redo-stamp < "$3"
