@@ -5,20 +5,17 @@ acpid
 adwaita-icon-theme
 alsa-utils
 android-tools
-ansible
 base-devel
 base-minimal
 bsdtar
 btrfs-progs
 cabal-install
 calc
-calibre
 cdparanoia
 chromium-widevine
 chrony
 clang
 compton
-cppcheck
 curl
 darcs
 dhcpcd
@@ -50,8 +47,6 @@ jq
 kbd
 kbfs
 keepassxc
-khal
-khard
 ledger
 libXft-devel
 libXinerama-devel
@@ -97,12 +92,7 @@ picard
 pijul
 pinentry-dmenu
 pinentry-tty
-python-pip
-python3-BeautifulSoup4
-python3-discid
-python3-neovim
-python3-pyacoustid
-python3-yamllint
+python
 qrencode
 qutebrowser
 redshift
@@ -122,7 +112,6 @@ tlp
 tp_smapi-dkms
 unclutter-xfixes
 usbutils
-vdirsyncer
 vlc
 void-artwork
 void-repo-multilib
@@ -145,5 +134,4 @@ xrdb
 xsel
 xset
 xxd
-youtube-dl
 zip
