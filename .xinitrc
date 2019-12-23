@@ -40,7 +40,5 @@ xset +dpms
 xset dpms 300 600 900
 xset s off
 
-acpi-handler &
-
 dwmstatus &
 exec dwm
