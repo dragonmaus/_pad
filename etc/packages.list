@@ -94,7 +94,6 @@ pinentry-dmenu
 pinentry-tty
 python
 qrencode
-qutebrowser
 redshift
 rustup
 scron
