@@ -116,4 +116,5 @@
 ^src/rust/[^./]+$
 ^src/rust/[^/]+\.binary$
 ^storage($|/)
+^sve($|/)
 ^tmp($|/)

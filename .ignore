@@ -106,6 +106,7 @@
 /src/rust/*.binary
 /src/rust/*/
 /storage/
+/sve/
 /tmp/
 __pycache__/
 _darcs/
