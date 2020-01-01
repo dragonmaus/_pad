@@ -6,7 +6,7 @@ let g:lightline = {
       \   'active': {
       \     'left': [
       \       [ 'mode', 'paste' ],
-      \       [ 'gitbranch', 'readonly', 'maximumpath', 'modified' ],
+      \       [ 'gitbranch', 'readonly', 'relativepath', 'modified' ],
       \       [ 'currentdir' ],
       \     ],
       \     'right': [
@@ -20,7 +20,6 @@ let g:lightline = {
       \     'charvaluehex': 'LightlineCharvaluehex',
       \     'currentdir': 'LightlineCurrentdir',
       \     'gitbranch': 'LightlineGitbranch',
-      \     'maximumpath': 'LightlineMaximumpath',
       \   },
       \ }
 let g:loaded_syntastic_kotlin_kotlinc_checker = 1
@@ -46,13 +45,6 @@ function! LightlineGitbranch()
     return ''
   endif
   return fugitive#head()
-endfunction
-
-function! LightlineMaximumpath()
-  if ScreenIsNarrow()
-    return expand('%:t')
-  endif
-  return SubstituteDirectoryPrefix(expand('%:p'), getcwd(), '')
 endfunction
 
 function! ScreenIsNarrow()
