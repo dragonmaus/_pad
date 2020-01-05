@@ -44,6 +44,7 @@
 ^\.config/menus($|/)
 ^\.config/mpv($|/)
 ^\.config/netsurf($|/)
+^\.config/nvim-qt($|/)
 ^\.config/otter($|/)
 ^\.config/procps($|/)
 ^\.config/pulse($|/)
