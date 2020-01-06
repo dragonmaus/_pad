@@ -1,13 +1,16 @@
 print ">> Updating packages"
 (
-	libxbps_version=
-	xbps_version=
-
-	while [[ "$(xbps-uhelper version libxbps)" != "$libxbps_version" || "$(xbps-uhelper version xbps)" != "$xbps_version" ]]
+	getversions() {
+		for package
+		do
+			xbps-uhelper version "$package"
+		done
+	}
+	while :
 	do
+		pre="$( getversions libxbps xbps )"
 		sudo xbps-install -u
-
-		libxbps_version="$(xbps-uhelper version libxbps)"
-		xbps_version="$(xbps-uhelper version xbps)"
+		post="$( getversions libxbps xbps )"
+		[[ "$pre" == "$post" ]] && break
 	done
 )
