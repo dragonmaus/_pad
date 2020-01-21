@@ -9,6 +9,7 @@ Plug 'neomake/neomake'
 Plug 'https://git.zx2c4.com/password-store', { 'rtp': 'contrib/vim' }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'RRethy/vim-illuminate'
 Plug 'ledger/vim-ledger'
 Plug 'sheerun/vim-polyglot'
