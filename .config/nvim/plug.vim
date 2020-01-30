@@ -4,5 +4,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'cocopon/iceberg.vim'
 Plug 'https://git.zx2c4.com/password-store', { 'rtp': 'contrib/vim' }
 Plug 'tpope/vim-eunuch'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
