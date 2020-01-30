@@ -5,6 +5,7 @@ acpid
 adwaita-icon-theme
 alsa-utils
 android-tools
+asciidoc
 base-devel
 base-minimal
 bsdtar
@@ -19,6 +20,7 @@ compton
 curl
 darcs
 dhcpcd
+docker-machine
 dosfstools
 dragon
 dvtm
