@@ -20,7 +20,7 @@ compton
 curl
 darcs
 dhcpcd
-docker-machine
+docker
 dosfstools
 dragon
 dvtm
@@ -95,6 +95,7 @@ picard
 pijul
 pinentry-dmenu
 pinentry-tty
+pv
 python
 qrencode
 redshift
