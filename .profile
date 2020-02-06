@@ -14,7 +14,7 @@ case "$KSH_VERSION" in
 			shift
 			;;
 		esac
-		printf "$f" "$@"
+		printf "$f" "$*"
 	)
 	;;
 esac

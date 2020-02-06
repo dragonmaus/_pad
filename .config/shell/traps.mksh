@@ -1,1 +1,0 @@
-trap -- "[[ -r '$shell_config/logout.mksh' ]] && . '$shell_config/logout.mksh'" EXIT
