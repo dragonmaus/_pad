@@ -1,6 +1,0 @@
-\\builtin alias doas="doas "
-\\builtin alias lc="ls -C"
-\\builtin alias ll="ls -Fl"
-\\builtin alias ls="ls -1AN --color=auto"
-\\builtin alias pstree="pstree -achlnp"
-\\builtin alias sudo="sudo "

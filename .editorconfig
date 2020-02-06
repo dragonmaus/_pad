@@ -17,7 +17,7 @@ end_of_line = crlf
 [*.{diff,patch}]
 trim_trailing_whitespace = false
 
-[{*.{do,i,m,mk,s,sh},.gitconfig,Makefile,Makefile.inc,crontab,crontab.tmp,gitconfig}]
+[{*.{do,i,m,mk,mksh,s,sh},.gitconfig,.profile,Makefile,Makefile.inc,crontab,crontab.tmp,gitconfig}]
 indent_style = tab
 indent_size = tab
 

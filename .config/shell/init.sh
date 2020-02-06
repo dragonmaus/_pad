@@ -1,30 +1,32 @@
-shell=${SHELL##*/}
-shell=${shell:-sh}
+shell="${SHELL##*/}"
+shell="${shell:-sh}"
 
-shell_cache=${XDG_CACHE_HOME:-$HOME/.cache}/shell
-shell_config=${XDG_CONFIG_HOME:-$HOME/.config}/shell
-shell_data=${XDG_DATA_HOME:-$HOME/.local/share}/shell
-mkdir -p $shell_cache $shell_config $shell_data
+shell_cache="${XDG_CACHE_HOME:-"$HOME/.cache"}/shell"
+shell_config="${XDG_CONFIG_HOME:-"$HOME/.config"}/shell"
+shell_data="${XDG_DATA_HOME:-"$HOME/.local/share"}/shell"
+mkdir -p "$shell_cache" "$shell_config" "$shell_data"
 
-case $shell in
+case "$shell" in
 (sh)
 	load() {
-		test -r $shell_config/$1.sh && . $shell_config/$1.sh
+		[[ -r "$shell_config/$1.sh" ]] && . "$shell_config/$1.sh"
 	}
 	;;
 (*)
 	load() {
-		for f in $shell_config/$1.$shell $shell_config/$1.sh
+		for f in "$shell_config/$1.$shell" "$shell_config/$1.sh"
 		do
-			if test -r $f
+			if [[ -r "$f" ]]
 			then
-				. $f
+				. "$f"
 				return $?
 			fi
 		done
 	}
 	;;
 esac
+
+load echo
 
 load aliases
 load exports

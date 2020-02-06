@@ -1,4 +1,3 @@
-alias doas='doas '
 alias lc='ls -C'
 alias ll='ls -Fl'
 alias ls='ls -1AN --color=auto'

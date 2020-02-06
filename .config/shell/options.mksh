@@ -1,2 +1,2 @@
-\\builtin set -o physical
-\\builtin set -o vi
+set -o physical
+set -o vi

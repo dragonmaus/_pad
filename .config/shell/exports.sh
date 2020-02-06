@@ -1,1 +1,5 @@
-export GPG_TTY=$( tty )
+set -a
+
+GPG_TTY="$( tty )"
+
+set +a
