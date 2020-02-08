@@ -79,9 +79,7 @@
 /.xsession-errors
 /[A-Z]*
 /backup/
-/bin/ext/
-/bin/mksh/
-/bin/wine/
+/bin/
 /databases-incognito/
 /dist/
 /etc/runit/
