@@ -11,5 +11,8 @@ case "$( uname )" in
 	;;
 esac
 
-which doas > /dev/null 2>&1 && alias doas='doas '
-which sudo > /dev/null 2>&1 && alias sudo='sudo '
+for c in doas sudo
+do
+	which $c > /dev/null 2>&1 && alias $i="$i "
+done
+unset c
