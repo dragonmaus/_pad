@@ -13,6 +13,6 @@ esac
 
 for c in doas sudo
 do
-	which $c > /dev/null 2>&1 && alias $i="$i "
+	which $c > /dev/null 2>&1 && alias $c="$c "
 done
 unset c
