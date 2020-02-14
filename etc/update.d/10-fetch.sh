@@ -1,2 +1,2 @@
-print ">> Synchronising repository indices"
+echo '>> Synchronising repository indices'
 sudo xbps-install -S

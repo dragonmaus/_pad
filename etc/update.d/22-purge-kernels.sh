@@ -1,8 +1,8 @@
-print ">> Purging old kernels"
+echo '>> Purging old kernels'
 (
-	set -- $(vkpurge list | sed '$d')
-	if [[ $# -gt 0 ]]
-	then
-		sudo vkpurge rm "$@"
-	fi
+  set -- $( vkpurge list | sed '$d' )
+  if [[ $# -gt 0 ]]
+  then
+    sudo vkpurge rm "$@"
+  fi
 )

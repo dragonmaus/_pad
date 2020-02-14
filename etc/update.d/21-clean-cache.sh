@@ -1,2 +1,2 @@
-print ">> Pruning package cache"
+echo '>> Pruning package cache'
 sudo xbps-remove -O

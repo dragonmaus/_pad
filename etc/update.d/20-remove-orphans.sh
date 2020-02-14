@@ -1,2 +1,2 @@
-print ">> Removing orphaned packages"
+echo '>> Removing orphaned packages'
 sudo xbps-remove -o

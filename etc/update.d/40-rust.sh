@@ -1,2 +1,2 @@
-print ">> Updating rust"
+echo '>> Updating rust'
 rustup update
