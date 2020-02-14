@@ -76,6 +76,7 @@
 /.steam*
 /.subversion/
 /.wine/
+/.winefs/*/
 /.xsession-errors
 /[A-Z]*
 /backup/

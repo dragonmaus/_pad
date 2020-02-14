@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+echo() {
+  print -R "$@"
+}
+warn() {
+  echo "$@" 1>&2
+}
+die() {
+  e="$1"
+  shift
+  warn "$@"
+  exit "$e"
+}
+
+home="$( cd "$( dirname "$0" )" && env - "PATH=$PATH" pwd )"
+name="$1"
+wine="$( cd "$home/../.wine" && env - "PATH=$PATH" pwd )"
+
+[[ -d "$home/base/$name" && -d "$home/live/$name" ]] || die 1 "$0: Could not find images for '$name'"
+
+doas mount -o "ro,noatime,lowerdir=$home/base/system,upperdir=$home/base/$name,workdir=$home/work" -t overlay overlay "$home/base/current"
+doas mount -o "rw,lowerdir=$home/base/current,upperdir=$home/live/$name,workdir=$home/work" -t overlay overlay "$wine"

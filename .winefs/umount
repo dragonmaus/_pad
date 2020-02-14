@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+home="$( cd "$( dirname "$0" )" && env - "PATH=$PATH" pwd )"
+wine="$( cd "$home/../.wine" && env - "PATH=$PATH" pwd )"
+
+doas umount "$wine"
+doas umount "$home/base/current"
