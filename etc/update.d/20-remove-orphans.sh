@@ -1,2 +1,2 @@
 echo '>> Removing orphaned packages'
-sudo xbps-remove -o
+doas xbps-remove -o

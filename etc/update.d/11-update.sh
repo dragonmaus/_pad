@@ -1,3 +1,3 @@
 echo '>> Updating packages'
-sudo xbps-install -u xbps
-sudo xbps-install -u
+doas xbps-install -u xbps
+doas xbps-install -u

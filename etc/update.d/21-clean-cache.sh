@@ -1,2 +1,2 @@
 echo '>> Pruning package cache'
-sudo xbps-remove -O
+doas xbps-remove -O

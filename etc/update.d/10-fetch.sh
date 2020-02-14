@@ -1,2 +1,2 @@
 echo '>> Synchronising repository indices'
-sudo xbps-install -S
+doas xbps-install -S
