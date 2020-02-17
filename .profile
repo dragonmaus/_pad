@@ -2,7 +2,7 @@
 
 # Ensure that `echo' is sane
 case "$KSH_VERSION" in
-(*MIRBSD\ KSH*|*LEGACY\ KSH*)
+(*MIRBSD\ KSH*|*LEGACY\ KSH*|*PD\ KSH*)
 	alias echo='print -R'
 	;;
 (*)
