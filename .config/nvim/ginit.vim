@@ -1,4 +1,4 @@
 if exists('g:GuiLoaded')
-  GuiFont! monospace:h11
+  GuiFont! monospace:h10
   GuiTabline 0
 endif
