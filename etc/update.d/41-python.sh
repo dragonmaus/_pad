@@ -1,3 +1,8 @@
-echo '>> Updating python packages'
-pip install -U --user pip
-pip list -o --format=json | jq -r '.[] | .name' | tr '\n' '\0' | xargs -0r pip install -U --user
+(
+  for i in 2 3
+  do
+    echo ">> Updating python$i packages"
+    pip$i install -U --no-python-version-warning --upgrade-strategy=eager --user pip
+    pip$i list --format=json --no-python-version-warning --not-required --user | jq -r '.[] | .name' | grep -Fvx pip | xargs -r pip$i install -U --no-python-version-warning --upgrade-strategy=eager --user
+  done
+)
