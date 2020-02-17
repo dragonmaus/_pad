@@ -10,7 +10,7 @@ PS1="$(
     echo -n '\001\e];'
     echo -n '$HOSTNAME'
     echo -n ' '
-    echo -n '[$( _pwd )]
+    echo -n '[$( _pwd )]'
     echo -n ' - '
     echo -n "$shell"
     echo -n '\a\001'
