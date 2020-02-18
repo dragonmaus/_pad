@@ -3,37 +3,37 @@
 # Ensure that `echo' is sane
 case "$KSH_VERSION" in
 (*MIRBSD\ KSH*|*LEGACY\ KSH*|*PD\ KSH*)
-	alias echo='print -R'
-	;;
+  alias echo='print -R'
+  ;;
 (*)
-	echo() (
-		f='%s\n'
-		case "$1" in
-		(-n)
-			f='%s'
-			shift
-			;;
-		esac
-		printf "$f" "$*"
-	)
-	;;
+  echo() (
+    f='%s\n'
+    case "$1" in
+    (-n)
+      f='%s'
+      shift
+      ;;
+    esac
+    printf "$f" "$*"
+  )
+  ;;
 esac
 
 # Ask if X should be started
 startx=
 if which startx > /dev/null 2>&1
 then
-	case "$( tty )" in
-	(/dev/tty*)
-		echo -n 'Start X? (y/n): ' 1>&2
-		read reply || echo n 1>&2
-		case "$reply" in
-		([Yy]*)
-			startx='exec startx'
-			;;
-		esac
-		;;
-	esac
+  case "$( tty )" in
+  (/dev/tty*)
+    echo -n 'Start X? (y/n): ' 1>&2
+    read reply || echo n 1>&2
+    case "$reply" in
+    ([Yy]*)
+      startx='exec startx'
+      ;;
+    esac
+    ;;
+  esac
 fi
 
 # XDG directories
@@ -46,13 +46,13 @@ ifs="$IFS"
 IFS=:
 for d in "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.cabal/bin" "$HOME/src/go/bin" "$HOME/src/go/ext/bin" "$HOME/.local/bin" "$HOME/bin/ext" $PATH "$HOME/bin/wine" "$HOME/bin/mksh"
 do
-	d="$( realpath "$d" 2> /dev/null || echo "$d" )"
-	case ":$path:" in
-	(*":$d:"*)
-		continue
-		;;
-	esac
-	path="$path:$d"
+  d="$( realpath "$d" 2> /dev/null || echo "$d" )"
+  case ":$path:" in
+  (*":$d:"*)
+    continue
+    ;;
+  esac
+  path="$path:$d"
 done
 IFS="$ifs"
 path="${path#:}"
