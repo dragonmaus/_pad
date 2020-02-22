@@ -1,9 +1,7 @@
 *+
 *-
-*.a
 *.log
 *.new
-*.o
 *.tmp
 *{new}
 *{tmp}

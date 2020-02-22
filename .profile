@@ -3,19 +3,20 @@
 # Ensure that `echo' is sane
 case "$KSH_VERSION" in
 (*MIRBSD\ KSH*|*LEGACY\ KSH*|*PD\ KSH*)
-  alias echo='print -R'
+  echo() {
+    print -R "$@"
+  }
   ;;
 (*)
-  echo() (
-    f='%s\n'
-    case "$1" in
-    (-n)
-      f='%s'
+  echo() {
+    if [[ "$1" = -n ]]
+    then
       shift
-      ;;
-    esac
-    printf "$f" "$*"
-  )
+      printf '%s' "$*"
+    else
+      printf '%s\n' "$*"
+    fi
+  }
   ;;
 esac
 

@@ -1,57 +1,29 @@
 case "$KSH_VERSION" in
-(*MIRBSD\ KSH*|*LEGACY\ KSH*)
-	# mksh does not have builtin printf
-	echo() {
-		typeset n=
-		while [[ $# -gt 0 ]]
-		do
-			case "$1" in
-			(-n)
-				n=-n
-				;;
-			(--)
-				shift
-				;&
-			(*)
-				break
-				;;
-			esac
-			shift
-		done
-		print -R $n "$*"
-	}
-	;;
+(*MIRBSD\ KSH*|*LEGACY\ KSH*|*PD\ KSH*)
+  echo() {
+    print -R "$@"
+  }
+  ;;
 (*)
-	echo() {
-		p='%s\n'
-		while [[ $# -gt 0 ]]
-		do
-			case "$1" in
-			(-n)
-				p='%s'
-				;;
-			(--)
-				shift
-				break
-				;;
-			(*)
-				break
-				;;
-			esac
-			shift
-		done
-		printf "$p" "$*"
-	}
-	;;
+  echo() {
+    if [[ "$1" = -n ]]
+    then
+      shift
+      printf '%s' "$*"
+    else
+      printf '%s\n' "$*"
+    fi
+  }
+  ;;
 esac
 
 warn() {
-	echo "$@" 1>&2
+  echo "$@" 1>&2
 }
 
 die() {
-	r="$1"
-	shift 1
-	warn "$@"
-	exit "$r"
+  e="$1"
+  shift 1
+  warn "$@"
+  exit "$e"
 }
