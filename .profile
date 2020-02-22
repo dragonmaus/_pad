@@ -46,7 +46,7 @@ ifs="$IFS"
 IFS=:
 for d in "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.cabal/bin" "$HOME/src/go/bin" "$HOME/src/go/ext/bin" "$HOME/.local/bin" "$HOME/bin/ext" $PATH "$HOME/bin/wine" "$HOME/bin/mksh"
 do
-  d="$( realpath "$d" 2> /dev/null || echo "$d" )"
+  d="$( readlink -f "$d" 2> /dev/null || echo "$d" )"
   case ":$path:" in
   (*":$d:"*)
     continue
