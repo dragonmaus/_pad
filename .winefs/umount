@@ -5,12 +5,10 @@ set -e
 home="$( cd "$( dirname "$0" )" && env - "PATH=$PATH" pwd )"
 wine="$( cd "$home/../.wine" && env - "PATH=$PATH" pwd )"
 
-while ! doas umount "$wine" 2> /dev/null
+for dir in "$wine" "$home/base/current"
 do
-  sleep 1
-done
-
-while ! doas umount "$home/base/current" 2> /dev/null
-do
-  sleep 1
+  while ! umount "$dir" 2> /dev/null
+  do
+    sleep 1
+  done
 done

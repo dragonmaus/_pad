@@ -16,10 +16,11 @@ die() {
 }
 
 home="$( cd "$( dirname "$0" )" && env - "PATH=$PATH" pwd )"
-name="$1"
 wine="$( cd "$home/../.wine" && env - "PATH=$PATH" pwd )"
+
+name="$1"
 
 [[ -d "$home/base/$name" && -d "$home/live/$name" ]] || die 1 "$0: Could not find images for '$name'"
 
-doas mount -o "ro,noatime,sync,lowerdir=$home/base/system,upperdir=$home/base/$name,workdir=$home/work" -t overlay overlay "$home/base/current"
-doas mount -o "rw,noatime,sync,lowerdir=$home/base/current,upperdir=$home/live/$name,workdir=$home/work" -t overlay overlay "$wine"
+mount -o "ro,noatime,sync,lowerdir=$home/base/system,upperdir=$home/base/$name,workdir=$home/work" -t overlay overlay "$home/base/current"
+mount -o "rw,noatime,sync,lowerdir=$home/base/current,upperdir=$home/live/$name,workdir=$home/work" -t overlay overlay "$wine"
