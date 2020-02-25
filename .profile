@@ -99,7 +99,7 @@ set +a
 umask 077
 
 # SSH agent
-[[ -r "$HOME/.ssh/agent.sh" ]] && . "$HOME/.ssh/agent.sh"
+[[ -f "$HOME/.ssh/agent.sh" ]] && . "$HOME/.ssh/agent.sh"
 
 # Update SSH environment
 f="$HOME/.ssh/environment"
