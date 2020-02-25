@@ -1,5 +1,7 @@
 # ~/.profile
 
+# User-specific shell profile
+
 # Ensure that `echo' is sane
 case "$KSH_VERSION" in
 (*MIRBSD\ KSH*|*LEGACY\ KSH*|*PD\ KSH*)
@@ -83,8 +85,6 @@ XKB_DEFAULT_VARIANT=dvorak
 XKB_INTERNAL_OPTIONS='compose:paus ctrl:nocaps'
 
 ## App-specific configuration
-DARCS_ALWAYS_COLOR=1
-DARCS_DO_COLOR_LINES=1
 IDEA_PROPERTIES="$CONF/idea/idea.properties"
 LESS=FMRi
 PASSWORD_STORE_SIGNING_KEY="$( cat "$HOME/etc/secret/signing.key" )"
@@ -95,6 +95,7 @@ _JAVA_AWT_WM_NONREPARENTING=1
 
 set +a
 
+# Set umask
 umask 077
 
 # SSH agent
