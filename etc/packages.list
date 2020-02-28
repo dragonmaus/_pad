@@ -43,6 +43,7 @@ gparted
 grub
 gv
 hledger
+intellij-idea-community-edition
 iproute2
 iputils
 jq
@@ -83,6 +84,7 @@ nerd-fonts
 nettle-devel
 opendoas
 openjdk
+openjdk11
 openssh
 outils
 p7zip
