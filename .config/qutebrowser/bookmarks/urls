@@ -1,9 +1,8 @@
-file:///home/dragon/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc/rust/html/index.html Rust Documentation
 https://127.0.0.1:8384/ Syncthing
 http://www.stutler.cc/pens/murex/index.html The Legendary Pilot Murex
 https://smile.amazon.com/ Amazon
-https://cc-chestersprings.com/ Calvary Chapel Chester Springs
-https://www.citadelbanking.com/ Citadel
+https://cc-chestersprings.com/ Calvary Chapel of Chester Springs
+https://www.citadelbanking.com/ Citadel Banking
 https://www.cricketwireless.com/ Cricket Wireless
 https://duplicacy.com/home.html Duplicacy
 https://www.factorio.com/ Factorio
@@ -16,11 +15,10 @@ https://os.phil-opp.com/ Writing an OS in Rust
 https://www.powerslide.com/Powerslide-Next-Blackout-110 Powerslide Next Blackout 110
 https://www.tauniverse.com/ Total Annihilation Universe
 https://my.vultr.com/ Vultr.com
-https://www.wolfeauto.com/ Wolfe Automotive, Inc.
 https://app.youneedabudget.com/ YNAB
-https://posteo.de/ Posteo Webmail
-https://rust-lang-nursery.github.io/cli-wg/index.html Command Line Applications in Rust
-https://hub.darcs.net/dragonmaus Darcs Hub
+https://posteo.de/ posteo.de
+https://rust-cli.github.io/book/index.html Command Line Applications in Rust
+https://hub.darcs.net/dragonmaus hub.darcs.net
 https://crux.nu/ CRUX
 https://freedns.afraid.org/ FreeDNS
 https://my.cleanbrowsing.org/dashboard CleanBrowsing User Panel
@@ -28,7 +26,8 @@ https://editorconfig.org/ EditorConfig
 https://tools.ietf.org/html/rfc5545 RFC 5545 - Internet Calendaring and Scheduling Core Object Specification (iCalendar)
 https://tools.ietf.org/html/rfc6350 RFC 6350 - vCard Format Specification
 http://www.musl-libc.org/ musl libc
-https://pubs.opengroup.org/onlinepubs/9699919799/toc.htm Single Unix Specification
+https://pubs.opengroup.org/onlinepubs/9699919799/toc.htm The Open Group Base Specifications Issue 7, 2018 edition
+https://doc.rust-lang.org/std/index.html std - Rust
 https://spdx.org/licenses/BSD-3-Clause-Clear.html BSD 3-Clause Clear License
 http://www.thinkwiki.org/wiki/Category:Z61t Category:Z61t
 https://voidlinux.org/ Enter the void
