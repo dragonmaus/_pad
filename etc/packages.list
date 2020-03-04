@@ -10,7 +10,6 @@ base-devel
 base-minimal
 bsdtar
 btrfs-progs
-cabal-install
 calc
 cdparanoia
 chromium-widevine
@@ -20,7 +19,6 @@ compton
 curl
 darcs
 dhcpcd
-docker
 dosfstools
 dragon
 dvtm
@@ -81,7 +79,6 @@ nasm
 ncurses-devel
 neovim
 neovim-qt
-nerd-fonts
 nettle-devel
 opendoas
 openjdk
