@@ -98,7 +98,6 @@ pinentry-dmenu
 pinentry-tty
 psmisc
 pv
-python
 qrencode
 redshift
 rustup
