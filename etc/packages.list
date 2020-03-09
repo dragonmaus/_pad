@@ -11,7 +11,9 @@ base-minimal
 bsdtar
 btrfs-progs
 calc
+calligra
 cdparanoia
+cdrtools
 chromium-widevine
 chrony
 clang
@@ -27,6 +29,7 @@ e2fsprogs
 edb-debugger
 endless-sky
 f2fs-tools
+factor
 feh
 ffmpeg
 file
