@@ -7,4 +7,7 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-eunuch'
 Plug 'sheerun/vim-polyglot'
 
+" local plugins
+Plug '/usr/lib/factor/misc/vim'
+
 call plug#end()
