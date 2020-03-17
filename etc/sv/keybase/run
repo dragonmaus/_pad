@@ -2,4 +2,5 @@
 exec 2>&1
 export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-"/run/user/$( id -u )"}"
 keybase ctl init
-exec keybase ctl watchdog2
+keybase ctl start
+exec chpst -b keybase pause
