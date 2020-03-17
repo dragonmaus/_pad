@@ -1,4 +1,5 @@
 GraphicsMagick
+Solaar
 abduco
 acpi_call-dkms
 acpid
@@ -36,6 +37,7 @@ file
 firefox-esr
 flac
 font-fantasque-sans-ttf
+fwupd
 gforth
 git
 glu-32bit
@@ -101,6 +103,7 @@ pinentry-dmenu
 pinentry-tty
 psmisc
 pv
+python3-gobject-devel
 qrencode
 redshift
 rustup
