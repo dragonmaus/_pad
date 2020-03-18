@@ -45,6 +45,7 @@
 /.rustup/
 /.ssh/
 /.steam*
+/.uqm/
 /.wine/
 /.winefs/*/
 /.xsession-errors

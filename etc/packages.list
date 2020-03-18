@@ -1,4 +1,6 @@
 GraphicsMagick
+SDL-devel
+SDL_image-devel
 Solaar
 abduco
 acpi_call-dkms
@@ -62,9 +64,11 @@ libavformat-32bit
 libavresample-32bit
 libcurl-devel
 libgdiplus
+libogg-devel
 libreoffice
 libsodium-devel
 libtxc_dxtn-32bit
+libvorbis-devel
 linux
 lz4
 lz4jsoncat
