@@ -109,6 +109,10 @@ psmisc
 pv
 python3-gobject-devel
 qrencode
+qt5-declarative-devel
+qt5-location-devel
+qt5-webchannel-devel
+qt5-webengine-devel
 redshift
 rustup
 scron
