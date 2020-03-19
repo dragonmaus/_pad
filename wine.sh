@@ -1,9 +1,21 @@
 #!/bin/sh
 
+mkexe() {
+  rm -f "$1{new}"
+  cat > "$1{new}"
+  chmod +x-w "$1{new}"
+  cmp -s "$1" "$1{new}" || mv -f "$1{new}" "$1"
+  rm -f "$1{new}"
+}
+
 set -e
 
 bindir="$HOME/bin/wine"
 mkdir -p "$bindir"
+mkexe "$bindir/winefs" << 'END'
+#!/bin/sh
+exec doas "$HOME/.winefs/$1" "$2"
+END
 
 winefs="$HOME/.winefs"
 
@@ -17,30 +29,24 @@ do
     continue
   fi
 
-  doas "$winefs/mount" "$name"
+  winefs mount "$name"
 
   wbin="$path\\$command"
 
   if [[ ! -e "$( winepath -u "$wbin" )" ]]
   then
-    doas "$winefs/umount"
+    winefs umount
     rm -f "$bin{new}"
     continue
   fi
 
-  rm -f "$bin{new}"
-  cat > "$bin{new}" << END
+  mkexe "$bin" << END
 #!/bin/sh
 set -e
-doas '$winefs/mount' '$name'
+winefs mount '$name'
 wine start /d '$path' '$wbin'
-doas '$winefs/umount'
+winefs umount
 END
 
-  chmod +x-w "$bin{new}"
-
-  cmp -s "$bin" "$bin{new}" || mv -f "$bin{new}" "$bin"
-  rm -f "$bin{new}"
-
-  doas "$winefs/umount"
+  winefs umount
 done < "${0%.sh}.csv"
