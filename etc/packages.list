@@ -4,6 +4,7 @@ acpi_call-dkms
 acpid
 alsa-utils
 android-tools
+asciidoc
 base-devel
 base-minimal
 bsdtar
@@ -45,6 +46,7 @@ man-pages
 mdocml
 minecraft
 minetest
+mit-krb5-libs
 mksh
 moreutils
 mpv
