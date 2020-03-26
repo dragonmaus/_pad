@@ -22,6 +22,7 @@
 /.config/qutebrowser/qsettings/
 /.config/syncthing/
 /.config/unity3d/
+/.config/vice/
 /.darcs/author
 /.dbus/
 /.dooble_v2/
