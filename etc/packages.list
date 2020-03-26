@@ -44,6 +44,7 @@ kbfs
 keepassxc
 libavformat-32bit
 libavresample-32bit
+libgdiplus
 libreoffice
 libtxc_dxtn-32bit
 linux
