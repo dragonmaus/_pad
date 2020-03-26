@@ -34,6 +34,7 @@ go
 gparted
 grub
 gv
+iat
 intellij-idea-community-edition
 iproute2
 iputils
@@ -83,6 +84,7 @@ tlp
 tp_smapi-dkms
 unclutter-xfixes
 usbutils
+vice
 void-repo-multilib
 void-repo-multilib-nonfree
 void-repo-nonfree
