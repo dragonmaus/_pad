@@ -38,6 +38,6 @@ do
 
   mkexe "$bin" << END
 #!/bin/sh
-exec env WINEPREFIX='$dir' wine start /d '$path' '$wbin' "\$@"
+exec optirun env WINEPREFIX='$dir' wine start /d '$path' '$wbin' "\$@"
 END
 done < "${0%.sh}.csv"

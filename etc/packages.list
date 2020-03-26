@@ -1,5 +1,6 @@
 GraphicsMagick
 Solaar
+VirtualGL-32bit
 acpi_call-dkms
 acpid
 alsa-utils
@@ -7,7 +8,9 @@ android-tools
 asciidoc
 base-devel
 base-minimal
+bbswitch
 bsdtar
+bumblebee
 calc
 cdparanoia
 cdrtools
@@ -30,9 +33,12 @@ firefox-esr
 flac
 font-fantasque-sans-ttf
 git
+glew-32bit
+glxinfo
 go
 gparted
 grub
+gtkglext-32bit
 gv
 iat
 intellij-idea-community-edition
@@ -44,14 +50,16 @@ kbfs
 keepassxc
 libavformat-32bit
 libavresample-32bit
+libepoxy-32bit
 libgdiplus
 libreoffice
 libtxc_dxtn-32bit
+libva-glx
+libva-glx-32bit
 linux
 man-pages
 mdocml
 mesa-intel-dri-32bit
-mesa-nouveau-dri-32bit
 minecraft
 minetest
 mit-krb5-libs
@@ -61,7 +69,11 @@ moreutils
 mpv
 musl-bootstrap
 nasm
+ncurses-base
 neovim-qt
+nvidia340
+nvidia340-opencl
+nvidia340-opencl-32bit
 opendoas
 openssh
 outils
@@ -97,7 +109,6 @@ x86_energy_perf_policy
 xautolock
 xdotool
 xf86-video-intel
-xf86-video-nouveau
 xinput
 xorg-minimal
 xprop
