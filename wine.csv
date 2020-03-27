@@ -14,7 +14,7 @@ star-control,C:\GOG Games\Star Control,Launch Star Control.lnk
 star-control-2,C:\GOG Games\Star Control 2,Launch Star Control 2.lnk
 star-control-3,C:\GOG Games\Star Control 3,Launch Star Control 3.lnk
 total-annihilation,C:\GOG Games\Total Annihilation,TotalA.exe
-total-annihilation-devolution,C:\GOG Games\Total Annihilation,TotalA.exe
-total-annihilation-escalation,C:\GOG Games\Total Annihilation,TotalA.exe
-total-annihilation-mayhem,C:\GOG Games\Total Annihilation,TotalA.exe
-total-annihilation-zero,C:\GOG Games\Total Annihilation,TotalA.exe
+total-annihilation-devolution,C:\GOG Games\Total Annihilation\Mods\Devolution,TotalA.exe
+total-annihilation-escalation,C:\GOG Games\Total Annihilation\Mods\Escalation,TotalA.exe
+total-annihilation-mayhem,C:\GOG Games\Total Annihilation\Mods\Mayhem,TotalA.exe
+total-annihilation-zero,C:\GOG Games\Total Annihilation\Mods\Zero,TotalA.exe
