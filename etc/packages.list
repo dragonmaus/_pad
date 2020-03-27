@@ -48,6 +48,7 @@ jq
 kbd
 kbfs
 keepassxc
+libXinerama-devel
 libavformat-32bit
 libavresample-32bit
 libepoxy-32bit
