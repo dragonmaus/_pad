@@ -109,6 +109,7 @@ wpa_supplicant
 x86_energy_perf_policy
 xautolock
 xdotool
+xev
 xf86-video-intel
 xinput
 xorg-minimal
