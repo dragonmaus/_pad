@@ -7,7 +7,7 @@ case "$( uname )" in
   ;;
 (*)
   alias ls='ls -1AN --color=auto'
-  alias pstree='pstree -achlnp'
+  alias pstree='pstree -Tachlnp'
   ;;
 esac
 
