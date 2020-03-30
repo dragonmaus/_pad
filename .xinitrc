@@ -33,7 +33,7 @@ XKB_INTERNAL_DEVICE="$( xinput --list --id-only 'AT Translated Set 2 keyboard' )
 
 randomise-wallpaper -s
 
-optirun picom &
+picom &
 redshift-hack &
 unclutter --ignore-scrolling --jitter 5 &
 xautolock -detectsleep -secure -locker slock -time 10 &
