@@ -47,7 +47,7 @@ DATA="${XDG_DATA_HOME:-"$HOME/.local/share"}"
 path=
 ifs="$IFS"
 IFS=:
-for d in "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.cabal/bin" "$HOME/src/go/bin" "$HOME/src/go/ext/bin" "$HOME/.local/bin" "$HOME/bin/ext" "$HOME/bin/gog" "$HOME/bin/wine" $PATH "$HOME/bin/mksh"
+for d in "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.cabal/bin" "$HOME/src/go/bin" "$HOME/src/go/ext/bin" "$HOME/.local/bin" "$HOME/bin/ext" "$HOME/bin/flat" "$HOME/bin/gog" "$HOME/bin/wine" $PATH "$HOME/bin/mksh"
 do
   d="$( readlink -f "$d" 2> /dev/null || echo "$d" )"
   case ":$path:" in
