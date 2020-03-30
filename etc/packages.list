@@ -74,6 +74,7 @@ pinentry-tty
 psmisc
 qrencode
 redshift
+rsync
 rustup
 scron
 setxkbmap
