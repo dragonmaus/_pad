@@ -50,6 +50,7 @@
 /.ssh/
 /.steam*
 /.uqm/
+/.var/
 /.wine*/
 /.xsession-errors
 /DOSBOX/

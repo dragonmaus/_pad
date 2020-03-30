@@ -28,6 +28,7 @@ feh
 ffmpeg
 firefox-esr
 flac
+flatpak
 font-fantasque-sans-ttf
 git
 go
@@ -35,7 +36,6 @@ gparted
 grub
 gv
 iat
-intellij-idea-community-edition
 iproute2
 iputils
 jq
@@ -75,7 +75,6 @@ rustup
 scron
 setxkbmap
 socklog-void
-steam
 syncthing
 tlp
 tp_smapi-dkms
