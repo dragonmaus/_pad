@@ -15,6 +15,7 @@ chromium-widevine
 chrony
 clang
 compton
+curl
 dhcpcd
 dosbox
 dosfstools
@@ -26,6 +27,7 @@ f2fs-tools
 factor
 feh
 ffmpeg
+file
 firefox-esr
 flac
 flatpak
@@ -85,6 +87,8 @@ void-repo-multilib
 void-repo-multilib-nonfree
 void-repo-nonfree
 wine-32bit
+wine-gecko
+wine-mono
 winetricks
 wol
 wpa_supplicant
