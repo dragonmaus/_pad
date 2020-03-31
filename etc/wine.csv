@@ -19,9 +19,11 @@ total-annihilation,hpidump,C:\CAVEDOG\HPITOOLS,HPIDUMP.EXE,0
 total-annihilation,hpipack,C:\CAVEDOG\HPITOOLS,HPIPACK.EXE,0
 total-annihilation,hpiview,C:\CAVEDOG\HPITOOLS,HPIVIEW.EXE,0
 total-annihilation,total-annihilation,C:\CAVEDOG\TOTALA,TOTALA.EXE,1
+total-annihilation,total-annihilation-beyond-the-final-frontier,C:\CAVEDOG\TOTALA\MODS\FINAL_FRONTIER\BEYOND,TOTALA.EXE,1
 total-annihilation,total-annihilation-devolution,C:\CAVEDOG\TOTALA\PATCH\MODS\DEVOLUTION,TOTALA.EXE,1
 total-annihilation,total-annihilation-escalation,C:\CAVEDOG\TOTALA\PATCH\MODS\ESCALATION,TOTALA.EXE,1
 total-annihilation,total-annihilation-mayhem,C:\CAVEDOG\TOTALA\PATCH\MODS\MAYHEM,TOTALA.EXE,1
 total-annihilation,total-annihilation-patch,C:\CAVEDOG\TOTALA\PATCH,TOTALA.EXE,1
+total-annihilation,total-annihilation-the-final-frontier,C:\CAVEDOG\TOTALA\MODS\FINAL_FRONTIER,TOTALA.EXE,1
 total-annihilation,total-annihilation-world-domination,C:\CAVEDOG\TOTALA\MODS\WORLD_DOMINATION,WD.EXE,1
 total-annihilation,total-annihilation-zero,C:\CAVEDOG\TOTALA\PATCH\MODS\ZERO,TOTALA.EXE,1
