@@ -13,7 +13,7 @@ echo '>> Updating wine wrapper scripts'
 
   base=~/.wineprefix
 
-  while IFS=, read -r prefix name path command
+  while IFS=, read -r prefix name path command chdir
   do
     bin=$bindir/$name
     dir=$base/$prefix
@@ -34,9 +34,17 @@ echo '>> Updating wine wrapper scripts'
       continue
     fi
 
-    mkexe $bin << END
+    if [[ $chdir -eq 1 ]]
+    then
+      mkexe $bin << END
 #!/bin/sh
 exec env WINEPREFIX='$dir' wine start /d '$path' '$wbin' "\$@"
 END
+    else
+      mkexe $bin << END
+#!/bin/sh
+exec env WINEPREFIX='$dir' wine '$wbin' "\$@"
+END
+    fi
   done < ~/etc/wine.csv
 )
