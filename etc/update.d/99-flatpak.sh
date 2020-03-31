@@ -13,6 +13,8 @@ echo '>> Updating flatpak wrapper scripts'
 
   while IFS=, read -r name id
   do
+    [[ $name = Name ]] && continue
+
     bin=$bindir/$name
 
     if ! flatpak info "$id" > /dev/null 2>&1

@@ -15,6 +15,8 @@ echo '>> Updating wine wrapper scripts'
 
   while IFS=, read -r prefix name path command chdir
   do
+    [[ $name = Name ]] && continue
+
     bin=$bindir/$name
     dir=$base/$prefix
 
