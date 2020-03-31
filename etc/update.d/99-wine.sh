@@ -11,12 +11,12 @@ echo '>> Updating wine wrapper scripts'
   bindir=~/bin/wine
   mkdir -p $bindir
 
-  prefix=~/.wineprefix
+  base=~/.wineprefix
 
-  while IFS=, read -r name path command
+  while IFS=, read -r prefix name path command
   do
     bin=$bindir/$name
-    dir=$prefix/$name
+    dir=$base/$prefix
 
     if [[ ! -d $dir ]]
     then
