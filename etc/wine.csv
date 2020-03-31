@@ -14,8 +14,13 @@ star-control,star-control,C:\GOG Games\Star Control,Launch Star Control.lnk
 star-control-2,star-control-2,C:\GOG Games\Star Control 2,Launch Star Control 2.lnk
 star-control-3,star-control-3,C:\GOG Games\Star Control 3,Launch Star Control 3.lnk
 total-annihilation,game-ranger,C:\users\dragon\Application Data\GameRanger\GameRanger,GameRanger.exe
-total-annihilation,total-annihilation,C:\GOG Games\Total Annihilation,TotalA.exe
-total-annihilation,total-annihilation-devolution,C:\GOG Games\Total Annihilation\Mods\Devolution,TotalA.exe
-total-annihilation,total-annihilation-escalation,C:\GOG Games\Total Annihilation\Mods\Escalation,TotalA.exe
-total-annihilation,total-annihilation-mayhem,C:\GOG Games\Total Annihilation\Mods\Mayhem,TotalA.exe
-total-annihilation,total-annihilation-zero,C:\GOG Games\Total Annihilation\Mods\Zero,TotalA.exe
+total-annihilation,hpidump,C:\CAVEDOG\HPITOOLS,HPIDUMP.EXE
+total-annihilation,hpipack,C:\CAVEDOG\HPITOOLS,HPIPACK.EXE
+total-annihilation,hpiview,C:\CAVEDOG\HPITOOLS,HPIVIEW.EXE
+total-annihilation,total-annihilation,C:\CAVEDOG\TOTALA,TOTALA.EXE
+total-annihilation,total-annihilation-devolution,C:\CAVEDOG\TOTALA\PATCH\MODS\DEVOLUTION,TOTALA.EXE
+total-annihilation,total-annihilation-escalation,C:\CAVEDOG\TOTALA\PATCH\MODS\ESCALATION,TOTALA.EXE
+total-annihilation,total-annihilation-mayhem,C:\CAVEDOG\TOTALA\PATCH\MODS\MAYHEM,TOTALA.EXE
+total-annihilation,total-annihilation-patch,C:\CAVEDOG\TOTALA\PATCH,TOTALA.EXE
+total-annihilation,total-annihilation-world-domination,C:\CAVEDOG\TOTALA\MODS\WORLD_DOMINATION,WD.EXE
+total-annihilation,total-annihilation-zero,C:\CAVEDOG\TOTALA\PATCH\MODS\ZERO,TOTALA.EXE
