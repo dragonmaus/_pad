@@ -4,20 +4,22 @@
 
 # Ensure that `echo' is sane
 case "$KSH_VERSION" in
-(*MIRBSD\ KSH*|*LEGACY\ KSH*|*PD\ KSH*)
+(*'MIRBSD KSH'*|*'LEGACY KSH'*|*'PD KSH'*)
   echo() {
     print -R "$@"
   }
   ;;
 (*)
   echo() {
-    if [[ "$1" = -n ]]
-    then
+    case "$1" in
+    (-n)
       shift
       printf '%s' "$*"
-    else
+      ;;
+    (*)
       printf '%s\n' "$*"
-    fi
+      ;;
+    esac
   }
   ;;
 esac
@@ -26,7 +28,7 @@ esac
 startx=
 if which startx > /dev/null 2>&1
 then
-  case "$( tty )" in
+  case `tty` in
   (/dev/tty*)
     echo -n 'Start X? (y/n): ' 1>&2
     read reply || echo n 1>&2
@@ -40,40 +42,40 @@ then
 fi
 
 # XDG directories
-CONF="${XDG_CONFIG_HOME:-"$HOME/.config"}"
-DATA="${XDG_DATA_HOME:-"$HOME/.local/share"}"
+CONF=${XDG_CONFIG_HOME:-~/.config}
+DATA=${XDG_DATA_HOME:-~/.local/share}
 
 # Clean up and augment PATH
 path=
-ifs="$IFS"
+ifs=$IFS
 IFS=:
-for d in "$HOME/bin" "$HOME/.cargo/bin" "$HOME/.cabal/bin" "$HOME/src/go/bin" "$HOME/src/go/ext/bin" "$HOME/.local/bin" "$HOME/bin/ext" "$HOME/bin/flat" "$HOME/bin/gog" "$HOME/bin/wine" $PATH "$HOME/bin/mksh"
+for d in ~/bin ~/.cargo/bin ~/.cabal/bin ~/src/go/bin ~/src/go/ext/bin ~/.local/bin ~/bin/ext ~/bin/flat ~/bin/gog ~/bin/wine $PATH ~/bin/mksh
 do
-  d="$( readlink -f "$d" 2> /dev/null || echo "$d" )"
+  d=`realpath $d 2> /dev/null || echo $d`
   case ":$path:" in
-  (*":$d:"*)
+  (*:$d:*)
     continue
     ;;
   esac
-  path="$path:$d"
+  path=$path:$d
 done
-IFS="$ifs"
-path="${path#:}"
+IFS=$ifs
+path=${path#:}
 
 # Set environment
 set -a
 
 ## Paths
-GOPATH="$HOME/src/go/ext:$HOME/src/go"
-MANPATH="$DATA/man:"
-PATH="$path"
+GOPATH=~/src/go/ext:~/src/go
+MANPATH=$DATA/man:
+PATH=$path
 
 ## Shell configuration
-ENV="$CONF/shell/init.sh"
+ENV=$CONF/shell/init.sh
 
 ## Global configuration
 BROWSER=qutebrowser
-EDITOR="$( which nvim vim vi 2> /dev/null | head -1 )"
+EDITOR=`which nvim vim vi 2> /dev/null | head -1`
 LC_COLLATE=C
 PAGER=less; MANPAGER="$PAGER -s"
 
@@ -85,12 +87,12 @@ XKB_DEFAULT_VARIANT=dvorak
 XKB_INTERNAL_OPTIONS='compose:paus ctrl:nocaps'
 
 ## App-specific configuration
-IDEA_PROPERTIES="$CONF/idea/idea.properties"
+IDEA_PROPERTIES=$CONF/idea/idea.properties
 LESS=FMRi
-PASSWORD_STORE_SIGNING_KEY="$( cat "$HOME/etc/secret/signing.key" )"
-PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig"
-RIPGREP_CONFIG_PATH="$CONF/ripgrep/config"
-SUDO_ASKPASS="$HOME/bin/askpass"
+PASSWORD_STORE_SIGNING_KEY=`cat ~/etc/secret/signing.key`
+PKG_CONFIG_PATH=~/.local/lib/pkgconfig
+RIPGREP_CONFIG_PATH=$CONF/ripgrep/config
+SUDO_ASKPASS=$HOME/bin/askpass
 _JAVA_AWT_WM_NONREPARENTING=1
 
 set +a
@@ -99,14 +101,14 @@ set +a
 umask 077
 
 # SSH agent
-[[ -f "$HOME/.ssh/agent.sh" ]] && . "$HOME/.ssh/agent.sh"
+test -f ~/.ssh/agent.sh && . ~/.ssh/agent.sh
 
 # Update SSH environment
-f="$HOME/.ssh/environment"
-rm -f "$f{new}"
-grep -v '^PATH=' < "$f" > "$f{new}"
-echo "PATH='$PATH'" >> "$f{new}"
-mv -f "$f{new}" "$f"
+f=~/.ssh/environment
+rm -f $f{new}
+grep -v '^PATH=' < $f > $f{new}
+echo "PATH='$PATH'" >> $f{new}
+mv -f $f{new} $f
 
 # Hand off to X if requested
 $startx

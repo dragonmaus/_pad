@@ -1,4 +1,6 @@
-[[ -r "${XDG_CONFIG_HOME:-"$HOME/.config"}/shell/logout.sh" ]] && . "${XDG_CONFIG_HOME:-"$HOME/.config"}/shell/logout.sh"
+shell_config=${XDG_CONFIG_HOME:-~/.config}/shell
+
+[[ -r "$shell_config/logout.sh" ]] && . "$shell_config/logout.sh"
 
 [[ -n "$histfile" ]] || return 0
 
@@ -10,8 +12,8 @@ flock "$histfile.pid.lock" sed -i "/^$$\$/d" "$histfile.pid"
 
 [[ -s "$histfile" ]] || return 0
 
-: "${HISTSIZE:=2047}"
-: "${HISTFILESIZE:=$(( HISTSIZE / 2 ))}"
+: ${HISTSIZE:=2047}
+: ${HISTFILESIZE:=$((HISTSIZE / 2))}
 
 # trim histfile:
 # - remove entries that start with whitespace or are blank

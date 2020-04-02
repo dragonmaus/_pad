@@ -1,7 +1,7 @@
 alias lc='ls -C'
 alias ll='ls -Fl'
 
-case "$( uname )" in
+case "`uname`" in
 (OpenBSD)
   alias ls='ls -1A'
   ;;
