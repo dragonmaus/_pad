@@ -51,6 +51,7 @@
 /.steam*
 /.uqm/
 /.var/
+/.wget-hsts
 /.wine*/
 /.xsession-errors
 /DOSBOX/
