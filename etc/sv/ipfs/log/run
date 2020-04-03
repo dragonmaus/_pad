@@ -1,0 +1,4 @@
+#!/bin/sh
+logdir="$HOME/log/sv/ipfs"
+mkdir -p "$logdir"
+exec svlogd -ttt "$logdir"
