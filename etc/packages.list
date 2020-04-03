@@ -86,6 +86,7 @@ tp_smapi-dkms
 unclutter-xfixes
 usbutils
 vice
+virtualbox-ose
 void-repo-multilib
 void-repo-multilib-nonfree
 void-repo-nonfree
