@@ -1,5 +1,11 @@
 echo '>> Updating flatpak wrapper scripts'
 (
+  wrappers=
+  for w in aoss apulse optirun
+  do
+    which $w > /dev/null 2>&1 && wrappers="$wrappers $w"
+  done
+
   mkexe() {
     rm -f $1{new}
     cat > $1{new}
@@ -26,7 +32,7 @@ echo '>> Updating flatpak wrapper scripts'
     mkexe $bin << END
 #!/bin/sh
 mkdir -p ~/log/flat
-exec flatpak run '$id' > ~/log/flat/$name.log 2>&1
+exec$wrappers flatpak run '$id' > ~/log/flat/$name.log 2>&1
 END
   done < ~/etc/flat.csv
 )
