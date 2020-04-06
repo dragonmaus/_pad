@@ -1,11 +1,5 @@
 echo '>> Updating wine wrapper scripts'
 (
-  wrappers=
-  for w in aoss apulse optirun
-  do
-    which $w > /dev/null 2>&1 && wrappers="$wrappers $w"
-  done
-
   mkexe() {
     rm -f $1{new}
     cat > $1{new}
@@ -46,12 +40,12 @@ echo '>> Updating wine wrapper scripts'
     then
       mkexe $bin << END
 #!/bin/sh
-exec$wrappers env WINEPREFIX='$dir' wine start /d '$path' '$wbin' "\$@"
+exec env WINEPREFIX='$dir' wine start /d '$path' '$wbin' "\$@"
 END
     else
       mkexe $bin << END
 #!/bin/sh
-exec$wrappers env WINEPREFIX='$dir' wine '$wbin' "\$@"
+exec env WINEPREFIX='$dir' wine '$wbin' "\$@"
 END
     fi
   done < ~/etc/wine.csv
