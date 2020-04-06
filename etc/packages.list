@@ -4,6 +4,7 @@ acpi_call-dkms
 acpid
 alsa-firmware
 alsa-oss
+alsa-plugins-pulseaudio
 alsa-utils
 android-tools
 apulse
@@ -79,6 +80,7 @@ picard
 pinentry-dmenu
 pinentry-tty
 psmisc
+pulseaudio
 qrencode
 redshift
 rsync

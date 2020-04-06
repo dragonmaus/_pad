@@ -19,6 +19,7 @@
 /.config/libreoffice/
 /.config/mpv/
 /.config/nvim-qt/
+/.config/pulse/
 /.config/qutebrowser/autoconfig.yml
 /.config/qutebrowser/qsettings/
 /.config/syncthing/
