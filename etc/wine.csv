@@ -1,31 +1,32 @@
 Prefix,Name,Path,Command,Chdir
-caesar-2,caesar-2,C:\GOG Games\Caesar II,Launch Caesar II.lnk,1
-caesar-3,caesar-3,C:\GOG Games\Caesar 3,Launch Caesar 3.lnk,1
-cossacks-1.1-european-wars,cossacks-1.1-european-wars,C:\GOG Games\Cossacks - European Wars,Launch Cossacks - European Wars.lnk,1
-cossacks-1.2-art-of-war,cossacks-1.2-art-of-war,C:\GOG Games\Cossacks - Art Of War,Launch Cossacks - Art Of War.lnk,1
-cossacks-1.3-back-to-war,cossacks-1.3-back-to-war,C:\GOG Games\Cossacks - Back To War,Launch Cossacks - Back To War.lnk,1
-cossacks-2.1-napoleonic-wars,cossacks-2.1-napoleonic-wars,C:\GOG Games\Cossacks II - Napoleonic Wars,Launch Cossacks II - Napoleonic Wars.lnk,1
-cossacks-2.2-battle-for-europe,cossacks-2.2-battle-for-europe,C:\GOG Games\Cossacks II - Battle for Europe,Launch Cossacks II - Battle for Europe.lnk,1
-creeper-world-1,creeper-world-1,C:\Program Files\KnuckleCracker\Creeper World Anniversary Edition,CreeperWorld.exe,1
-creeper-world-2,creeper-world-2,C:\Program Files\KnuckleCracker\Creeper World 2 Anniversary Edition,CreeperWorld2.exe,1
+caesar,caesar-2,C:\GOG Games\Caesar II,Launch Caesar II.lnk,1
+caesar,caesar-3,C:\GOG Games\Caesar 3,Launch Caesar 3.lnk,1
+cossacks,cossacks-1.1-european-wars,C:\GOG Games\Cossacks - European Wars,Launch Cossacks - European Wars.lnk,1
+cossacks,cossacks-1.2-art-of-war,C:\GOG Games\Cossacks - Art Of War,Launch Cossacks - Art Of War.lnk,1
+cossacks,cossacks-1.3-back-to-war,C:\GOG Games\Cossacks - Back To War,Launch Cossacks - Back To War.lnk,1
+cossacks,cossacks-2.1-napoleonic-wars,C:\GOG Games\Cossacks II - Napoleonic Wars,Launch Cossacks II - Napoleonic Wars.lnk,1
+cossacks,cossacks-2.2-battle-for-europe,C:\GOG Games\Cossacks II - Battle for Europe,Launch Cossacks II - Battle for Europe.lnk,1
+creeper-world,creeper-world-1,C:\Program Files\KnuckleCracker\Creeper World Anniversary Edition,CreeperWorld.exe,1
+creeper-world,creeper-world-2,C:\Program Files\KnuckleCracker\Creeper World 2 Anniversary Edition,CreeperWorld2.exe,1
 emperor,emperor,C:\GOG Games\Emperor - Rise of the Middle Kingdom,Launch Emperor - Rise of the Middle Kingdom.lnk,1
 empire-earth-gold,empire-earth-gold,C:\GOG Games\Empire Earth Gold,Launch Empire Earth Gold.lnk,1
 rollercoaster-tycoon,rollercoaster-tycoon,C:\GOG Games\RollerCoaster Tycoon Deluxe,Launch RollerCoaster Tycoon Deluxe.lnk,1
 star-control,star-control,C:\GOG Games\Star Control,Launch Star Control.lnk,1
-star-control-2,star-control-2,C:\GOG Games\Star Control 2,Launch Star Control 2.lnk,1
-star-control-3,star-control-3,C:\GOG Games\Star Control 3,Launch Star Control 3.lnk,1
+star-control,star-control-2,C:\GOG Games\Star Control 2,Launch Star Control 2.lnk,1
+star-control,star-control-3,C:\GOG Games\Star Control 3,Launch Star Control 3.lnk,1
 steam,steamw,C:\Program Files\Steam,Steam.exe,1
-total-annihilation,game-ranger,C:\users\dragon\Application Data\GameRanger\GameRanger,GameRanger.exe,0
-total-annihilation,hpidump,C:\CAVEDOG\HPITOOLS,HPIDUMP.EXE,0
-total-annihilation,hpipack,C:\CAVEDOG\HPITOOLS,HPIPACK.EXE,0
-total-annihilation,hpiview,C:\CAVEDOG\HPITOOLS,HPIVIEW.EXE,0
-total-annihilation,total-annihilation,C:\CAVEDOG\TOTALA,TOTALA.EXE,1
-total-annihilation,total-annihilation-beyond-the-final-frontier,C:\CAVEDOG\TOTALA\MODS\FINAL_FRONTIER\BEYOND,BTFF.EXE,1
-total-annihilation,total-annihilation-devolution,C:\CAVEDOG\TOTALA\PATCH\MODS\DEVOLUTION,TOTALA.EXE,1
-total-annihilation,total-annihilation-escalation,C:\CAVEDOG\TOTALA\PATCH\MODS\ESCALATION,TOTALA.EXE,1
-total-annihilation,total-annihilation-mayhem,C:\CAVEDOG\TOTALA\PATCH\MODS\MAYHEM,TOTALA.EXE,1
-total-annihilation,total-annihilation-patch,C:\CAVEDOG\TOTALA\PATCH,TOTALA.EXE,1
-total-annihilation,total-annihilation-the-final-frontier,C:\CAVEDOG\TOTALA\MODS\FINAL_FRONTIER,TOTALA.EXE,1
-total-annihilation,total-annihilation-twilight,C:\CAVEDOG\TOTALA\MODS\TWILIGHT,TOTALA.EXE,1
-total-annihilation,total-annihilation-world-domination,C:\CAVEDOG\TOTALA\MODS\WORLD_DOMINATION,WD.EXE,1
-total-annihilation,total-annihilation-zero,C:\CAVEDOG\TOTALA\PATCH\MODS\ZERO,TOTALA.EXE,1
+ta,game-ranger,C:\users\dragon\Application Data\GameRanger\GameRanger,GameRanger.exe,0
+ta,hpidump,C:\CAVEDOG\HPITOOLS,HPIDUMP.EXE,0
+ta,hpipack,C:\CAVEDOG\HPITOOLS,HPIPACK.EXE,0
+ta,hpiview,C:\CAVEDOG\HPITOOLS,HPIVIEW.EXE,0
+ta,total-annihilation,C:\CAVEDOG\TOTALA,TOTALA.EXE,1
+ta,total-annihilation-beyond-the-final-frontier,C:\CAVEDOG\TOTALA\MODS\FINAL_FRONTIER\BEYOND,BTFF.EXE,1
+ta,total-annihilation-bugfix,C:\CAVEDOG\TOTALA\MODS\BUGFIX,TOTALA.EXE,1
+ta,total-annihilation-devolution,C:\CAVEDOG\TOTALA\PATCH\MODS\DEVOLUTION,TOTALA.EXE,1
+ta,total-annihilation-escalation,C:\CAVEDOG\TOTALA\PATCH\MODS\ESCALATION,TOTALA.EXE,1
+ta,total-annihilation-mayhem,C:\CAVEDOG\TOTALA\PATCH\MODS\MAYHEM,TOTALA.EXE,1
+ta,total-annihilation-patch,C:\CAVEDOG\TOTALA\PATCH,TOTALA.EXE,1
+ta,total-annihilation-the-final-frontier,C:\CAVEDOG\TOTALA\MODS\FINAL_FRONTIER,TOTALA.EXE,1
+ta,total-annihilation-twilight,C:\CAVEDOG\TOTALA\MODS\TWILIGHT,TOTALA.EXE,1
+ta,total-annihilation-world-domination,C:\CAVEDOG\TOTALA\MODS\WORLD_DOMINATION,WD.EXE,1
+ta,total-annihilation-zero,C:\CAVEDOG\TOTALA\PATCH\MODS\ZERO,TOTALA.EXE,1
