@@ -13,6 +13,7 @@
 /.minetest/
 /.mozilla/
 /.password-store/
+/.pki/
 /.rustup/
 /.ssh/
 /.uqm/
