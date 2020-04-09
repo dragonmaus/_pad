@@ -1,4 +1,4 @@
 #!/bin/sh
-logdir="$HOME/log/sv/barriers"
-mkdir -p "$logdir"
-exec svlogd -ttt "$logdir"
+logdir=~/log/sv/barriers
+mkdir -p $logdir
+exec svlogd -ttt $logdir
