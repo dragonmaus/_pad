@@ -68,6 +68,7 @@ musl-bootstrap
 nasm
 ncurses-base
 neovim-qt
+nerd-fonts
 opendoas
 openssh
 outils
