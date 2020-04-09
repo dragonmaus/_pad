@@ -39,7 +39,7 @@ do
   then
     mkexe $bin << END
 #!/bin/sh
-exec env WINEPREFIX='$dir' wine start /d '$path' '$wbin' "\$@"
+exec env WINEPREFIX='$dir' wine START /D '$path' '$command' "\$@"
 END
   else
     mkexe $bin << END
