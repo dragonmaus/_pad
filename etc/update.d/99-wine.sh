@@ -12,7 +12,7 @@ mkdir -p $bindir
 
 base=~/.wineprefix
 
-while IFS=, read -r prefix name path command chdir
+while IFS=, read -r prefix name path command utility
 do
   [[ $name = Name ]] && continue
 
@@ -35,16 +35,16 @@ do
     continue
   fi
 
-  if [[ $chdir -eq 1 ]]
+  if [[ $utility -eq 1 ]]
   then
     mkexe $bin << END
 #!/bin/sh
-exec env WINEPREFIX='$dir' wine START /D '$path' '$command' "\$@"
+exec env WINEPREFIX='$dir' wine '$wbin' "\$@"
 END
   else
     mkexe $bin << END
 #!/bin/sh
-exec env WINEPREFIX='$dir' wine '$wbin' "\$@"
+exec env WINEPREFIX='$dir' wine START /D '$path' '$command' "\$@"
 END
   fi
 done < ~/etc/wine.csv
