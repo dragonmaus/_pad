@@ -66,7 +66,8 @@ moreutils
 mpv
 musl-bootstrap
 nasm
-ncurses-base
+ncurses
+ncurses-term
 neovim-qt
 nerd-fonts
 opendoas
@@ -81,7 +82,6 @@ picard
 pinentry-dmenu
 pinentry-tty
 psmisc
-pulseaudio
 qrencode
 redshift
 rsync
