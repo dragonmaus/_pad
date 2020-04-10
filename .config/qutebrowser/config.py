@@ -22,6 +22,7 @@ c.tabs.title.format = '{audio}{index}{title_sep}{current_title}'
 c.url.searchengines = {
     'DEFAULT': 'https://www.etools.ch/searchSubmit.do?query={}',
     'crates': 'https://crates.io/search?q={}',
+    'derpi': 'https://derpibooru.org/search?q={}',
     'duck': 'https://duckduckgo.com/?q={}',
     'hackage': 'https://hackage.haskell.org/packages/search?terms={}',
     'hoogle': 'https://www.haskell.org/hoogle/?hoogle={}',
