@@ -51,6 +51,7 @@ jq
 kbd
 kbfs
 keepassxc
+libXinerama-devel
 libcaca
 libgdiplus
 libreoffice
