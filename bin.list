@@ -1,5 +1,4 @@
 askpass
-asound
 c
 cargo-foreach
 cdiff
@@ -19,7 +18,6 @@ lefix
 lndir
 n
 p
-pass2netrc
 passmenu
 pathsort
 pinentry-smart
@@ -28,7 +26,6 @@ qr
 randomise-wallpaper
 ratio
 redshift-hack
-relpath
 remote-display
 rt
 screencap
