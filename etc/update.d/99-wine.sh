@@ -29,7 +29,7 @@ do
 
   wbin="$path\\$command"
 
-  if [[ ! -e "$(winepath -u "$wbin")" ]]
+  if [[ ! -e "$(winepath -u "$wbin" | tr -d '\r')" ]]
   then
     rm -f $bin
     continue
