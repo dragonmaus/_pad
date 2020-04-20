@@ -49,7 +49,7 @@ DATA=${XDG_DATA_HOME:-~/.local/share}
 path=
 ifs=$IFS
 IFS=:
-for d in ~/bin ~/.cargo/bin ~/.cabal/bin ~/src/go/bin ~/src/go/ext/bin ~/.local/bin ~/bin/ext ~/bin/flat ~/bin/gog ~/bin/wine $PATH ~/bin/mksh
+for d in ~/bin ~/.cargo/bin ~/.cabal/bin ~/src/go/bin ~/src/go/ext/bin ~/.local/bin ~/.local/games ~/bin/ext ~/bin/flat ~/bin/gog ~/bin/wine $PATH ~/bin/mksh
 do
   d=`realpath $d 2> /dev/null || echo $d`
   case ":$path:" in
