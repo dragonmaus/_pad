@@ -1,2 +1,0 @@
-#!/bin/sh
-exec aarch64-linux-musl-cc -nostdinc -nostdlib -I $HOME/inc "$@"

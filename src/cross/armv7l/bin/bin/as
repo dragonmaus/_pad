@@ -1,2 +1,0 @@
-#!/bin/sh
-exec armv7l-linux-musleabihf-as "$@"

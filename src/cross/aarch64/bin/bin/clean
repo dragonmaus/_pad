@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-home=$(dirname $0)/..
-home=$(cd $home && env - pwd)
-
-rm -f $home/*.o
-ls -F $home/* | sed -n 's/\*$//p' | xargs -r rm -f
