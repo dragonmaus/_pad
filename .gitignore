@@ -24,19 +24,12 @@
 /.wineprefix/
 /.xsession-errors
 /DOSBOX/
-/Documents/
-/Downloads/
 /GOG Games/
-/Music/
-/Pictures/
-/Sync/
 /TA/
-/Videos/
-/backup/
 /bin/
+/desk/
 /git/
 /log/
-/storage/
 /tmp/
 *+
 *-

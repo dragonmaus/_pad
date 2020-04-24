@@ -107,6 +107,7 @@ wol
 wpa_supplicant
 x86_energy_perf_policy
 xautolock
+xdg-user-dirs
 xdotool
 xev
 xf86-video-intel
