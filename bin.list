@@ -1,3 +1,4 @@
+abspath
 askpass
 c
 cargo-foreach
@@ -26,6 +27,7 @@ qr
 randomise-wallpaper
 ratio
 redshift-hack
+relpath
 remote-display
 rt
 screencap
