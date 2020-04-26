@@ -5,7 +5,7 @@ home=$(env - PATH="$PATH" pwd)
 dest=$(xdg-user-dir BACKGROUNDS)/$2/digitalblasphemy
 file=$home/$2.zip
 suff=$(head -1 < "$2.suffix")
-temp=$(env TMPDIR=~/tmp mktemp -d)
+temp=$(env TMPDIR=$HOME/tmp mktemp -d)
 
 trap -- "rm -fr '$temp'" EXIT INT KILL
 
