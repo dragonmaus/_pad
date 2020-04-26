@@ -2,8 +2,6 @@
 /.Xauthority
 /.cache/
 /.cargo/
-/.config/dconf/
-/.config/mimeapps.list
 /.dbus/
 /.gitlab-token
 /.gnupg/
