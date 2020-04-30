@@ -74,7 +74,7 @@ PATH=$path
 ENV=$CONF/shell/init.sh
 
 ## Global configuration
-BROWSER=qutebrowser
+BROWSER=firefox
 EDITOR=`which nvim vim vi 2> /dev/null | head -1`
 LC_COLLATE=C
 PAGER=less; MANPAGER="$PAGER -s"
