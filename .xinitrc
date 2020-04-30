@@ -31,7 +31,7 @@ setxkbmap -model "$XKB_DEFAULT_MODEL" -layout "$XKB_DEFAULT_LAYOUT" -variant "$X
 XKB_INTERNAL_DEVICE="$( xinput --list --id-only 'AT Translated Set 2 keyboard' )"
 [[ -n $XKB_INTERNAL_DEVICE ]] && setxkbmap -device "$XKB_INTERNAL_DEVICE" $( for o in $XKB_INTERNAL_OPTIONS; do echo -option "$o"; done )
 
-randomise-wallpaper -s
+randomise-backgrounds -d
 
 picom &
 redshift-hack &

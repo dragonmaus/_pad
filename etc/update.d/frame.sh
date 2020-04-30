@@ -1,7 +1,7 @@
 res=1600x1200
 
 dest=/mnt/frame
-src=~/Pictures/Wallpapers/$res/digitalblasphemy
+src=$(xdg-user-dir BACKGROUNDS)/$res/digitalblasphemy
 
 umount $dest 2> /dev/null || :
 mount $dest || die 1 $0: Could not mount $dest
