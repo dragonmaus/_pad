@@ -7,7 +7,7 @@ umount $dest 2> /dev/null || :
 mount $dest || die 1 $0: Could not mount $dest
 
 echo ">> Updating $src"
-redo --no-log ~/etc/wallpaper/$res
+redo --no-log ~/etc/backgrounds/$res
 
 echo ">> Cleaning up $dest"
 ls -rt $dest | while read -r file
