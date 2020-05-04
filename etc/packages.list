@@ -24,12 +24,9 @@ cli-visualizer
 compton
 curl
 dhcpcd
-dosbox
 dosfstools
-dwarffortress
 e2fsprogs
 edb-debugger
-endless-sky
 f2fs-tools
 factor
 feh
@@ -58,8 +55,6 @@ libreoffice
 linux
 man-pages
 mdocml
-minecraft
-minetest
 mit-krb5-libs
 mksh
 mono
@@ -95,8 +90,6 @@ tlp
 tp_smapi-dkms
 unclutter-xfixes
 usbutils
-vice
-virtualbox-ose
 void-repo-multilib
 void-repo-multilib-nonfree
 void-repo-nonfree
