@@ -31,7 +31,13 @@ XKB_INTERNAL_DEVICE=$(xinput --list --id-only 'AT Translated Set 2 keyboard')
 test x"$XKB_INTERNAL_DEVICE" = x || setxkbmap -device "$XKB_INTERNAL_DEVICE" `for o in $XKB_INTERNAL_OPTIONS; do echo -option $o; done`
 
 # Set desktop background
-randomise-backgrounds -d
+backgrounds=`xdg-user-dir BACKGROUNDS`
+if test -f "$backgrounds/.current-desktop"
+then
+  set-desktop "$backgrounds/.current-desktop"
+else
+  randomise-backgrounds -d
+fi
 
 # Start X services
 picom &
