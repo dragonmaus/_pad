@@ -37,6 +37,7 @@ flac
 flatpak
 git
 git-lfs
+glew
 go
 go-ipfs
 gparted
@@ -52,6 +53,8 @@ keepassxc
 libXinerama-devel
 libcaca
 libgdiplus
+libmad
+libopenal
 libreoffice
 linux
 man-pages
