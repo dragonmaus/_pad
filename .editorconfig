@@ -4,7 +4,7 @@ root = true
 
 [*]
 indent_style = space
-indent_size = 2
+indent_size = 4
 tab_width = 8
 end_of_line = lf
 charset = utf-8
@@ -17,9 +17,6 @@ end_of_line = crlf
 [*.{diff,patch}]
 trim_trailing_whitespace = false
 
-[*.{fth,hs,lua,py}]
-indent_size = 4
-
 [*.go]
 indent_style = tab
 indent_size = tab
@@ -30,14 +27,13 @@ indent_style = tab
 indent_size = tab
 
 [*.rs]
-indent_size = 4
 max_line_length = 99
 
 [*.txt]
 indent_style = tab
 indent_size = tab
-trim_trailing_whitespace = false
 
-[LICENSE]
+[LICENSE,LICENSE.txt]
+indent_style = space
 indent_size = 5
 max_line_length = 78
