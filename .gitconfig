@@ -16,6 +16,8 @@
 	required = true
 [gpg]
 	program = gpg2
+[pull]
+	rebase = false
 [push]
 	default = simple
 	followTags = true
