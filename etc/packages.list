@@ -78,7 +78,6 @@ pass
 pax
 pciutils
 pdf.js
-picard
 pinentry-dmenu
 pinentry-tty
 psmisc
@@ -97,10 +96,6 @@ usbutils
 void-repo-multilib
 void-repo-multilib-nonfree
 void-repo-nonfree
-wine-32bit
-wine-gecko
-wine-mono
-winetricks
 wol
 wpa_supplicant
 x86_energy_perf_policy
