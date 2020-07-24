@@ -17,6 +17,7 @@
 /.renpy/
 /.rustup/
 /.ssh/
+/.subversion/
 /.uqm/
 /.var/
 /.wine/
