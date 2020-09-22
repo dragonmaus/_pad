@@ -81,6 +81,7 @@ pdf.js
 pinentry-dmenu
 pinentry-tty
 psmisc
+python3-gobject-devel
 qrencode
 redshift
 rsync
