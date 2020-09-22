@@ -39,6 +39,7 @@ flatpak
 gettext-devel
 gftp
 git
+git-gui
 git-lfs
 glew
 go
