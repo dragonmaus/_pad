@@ -3,6 +3,7 @@
 /.cache/
 /.cargo/
 /.dbus/
+/.gftp/
 /.gitlab-token
 /.gnupg/
 /.ipfs/
@@ -14,6 +15,7 @@
 /.minetest/
 /.moonchild productions/
 /.mozilla/
+/.multimc/
 /.password-store/
 /.pki/
 /.renpy/
