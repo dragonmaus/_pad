@@ -1,4 +1,5 @@
 GraphicsMagick
+MultiMC
 Solaar
 acpi_call-dkms
 acpid
@@ -36,6 +37,7 @@ firefox
 flac
 flatpak
 gettext-devel
+gftp
 git
 git-lfs
 glew
