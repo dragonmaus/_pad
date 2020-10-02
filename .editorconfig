@@ -22,6 +22,9 @@ indent_style = tab
 indent_size = tab
 tab_width = 4
 
+[*.{htm,html,xml}]
+indent_size = 1
+
 [{*.{i,m,mk,s},.gitconfig,Makefile*,crontab*,gitconfig}]
 indent_style = tab
 indent_size = tab
