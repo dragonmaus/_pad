@@ -4,6 +4,7 @@ c.content.default_encoding = 'utf-8'
 c.downloads.location.suggestion = 'both'
 c.downloads.position = 'bottom'
 c.editor.command = ['nvim-qt', '--nofork', '--', '-f', '{file}', '-c', 'normal {line}G{column0}l']
+c.fonts.web.family.standard = 'monospace'
 c.hints.chars = 'aoeuidhtns'
 c.scrolling.bar = 'always'
 c.tabs.title.format = '{audio}{index}{title_sep}{current_title}'
