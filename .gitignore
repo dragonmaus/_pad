@@ -1,5 +1,6 @@
 /.*history
 /.Xauthority
+/.android/
 /.cache/
 /.cargo/
 /.dbus/
@@ -8,6 +9,7 @@
 /.gnupg/
 /.ipfs/
 /.itch/
+/.java/
 /.lesshst
 /.local/
 /.macromedia/
