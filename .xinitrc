@@ -1,7 +1,13 @@
 #!/bin/sh
 
-PATH=~/bin:$PATH
-export PATH
+case ":$PATH:" in
+(*:~/bin:*)
+  ;;
+(*)
+  PATH=~/bin:$PATH
+  export PATH
+  ;;
+esac
 
 . echo.sh
 
