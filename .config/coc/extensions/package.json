@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "coc-svelte": ">=0.1.1"
+  }
+}

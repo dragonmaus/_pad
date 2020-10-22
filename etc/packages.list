@@ -73,6 +73,7 @@ ncurses
 ncurses-term
 neovim-qt
 nerd-fonts
+nodejs
 opendoas
 openssh
 outils
@@ -120,4 +121,5 @@ xsel
 xset
 xsetroot
 xxd
+yarn
 zip

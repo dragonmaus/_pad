@@ -4,6 +4,7 @@
 /.cache/
 /.cargo/
 /.dbus/
+/.degit/
 /.gftp/
 /.gitlab-token
 /.gnupg/
@@ -19,6 +20,7 @@
 /.moonchild productions/
 /.mozilla/
 /.multimc/
+/.npm/
 /.password-store/
 /.pki/
 /.renpy/
@@ -30,6 +32,7 @@
 /.wine/
 /.wineprefix/
 /.xsession-errors
+/.yarn/
 /DOSBOX/
 /GOG Games/
 /TA/
