@@ -1,7 +1,7 @@
 #!/bin/sh
 
 case ":$PATH:" in
-(*:~/bin:*)
+(*:$HOME/bin:*)
   ;;
 (*)
   PATH=~/bin:$PATH

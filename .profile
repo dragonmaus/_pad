@@ -107,7 +107,7 @@ test -f ~/.ssh/agent.sh && . ~/.ssh/agent.sh
 f=~/.ssh/environment
 rm -f $f{new}
 grep -v '^PATH=' < $f > $f{new}
-echo "PATH='$PATH'" >> $f{new}
+echo "PATH=$PATH" >> $f{new}
 mv -f $f{new} $f
 
 # Hand off to X if requested
