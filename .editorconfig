@@ -29,7 +29,7 @@ indent_size = 1
 indent_style = tab
 indent_size = tab
 
-[*.json]
+[*.{json,md,sql,yaml,yml}]
 indent_size = 2
 
 [*.rs]
