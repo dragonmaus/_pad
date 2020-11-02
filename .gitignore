@@ -8,6 +8,7 @@
 /.gftp/
 /.gitlab-token
 /.gnupg/
+/.gradle/
 /.gtk-bookmarks
 /.ipfs/
 /.itch/

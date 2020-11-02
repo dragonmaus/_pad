@@ -53,6 +53,7 @@ iputils
 jq
 kbd
 keepassxc
+kotlin-bin
 libXinerama-devel
 libcaca
 libgdiplus
@@ -122,4 +123,5 @@ xset
 xsetroot
 xxd
 yarn
+yj
 zip
