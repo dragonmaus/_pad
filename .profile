@@ -100,6 +100,9 @@ set +a
 # Set umask
 umask 077
 
+# Fix rundir permissions
+chmod 0700 $XDG_RUNTIME_DIR
+
 # SSH agent
 test -f ~/.ssh/agent.sh && . ~/.ssh/agent.sh
 
