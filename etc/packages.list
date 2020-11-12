@@ -18,7 +18,6 @@ calc
 cava
 cdparanoia
 cdrtools
-chromium-widevine
 chrony
 clang
 cli-visualizer
@@ -34,7 +33,6 @@ factor
 feh
 ffmpeg
 file
-firefox
 flac
 flatpak
 gettext-devel
@@ -110,6 +108,7 @@ wpa_supplicant
 x86_energy_perf_policy
 xautolock
 xdg-user-dirs
+xdg-utils
 xdotool
 xev
 xf86-video-intel
