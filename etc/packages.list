@@ -23,6 +23,7 @@ clang
 cli-visualizer
 compton
 curl
+dbus-glib
 dhcpcd
 dosfstools
 dragon
