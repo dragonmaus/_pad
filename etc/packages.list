@@ -60,6 +60,7 @@ libgdiplus
 libmad
 libopenal
 libreoffice
+libressl-devel
 linux
 man-pages
 mdocml
