@@ -88,7 +88,7 @@ XKB_INTERNAL_OPTIONS='compose:paus ctrl:nocaps'
 
 ## App-specific configuration
 IDEA_PROPERTIES=$CONF/idea/idea.properties
-LESS=FMRi
+LESS=FMRXi
 PASSWORD_STORE_SIGNING_KEY=`cat ~/etc/secret/signing.key`
 PKG_CONFIG_PATH=~/.local/lib/pkgconfig
 RIPGREP_CONFIG_PATH=$CONF/ripgrep/config
