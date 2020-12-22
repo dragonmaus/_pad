@@ -1,4 +1,0 @@
-#!/bin/sh
-logdir=~/log/sv/keybasefs
-mkdir -p $logdir
-exec svlogd -ttt $logdir
