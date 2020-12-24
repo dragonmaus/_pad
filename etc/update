@@ -1,18 +1,63 @@
 #!/bin/sh
 
-set -e
+doas true
 
-. echo.sh
+echo '>> Synchronising repository indices'
+doas xbps-install -S
 
-home=$(cd "$0.d" && env - PATH="$PATH" pwd)
+echo '>> Updating packages'
+doas xbps-install -u xbps
+doas xbps-install -u
 
-[[ $# -eq 0 ]] && set -- all
+echo '>> Removing orphaned packages'
+doas xbps-remove -o
 
-for arg
-do
-  file=$home/$arg.sh
-  if [[ -f $file && -s $file ]]
-  then
-    . $file
-  fi
-done
+echo '>> Pruning package cache'
+doas xbps-remove -O
+
+echo '>> Purging old kernels'
+list=$(vkpurge list | sed '$d')
+[[ -z "$list" ]] || doas vkpurge rm $list
+
+echo '>> Updating package list'
+list=~/etc/packages.list
+xbps-query -m | xargs -n 1 xbps-uhelper getpkgname > $list{new}
+cmp -s $list{new} $list || mv -f $list{new} $list
+rm -f $list{new}
+
+if which nix > /dev/null 2>&1
+then
+    echo '>> Updating Nix channels'
+    nix-channel --update
+
+    echo '>> Updating Nix packages'
+    nix-env -iA nixpkgs.nix
+fi
+
+if which rustup > /dev/null 2>&1
+then
+    echo '>> Updating rust'
+    rustup update
+fi
+
+if ! which pip > /dev/null 2>&1
+then
+    echo '>> Installing pip'
+    f=`mktemp`
+    curl -L -o "$f" https://bootstrap.pypa.io/get-pip.py
+    python "$f" --user -qq
+    rm -f "$f"
+fi
+
+echo '>> Updating python packages'
+python -m pip list --format=json --no-python-version-warning --not-required \
+| jq -r '.[] | .name' \
+| xargs -r python -m pip install -U --no-python-version-warning --upgrade-strategy=eager --user
+
+if [[ -d "$0.d" ]]
+then
+    for f in "$0.d"/*.sh
+    do
+        [[ -x "$f" ]] && . "$f"
+    done
+fi
