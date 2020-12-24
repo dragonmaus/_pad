@@ -24,6 +24,15 @@ case "$KSH_VERSION" in
   ;;
 esac
 
+# Enforce `separation of concerns' between login and interactive shells
+shell=`basename $SHELL`
+shell=${shell:-sh}
+case $- in
+(*i*)
+  exec $shell -l -c 'exec $shell -i "$@"' $shell "$@"
+  ;;
+esac
+
 # Ask if X should be started
 startx=
 if which startx > /dev/null 2>&1
@@ -41,6 +50,9 @@ then
   esac
 fi
 
+# Pull in Nix configuration
+test -e ~/.nix-profile/etc/profile.d/nix.sh && . ~/.nix-profile/etc/profile.d/nix.sh
+
 # XDG directories
 CONF=${XDG_CONFIG_HOME:-~/.config}
 DATA=${XDG_DATA_HOME:-~/.local/share}
@@ -49,9 +61,15 @@ DATA=${XDG_DATA_HOME:-~/.local/share}
 path=
 ifs=$IFS
 IFS=:
-for d in ~/bin ~/.cargo/bin ~/.cabal/bin ~/src/go/bin ~/src/go/ext/bin ~/.local/bin ~/.local/games ~/bin/ext ~/bin/flat ~/bin/gog ~/bin/wine $PATH ~/bin/mksh
+for d in ~/bin ~/.cargo/bin ~/.local/bin ~/.local/games ~/bin/ext ~/bin/flat ~/bin/gog ~/bin/wine $PATH ~/bin/mksh
 do
-  d=`realpath $d 2> /dev/null || echo $d`
+  case /$d/ in
+  (*/.nix-profile/*|*/nix/*)
+    ;;
+  (*)
+    d=`realpath $d 2> /dev/null || echo $d`
+    ;;
+  esac
   case ":$path:" in
   (*:$d:*)
     continue
@@ -76,7 +94,6 @@ ENV=$CONF/shell/init.sh
 ## Global configuration
 BROWSER=firefox
 EDITOR=`which nvim vim vi 2> /dev/null | head -1`
-LC_COLLATE=C
 PAGER=less; MANPAGER="$PAGER -s"
 
 ## X keyboard configuration
@@ -89,6 +106,7 @@ XKB_INTERNAL_OPTIONS='compose:paus ctrl:nocaps'
 ## App-specific configuration
 IDEA_PROPERTIES=$CONF/idea/idea.properties
 LESS=FMRXi
+LESSHISTFILE=-
 PASSWORD_STORE_SIGNING_KEY=`cat ~/etc/secret/signing.key`
 PKG_CONFIG_PATH=~/.local/lib/pkgconfig
 RIPGREP_CONFIG_PATH=$CONF/ripgrep/config
@@ -99,9 +117,6 @@ set +a
 
 # Set umask
 umask 077
-
-# Fix rundir permissions
-chmod 0700 $XDG_RUNTIME_DIR
 
 # SSH agent
 test -f ~/.ssh/agent.sh && . ~/.ssh/agent.sh
