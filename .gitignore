@@ -1,3 +1,5 @@
+*-
+*.log
 /.IdeaIC2019.2/
 /.Xauthority
 /.android/
@@ -22,8 +24,8 @@
 /.wineprefix/
 /.xsession-errors
 /.yarn/
-/TA/
 /TA.ZIP
+/TA/
 /bin/
 /desk/
 /git/
@@ -31,5 +33,3 @@
 /mc/
 /src/
 /tmp/
-*-
-*.log
