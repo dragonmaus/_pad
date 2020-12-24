@@ -17,7 +17,7 @@ doas xbps-remove -O
 
 echo '>> Purging old kernels'
 list=$(vkpurge list | sed '$d')
-[[ -z "$list" ]] || doas vkpurge rm $list
+test -z "$list" || doas vkpurge rm $list
 
 echo '>> Updating package list'
 list=~/etc/packages.list
@@ -54,10 +54,10 @@ python -m pip list --format=json --no-python-version-warning --not-required \
 | jq -r '.[] | .name' \
 | xargs -r python -m pip install -U --no-python-version-warning --upgrade-strategy=eager --user
 
-if [[ -d "$0.d" ]]
+if test -d "$0.d"
 then
     for f in "$0.d"/*.sh
     do
-        [[ -x "$f" ]] && . "$f"
+        test -x "$f" && . "$f"
     done
 fi
