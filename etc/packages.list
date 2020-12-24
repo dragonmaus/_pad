@@ -1,6 +1,5 @@
 GraphicsMagick
 MultiMC
-Solaar
 acpi_call-dkms
 acpid
 alsa-firmware
@@ -9,11 +8,9 @@ alsa-plugins-pulseaudio
 alsa-utils
 android-tools
 apulse
-asciidoc
 base-devel
 base-minimal
 bsdtar
-buku
 calc
 cava
 cdparanoia
@@ -66,7 +63,6 @@ man-pages
 mdocml
 mit-krb5-libs
 mksh
-mono
 moreutils
 mpv
 musl-bootstrap
@@ -87,7 +83,6 @@ pdf.js
 pinentry-dmenu
 pinentry-tty
 psmisc
-python3-gobject-devel
 qrencode
 redshift
 rsync
