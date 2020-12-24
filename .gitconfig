@@ -1,19 +1,9 @@
-[alias]
-	pwd = rev-parse --show-prefix
-	root = rev-parse --show-toplevel
-	skip = update-index --skip-worktree --
-	unskip = update-index --no-skip-worktree --
 [commit]
 	gpgsign = true
 [core]
 	autocrlf = false
 [credential]
 	helper = store
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [gpg]
 	program = gpg2
 [pull]

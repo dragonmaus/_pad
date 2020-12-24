@@ -1,9 +1,4 @@
 /MusicBrainz/
-/QtProject.conf
-/StardewValley/
-/VirtualBox/
-/cef_user_data/
-/chromium/
 /configstore/
 /creeperworld3/
 /dconf/
@@ -11,12 +6,10 @@
 /idea/
 /itch/
 /keepassxc/
-/keybase/
 /libreoffice/
 /mimeapps.list
 /mpv/
 /nvim-qt/
 /pulse/
 /syncthing/
-/ubports-installer/
 /unity3d/
