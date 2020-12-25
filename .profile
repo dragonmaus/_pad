@@ -104,14 +104,12 @@ XKB_DEFAULT_VARIANT=dvorak
 XKB_INTERNAL_OPTIONS='compose:paus ctrl:nocaps'
 
 ## App-specific configuration
-IDEA_PROPERTIES=$CONF/idea/idea.properties
 LESS=FMRXi
 LESSHISTFILE=-
 PASSWORD_STORE_SIGNING_KEY=`cat ~/etc/secret/signing.key`
 PKG_CONFIG_PATH=~/.local/lib/pkgconfig
 RIPGREP_CONFIG_PATH=$CONF/ripgrep/config
 SUDO_ASKPASS=$HOME/bin/askpass
-_JAVA_AWT_WM_NONREPARENTING=1
 
 set +a
 
