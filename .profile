@@ -84,7 +84,6 @@ path=${path#:}
 set -a
 
 ## Paths
-GOPATH=~/src/go/ext:~/src/go
 MANPATH=$DATA/man:
 PATH=$path
 
