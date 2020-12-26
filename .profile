@@ -94,6 +94,7 @@ ENV=$CONF/shell/init.sh
 ## Global configuration
 BROWSER=firefox
 EDITOR=`which nvim vim vi 2> /dev/null | head -1`
+HOSTNAME=${HOSTNAME:-`hostname -s`}
 PAGER=less; MANPAGER="$PAGER -s"
 
 ## X keyboard configuration
