@@ -109,7 +109,6 @@ LESSHISTFILE=-
 PASSWORD_STORE_SIGNING_KEY=`cat ~/etc/secret/signing.key`
 PKG_CONFIG_PATH=~/.local/lib/pkgconfig
 RIPGREP_CONFIG_PATH=$CONF/ripgrep/config
-SUDO_ASKPASS=$HOME/bin/askpass
 
 set +a
 

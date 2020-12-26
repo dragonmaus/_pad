@@ -1,5 +1,4 @@
 abspath
-askpass
 c
 cdiff
 dircp
@@ -11,8 +10,6 @@ getpass
 geturi
 getuser
 hd
-khpass
-khuser
 lefix
 lndir
 n
@@ -29,8 +26,6 @@ relpath
 remote-display
 rt
 screencap
-sdvcont
-sdvstop
 set-desktop
 shar
 sshmenu

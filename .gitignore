@@ -1,19 +1,14 @@
 *-
-*.log
 /.Xauthority
-/.android/
 /.cache/
 /.cargo/
 /.dbus/
 /.gftp/
 /.gnupg/
-/.gradle/
 /.gtk-bookmarks
 /.itch/
 /.local/
 /.moonchild productions/
-/.multimc/
-/.npm/
 /.password-store/
 /.pki/
 /.rustup/
@@ -21,13 +16,12 @@
 /.uqm/
 /.var/
 /.wineprefix/
+/.xsel.log
 /.xsession-errors
-/.yarn/
 /TA.ZIP
 /TA/
 /bin/
 /desk/
-/git/
 /log/
 /mc/
 /src/
