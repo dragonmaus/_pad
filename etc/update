@@ -44,32 +44,27 @@ then
 fi
 
 ## Python
-python=$(for p in $(which -a python python2 python3 2> /dev/null)
-do
-    p=$(realpath "$p")
-    echo "$(basename "$p")" "!$p"
-done | sort | sed 's/^.*!//' | tail -1)
-
-if [[ -z "$python" ]]
+python=$(which python python3 python2 2> /dev/null | head -1 | sed 's:.*/::')
+if [[ -z $python ]]
 then
     echo '>> Python is not installed'
 else
-    if ! "$python" -m pip --version > /dev/null 2>&1
+    if ! $python -m pip --version > /dev/null 2>&1
     then
         echo '>> Installing pip'
         f=$(mktemp)
         curl -L -o "$f" https://bootstrap.pypa.io/get-pip.py
-        "$python" "$f" --user -qq
+        $python "$f" --user -qq
         rm -f "$f"
     else
         echo '>> Updating pip'
-        "$python" -m pip install -U --no-python-version-warning --user pip
+        $python -m pip install -U --no-python-version-warning --user pip
     fi
 
     echo '>> Updating python packages'
-    "$python" -m pip list --format=json --no-python-version-warning --not-required \
+    $python -m pip list --format=json --no-python-version-warning --not-required \
     | jq -r '.[] | .name' \
-    | xargs -r "$python" -m pip install -U --no-python-version-warning --upgrade-strategy=eager --user
+    | xargs -r $python -m pip install -U --no-python-version-warning --upgrade-strategy=eager --user
 fi
 
 ## Other
