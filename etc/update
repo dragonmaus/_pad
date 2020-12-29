@@ -59,7 +59,7 @@ else
         echo '>> Installing pip'
         f=$(mktemp)
         curl -L -o "$f" https://bootstrap.pypa.io/get-pip.py
-        python "$f" --user -qq
+        "$python" "$f" --user -qq
         rm -f "$f"
     else
         echo '>> Updating pip'
