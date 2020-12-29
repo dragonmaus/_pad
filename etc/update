@@ -53,9 +53,9 @@ else
     then
         echo '>> Installing pip'
         f=$(mktemp)
-        curl -L -o "$f" https://bootstrap.pypa.io/get-pip.py
-        $python "$f" --user -qq
-        rm -f "$f"
+        curl -L -o $f https://bootstrap.pypa.io/get-pip.py
+        $python $f --user -qq
+        rm -f $f
     else
         echo '>> Updating pip'
         $python -m pip install -U --no-python-version-warning --user pip
@@ -68,10 +68,10 @@ else
 fi
 
 ## Other
-if [[ -d "$0.d" ]]
+if [[ -d $0.d ]]
 then
-    for f in "$0.d"/*.sh
+    for f in $0.d/*.sh
     do
-        [[ -r "$f" && -x "$f" ]] && . "$f"
+        [[ -r $f && -x $f ]] && . $f
     done
 fi
