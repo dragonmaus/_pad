@@ -1,0 +1,6 @@
+[commit]
+	gpgsign = true
+[credential]
+	helper = store
+[gpg]
+	program = gpg2

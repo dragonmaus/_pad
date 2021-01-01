@@ -9,6 +9,7 @@
 /.itch/
 /.local/
 /.moonchild productions/
+/.npm/
 /.password-store/
 /.pki/
 /.rustup/

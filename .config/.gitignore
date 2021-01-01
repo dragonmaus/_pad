@@ -1,4 +1,6 @@
 /MusicBrainz/
+/coc/*
+/coc/extensions/*
 /configstore/
 /creeperworld3/
 /dconf/
@@ -11,3 +13,5 @@
 /pulse/
 /syncthing/
 /unity3d/
+!/coc/extensions/
+!/coc/extensions/package.json

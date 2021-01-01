@@ -1,8 +1,4 @@
 " Settings
-let g:asmsyntax = "nasm"
-let g:csv_nomap_bs = 1
-let g:csv_nomap_cr = 1
-let g:csv_nomap_space = 1
 let g:is_ksh = 1
 
 " Disable unwanted plugins
