@@ -45,6 +45,7 @@ keepassxc
 libreoffice
 linux
 lynx
+lyx
 man-pages
 mdocml
 mit-krb5-libs
@@ -69,6 +70,7 @@ pdf.js
 pinentry-dmenu
 pinentry-tty
 psmisc
+qpdfview
 qrencode
 redshift
 rsync
@@ -77,6 +79,7 @@ scron
 setxkbmap
 socklog-void
 syncthing
+texlive-full
 tlp
 tp_smapi-dkms
 unclutter-xfixes

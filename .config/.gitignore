@@ -1,4 +1,6 @@
+/LyX/
 /MusicBrainz/
+/QtProject.conf
 /coc/*
 /coc/extensions/*
 /configstore/
@@ -11,6 +13,7 @@
 /mimeapps.list
 /mpv/
 /pulse/
+/qpdfview/
 /syncthing/
 /unity3d/
 !/coc/extensions/
