@@ -336,7 +336,7 @@ verbose_images=on
 # will be enabled.  These keys are only lower case.
 # Capital 'H', 'J' and 'K will still activate help, jump shortcuts,
 # and the keymap display, respectively.
-vi_keys=on
+vi_keys=off
 
 # The visited_links setting controls how Lynx organizes the information
 # in the Visited Links Page.
