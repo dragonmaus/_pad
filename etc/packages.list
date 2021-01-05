@@ -37,11 +37,14 @@ gparted
 grub
 gv
 iat
+imlib2-devel
 iproute2
 iputils
 jq
 kbd
 keepassxc
+libXinerama-devel
+libexif-devel
 libreoffice
 linux
 lynx
@@ -77,6 +80,7 @@ rsync
 rustup
 scron
 setxkbmap
+smu
 socklog-void
 syncthing
 texlive-full
