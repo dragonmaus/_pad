@@ -86,7 +86,6 @@ syncthing
 texlive-full
 tlp
 tp_smapi-dkms
-unclutter-xfixes
 usbutils
 void-repo-multilib
 void-repo-multilib-nonfree
@@ -95,6 +94,7 @@ wol
 wpa_supplicant
 x86_energy_perf_policy
 xautolock
+xbanish
 xdg-user-dirs
 xdg-utils
 xdotool

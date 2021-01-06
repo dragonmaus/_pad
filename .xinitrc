@@ -51,8 +51,8 @@ fi
 # Start X services
 picom &
 redshift-hack &
-unclutter --ignore-scrolling --jitter 5 &
 xautolock -detectsleep -secure -locker slock -time 10 &
+xbanish -i control -i mod4 &
 
 # Reset power management
 xset +dpms
