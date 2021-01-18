@@ -2,7 +2,7 @@
 
 for p in ~/.local/bin ~/bin
 do
-    case ":$PATH:" in
+    case :$PATH: in
     (*:$p:*)
         ;;
     (*)
@@ -35,15 +35,15 @@ fi
 printenv DISPLAY > ~/tmp/x.env.display
 
 # Set up keyboard configurations
-setxkbmap -model "$XKB_DEFAULT_MODEL" -layout "$XKB_DEFAULT_LAYOUT" -variant "$XKB_DEFAULT_VARIANT" $(for o in $XKB_DEFAULT_OPTIONS; do echo -option $o; done)
+setxkbmap -model $XKB_DEFAULT_MODEL -layout $XKB_DEFAULT_LAYOUT -variant $XKB_DEFAULT_VARIANT $(for o in $XKB_DEFAULT_OPTIONS; do echo -option $o; done)
 XKB_INTERNAL_DEVICE=$(xinput --list --id-only 'AT Translated Set 2 keyboard')
-[[ "$XKB_INTERNAL_DEVICE" == x ]] || setxkbmap -device "$XKB_INTERNAL_DEVICE" $(for o in $XKB_INTERNAL_OPTIONS; do echo -option $o; done)
+[[ -n $XKB_INTERNAL_DEVICE ]] && setxkbmap -device $XKB_INTERNAL_DEVICE $(for o in $XKB_INTERNAL_OPTIONS; do echo -option $o; done)
 
 # Set desktop background
 backgrounds=$(xdg-user-dir BACKGROUNDS)
-if [[ -f "$backgrounds/.current-desktop" ]]
+if [[ -f $backgrounds/.current-desktop ]]
 then
-    set-desktop "$backgrounds/.current-desktop"
+    set-desktop $backgrounds/.current-desktop
 else
     randomise-backgrounds -d
 fi
