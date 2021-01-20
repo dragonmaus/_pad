@@ -1,58 +1,31 @@
 # ~/.profile
-
-# User-specific shell profile
-
-# Ensure that `echo' is sane
-case "$KSH_VERSION" in
-(*'MIRBSD KSH'*|*'LEGACY KSH'*|*'PD KSH'*)
-    echo() {
-        print -R "$@"
-    }
-    ;;
-(*)
-    echo() {
-        case "$1" in
-        (-n)
-            shift
-            printf '%s' "$*"
-            ;;
-        (*)
-            printf '%s\n' "$*"
-            ;;
-        esac
-    }
-    ;;
-esac
+# User-specific login shell profile
 
 # Enforce `separation of concerns' between login and interactive shells
 shell=$(basename "$SHELL")
-shell=${shell:-sh}
+: ${shell:=sh}
 case $- in
 (*i*)
-    exec $shell -l -c 'exec $shell -i "$@"' $shell "$@"
-    ;;
+	exec $shell -l -c 'exec $shell -i "$@"' $shell "$@"
+	;;
 esac
 
 # Ask if X should be started
 startx=
-if which startx > /dev/null 2>&1
+if command -v startx > /dev/null 2>&1
 then
-    case $(tty) in
-    (/dev/tty*)
-        echo -n 'Start X? (y/n): ' 1>&2
-        read reply || echo n 1>&2
-        case "$reply" in
-        ([Yy]*)
-            startx='exec startx'
-            ;;
-        esac
-        ;;
-    esac
+	case $(tty) in
+	(/dev/tty*)
+		echo -n 'Start X? (y/n): ' 1>&2
+		read reply || echo n 1>&2
+		case "$reply" in
+		([Yy]*)
+			startx='exec startx'
+			;;
+		esac
+		;;
+	esac
 fi
-
-# Pull in Nix configuration
-nix=~/.nix-profile/etc/profile.d/nix.sh
-[[ -e $nix ]] && . $nix
 
 # XDG directories
 CONF=${XDG_CONFIG_HOME:-~/.config}
@@ -62,21 +35,15 @@ DATA=${XDG_DATA_HOME:-~/.local/share}
 path=
 ifs=$IFS
 IFS=:
-for d in ~/bin ~/sbin ~/.cargo/bin ~/.local/bin ~/.local/games $PATH
+for d in ~/bin ~/sbin ~/.cargo/bin ~/.local/bin $PATH
 do
-    case /$d/ in
-    (*/.nix-profile/*|*/nix/*)
-        ;;
-    (*)
-        d=$(realpath $d 2> /dev/null || echo $d)
-        ;;
-    esac
-    case ":$path:" in
-    (*:$d:*)
-        continue
-        ;;
-    esac
-    path=$path:$d
+	d=$(readlink -f $d 2> /dev/null || echo $d)
+	case ":$path:" in
+	(*:$d:*)
+		continue
+		;;
+	esac
+	path=$path:$d
 done
 IFS=$ifs
 path=${path#:}
@@ -85,16 +52,16 @@ path=${path#:}
 set -a
 
 ## Paths
-MANPATH=$DATA/man:
+MANPATH=$DATA/man:$MANPATH
 PATH=$path
 
 ## Shell configuration
-ENV=$CONF/shell/init.sh
+ENV=~/.shrc
 
 ## Global configuration
-EDITOR=$(which nvim vim vi 2> /dev/null | head -1)
+EDITOR=nvim
 HOSTNAME=${HOSTNAME:-$(hostname -s)}
-PAGER=less; MANPAGER="$PAGER -s"
+PAGER=less
 
 ## X keyboard configuration
 XKB_DEFAULT_LAYOUT=us
@@ -104,6 +71,7 @@ XKB_DEFAULT_VARIANT=dvorak
 XKB_INTERNAL_OPTIONS='compose:paus ctrl:nocaps'
 
 ## App-specific configuration
+GPG_TTY=$(tty)
 LESS=FMRXi
 LESSHISTFILE=-
 PASSWORD_STORE_DIR=~/.password-store
