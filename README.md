@@ -1,2 +1,2 @@
-# home
-My personal home directory.
+# pad
+## Void on Thinkpad T420
