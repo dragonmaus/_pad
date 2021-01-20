@@ -1,9 +1,6 @@
 /LyX/
 /MusicBrainz/
 /QtProject.conf
-/coc/*
-/coc/extensions/*
-/configstore/
 /creeperworld3/
 /dconf/
 /gtk-*/
@@ -16,5 +13,3 @@
 /qpdfview/
 /syncthing/
 /unity3d/
-!/coc/extensions/
-!/coc/extensions/package.json
