@@ -109,7 +109,7 @@ LESSHISTFILE=-
 PASSWORD_STORE_DIR=~/.password-store
 PASSWORD_STORE_KEY=$(cat ~/etc/secret/encryption.key)
 PASSWORD_STORE_SIGNING_KEY=$(cat ~/etc/secret/signing.key)
-RIPGREP_CONFIG_PATH=$CONF/ripgrep/config
+RIPGREP_CONFIG_PATH=$CONF/ripgrep.conf
 
 set +a
 
