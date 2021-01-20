@@ -1,34 +1,40 @@
 #!/bin/sh
 
-for p in ~/.local/bin ~/bin
-do
-    case :$PATH: in
-    (*:$p:*)
-        ;;
-    (*)
-        PATH=$p:$PATH
-        export PATH
-        ;;
-    esac
-done
+. ~/bin/echo.sh
 
-. echo.sh
+# Clean up and augment PATH (taken from .profile)
+path=
+ifs=$IFS
+IFS=:
+for d in ~/bin ~/sbin ~/.cargo/bin ~/.local/bin $PATH
+do
+	d=$(readlink -f $d 2> /dev/null || echo $d)
+	case ":$path:" in
+	(*:$d:*)
+		continue
+		;;
+	esac
+	path=$path:$d
+done
+IFS=$ifs
+PATH=${path#:}
+export PATH
 
 # Set up log file
 errfile=~/.xsession-errors
 if (umask 077 && cp /dev/null $errfile 2> /dev/null)
 then
-    exec > $errfile 2>&1
+	exec > $errfile 2>&1
 else
-    for errfile in ${TMPDIR:-/tmp}/xses-$USER /tmp/xses-$USER
-    do
-        if ef=$(umask 077 && mktemp $errfile.XXXXXX 2> /dev/null)
-        then
-            exec > $ef 2>&1
-            mv $ef $errfile 2> /dev/null
-            break
-        fi
-    done
+	for errfile in ${TMPDIR:-/tmp}/xses-$USER /tmp/xses-$USER
+	do
+		if ef=$(umask 077 && mktemp $errfile.XXXXXX 2> /dev/null)
+		then
+			exec > $ef 2>&1
+			mv $ef $errfile 2> /dev/null
+			break
+		fi
+	done
 fi
 
 # Set up environment exports
@@ -43,9 +49,9 @@ XKB_INTERNAL_DEVICE=$(xinput --list --id-only 'AT Translated Set 2 keyboard')
 backgrounds=$(xdg-user-dir BACKGROUNDS)
 if [[ -f $backgrounds/.current-desktop ]]
 then
-    set-desktop $backgrounds/.current-desktop
+	set-desktop $backgrounds/.current-desktop
 else
-    randomise-backgrounds -d
+	randomise-backgrounds -d
 fi
 
 # Start X services
