@@ -1,2 +1,2 @@
 # pad
-## Void on Thinkpad T420
+## Void on ThinkPad T420

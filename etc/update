@@ -18,7 +18,7 @@ doas xbps-remove -O
 
 echo '>> Purging old kernels'
 list=$(vkpurge list | sed '$d')
-[[ -n "$list" ]] && doas vkpurge rm $list
+[ -n "$list" ] && doas vkpurge rm $list
 
 echo '>> Updating package list'
 list=~/etc/packages.list
@@ -34,8 +34,8 @@ then
 fi
 
 ## Python
-python=$(which python python3 python2 2> /dev/null | head -1 | sed 's:.*/::')
-if [[ -n $python ]]
+python=$(which python python3 python2 2> /dev/null | head -1)
+if [ -n "$python" ]
 then
 	upgrade='install --user --upgrade --upgrade-strategy eager --use-pep517'
 
@@ -51,10 +51,10 @@ then
 fi
 
 ## Other
-if [[ -d $0.d ]]
+if [ -d "$0.d" ]
 then
-	for f in $0.d/*.sh
+	for f in "$0.d"/*.sh
 	do
-		[[ -r $f && -x $f ]] && . $f
+		[ -r "$f" -a -x "$f" ] && . "$f"
 	done
 fi

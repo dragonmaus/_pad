@@ -82,7 +82,7 @@ RIPGREP_CONFIG_PATH=$CONF/ripgrep.conf
 set +a
 
 # SSH agent
-[[ -f ~/.ssh/agent.sh ]] && . ~/.ssh/agent.sh
+[ -f ~/.ssh/agent.sh ] && . ~/.ssh/agent.sh
 
 # Update SSH environment
 f=~/.ssh/environment
