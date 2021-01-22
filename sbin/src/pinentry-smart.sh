@@ -4,8 +4,8 @@ set -e
 
 . echo.sh
 
-PINENTRY_GUI=/usr/bin/pinentry-dmenu
-PINENTRY_TTY=/usr/bin/pinentry-tty
+PINENTRY=$(which pinentry)
+PINENTRY_GUI=$(which pinentry-dmenu)
 
 name=$(basename "$0" .sh)
 usage="Usage: $name [options] (-h for help)"
@@ -65,4 +65,4 @@ eval set -- "$args"
 
 [ -n "$DISPLAY" ] && exec "$PINENTRY_GUI" "$@"
 
-exec "$PINENTRY_TTY" "$@"
+exec "$PINENTRY" "$@"
