@@ -1,24 +1,19 @@
 #!/bin/sh
 
-. ~/bin/echo.sh
-
-# Clean up and augment PATH (taken from .profile)
-path=
-ifs=$IFS
-IFS=:
-for d in ~/bin ~/sbin ~/.cargo/bin ~/.local/bin $PATH
+# Augment PATH
+for p in ~/.local/bin ~/sbin ~/bin
 do
-	d=$(readlink -f $d 2> /dev/null || echo $d)
-	case ":$path:" in
-	(*:$d:*)
-		continue
+	case ":$PATH:" in
+	(*:$p:*)
+		;;
+	(*)
+		PATH=$p:$PATH
+		export PATH
 		;;
 	esac
-	path=$path:$d
 done
-IFS=$ifs
-PATH=${path#:}
-export PATH
+
+. echo.sh
 
 # Set up log file
 errfile=~/.xsession-errors
@@ -37,24 +32,25 @@ else
 	done
 fi
 
-# Set up environment exports
-printenv DISPLAY > ~/tmp/x.env.display
+# Export important variables
+printenv DISPLAY > ~/.xsession-display
 
-# Set up keyboard configurations
-setxkbmap -model $XKB_DEFAULT_MODEL -layout $XKB_DEFAULT_LAYOUT -variant $XKB_DEFAULT_VARIANT $(for o in $XKB_DEFAULT_OPTIONS; do echo -option $o; done)
+# Set up keyboards
+options=$(for o in $XKB_DEFAULT_OPTIONS; do echo -option $o; done)
+setxkbmap -model $XKB_DEFAULT_MODEL -layout $XKB_DEFAULT_LAYOUT -variant $XKB_DEFAULT_VARIANT $options
 XKB_INTERNAL_DEVICE=$(xinput --list --id-only 'AT Translated Set 2 keyboard')
-[[ -n $XKB_INTERNAL_DEVICE ]] && setxkbmap -device $XKB_INTERNAL_DEVICE $(for o in $XKB_INTERNAL_OPTIONS; do echo -option $o; done)
+[ -n "$XKB_INTERNAL_DEVICE" ] && setxkbmap -device $XKB_INTERNAL_DEVICE $options
 
 # Set desktop background
 backgrounds=$(xdg-user-dir BACKGROUNDS)
-if [[ -f $backgrounds/.current-desktop ]]
+if [ -f "$backgrounds/.current-desktop" ]
 then
-	set-desktop $backgrounds/.current-desktop
+	set-desktop "$backgrounds/.current-desktop"
 else
 	randomise-backgrounds -d
 fi
 
-# Start X services
+# Start background services
 picom &
 redshift-hack &
 xautolock -detectsleep -secure -locker slock -time 10 &
