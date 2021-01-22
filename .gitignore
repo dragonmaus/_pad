@@ -19,6 +19,7 @@
 /.var/
 /.wineprefix/
 /.xsel.log
+/.xsession-display
 /.xsession-errors
 /TA.ZIP
 /TA/
