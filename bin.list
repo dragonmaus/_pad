@@ -10,7 +10,9 @@ git-ignore
 lndir
 n
 p
+passmenu
 pathsort
+pinentry-smart
 purge
 qdiff
 qr
