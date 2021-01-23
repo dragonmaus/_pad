@@ -43,9 +43,13 @@ XKB_INTERNAL_DEVICE=$(xinput --list --id-only 'AT Translated Set 2 keyboard')
 
 # Set desktop background
 backgrounds=$(xdg-user-dir BACKGROUNDS)
-if [ -f "$backgrounds/.current-desktop" ]
+if [ -s "$backgrounds/.current-desktop" ]
 then
-	set-desktop "$backgrounds/.current-desktop"
+	(
+		cd "$backgrounds"
+		read -r desk < .current-desktop
+		set-desktop "$desk"
+	)
 else
 	randomise-backgrounds -d
 fi
