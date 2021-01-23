@@ -36,10 +36,9 @@ fi
 printenv DISPLAY > ~/.xsession-display
 
 # Set up keyboards
-options=$(for o in $XKB_DEFAULT_OPTIONS; do echo -option $o; done)
-setxkbmap -model $XKB_DEFAULT_MODEL -layout $XKB_DEFAULT_LAYOUT -variant $XKB_DEFAULT_VARIANT $options
+setxkbmap -model $XKB_DEFAULT_MODEL -layout $XKB_DEFAULT_LAYOUT -variant $XKB_DEFAULT_VARIANT $(for o in $XKB_DEFAULT_OPTIONS; do echo -option $o; done)
 XKB_INTERNAL_DEVICE=$(xinput --list --id-only 'AT Translated Set 2 keyboard')
-[ -n "$XKB_INTERNAL_DEVICE" ] && setxkbmap -device $XKB_INTERNAL_DEVICE $options
+[ -n "$XKB_INTERNAL_DEVICE" ] && setxkbmap -device $XKB_INTERNAL_DEVICE $(for o in $XKB_INTERNAL_OPTIONS; do echo -option $o; done)
 
 # Set desktop background
 backgrounds=$(xdg-user-dir BACKGROUNDS)
