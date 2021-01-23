@@ -71,7 +71,6 @@ XKB_DEFAULT_VARIANT=dvorak
 XKB_INTERNAL_OPTIONS='compose:paus ctrl:nocaps'
 
 ## App-specific configuration
-GPG_TTY=$(tty)
 LESS=FMRXi
 LESSHISTFILE=-
 PASSWORD_STORE_DIR=~/.password-store
