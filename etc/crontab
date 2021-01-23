@@ -1,2 +1,2 @@
 # min	hour	mday	month	wday
-*/30	*	*	*	*	pgrep -x -U "$(id -u)" Xorg > /dev/null 2>&1 && env "PATH=$HOME/bin:$HOME/sbin:$HOME/.local/bin:$PATH" remote-display randomise-backgrounds -d
+*/30	*	*	*	*	pgrep -x -U "$(id -u)" Xorg > /dev/null 2>&1 && env "PATH=$HOME/bin:$PATH" remote-display randomise-backgrounds -d
