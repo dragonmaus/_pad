@@ -24,9 +24,10 @@ fsync $crontab{tmp} || :
 
 if cmp -s $crontab{tmp} $crontab
 then
-	echo vicron: $crontab unchanged
+	echo vicron: no changes made to crontab
 	rm -f $crontab{tmp}
 else
+	echo vicron: installing new crontab
 	mv -f $crontab{tmp} $crontab
 	pkill -x -u $uid -HUP scrond
 fi
