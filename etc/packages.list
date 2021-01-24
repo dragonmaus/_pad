@@ -7,7 +7,6 @@ alsa-oss
 alsa-plugins-pulseaudio
 alsa-utils
 apulse
-asciidoc
 base-devel
 base-minimal
 bombadillo
@@ -20,10 +19,8 @@ clang
 cmark
 compton
 curl
-dbus-glib
 dhcpcd
 dosfstools
-dragon
 e2fsprogs
 edb-debugger
 f2fs-tools
@@ -31,10 +28,8 @@ feh
 ffmpeg
 file
 flac
-flatpak
 gftp
 git
-glew
 gparted
 grub
 gv
@@ -50,7 +45,6 @@ libexif-devel
 libreoffice
 linux
 lynx
-lyx
 man-pages
 mdocml
 mit-krb5-libs
@@ -61,9 +55,9 @@ musl-bootstrap
 nasm
 ncurses
 ncurses-term
+neovim
 neovim-qt
 nerd-fonts
-nodejs
 opendoas
 openssh
 outils
@@ -85,7 +79,6 @@ setxkbmap
 smu
 socklog-void
 syncthing
-texlive-full
 tlp
 tp_smapi-dkms
 usbutils
@@ -112,5 +105,4 @@ xrdb
 xset
 xsetroot
 xxd
-yj
 zip
