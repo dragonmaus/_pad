@@ -1,20 +1,5 @@
 #!/bin/sh
 
-# Augment PATH
-for p in ~/.local/bin ~/sbin ~/bin
-do
-	case ":$PATH:" in
-	(*:$p:*)
-		;;
-	(*)
-		PATH=$p:$PATH
-		export PATH
-		;;
-	esac
-done
-
-. echo.sh
-
 # Set up log file
 errfile=~/.xsession-errors
 if (umask 077 && cp /dev/null $errfile 2> /dev/null)
@@ -32,7 +17,7 @@ else
 	done
 fi
 
-# Export important variables
+# Export display name
 printenv DISPLAY > ~/.xsession-display
 
 # Set up keyboards
@@ -44,11 +29,7 @@ XKB_INTERNAL_DEVICE=$(xinput --list --id-only 'AT Translated Set 2 keyboard')
 backgrounds=$(xdg-user-dir BACKGROUNDS)
 if [ -s "$backgrounds/.current-desktop" ]
 then
-	(
-		cd "$backgrounds"
-		read -r desk < .current-desktop
-		set-desktop "$desk"
-	)
+	(cd "$backgrounds" && set-desktop "$(<.current-desktop)")
 else
 	randomise-backgrounds -d
 fi

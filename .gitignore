@@ -2,14 +2,12 @@
 /.Xauthority
 /.cache/
 /.cargo/
-/.dbus/
 /.gftp/
 /.gnupg/
 /.gtk-bookmarks
 /.itch/
 /.java/
 /.local/
-/.lyx/
 /.moonchild productions/
 /.password-store/
 /.pki/
@@ -18,7 +16,6 @@
 /.uqm/
 /.var/
 /.wineprefix/
-/.xsel.log
 /.xsession-display
 /.xsession-errors
 /TA.ZIP
