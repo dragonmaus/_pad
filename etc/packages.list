@@ -17,6 +17,7 @@ cdparanoia
 cdrtools
 chrony
 clang
+cmark
 compton
 curl
 dbus-glib
@@ -96,6 +97,7 @@ wpa_supplicant
 x86_energy_perf_policy
 xautolock
 xbanish
+xclip
 xdg-user-dirs
 xdg-utils
 xdotool
@@ -107,7 +109,6 @@ xorg-minimal
 xprop
 xrandr
 xrdb
-xsel
 xset
 xsetroot
 xxd
