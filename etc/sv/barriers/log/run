@@ -1,4 +1,0 @@
-#!/bin/sh
-logdir=~/log/sv/barriers
-mkdir -p $logdir
-exec svlogd -ttt $logdir
