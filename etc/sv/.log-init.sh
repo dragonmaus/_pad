@@ -1,10 +1,10 @@
 #!/bin/sh
 
-force=0
+force=false
 case "$1" in
 (-f)
-  force=1
-  ;;
+	force=true
+	;;
 esac
 
 L=~/log/sv
@@ -13,26 +13,26 @@ S=~/etc/sv
 
 for d in $(ls $S)
 do
-  [[ -d $S/$d ]] || continue
-  [[ -h $S/$d ]] && continue
+	[ -d $S/$d ] || continue
+	[ -h $S/$d ] && continue
 
-  grep -Fqx 'exec 2>&1' $S/$d/run || sed -i -e '1 a \' -e 'exec 2>&1' $S/$d/run
+	grep -Fqx 'exec 2>&1' $S/$d/run || sed -i -e '1 a \' -e 'exec 2>&1' $S/$d/run
 
-  [[ $force -eq 1 ]] && rm -fr $S/$d/log
+	$force && rm -fr $S/$d/log
 
-  [[ -x $S/$d/log/run ]] && continue
+	[ -x $S/$d/log/run ] && continue
 
-  mkdir -p $S/$d/log
+	mkdir -p $S/$d/log
 
-  cat > $S/$d/log/run << END
-#!/bin/sh
-logdir=${L/#"$HOME/"/"~/"}/$d
-mkdir -p \$logdir
-exec svlogd -ttt \$logdir
-END
-  chmod +x $S/$d/log/run
+	cat > $S/$d/log/run <<-END
+	#!/bin/sh
+	logdir=${L/#"$HOME/"/"~/"}/$d
+	mkdir -p \$logdir
+	exec svlogd -ttt \$logdir
+	END
+	chmod +x $S/$d/log/run
 
-  ln -fns $R/supervise.$d.log $S/$d/log/supervise
+	ln -fns $R/supervise.$d.log $S/$d/log/supervise
 
-  echo Added logging to $d 1>&2
+	echo Added logging to $d 1>&2
 done
