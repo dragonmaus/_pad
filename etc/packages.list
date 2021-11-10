@@ -19,6 +19,7 @@ clang
 cmark
 compton
 curl
+dbus-glib
 dhcpcd
 dosfstools
 e2fsprogs
